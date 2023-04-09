@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    .menubar:hover{
+        -fx-border-color: coral;
+        -fx-border-width: 0px 0px 3px 0px ;
+        
+    }
+}

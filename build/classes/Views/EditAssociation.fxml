@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.EditAssociationController">
+   <children>
+      <TextField fx:id="tfnom" layoutX="28.0" layoutY="400.0" prefHeight="26.0" prefWidth="165.0" promptText="nom" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfnumero" layoutX="28.0" layoutY="440.0" prefHeight="26.0" prefWidth="165.0" promptText="numero" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfmail" layoutX="28.0" layoutY="480.0" prefHeight="26.0" prefWidth="165.0" promptText="mail" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfadresse" layoutX="280.0" layoutY="400.0" prefHeight="26.0" prefWidth="165.0" promptText="adresse" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfcode_postal" layoutX="279.0" layoutY="440.0" prefHeight="26.0" prefWidth="166.0" promptText="code_postal" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfville" layoutX="280.0" layoutY="480.0" prefHeight="26.0" prefWidth="166.0" promptText="ville" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TableView fx:id="tabAssociation" layoutX="7.0" layoutY="179.0" onMouseClicked="#handle" prefHeight="190.0" prefWidth="685.0">
+         <columns>
+            <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
+            <TableColumn fx:id="colnom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="colnumero" prefWidth="75.0" text="numero" />
+            <TableColumn fx:id="colmail" prefWidth="75.0" text="mail" />
+            <TableColumn fx:id="coladresse" prefWidth="75.0" text="adresse" />
+            <TableColumn fx:id="colcode_postal" prefWidth="75.0" text="code_postal" />
+            <TableColumn fx:id="colville" prefWidth="75.0" text="ville" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="534.0" layoutY="480.0" onMouseClicked="#supprimer1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/trash_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="534.0" layoutY="437.0" onMouseClicked="#Update1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/update_left_rotation_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="33.0" layoutX="534.0" layoutY="400.0" onMouseClicked="#Ajout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/man_50px.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="search" layoutX="140.0" layoutY="92.0" />
+   </children>
+</AnchorPane>

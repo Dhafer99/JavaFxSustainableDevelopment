@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.DashboardController">
+   <left>
+      <AnchorPane prefHeight="542.0" prefWidth="139.0" BorderPane.alignment="CENTER">
+         <children>
+            <Line endX="-98.4000244140625" endY="-360.20001220703125" layoutX="236.0" layoutY="269.0" startX="-98.4000244140625" startY="202.39996337890625" />
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="41.0" layoutY="22.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="41.0" layoutY="91.0" onMouseClicked="#ajouter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="41.0" layoutY="161.0" onMouseClicked="#afficher" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/booo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="50.0" layoutX="46.0" layoutY="394.0" onMouseClicked="#sakarna" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/exx.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="58.0" fitWidth="62.0" layoutX="41.0" layoutY="238.0" onMouseClicked="#update" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/demande.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane prefHeight="66.0" prefWidth="918.0" BorderPane.alignment="CENTER">
+         <children>
+            <Line endX="587.1998901367188" endY="-7.62939453125E-6" layoutX="283.0" layoutY="90.0" startX="-283.0" startY="1.2000045776367188" />
+            <ImageView fitHeight="67.0" fitWidth="96.0" layoutX="23.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Capture%20d’écran%202023-03-25%20005418.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="root" prefHeight="491.0" prefWidth="740.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="502.0" fitWidth="736.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/pexels-eberhard-grossgasteiger-572897.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
