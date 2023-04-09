@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.EditprofileController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.EditprofileController">
    <children>
       <ImageView fx:id="pic" fitHeight="150.0" fitWidth="177.0" layoutX="421.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane layoutX="24.0" layoutY="42.0" prefHeight="207.0" prefWidth="389.0">
@@ -41,5 +41,6 @@
       </GridPane>
       <Button layoutX="67.0" layoutY="249.0" mnemonicParsing="false" onAction="#editUser" prefHeight="25.0" prefWidth="128.0" text="Mettre a jour" />
       <Button layoutX="300.0" layoutY="249.0" mnemonicParsing="false" onAction="#addImage" prefHeight="25.0" prefWidth="177.0" text="Changer l'image" />
+      <Button layoutX="195.0" layoutY="330.0" mnemonicParsing="false" onAction="#Return" prefHeight="26.0" prefWidth="128.0" text="Return" />
    </children>
 </AnchorPane>
