@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="chartbtn" prefHeight="600.0" prefWidth="1313.0" style="-fx-background-color: #90EE90;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="don.FXMLController">
+   <children>
+      <VBox layoutX="31.0" layoutY="35.0" prefHeight="294.0" prefWidth="102.0" spacing="26.5">
+         <children>
+            <Label prefHeight="18.0" prefWidth="38.0" text="Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Quantite">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="20.0" prefWidth="81.0" text="Description">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Localisation">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Numero">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="133.0" layoutY="35.0" prefHeight="275.0" prefWidth="282.0" spacing="20.0">
+         <children>
+            <TextField fx:id="tfname" />
+            <TextField fx:id="tfquantite" />
+            <TextField fx:id="tfdescription" layoutX="10.0" layoutY="36.0" prefHeight="30.0" prefWidth="282.0" />
+            <TextField fx:id="tflocalisation" layoutX="10.0" layoutY="61.0" />
+            <TextField fx:id="tfemail" layoutX="10.0" layoutY="87.0" />
+            <TextField fx:id="tfnumero" layoutX="10.0" layoutY="112.0" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvdon" layoutX="423.0" layoutY="61.0" onMouseClicked="#handleMouseAction" prefHeight="452.0" prefWidth="854.0">
+        <columns>
+          <TableColumn fx:id="tvname" prefWidth="106.39999389648438" text="Name" />
+          <TableColumn fx:id="tvquantite" prefWidth="75.20001220703125" text="Quantite" />
+            <TableColumn fx:id="tvdescription" prefWidth="138.39990234375" text="Description" />
+            <TableColumn fx:id="tvlocalisation" prefWidth="199.20001220703125" text="Localisation" />
+            <TableColumn fx:id="tvemail" prefWidth="187.20001220703125" text="Email" />
+            <TableColumn fx:id="tvnumero" prefWidth="147.19989013671875" text="Numero" />
+        </columns>
+      </TableView>
+      <Button layoutX="584.0" layoutY="531.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="26.0" prefWidth="90.0" text="Insert">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_add_16px_1.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="691.0" layoutY="531.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" text="Update">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_update_16px_1.png" />
+               </image></ImageView>
+         </graphic></Button>
+      <Button layoutX="795.0" layoutY="531.0" mnemonicParsing="false" onMouseClicked="#deleteEvent" prefHeight="26.0" prefWidth="89.0" text="Delete">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_cancel_16px_1.png" />
+               </image></ImageView>
+         </graphic></Button>
+      <Button fx:id="ImageAddChoose" layoutX="149.0" layoutY="342.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="26.0" prefWidth="116.0" text="Add Image">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_edit_image_16px.png" />
+               </image></ImageView>
+         </graphic></Button>
+      <ImageView fx:id="eventAddImg" fitHeight="182.0" fitWidth="177.0" layoutX="14.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="484.0" layoutY="532.0" mnemonicParsing="false" onAction="#Map" prefHeight="26.0" prefWidth="90.0" text="Map" />
+      <ImageView fx:id="eventAddImg1" fitHeight="182.0" fitWidth="177.0" layoutX="14.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eventAddImg11" fitHeight="182.0" fitWidth="177.0" layoutX="129.0" layoutY="388.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="905.0" layoutY="532.0" mnemonicParsing="false" onAction="#Empty" prefHeight="26.0" prefWidth="90.0" text="Empty" />
+      <TextField fx:id="filtertext" layoutX="685.0" layoutY="22.0" prefHeight="26.0" prefWidth="192.0" promptText="Search" />
+      <Button layoutX="1009.0" layoutY="532.0" mnemonicParsing="false" onAction="#Chart" prefHeight="26.0" prefWidth="90.0" text="Chart" />
+
+   </children>
+</AnchorPane>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Don.jnlp">
+  <information>
+    <title>Don</title>
+    <vendor>21629</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Don.jar" size="15767395" download="eager" />
+    <jar href="lib\charm-down-core-3.8.6.jar" size="10396" download="eager" />
+    <jar href="lib\charm-down-core-ios-3.8.6.jar" size="2710" download="eager" />
+    <jar href="lib\charm-down-plugin-storage-3.8.6.jar" size="1752" download="eager" />
+    <jar href="lib\charm-down-plugin-video-3.8.6.jar" size="9524" download="eager" />
+    <jar href="lib\charm-down-plugin-video-ios-3.8.6.jar" size="94531" download="eager" />
+    <jar href="lib\com-jhlabs-filters-2.0.235-201002241238.jar" size="2050" download="eager" />
+    <jar href="lib\filters-2.0.235.jar" size="340318" download="eager" />
+    <jar href="lib\fontawesomefx-commons-9.1.2.jar" size="24064" download="eager" />
+    <jar href="lib\fontawesomefx-fontawesome-4.7.0-9.1.2.jar" size="137226" download="eager" />
+    <jar href="lib\geocoder-1.3.5.jar" size="1060232" download="eager" />
+    <jar href="lib\geocoder-2.203.jar" size="1761195" download="eager" />
+    <jar href="lib\gson-2.10.1.jar" size="283367" download="eager" />
+    <jar href="lib\jackson-annotations-2.15.0-rc2.jar" size="75551" download="eager" />
+    <jar href="lib\jackson-core-2.15.0-rc2.jar" size="542243" download="eager" />
+    <jar href="lib\jackson-databind-2.15.0-rc2.jar" size="1618840" download="eager" />
+    <jar href="lib\jxmaps-1.3.1.jar" size="859749" download="eager" />
+    <jar href="lib\jxmaps-win-1.3.1.jar" size="50757483" download="eager" />
+    <jar href="lib\jxmapsdemo.jar" size="1108867" download="eager" />
+    <jar href="lib\libphonenumber-8.13.9.jar" size="367953" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\org-jdesktop-swingx-1.6-201002261215.jar" size="2663" download="eager" />
+    <jar href="lib\prefixmapper-2.203.jar" size="20149" download="eager" />
+    <jar href="lib\swing-worker-1.1.jar" size="12591" download="eager" />
+    <jar href="lib\swingx-1.6.jar" size="1290685" download="eager" />
+    <jar href="lib\twilio-9.2.4-jar-with-dependencies.jar" size="11026113" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Don" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="don.Don"  name="Don" />
+  <update check="always"/>
+</jnlp>
