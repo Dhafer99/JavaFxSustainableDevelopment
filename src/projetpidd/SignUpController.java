@@ -58,8 +58,6 @@ public class SignUpController implements Initializable {
     private TextField num_telephone;
     @FXML
     private ImageView pic;
-    @FXML
-    private Circle imageIn;
      @FXML
     private Button imageB;
     /**
@@ -106,6 +104,12 @@ public class SignUpController implements Initializable {
                    
 
                  }
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
+        ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("login.fxml");
+    }
 }
        
       

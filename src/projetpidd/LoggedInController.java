@@ -41,6 +41,10 @@ import javafx.util.Callback;
 import javax.imageio.ImageIO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 /**
  * FXML Controller class
  *
@@ -69,6 +73,10 @@ public class LoggedInController implements Initializable {
     private TableColumn<User, String> nom;
     @FXML
     private TableColumn<User, String> prenom;
+   @FXML
+    private TableColumn<User, String> image;
+   @FXML
+   private ImageView profilePic;
    
     @FXML
     private Label lnom;
@@ -86,7 +94,7 @@ public class LoggedInController implements Initializable {
     private Label ltype;
     @FXML
     private TextField tsearch;
-
+    
     
     
     /**
@@ -98,14 +106,26 @@ public class LoggedInController implements Initializable {
           addButtonToTable();
           showUsers();
           
+          User user = projetpidd.ProjetPiDD.user;
+          final String imageURI4 = new File(user.getImage()).toURI().toString();
+          Image image = new Image(user.getImage());
+        profilePic.setImage(image);
+          System.out.println("CURRENT USER IMAGE"+user.getImage());
       }
       
      public void showUsers(){
         ObservableList<User> list = ServiceUser.getInstance().getUserList();
         email.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+        
         type.setCellValueFactory(new PropertyValueFactory<User,String>("type"));
+         num_telephone.setCellValueFactory(new PropertyValueFactory<User,String>("numTelephone"));
+         nom.setCellValueFactory(new PropertyValueFactory<User,String>("nom"));
+         prenom.setCellValueFactory(new PropertyValueFactory<User,String>("prenom"));
         score.setCellValueFactory(new PropertyValueFactory<User,Integer>("score"));
         nombre_etoile.setCellValueFactory(new PropertyValueFactory<User,Integer>("nb_etoile"));
+        image.setCellValueFactory(new PropertyValueFactory<User, String>("image"));
+
+
         table.setItems(list);
      }
      
@@ -180,7 +200,8 @@ public class LoggedInController implements Initializable {
     @FXML
     void searchUser(){
        String searchText = tsearch.getText();
-    String sql = "SELECT email,nom, prenom, type, score, num_telephone, nb_etoile FROM user WHERE nom = ? OR email = ?";
+    String sql = "SELECT email, nom, prenom, type, score, num_telephone, nb_etoile FROM user WHERE nom LIKE ? OR email LIKE ?";
+
     Connection cn = null;
     PreparedStatement st = null;
     ResultSet rs = null;

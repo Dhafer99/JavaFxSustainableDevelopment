@@ -25,7 +25,7 @@ public class ProjetPiDD extends Application {
     public void start(Stage primaryStage) throws Exception{
         stg = primaryStage;
        // primaryStage.setResizable(false);
-        Parent root = FXMLLoader.load(getClass().getResource("LoggedIn.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Falcon");
         primaryStage.setScene(new Scene(root, 600*2, 400*2));
         primaryStage.show();

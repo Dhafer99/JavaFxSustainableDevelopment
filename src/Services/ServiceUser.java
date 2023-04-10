@@ -45,8 +45,8 @@ public class ServiceUser {
              User users ;
              while(rs.next())
              {
-                 users=new User( rs.getString("email"),  rs.getString("num_telephone"),  rs.getString("type"),  rs.getInt("score"),  rs.getInt("nb_etoile"));
-                 System.out.println(rs.getString("email"));
+                 users=new User( rs.getString("email"),  rs.getString("num_telephone"),  rs.getString("type"),  rs.getInt("score"),  rs.getInt("nb_etoile"),rs.getString("nom"),rs.getString("prenom"),rs.getString("image"));
+                 System.out.println(users.getNumTelephone());
                  UserList.add(users);
              }
          }catch(Exception ex )

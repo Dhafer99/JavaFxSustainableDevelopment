@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.SignUpController">
    <children>
@@ -44,8 +43,8 @@
          </children>
       </GridPane>
       <ImageView fx:id="pic" fitHeight="150.0" fitWidth="184.0" layoutX="403.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
-      <Circle fill="DODGERBLUE" layoutX="503.0" layoutY="300.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
       <Button fx:id="imageB" layoutX="267.0" layoutY="284.0" mnemonicParsing="false" onAction="#addImage" text="image" />
       <Button fx:id="SignUp" layoutX="62.0" layoutY="304.0" mnemonicParsing="false" onAction="#addUser" prefHeight="32.0" prefWidth="127.0" text="Signup" />
+      <Button layoutX="389.0" layoutY="324.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
    </children>
 </AnchorPane>
