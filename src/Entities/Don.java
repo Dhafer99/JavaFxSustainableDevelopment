@@ -5,6 +5,11 @@
  */
 package Entities;
 
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+
 /**
  *
  * @author 21629
@@ -18,6 +23,7 @@ public class Don {
     private String Image;
     private String email;
     private int Numero;
+private static Stage stg ;
 
     public Don() {
     }
@@ -118,5 +124,8 @@ public class Don {
     public String toString() {
         return "Don{" + "id=" + id + ", NameD=" + NameD + ", quantite=" + quantite + ", description=" + description + ", localisation=" + localisation + ", Image=" + Image + ", email=" + email + ", Numero=" + Numero + '}';
     }
-    
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stg.getScene().setRoot(pane);
+    }
 }

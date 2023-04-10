@@ -20,8 +20,9 @@ import javafx.stage.Stage;
  *
  * @author 21629
  */
+
 public class Don extends Application {
-    
+    private static Stage stg ;
     @Override
 public void start(Stage stage) throws Exception {
     try {
@@ -34,7 +35,10 @@ public void start(Stage stage) throws Exception {
         System.err.println("Error loading FXML file: " + e.getMessage());
     }
 }
-    
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stg.getScene().setRoot(pane);
+    }
 
     /**
      * @param args the command line arguments

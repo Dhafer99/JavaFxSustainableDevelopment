@@ -52,6 +52,7 @@ import com.google.gson.JsonParser;
 import Service.AddressToLatLng;
 import static Service.AddressToLatLng.getLatLongFromAddress;
 import javafx.scene.chart.PieChart;
+
 /**
  * FXML Controller class
  *
@@ -119,6 +120,8 @@ private File file;
 private final ObservableList<Don> eventList = FXCollections.observableArrayList();
     @FXML
     private AnchorPane chartbtn;
+    @FXML
+    private Button FrontBtn;
    
     public int getId() {
         return id;
@@ -375,6 +378,12 @@ private void Chart (ActionEvent event) throws   IOException {
         chartbtn.getScene().setRoot(root);
         
 }
-
+    @FXML
+private void Front (ActionEvent event) throws IOException{
+ FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        SampleController aec = loader.getController();
+        Parent root = loader.load();
+        FrontBtn.getScene().setRoot(root);
+}
     
 }
