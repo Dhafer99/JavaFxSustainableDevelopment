@@ -44,8 +44,8 @@ public class PIDEVjava extends Application {
         
         
        // parentPage = FXMLLoader.load(getClass().getResource("/Views/AjoutAssociation.fxml"));
+   //  parentPage = FXMLLoader.load(getClass().getResource("/Views/sample.fxml"));
      parentPage = FXMLLoader.load(getClass().getResource("/Views/UI.fxml"));
-    // parentPage = FXMLLoader.load(getClass().getResource("/Views/Menu.fxml"));
      
         Scene scene = new Scene(parentPage);
        // Image icon = new Image(getClass().getResourceAsStream("..\image\Capture d’écran 2023-03-25 005418.png"));
