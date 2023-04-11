@@ -49,7 +49,12 @@ public class loginController {
    
     
     public void userLogin(ActionEvent event) throws IOException, SQLException{
+        try {
         checkLogin();
+        }catch(Exception e )
+        {
+            errorLabel.setText("Verifier vos cordonnés !");
+        }
     }
      public void userSignUp(ActionEvent event) throws IOException{
         checkSignUp();

@@ -114,6 +114,17 @@ public class ServiceUser {
         pre.executeUpdate();
         
     }
+    
+    public void DeleteUser(String email) throws SQLException{
+        String req = "DELETE FROM user "    
+                    + " where email=?";
+        
+        System.out.println(req);
+        PreparedStatement pre = cn.prepareStatement(req);
+        pre.setString(1, email);
+        pre.executeUpdate();
+        
+    }
       public User searchUserByEmail(String pseudo, String password) throws SQLException {
         User user = null;
       String req="SELECT (password) FROM user where (nom=? OR email=?)";

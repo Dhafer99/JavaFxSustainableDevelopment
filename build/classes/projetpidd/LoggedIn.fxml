@@ -8,25 +8,23 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="1011.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.LoggedInController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" styleClass="dark-background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.LoggedInController">
    <children>
-      <Label fx:id="label_welcome" layoutX="26.0" layoutY="26.0" prefHeight="18.0" prefWidth="236.0" text="Welcome" />
-      <Button fx:id="button_logout" layoutX="430.0" layoutY="26.0" mnemonicParsing="false" onAction="#logout" prefHeight="32.0" prefWidth="143.0" text="logout" />
-      <TableView fx:id="table" layoutX="175.0" layoutY="99.0" prefHeight="401.0" prefWidth="816.0">
+      <Label fx:id="label_welcome" layoutX="1020.0" layoutY="220.0" prefHeight="18.0" prefWidth="236.0" text="Welcome !" />
+      <Button fx:id="button_logout" layoutX="712.0" layoutY="29.0" mnemonicParsing="false" onAction="#logout" prefHeight="32.0" prefWidth="143.0" stylesheets="@../css/style.css" text="logout" />
+      <TableView fx:id="table" layoutX="175.0" layoutY="145.0" prefHeight="401.0" prefWidth="816.0">
         <columns>
           <TableColumn fx:id="email" prefWidth="147.0" text="Email" />
-          <TableColumn fx:id="num_telephone" prefWidth="104.0" text="num_telephone" />
-            <TableColumn fx:id="type" prefWidth="59.0" text="type" />
+          <TableColumn fx:id="num_telephone" prefWidth="117.0" text="num_telephone" />
+            <TableColumn fx:id="type" prefWidth="46.0" text="type" />
             <TableColumn fx:id="score" prefWidth="91.0" text="score" />
             <TableColumn fx:id="nombre_etoile" prefWidth="152.0" text="nombre d'etoile" />
             <TableColumn fx:id="nom" prefWidth="74.0" text="nom" />
             <TableColumn fx:id="prenom" prefWidth="85.0" text="Prenom" />
-            <TableColumn fx:id="image" prefWidth="103.0" text="image profile" />
         </columns>
       </TableView>
-      <Button layoutX="731.0" layoutY="35.0" mnemonicParsing="false" onAction="#toupdatescene" text="Mettre a jour votre profile " />
-      <Button layoutX="221.0" layoutY="39.0" mnemonicParsing="false" onAction="#tobot" text="ChatBot" />
-      <Button layoutX="119.0" layoutY="28.0" mnemonicParsing="false" onAction="#toGPT" text="ChatGPT" />
+      <Button layoutX="1020.0" layoutY="270.0" mnemonicParsing="false" onAction="#toupdatescene" text="Mettre a jour votre profile " />
+      <Button layoutX="1058.0" layoutY="396.0" mnemonicParsing="false" onAction="#tobot" text="ChatBot" />
       <Label fx:id="lemail" layoutX="26.0" layoutY="184.0" prefHeight="18.0" prefWidth="105.0" />
       <Label fx:id="lnumt" layoutX="26.0" layoutY="220.0" />
       <Label fx:id="ltype" layoutX="27.0" layoutY="261.0" />
@@ -35,8 +33,8 @@
       <Label fx:id="lnom" layoutX="29.0" layoutY="368.0" />
       <Label fx:id="lprenom" layoutX="29.0" layoutY="404.0" />
       <Label layoutX="15.0" layoutY="149.0" text="User :" />
-      <Button layoutX="21.0" layoutY="72.0" mnemonicParsing="false" onAction="#searchUser" text="search" />
-      <TextField fx:id="tsearch" layoutX="99.0" layoutY="75.0" />
-      <ImageView fx:id="profilePic" fitHeight="82.0" fitWidth="143.0" layoutX="911.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="34.0" layoutY="97.0" mnemonicParsing="false" onAction="#searchUser" text="search" />
+      <TextField fx:id="tsearch" layoutX="145.0" layoutY="101.0" />
+      <ImageView fx:id="profilePic" fitHeight="82.0" fitWidth="143.0" layoutX="1020.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

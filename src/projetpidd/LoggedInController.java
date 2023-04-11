@@ -73,8 +73,7 @@ public class LoggedInController implements Initializable {
     private TableColumn<User, String> nom;
     @FXML
     private TableColumn<User, String> prenom;
-   @FXML
-    private TableColumn<User, String> image;
+  
    @FXML
    private ImageView profilePic;
    
@@ -111,6 +110,7 @@ public class LoggedInController implements Initializable {
           Image image = new Image(user.getImage());
         profilePic.setImage(image);
           System.out.println("CURRENT USER IMAGE"+user.getImage());
+          addDeleteButtonToTable();
       }
       
      public void showUsers(){
@@ -123,7 +123,7 @@ public class LoggedInController implements Initializable {
          prenom.setCellValueFactory(new PropertyValueFactory<User,String>("prenom"));
         score.setCellValueFactory(new PropertyValueFactory<User,Integer>("score"));
         nombre_etoile.setCellValueFactory(new PropertyValueFactory<User,Integer>("nb_etoile"));
-        image.setCellValueFactory(new PropertyValueFactory<User, String>("image"));
+       
 
 
         table.setItems(list);
@@ -172,6 +172,48 @@ public class LoggedInController implements Initializable {
                             System.out.println("selectedData: " + email);
                            try {
                                 ServiceUser.getInstance().BlockUser(email);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        BlockBtn.setCellFactory(cellFactory);
+
+        table.getColumns().add(BlockBtn);
+
+    }
+    private void addDeleteButtonToTable() {
+        TableColumn<User, Void> BlockBtn = new TableColumn("Delete Account");
+
+        Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = new Callback<TableColumn<User, Void>, TableCell<User, Void>>() {
+            @Override
+            public TableCell<User, Void> call(final TableColumn<User, Void> param) {
+                final TableCell<User, Void> cell = new TableCell<User, Void>() {
+
+                    private final Button btn = new Button("Delete Account");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            TableColumn<User, String> firstColumn = (TableColumn<User, String>) getTableView().getColumns().get(0);
+                            String email = firstColumn.getCellData(getIndex());
+                            System.out.println("selectedData: " + email);
+                           try {
+                                ServiceUser.getInstance().DeleteUser(email);
                             } catch (SQLException ex) {
                                 Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
                             }

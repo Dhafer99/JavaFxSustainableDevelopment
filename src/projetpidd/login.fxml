@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.loginController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" styleClass="dark-background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.loginController">
    <children>
-      <AnchorPane prefHeight="417.0" prefWidth="237.0">
+      <AnchorPane prefHeight="417.0" prefWidth="237.0" styleClass="dark-background" stylesheets="@../css/style.css">
          <children>
             <ImageView fitHeight="694.0" fitWidth="349.0" layoutX="14.0" layoutY="24.0">
                <image>
@@ -28,17 +28,12 @@
             <Blend />
          </effect>
          <font>
-            <Font name="Bodoni MT" size="12.0" />
+            <Font name="Bodoni MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="405.0" layoutY="328.0" prefHeight="17.0" prefWidth="161.0" text="Mot De passe">
+      <Label layoutX="405.0" layoutY="328.0" prefHeight="17.0" prefWidth="161.0" stylesheets="@../css/style.css" text="Mot De passe">
          <font>
             <Font name="Bodoni MT" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="469.0" layoutY="114.0" prefHeight="24.0" prefWidth="248.0" text="Welcome Earth Hero !">
-         <font>
-            <Font name="Cambria" size="20.0" />
          </font>
       </Label>
       <ImageView fitHeight="200.0" fitWidth="147.0" layoutX="846.0" layoutY="14.0">
@@ -47,8 +42,8 @@
          </image>
       </ImageView>
       <Button fx:id="login_button" layoutX="407.0" layoutY="436.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="32.0" prefWidth="124.0" text="LogIn" />
-      <TextField fx:id="usernameField" layoutX="656.0" layoutY="247.0" />
-      <PasswordField fx:id="passwordField" layoutX="656.0" layoutY="310.0" />
+      <TextField fx:id="usernameField" layoutX="656.0" layoutY="247.0" promptText="nom" />
+      <PasswordField fx:id="passwordField" layoutX="656.0" layoutY="310.0" promptText="Mot de passe" />
       <Button layoutX="641.0" layoutY="436.0" mnemonicParsing="false" onAction="#userSignUp" prefHeight="32.0" prefWidth="124.0" text="SignUp" />
       <Label layoutX="103.0" layoutY="559.0" prefHeight="15.0" prefWidth="186.0" text="+216 55 290 426">
          <font>
@@ -60,5 +55,11 @@
             <Font name="Arial Nova Light" size="12.0" />
          </font>
       </Label>
+      <Label layoutX="469.0" layoutY="114.0" prefHeight="24.0" prefWidth="248.0" text="Welcome Earth Hero !">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorLabel" layoutX="441.0" layoutY="191.0" prefHeight="18.0" prefWidth="230.0" />
    </children>
 </AnchorPane>
