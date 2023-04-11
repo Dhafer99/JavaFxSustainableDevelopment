@@ -75,10 +75,7 @@ public class loginController {
             
         }
         
-        if(user.getBlocked() == true)
-        {
-            m.changeScene("UserBlocked.fxml");
-        }
+        
         if(user.getRoles().equals("ROLE_USER"))
         {
             m.changeScene("UserProfile.fxml");
@@ -86,6 +83,10 @@ public class loginController {
         if(user.getRoles().equals("ROLE_ADMIN"))
         {
             m.changeScene("LoggedIn.fxml");
+        }
+        if(user.getBlocked() == true)
+        {
+            m.changeScene("UserBlocked.fxml");
         }
         
     }

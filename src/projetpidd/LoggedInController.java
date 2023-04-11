@@ -95,6 +95,8 @@ public class LoggedInController implements Initializable {
     private Label ltype;
     @FXML
     private TextField tsearch;
+    @FXML
+    private TableColumn<User, Boolean> blocked;
     
     
     
@@ -130,6 +132,7 @@ public class LoggedInController implements Initializable {
          prenom.setCellValueFactory(new PropertyValueFactory<User,String>("prenom"));
         score.setCellValueFactory(new PropertyValueFactory<User,Integer>("score"));
         nombre_etoile.setCellValueFactory(new PropertyValueFactory<User,Integer>("nb_etoile"));
+        blocked.setCellValueFactory(new PropertyValueFactory<User,Boolean>("blocked"));
        
 
 
@@ -174,7 +177,6 @@ public class LoggedInController implements Initializable {
          m.changeScene("ChatBot.fxml");
         
     }
-    @FXML
     private void toGPT()throws IOException {
         ProjetPiDD m = new ProjetPiDD() ;
          m.changeScene("ChatGPT.fxml");
@@ -187,7 +189,8 @@ public class LoggedInController implements Initializable {
             @Override
             public TableCell<User, Void> call(final TableColumn<User, Void> param) {
                 final TableCell<User, Void> cell = new TableCell<User, Void>() {
-
+                    
+                    
                     private final Button btn = new Button("Block");
 
                     {
@@ -197,7 +200,11 @@ public class LoggedInController implements Initializable {
                             System.out.println("selectedData: " + email);
                            try {
                                 ServiceUser.getInstance().BlockUser(email);
+                                ProjetPiDD m = new ProjetPiDD ();
+                                m.changeScene("LoggedIn.fxml");
                             } catch (SQLException ex) {
+                                Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
                                 Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         });
@@ -239,7 +246,11 @@ public class LoggedInController implements Initializable {
                             System.out.println("selectedData: " + email);
                            try {
                                 ServiceUser.getInstance().DeleteUser(email);
+                                ProjetPiDD m = new ProjetPiDD ();
+                                m.changeScene("LoggedIn.fxml");
                             } catch (SQLException ex) {
+                                Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
                                 Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         });
@@ -264,7 +275,6 @@ public class LoggedInController implements Initializable {
         table.getColumns().add(BlockBtn);
 
     }
-    @FXML
     void searchUser(){
        String searchText = tsearch.getText();
     String sql = "SELECT email, nom, prenom, type, score, num_telephone, nb_etoile FROM user WHERE nom LIKE ? OR email LIKE ?";

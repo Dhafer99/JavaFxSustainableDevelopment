@@ -45,7 +45,7 @@ public class ServiceUser {
              User users ;
              while(rs.next())
              {
-                 users=new User( rs.getString("email"),  rs.getString("num_telephone"),  rs.getString("type"),  rs.getInt("score"),  rs.getInt("nb_etoile"),rs.getString("nom"),rs.getString("prenom"),rs.getString("image"));
+                 users=new User( rs.getString("email"),  rs.getString("num_telephone"),  rs.getString("type"),  rs.getInt("score"),  rs.getInt("nb_etoile"),rs.getString("nom"),rs.getString("prenom"),rs.getString("image"),rs.getBoolean("blocked"));
                  System.out.println(users.getNumTelephone());
                  UserList.add(users);
              }
@@ -179,6 +179,29 @@ public class ServiceUser {
         }
         System.out.println("User not found");
         return false;
+    }
+      public boolean checkBlocked(String email) throws SQLException {
+        String req = "SELECT blocked FROM user WHERE email=?";
+        PreparedStatement st = cn.prepareStatement(req);
+        st.setString(1, email.toLowerCase());
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            
+            return true;
+        }
+        
+        return false;
+    }
+       public void unBlockUser(String email) throws SQLException {
+          String req = "UPDATE user SET "
+                  + "blocked = ?"        
+                    + " where email=?";
+        
+        System.out.println(req);
+        PreparedStatement pre = cn.prepareStatement(req);
+        pre.setInt(1, 0);
+        pre.setString(2, email);
+        pre.executeUpdate();
     }
       
 

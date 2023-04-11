@@ -64,5 +64,11 @@ public class UserProfileController implements Initializable {
         ProjetPiDD m = new ProjetPiDD();
         m.changeScene("login.fxml");
     }
+
+    @FXML
+    private void toUpdate(ActionEvent event) throws IOException {
+        ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("editprofile.fxml");
+    }
     
 }

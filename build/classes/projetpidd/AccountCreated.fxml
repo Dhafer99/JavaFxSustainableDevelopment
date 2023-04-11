@@ -6,8 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="projetpidd.AccountCreatedController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.AccountCreatedController">
    <children>
       <Label layoutX="158.0" layoutY="194.0" prefHeight="45.0" prefWidth="612.0" style="-fx-font-size: 30;" text="Votre Compte a été crée avec Succés  !" />
       <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="729.0" layoutY="184.0">
