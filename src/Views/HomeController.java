@@ -57,5 +57,15 @@ private Parent fxml;
         } catch (IOException ex) {
         }
     }
+
+    @FXML
+    private void gestion(MouseEvent event) {
+        try {
+           fxml = FXMLLoader.load(getClass().getResource("/Views/Categorie.fxml"));
+           root.getChildren().removeAll();
+           root.getChildren().setAll(fxml);
+        } catch (IOException ex) {
+        }
+    }
     
 }

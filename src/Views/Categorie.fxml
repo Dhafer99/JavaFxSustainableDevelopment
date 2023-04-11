@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="882.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Views.CategorieController">
+   <children>
+      <TableView fx:id="tabcateg" layoutX="25.0" layoutY="43.0" onMouseClicked="#handle" prefHeight="191.0" prefWidth="779.0">
+        <columns>
+          <TableColumn fx:id="colnom" prefWidth="633.0" text="Nom" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tf_nom" layoutX="161.0" layoutY="327.0" />
+      <Button layoutX="161.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#Ajout" text="Ajouter" />
+      <Button layoutX="336.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#UpdateCat" text="Modifier" />
+      <Button layoutX="509.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#Supp" text="Supprimer " />
+   </children>
+</AnchorPane>

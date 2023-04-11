@@ -42,8 +42,7 @@ public class ReclamationService implements InterReclamation <Reclamation> {
     }
     @Override
     public void insert(Reclamation o) {
-        String req = "INSERT INTO `reclamation`(`id`, `data_reclamation`, `etat`, `motif_de_reclamation`, `num_telephone`, `email`) VALUES  ('" + o.getId() + "', '" + o.getData_reclamation() + "', '" + o.getEtat() + "', '" + o.getMotif_de_reclamation() + "', '" + o.getNum_telephone() + "', '" + o.getEmail() + "')";
-         
+         String req = "INSERT INTO `reclamation`(`id`, `data_reclamation`, `etat`, `categorie_rec_id`, `motif_de_reclamation`,`image`, `num_telephone`, `email`) VALUES ('" + o.getId() + "', '" + o.getData_reclamation() + "', '" + o.getEtat() + "', '" + o.getCategorie_rec().getId() + "','" + o.getMotif_de_reclamation() + "','"+ o.getImage() +"', '" + o.getNum_telephone() + "', '" + o.getEmail() + "')";
          try {
             st.executeUpdate(req);
         } catch (SQLException ex) {

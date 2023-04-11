@@ -19,8 +19,9 @@ public class Reclamation {
     private String image;
     public int num_telephone;
     public String email;
+    public Categorie_Rec categorie_rec_id;
 
-    public Reclamation(int id, Date data_reclamation, String etat, String motif_de_reclamation, String image, int num_telephone, String email) {
+    public Reclamation(int id, Date data_reclamation, String etat, String motif_de_reclamation, String image, int num_telephone, String email, Categorie_Rec categorie_rec_id) {
         this.id = id;
         this.data_reclamation = data_reclamation;
         this.etat = etat;
@@ -28,19 +29,33 @@ public class Reclamation {
         this.image = image;
         this.num_telephone = num_telephone;
         this.email = email;
+        this.categorie_rec_id = categorie_rec_id;
     }
 
-    public Reclamation() {
-    }
-
-    public Reclamation(Date data_reclamation, String etat, String motif_de_reclamation, String image, int num_telephone, String email) {
+    public Reclamation(Date data_reclamation, String etat, String motif_de_reclamation, String image, int num_telephone, String email, Categorie_Rec categorie_rec_id) {
         this.data_reclamation = data_reclamation;
         this.etat = etat;
         this.motif_de_reclamation = motif_de_reclamation;
         this.image = image;
         this.num_telephone = num_telephone;
         this.email = email;
+        this.categorie_rec_id = categorie_rec_id;
     }
+    
+    
+    
+
+    public Reclamation() {
+    }
+
+    /*public Reclamation(Date data_reclamation, String etat, String motif_de_reclamation, String image, int num_telephone, String email) {
+        this.data_reclamation = data_reclamation;
+        this.etat = etat;
+        this.motif_de_reclamation = motif_de_reclamation;
+        this.image = image;
+        this.num_telephone = num_telephone;
+        this.email = email;
+    }*/
     
 
     public int getId() {
@@ -99,10 +114,21 @@ public class Reclamation {
         this.email = email;
     }
 
+    public Categorie_Rec getCategorie_rec() {
+        return categorie_rec_id;
+    }
+
+    public void setCategorie_rec(Categorie_Rec categorie_rec) {
+        this.categorie_rec_id = categorie_rec_id;
+    }
+
     @Override
     public String toString() {
-        return "Reclamation{" + "id=" + id + ", data_reclamation=" + data_reclamation + ", etat=" + etat + ", motif_de_reclamation=" + motif_de_reclamation + ", image=" + image + ", num_telephone=" + num_telephone + ", email=" + email + '}';
+        return "Reclamation{" + "id=" + id + ", data_reclamation=" + data_reclamation + ", etat=" + etat + ", motif_de_reclamation=" + motif_de_reclamation + ", image=" + image + ", num_telephone=" + num_telephone + ", email=" + email + ", categorie_rec_id=" + categorie_rec_id + '}';
     }
+    
+
+    
     
     
     

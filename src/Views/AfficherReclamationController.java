@@ -9,7 +9,12 @@ import Entite.Reclamation;
 import ServicesReclamations.ReclamationService;
 import java.net.URL;
 import java.sql.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -52,7 +57,11 @@ public class AfficherReclamationController implements Initializable {
     @FXML
     private DatePicker picker_date;
     private int id;
-
+    @FXML
+    private TableColumn<?, ?> col_categ;
+    @FXML
+    private TextField Search;
+    ReclamationService ps = new ReclamationService();
     public int getId() {
         return id;
     }
@@ -63,14 +72,50 @@ public class AfficherReclamationController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    
+    public void show(){
        tab_reclamation.setItems(Ls.getPersons());
         col_datereclamation.setCellValueFactory(new PropertyValueFactory<>("data_reclamation"));
         col_etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         col_motifdereclamation.setCellValueFactory(new PropertyValueFactory<>("motif_de_reclamation"));
         col_numtelephone.setCellValueFactory(new PropertyValueFactory<>("num_telephone"));
-        col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        col_email.setCellValueFactory(new PropertyValueFactory<>("email"));   
+    }
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+       
+        
+       show();
+       List<Reclamation> personnes = ps.displayAll();
+       ObservableList<Reclamation> olp = FXCollections.observableArrayList(personnes);
+       //search//
+        FilteredList<Reclamation> filter = new FilteredList<>(olp, b->true);
+        Search.textProperty().addListener((observable, oldValue, newValue )-> {
+
+        filter.setPredicate(event -> {
+            if(newValue.isEmpty() || newValue==null ) {
+                return true;
+            }
+            String lowerCaseFilter = newValue.toLowerCase();
+            if(event.getMotif_de_reclamation().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                return true;
+            } else if (event.getEmail().toLowerCase().contains(lowerCaseFilter)){
+                return true;
+            }else 
+            return false;
+        });
+        });
+        SortedList<Reclamation> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(tab_reclamation.comparatorProperty());
+        
+        tab_reclamation.setItems(sort);
+       
+       
+       
+       
+       
     }    
     
     public void delete(){
@@ -124,7 +169,8 @@ public class AfficherReclamationController implements Initializable {
 
             JOptionPane.showMessageDialog(null, "Reclamation modifié !");
             
-            tab_reclamation.refresh();
+            //tab_reclamation.refresh();
+            show();
 
      
       // nom, numero, mail,  adresse,  CodePostal,  ville

@@ -35,9 +35,17 @@ public class Categorie_Rec {
         this.nom = nom;
     }
 
+    public Categorie_Rec() {
+    }
+
+    public Categorie_Rec(String nom) {
+        this.nom = nom;
+    }
+    
+
     @Override
     public String toString() {
-        return "Categorie_Rec{" + "id=" + id + ", nom=" + nom + '}';
+        return  nom;
     }
     
 }
