@@ -10,13 +10,24 @@ package Models;
  * @author Fares CHAKROUN
  */
 public class Association {
-      private int id ;
+      private int id;
  private String nom;
  private int  numero;
  private String mail;
  private String adresse;
  private int CodePostal;
  private String ville;   
+
+    public Association(int id, String nom, int numero, String mail, String adresse, int CodePostal, String ville, categorieA categorie) {
+        this.id = id;
+        this.nom = nom;
+        this.numero = numero;
+        this.mail = mail;
+        this.adresse = adresse;
+        this.CodePostal = CodePostal;
+        this.ville = ville;
+        this.categorie = categorie;
+    }
  private categorieA categorie;
 
     public Association() {

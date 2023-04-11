@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Controllers;
 import Models.Association;
 import Models.categorieA;
@@ -12,21 +13,36 @@ import Views.categeListdata;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 /**
  * FXML Controller class
  *
@@ -46,9 +62,10 @@ public class AjoutAssociationController implements Initializable {
     private TextField tfcode_postal;
     @FXML
     private TextField tfville;
-
+private File file; 
+    private String lien="";
     public static final String ACCOUNT_SID = "AC7baee01e459dc347a9e9f0a9b8f744c5";
-  public static final String AUTH_TOKEN = "9c4d3175f524029937ea448f92ae988e";
+  public static final String AUTH_TOKEN = "89da9ac629f6cf7374346a905c91de41";
   
   private categeListdata categeListdata = new categeListdata();
     @FXML
@@ -59,7 +76,46 @@ public class AjoutAssociationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+      
+       
+        tfnumero.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                tfnumero.setText(newValue.replaceAll("[^\\d]", ""));            
+            }
+        });
         
+         tfcode_postal.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                tfcode_postal.setText(newValue.replaceAll("[^\\d]", ""));            
+            }
+        });
+         /*
+         UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
+
+            @Override
+            public TextFormatter.Change apply(TextFormatter.Change t) {
+
+                if (t.isReplaced()) 
+                    if(t.getText().matches("[^0-7]"))
+                        t.setText(t.getControlText().substring(t.getRangeStart(), t.getRangeEnd()));
+                
+                if (t.isAdded()) {
+                    if (t.getControlText().contains(".")) {
+                        if (t.getText().matches("[^0-7]")) {
+                            t.setText("");
+                        }
+                    } else if (t.getText().matches("[^0-7.]")) {
+                        t.setText("");
+                    }
+                }
+                
+                return t;
+            }
+        };
+      tfnumero.setTextFormatter(new TextFormatter<>(filter)); 
+        */
+        
+           // liste ell categorie
         List<categorieA> categoriePromotions = categeListdata.getPersons();
 ObservableList<String> observableList = FXCollections.observableArrayList();
 for (categorieA categoriePromotion : categoriePromotions) {
@@ -67,12 +123,84 @@ for (categorieA categoriePromotion : categoriePromotions) {
 }
 combo.setItems(observableList);
 
-    }    
-
-    @FXML
-    private void Ajout(MouseEvent event) {
+    } 
+    /*
+    private void contole(Association t ){
+              if (t.getNom().isEmpty() ||  t.getNumero().isEmpty() || t.getMail().isEmpty() || t.getAdresse().isEmpty() || t.getCodePostal() || t.getVille().isEmpty() ) {
+ {
+            System.err.println("Remplir tout les champs ");
+            return;
+       
         
-   categorieA asso; // instance
+    }
+}*/    
+    
+      private boolean ValidateEmptyForm(TextField nom, TextField mail){
+         if (nom.getText().equals("")  || mail.getText().equals("") )
+         {
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Erreur");
+             alert.setHeaderText(null);
+             alert.setContentText("Veuillez remplir tous les champs");
+             alert.showAndWait();
+             
+             return false;  
+        } else {
+             return true;  
+         }
+     }
+   
+    @FXML
+    private void Ajout(MouseEvent event) { 
+        /*
+   categorieA asso=new categorieA(1,"khalil"); // instance
+           String nom_categ = (String) combo.getValue(); // te5ou ell valeur mill combo box 
+        categorieService cdao=new categorieService(); // instance service categorie 
+       // asso= cdao.getOneByName(nom_categ); // 
+    String nom=tfnom.getText();
+    String numero=tfnumero.getText();
+    String mail=tfmail.getText();
+    String adresse=tfadresse.getText();
+    String code_postal=tfcode_postal.getText();
+    String ville=tfville.getText();
+  
+    
+  
+    
+   // public Promotion(int id, Date start_date, Date end_date, float pourcentage, Categorie categorie, Produit prodtuit)
+    //Association p=new Association(24,nom,Integer.parseInt(numero),mail,adresse,Integer.parseInt(code_postal),ville,asso);
+   AssociationService promotiondao=new AssociationService();
+   Association p=new Association();
+   p.setAdresse(adresse);
+   p.setCodePostal(Integer.parseInt(code_postal));
+   p.setMail(mail);
+   p.setNom(nom);
+   p.setNumero(Integer.parseInt(numero));
+   p.setVille(ville);
+   p.setCategorie(asso);
+    promotiondao.insert(p);
+    System.out.println(p.getId());
+    System.out.println(p.getAdresse());
+    System.out.println(p.getCodePostal());
+    System.out.println(p.getMail());
+    
+    JOptionPane.showMessageDialog(null, "ajouter un event   !");
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                    Message message = Message.creator(new PhoneNumber("+21698773438"),
+        new PhoneNumber("++12764098996"), 
+        "une nouvelle association est ajouter  ").create();
+                    
+                    
+    promotiondao.insert(p);
+    System.out.println(p.getId());
+    System.out.println(p.getAdresse());
+    System.out.println(p.getCodePostal());
+    System.out.println(p.getMail());
+*/
+   if(ValidateEmptyForm(tfnom,tfmail)){
+        
+        
+categorieA asso; // instance
            String nom_categ = (String) combo.getValue(); // te5ou ell valeur mill combo box 
         categorieService cdao=new categorieService(); // instance service categorie 
         asso= cdao.getOneByName(nom_categ); // 
@@ -84,6 +212,8 @@ combo.setItems(observableList);
     String adresse=tfadresse.getText();
     String code_postal=tfcode_postal.getText();
     String ville=tfville.getText();
+   
+    
     
     
    // public Promotion(int id, Date start_date, Date end_date, float pourcentage, Categorie categorie, Produit prodtuit)
@@ -94,13 +224,12 @@ combo.setItems(observableList);
     JOptionPane.showMessageDialog(null, "ajouter un event   !");
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                     Message message = Message.creator(new PhoneNumber("+21698773438"),
-        new PhoneNumber("++12764098996"), 
+        new PhoneNumber("+12764098996"), 
         "une nouvelle association est ajouter  ").create();
                     
                     
-    promotiondao.insert(p);
-        
+    promotiondao.insert(p);        
     }
-
+    }
     
 }

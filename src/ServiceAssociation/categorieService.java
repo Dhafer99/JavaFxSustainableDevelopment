@@ -8,6 +8,8 @@ package ServiceAssociation;
 import Models.Association;
 import Models.categorieA;
 import Utils.MyCnx;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -144,8 +146,27 @@ private static categorieService instance;
     
     
     @Override
-    public boolean update(categorieA os) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(categorieA p) {
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  
+         try {
+            String req = "UPDATE categorie SET nom=? WHERE id=?";
+            Connection pst = MyCnx.getInstance().getCnx();
+            PreparedStatement pre;
+            pre = pst.prepareStatement(req);
+            pre.setString(1, p.getNom());
+             pre.setInt(2, p.getId());
+            
+            
+            
+            pre.executeUpdate();
+            System.out.println("Categorie modifiée !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }  
+        return false;
+    
     }
     
 }

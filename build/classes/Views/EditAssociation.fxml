@@ -3,9 +3,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.EditAssociationController">
    <children>
@@ -17,13 +19,12 @@
       <TextField fx:id="tfville" layoutX="280.0" layoutY="480.0" prefHeight="26.0" prefWidth="166.0" promptText="ville" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
       <TableView fx:id="tabAssociation" layoutX="7.0" layoutY="179.0" onMouseClicked="#handle" prefHeight="190.0" prefWidth="685.0">
          <columns>
-            <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
             <TableColumn fx:id="colnom" prefWidth="75.0" text="nom" />
-            <TableColumn fx:id="colnumero" prefWidth="75.0" text="numero" />
-            <TableColumn fx:id="colmail" prefWidth="75.0" text="mail" />
-            <TableColumn fx:id="coladresse" prefWidth="75.0" text="adresse" />
-            <TableColumn fx:id="colcode_postal" prefWidth="75.0" text="code_postal" />
-            <TableColumn fx:id="colville" prefWidth="75.0" text="ville" />
+            <TableColumn fx:id="colnumero" prefWidth="91.9999771118164" text="numero" />
+            <TableColumn fx:id="colmail" prefWidth="90.4000244140625" text="mail" />
+            <TableColumn fx:id="coladresse" prefWidth="109.5999755859375" text="adresse" />
+            <TableColumn fx:id="colcode_postal" prefWidth="141.60000610351562" text="code_postal" />
+            <TableColumn fx:id="colville" prefWidth="173.60003662109375" text="ville" />
          </columns>
       </TableView>
       <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="534.0" layoutY="480.0" onMouseClicked="#supprimer1" pickOnBounds="true" preserveRatio="true">
@@ -41,6 +42,14 @@
             <Image url="@../image/man_50px.png" />
          </image>
       </ImageView>
-      <TextField fx:id="search" layoutX="140.0" layoutY="92.0" />
+      <AnchorPane fx:id="root" prefHeight="555.0" prefWidth="700.0" visible="false" />
+      <TextField fx:id="search" layoutX="214.0" layoutY="118.0" opacity="0.5" prefHeight="30.0" prefWidth="222.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
    </children>
 </AnchorPane>

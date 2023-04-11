@@ -6,7 +6,9 @@
 package pidevjava;
 import javafx.scene.image.Image;
 import Models.Association;
+import Models.categorieA;
 import ServiceAssociation.AssociationService;
+import ServiceAssociation.categorieService;
 import java.awt.Graphics;
 //import java.awt.Image;
 import java.awt.image.ImageObserver;
@@ -62,7 +64,7 @@ public class PIDEVjava extends Application {
         
         launch(args);
 
-  /* Association p =new Association();
+   /*Association p =new Association();
     p.setId(55);
     p.setNom("khalil");
 p.setNumero(54146901);
@@ -71,8 +73,15 @@ p.setAdresse("khalil");
 p.setCodePostal(2026);
    p.setVille("sidi bou");
    AssociationService promotiondao =new AssociationService();
-   promotiondao.insert(p);
-    */
+   promotiondao.insert(p);*/
+  /*categorieA p=new categorieA();
+  p.setId(15);
+  p.setNom("syrine");
+  categorieService cs=new categorieService();*/
+ // cs.update(p);
+
+  
+    
  
    
      }   

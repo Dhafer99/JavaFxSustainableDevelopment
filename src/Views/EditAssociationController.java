@@ -13,20 +13,27 @@ import Utils.MyCnx;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,8 +58,6 @@ public class EditAssociationController implements Initializable {
     @FXML
     private TableView<Association> tabAssociation;
     @FXML
-    private TableColumn<Association, Integer> colid;
-    @FXML
     private TableColumn<Association, String> colnom;
     @FXML
     private TableColumn<Association, Integer> colnumero;
@@ -65,12 +70,18 @@ public class EditAssociationController implements Initializable {
     @FXML
     private TableColumn<Association, String> colville;
 private listdata Ls = new listdata();
-    private TextField searchField;
+    //private TextField searchField;
     
     public static final String ACCOUNT_SID = "AC7baee01e459dc347a9e9f0a9b8f744c5";
   public static final String AUTH_TOKEN = "9c4d3175f524029937ea448f92ae988e";
     @FXML
     private TextField search;
+    
+     private Parent fxml;
+    @FXML
+    private AnchorPane root;
+    
+    AssociationService ps = new AssociationService();
     /**
      * Initializes the controller class.
      */
@@ -80,13 +91,37 @@ private listdata Ls = new listdata();
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          affiche();
+        List<Association> personnes = ps.displayAll();
+        ObservableList<Association> olp = FXCollections.observableArrayList(personnes);
+        //search//
+        FilteredList<Association> filter = new FilteredList<>(olp, b->true);
+        search.textProperty().addListener((observable, oldValue, newValue )-> {
+
+        filter.setPredicate(event -> {
+            if(newValue.isEmpty() || newValue==null ) {
+                return true;
+            }
+            String lowerCaseFilter = newValue.toLowerCase();
+            if(event.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                return true;
+
+            
+            }else 
+            return false;
+        });
+        });
+        SortedList<Association> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(tabAssociation.comparatorProperty());
+        
+        tabAssociation.setItems(sort);
+      
     }    
  public void affiche(){
      
     
        tabAssociation.setItems(Ls.getPersons());
        
-        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+      //  colid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colnumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colmail.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -118,9 +153,21 @@ private listdata Ls = new listdata();
        Association association = new Association(tfnom.getText(),Integer.parseInt(tfnumero.getText()),tfmail.getText(),tfadresse.getText(),Integer.parseInt(tfcode_postal.getText()),tfville.getText()); 
        AssociationService AssociationService = new AssociationService();
        AssociationService.update(association);
+        System.out.println("updatee");
       //tabAssociation.refresh();
       // nom, numero, mail,  adresse,  CodePostal,  ville
+       affiche();
+       tabAssociation.refresh();
      affiche();
+       /* try {
+           fxml = FXMLLoader.load(getClass().getResource("/Views/EditAssociation.fxml"));
+           root.getChildren().removeAll();
+           root.getChildren().setAll(fxml);
+        } catch (IOException ex) {
+        }*/
+       
+       
+       
 }
      public void delete(){
     AssociationService pdao =new AssociationService();

@@ -43,15 +43,20 @@ public class AfficherAssociationController implements Initializable {
     private TableColumn<Association, Integer> colcode_postal;
     @FXML
     private TableColumn<Association, String> colville;
+    
+    // bech raja3lii ell data 
+    // tott ell list fill observlist 
+    // ou affichii ell obserlist
+    
     private listdata Ls = new listdata();
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        tabAssociation.setItems(Ls.getPersons());
-        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+    
+    public void show(){
+        
+         tabAssociation.setItems(Ls.getPersons());
+      //  colid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colnumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colmail.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -59,6 +64,15 @@ public class AfficherAssociationController implements Initializable {
         colcode_postal.setCellValueFactory(new PropertyValueFactory<>("codePostal"));
         colville.setCellValueFactory(new PropertyValueFactory<>("ville"));
         
+        
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        //  setCellValueFactory ell cellule thott fi tab bill col bill col 
+        
+       show();
          
     }    
   public void delete(){

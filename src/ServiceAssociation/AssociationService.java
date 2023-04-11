@@ -31,6 +31,8 @@ public class AssociationService implements InAssociation<Association> {
     private static AssociationService instance;
     private Statement st;
     private ResultSet rs;
+    
+    // thel cnx m3a ell base
     public AssociationService(){
      MyCnx cs=MyCnx.getInstance();
         try {
@@ -39,7 +41,7 @@ public class AssociationService implements InAssociation<Association> {
             Logger.getLogger(AssociationService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    // connection singletion instance unique 
     public static AssociationService getInstance(){
         if(instance==null) 
             instance=new AssociationService();
@@ -89,6 +91,8 @@ public class AssociationService implements InAssociation<Association> {
     public List<Association> displayAll() {
        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
      String req="select * from association";
+     // thoot ell affichage fill observalelist 
+    
         ObservableList<Association> list=FXCollections.observableArrayList();       
         
         try {
@@ -96,10 +100,7 @@ public class AssociationService implements InAssociation<Association> {
             while(rs.next()){
                 Association p=new Association();
                 p.setId(rs.getInt(1));
-              //  p.setPourcentage(rs.getFloat("pourcentage"));
-               // p.setStart_date(rs.getDate("start_date"));
-               // p.setEnd_date(rs.getDate("end_date"));
-              //  p.setCategorie(rs.getObject(req, Categorie));
+             
               p.setNom(rs.getString("nom"));
               p.setNumero(rs.getInt("numero"));
               p.setMail(rs.getString("mail"));

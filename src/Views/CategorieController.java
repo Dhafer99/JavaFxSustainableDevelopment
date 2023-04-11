@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,7 +39,7 @@ public class CategorieController implements Initializable {
     private TextField tfnom;
 private categeListdata Ls = new categeListdata();
     @FXML
-    private TableColumn<?, ?> colnom;
+    private TableColumn<categorieA, String> colnom;
     /**
      * Initializes the controller class.
      */
@@ -67,15 +68,62 @@ show();
     categorieA p=new categorieA(nom);
     categorieService promotiondao=new categorieService();
     
-    
+ 
     JOptionPane.showMessageDialog(null, "ajouter un event   !");
             
                     
     promotiondao.insert(p);
+     show();   
+    }
+
+    public void delete(){
+    categorieService pdao =new categorieService();
+    pdao.delete(tabcategorie.getSelectionModel().getSelectedItem().getId());
+    System.out.println(tabcategorie.getSelectionModel().getSelectedItem().getId());
+    }
+    @FXML
+    private void supp(MouseEvent event) {
+        delete();
+   tabcategorie.getItems().removeAll(tabcategorie.getSelectionModel().getSelectedItem());
+   System.out.println(tabcategorie);
+    Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
+    alert3.setTitle("Erreur de saisie");
+    alert3.setHeaderText(null);
+   alert3.setContentText("are you suree");
+    alert3.showAndWait();
+        
+    }
+
+    @FXML
+    private void modif(MouseEvent event) {
+        
+        
+    categorieService se = new categorieService();
+             categorieA p = new categorieA();
+              p=tabcategorie.getSelectionModel().getSelectedItem();
+           // p.setId(id);
+            p.setNom(tfnom.getText()); 
+           // System.out.println(""+p);
+          
+            if (se.update(p))
+            {
+                JOptionPane.showMessageDialog(null, " failed !");
+            }
+
+            JOptionPane.showMessageDialog(null, " modifié !");
+            
+            tabcategorie.refresh();
+            show();
+   }
+
+    @FXML
+    private void handle(MouseEvent event) {
+                 categorieA rec =tabcategorie.getSelectionModel().getSelectedItem();
+       
+     //id=rec.getId();
+     tfnom.setText(""+rec.getNom());   
      show();
-        
-        
-        
+     
     }
     
 }
