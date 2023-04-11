@@ -43,6 +43,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 /**
@@ -111,6 +113,11 @@ public class LoggedInController implements Initializable {
         profilePic.setImage(image);
           System.out.println("CURRENT USER IMAGE"+user.getImage());
           addDeleteButtonToTable();
+          
+          ///recherche
+          //recherche
+           
+       
       }
       
      public void showUsers(){
@@ -127,6 +134,24 @@ public class LoggedInController implements Initializable {
 
 
         table.setItems(list);
+         FilteredList<User> filter = new FilteredList<>(list, b->true);
+        tsearch.textProperty().addListener((observable, oldValue, newValue )-> {
+
+        filter.setPredicate(event -> {
+            if(newValue.isEmpty() || newValue==null ) {
+                return true;
+            }
+            String lowerCaseFilter = newValue.toLowerCase();
+            if(event.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                return true;
+            } else 
+            return false;
+        });
+        });
+        SortedList<User> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(table.comparatorProperty());
+        
+        table.setItems(sort);
      }
      
     

@@ -167,6 +167,20 @@ public class ServiceUser {
         
         return user;
     }
+      
+      public boolean searchUserByEmail(String email) throws SQLException {
+        String req = "SELECT * FROM user WHERE email=?";
+        PreparedStatement st = cn.prepareStatement(req);
+        st.setString(1, email.toLowerCase());
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            System.out.println("User found");
+            return true;
+        }
+        System.out.println("User not found");
+        return false;
+    }
+      
 
     
 }

@@ -71,11 +71,23 @@ public class loginController {
              projetpidd.ProjetPiDD.user=user ;
             m.changeScene("LoggedIn.fxml");
             
+            
+            
         }
+        
         if(user.getBlocked() == true)
         {
             m.changeScene("UserBlocked.fxml");
         }
+        if(user.getRoles().equals("ROLE_USER"))
+        {
+            m.changeScene("UserProfile.fxml");
+        }
+        if(user.getRoles().equals("ROLE_ADMIN"))
+        {
+            m.changeScene("LoggedIn.fxml");
+        }
+        
     }
     private void checkSignUp() throws IOException{
         

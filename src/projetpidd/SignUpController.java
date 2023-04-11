@@ -197,6 +197,13 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
             erEmail.setStyle("-fx-text-fill: red;");
             allerror=true ;
         }
+             try {
+                 if(ServiceUser.getInstance().searchUserByEmail(email.getText()))
+                 {
+                     erEmail.setText("Cette Utilistauer existe deja");
+                 }} catch (SQLException ex) {
+                 Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+             }
     });
      num_telephone.textProperty().addListener((observable, oldValue, newValue) -> {
         // check if the new value is a valid email address
@@ -258,7 +265,10 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
         {
             showAlert("Verifier vos cordonnés !","il y a des champs invalides");
         }
-       
+        else if(ServiceUser.getInstance().searchUserByEmail(email.getText()))
+       {
+           showAlert("l utilisateur existe deja !","l utilisateur existe");
+       }
         else{
                     User user = new User(email.getText(), passwordField.getText(), num_telephone.getText(), ComboType.getValue(), nom.getText(), prenom.getText(),imagePath);
                     ServiceUser.getInstance().addUser(user);

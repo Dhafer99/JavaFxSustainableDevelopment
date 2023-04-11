@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="projetpidd.AccountCreatedController">
+   <children>
+      <Label layoutX="158.0" layoutY="194.0" prefHeight="45.0" prefWidth="612.0" style="-fx-font-size: 30;" text="Votre Compte a été crée avec Succés  !" />
+      <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="729.0" layoutY="184.0">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_approval_48px.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="519.0" layoutY="337.0" mnemonicParsing="false" onAction="#login" text="Login" />
+   </children>
+</AnchorPane>
