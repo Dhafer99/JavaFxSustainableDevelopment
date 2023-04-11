@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -38,19 +40,23 @@
             <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Type" GridPane.rowIndex="5" />
             <Label prefHeight="18.0" prefWidth="159.0" text="Numero de telephone" GridPane.rowIndex="6" />
-            <TextField fx:id="type" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="num_telephone" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="erEmail" prefHeight="20.0" prefWidth="273.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label fx:id="errPassword" prefHeight="20.0" prefWidth="271.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="errNum" prefHeight="20.0" prefWidth="270.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <ComboBox fx:id="ComboType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <ImageView fx:id="pic" fitHeight="150.0" fitWidth="184.0" layoutX="634.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pic" fitHeight="150.0" fitWidth="184.0" layoutX="634.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_person_80px.png" />
+         </image></ImageView>
       <Button fx:id="imageB" layoutX="1101.0" layoutY="135.0" mnemonicParsing="false" onAction="#addImage" text="image" />
       <Button fx:id="SignUp" layoutX="1013.0" layoutY="459.0" mnemonicParsing="false" onAction="#addUser" prefHeight="32.0" prefWidth="127.0" text="Signup" />
       <Button layoutX="1049.0" layoutY="522.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
       <Label layoutX="949.0" layoutY="145.0" text="Photo de profil" />
+      <Label fx:id="errImage" layoutX="941.0" layoutY="218.0" prefHeight="20.0" prefWidth="237.0" />
    </children>
 </AnchorPane>

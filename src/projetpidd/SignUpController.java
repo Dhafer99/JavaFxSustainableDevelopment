@@ -29,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -60,14 +61,16 @@ public class SignUpController implements Initializable {
     private PasswordField passwordField;
     @FXML
     private PasswordField confirmPasswordField;
-    @FXML
     private TextField type;
     @FXML
     private TextField num_telephone;
     @FXML
     private ImageView pic;
+    
      @FXML
     private Button imageB;
+     
+    
     /**
      * Initializes the controller class.
      */
@@ -83,12 +86,43 @@ public class SignUpController implements Initializable {
     private Label errPassword;
     @FXML
     private Label errNum;
+    
+    private boolean allerror ;
+    @FXML
+    private Label errImage;
+    
+      Image defaultImage ;
+    @FXML
+    private ComboBox<String> ComboType;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         allerror=true ;
+         
+        ComboType.setValue("Donneur");
+        ComboType.getItems().addAll("Donneur", "Receveur");
+        
+        
+        
+          Image defaultImage = pic.getImage();
+        
+        
+        
         nomFormatter = new TextFormatter<>(change -> {
         String newText = change.getControlNewText();
-        if (!newText.matches("[A-Za-z]+")) {
+        if (!newText.matches("[A-Za-z]*")) {
             return null;
         }
         return change;
@@ -97,7 +131,7 @@ public class SignUpController implements Initializable {
     // set up the prenom text formatter
     prenomFormatter = new TextFormatter<>(change -> {
         String newText = change.getControlNewText();
-        if (!newText.matches("[A-Za-z]+")) {
+        if (!newText.matches("[A-Za-z]*")) {
             return null;
         }
         return change;
@@ -122,9 +156,11 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
              
               errPassword.setText("Verifier votre mot de passe !");
             errPassword.setStyle("-fx-text-fill: red;");
+            allerror=true; 
            // showAlert("Invalid Password", "Password must contain at least 8 characters, including at least one letter and one digit");
         } else {
             passwordField.setStyle("-fx-text-inner-color: black;");
+            allerror=false ;
            
              
         }
@@ -134,12 +170,13 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
     confirmPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
         if (!isValidPasswordMatch(newValue)) {
             confirmPasswordField.setStyle("-fx-text-inner-color: red;");
-          
+          allerror=true ;
            // showAlert("Password Mismatch", "The passwords entered do not match");
         } else {
             confirmPasswordField.setStyle("-fx-text-inner-color: black;");
             passwordField.setStyle("-fx-text-inner-color: black;");
               errPassword.setText("");
+              allerror=false ;
             
             
            
@@ -153,10 +190,12 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
         if (isValid) {
             email.setStyle("-fx-text-fill: black;");
             erEmail.setText("");
+            allerror=false ;
         } else {
             email.setStyle("-fx-text-fill: red;");
             erEmail.setText("Verifier votre email !");
             erEmail.setStyle("-fx-text-fill: red;");
+            allerror=true ;
         }
     });
      num_telephone.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -167,15 +206,20 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
         if (isValid) {
             num_telephone.setStyle("-fx-text-fill: black;");
             errNum.setText("");
+            allerror=false ;
         } else {
             num_telephone.setStyle("-fx-text-fill: red;");
             errNum.setText("Verifier votre Numero !");
             errNum.setStyle("-fx-text-fill: red;");
+            allerror=true ;
         }
     });
+     
+     
     }    
     @FXML
     private void addImage(ActionEvent event) throws IOException {
+        try{
         FileChooser fc = new FileChooser();
 
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
@@ -189,37 +233,42 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
             
              pic.setImage(image);
               imagePath = selectedFile.toURI().toURL().toString();
+               errImage.setText("");
             System.out.println("Image URL: " + imagePath);
         } catch (IOException ex) {
             Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
+        }catch(Exception e)
+        {
+         
+           pic.setImage(defaultImage);
+             errImage.setText("veuillez Saisir une photo de profil");
+             imagePath="";
+             errImage.setStyle("-fx-text-fill: red;");
+           
+        }
+        
 
     }
     @FXML
     private void addUser(ActionEvent event) throws IOException, SQLException {
         
-        
-                    User user = new User(email.getText(), passwordField.getText(), num_telephone.getText(), type.getText(), nom.getText(), prenom.getText(),imagePath);
+        if(allerror || imagePath=="")
+        {
+            showAlert("Verifier vos cordonnés !","il y a des champs invalides");
+        }
+       
+        else{
+                    User user = new User(email.getText(), passwordField.getText(), num_telephone.getText(), ComboType.getValue(), nom.getText(), prenom.getText(),imagePath);
                     ServiceUser.getInstance().addUser(user);
                     
                             // initialize the password and confirm password fields
             
 
-            // check if the passwords match
-            if (!passwordField.getText().equals(confirmPasswordField.getText())) {
-                // create a dialog to show the error message
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Password Validation Error");
-                alert.setHeaderText("Passwords don't match");
-                alert.setContentText("The passwords you entered don't match. Please try again.");
-
-                alert.showAndWait();
-            } else {
-                // passwords match, continue with the validation logic
-                // ...
-            }
-                    
-
+            
+        }       
+                                
                    
 
                  }
