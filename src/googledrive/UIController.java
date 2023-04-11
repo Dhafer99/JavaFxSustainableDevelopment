@@ -109,11 +109,10 @@ public class UIController implements Initializable {
     private void front(ActionEvent event)throws   IOException  {
         
         
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample.fxml"));
         SampleController aec = loader.getController();
-        Parent root = loader.load();
-        FrontBtn.getScene().setRoot(root);
-        
+        Parent root2 = loader.load();
+        FrontBtn.getScene().setRoot(root2);
     }
     
 }

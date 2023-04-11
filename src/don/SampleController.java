@@ -7,6 +7,7 @@ package don;
 
 import Models.Association;
 import ServiceAssociation.AssociationService;
+import googledrive.UIController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,7 +43,9 @@ public class SampleController implements Initializable {
 AssociationService s= new AssociationService();
     private ImageView btnback;
     @FXML
-    private Button btnasso;
+    private ImageView bntback;
+    @FXML
+    private Button btnass;
     /**
      * Initializes the controller class.
      */
@@ -75,15 +78,15 @@ AssociationService s= new AssociationService();
 
     }    
 
-    private void back(MouseEvent event)throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample.fxml"));
-        SampleController aec = loader.getController();
+ 
+    @FXML
+    private void back(ActionEvent event)throws IOException {
+        
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/UI.fxml"));
+        UIController aec = loader.getController();
         Parent root = loader.load();
-        btnback.getScene().setRoot(root);
-        
-        
-        
-        
+        btnass.getScene().setRoot(root);
+
     }
 
  
