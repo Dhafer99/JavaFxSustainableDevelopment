@@ -27,139 +27,136 @@ import MyBD.DataBase;
  */
 public class AnnonceService implements Iservice<Annonces> {
 
-    
     private static AnnonceService instance;
     private Statement st;
     private ResultSet rs;
-    public AnnonceService(){
-     DataBase cs=DataBase.getInstance();
+
+    public AnnonceService() {
+        DataBase cs = DataBase.getInstance();
         try {
-            st=cs.getConnection().createStatement();
+            st = cs.getConnection().createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static AnnonceService getInstance(){
-        if(instance==null) 
-            instance=new AnnonceService();
+
+    public static AnnonceService getInstance() {
+        if (instance == null) {
+            instance = new AnnonceService();
+        }
         return instance;
     }
-    
+
     @Override
     public void insert(Annonces o) {
-        String req = "INSERT INTO `annonces`(`id`,`description`, `image`, `date_publication`, `adresse`) VALUES ('" + o.getId() + "', '" + o.getDescription() + "', '" + o.getImage() + "', '" + o.getDate_Publication() + "','" + o.getAdresse() + "' )";
-           try {
+        String req = "INSERT INTO `annonces`(`id`,`description`, `image`,`categorie_id`, `date_publication`, `adresse`) VALUES ('" + o.getId() + "', '" + o.getDescription() + "', '" + o.getImage() + "', '" + o.getCategorie().getId() + "','" + o.getDate_publication() + "','" + o.getAdresse() + "' )";
+        try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     @Override
     public void delete(Annonces p) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String req="delete from annonces where id="+p.getId();
-        Annonces o=displayById(p.getId());
-        
-          if(o!=null)
-              try {
-           
-            st.executeUpdate(req);
-             
-        } catch (SQLException ex) {
-            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
-        }else System.out.println("n'existe pas");
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "delete from annonces where id=" + p.getId();
+        Annonces o = displayById(p.getId());
+
+        if (o != null) {
+            try {
+
+                st.executeUpdate(req);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            System.out.println("n'existe pas");
+        }
     }
 
     @Override
     public List<Annonces> displayAll() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-         String req="select * from annonce";
-        ObservableList<Annonces> list=FXCollections.observableArrayList();       
-        
+        String req = "select * from annonces";
+        // thoot ell affichage fill observalelist 
+
+        ObservableList<Annonces> list = FXCollections.observableArrayList();
+
         try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                Annonces o = new Annonces();
-                o.setId(rs.getInt(1));
-             
-              //  o.setCategorie(rs.getObject(req, Categorie));
-             
-              o.setAdresse(rs.getString("Adresse"));
-              o.setDescription(rs.getString("Description"));
-              //o.setNum_telephone(rs.getInt("num_telephone"));
-            ;
-              
-                list.add(o);
-            }          
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Annonces p = new Annonces();
+                p.setId(rs.getInt(1));
+
+                p.setDescription(rs.getString("description"));
+                p.setAdresse(rs.getString("adresse"));
+                p.setDate_publication(rs.getDate("date_publication"));
+
+                list.add(p);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-    
+
     }
-    
 
     @Override
     public Annonces displayById(int id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-         String req="select * from annonce where id ="+id;
-           Annonces o=new Annonces();
+        String req = "select * from annonce where id =" + id;
+        Annonces o = new Annonces();
         try {
-            rs=st.executeQuery(req);
-           // while(rs.next()){
+            rs = st.executeQuery(req);
+
             rs.next();
-               o.setId(rs.getInt(1));
-               // o.setPourcentage(rs.getFloat("pourcentage"));
-               // o.setStart_date(rs.getDate("start_date"));
-                //o.setEnd_date(rs.getDate("end_date"));
-                 o.setAdresse(rs.getString("Adresse"));
-              o.setDescription(rs.getString("Description"));
-                
+            o.setId(rs.getInt(1));
+
+            o.setAdresse(rs.getString("Adresse"));
+            o.setDescription(rs.getString("Description"));
+            o.setDate_publication(rs.getDate("date_publication"));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return o; 
+        return o;
     }
 
     @Override
     public boolean update(Annonces o) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-    
-       try {
-            String req = "UPDATE annonce SET adresse=?,description=? WHERE id=?";
+         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+          
+            String req = "UPDATE annonce SET description=?,date_publication=?,adresse=? WHERE id=?";
             Connection pst = DataBase.getInstance().getConnection();
             PreparedStatement pre;
             pre = pst.prepareStatement(req);
+
             
-           // pre.setDate(3, new java.sql.Date(o.getDate_Publication().getTime()));
             pre.setString(1, o.getDescription());
             pre.setString(2, o.getAdresse());
+             pre.setDate(3, new java.sql.Date(o.getDate_publication().getTime()));
             //pre.setString(5, p.getImage_event());
-            
-             pre.setInt(4, o.getId());
-            
-            
-            
+
+            pre.setInt(4, o.getId());
+
             pre.executeUpdate();
             System.out.println("Annonce modifiée !");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-        }  
+        }
         return false;
-    
-    }
-    
+        
+        
+        
+        
+        
+
     }
 
-    
-  
-    
-
+}
