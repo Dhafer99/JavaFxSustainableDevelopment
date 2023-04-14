@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Annonces {
      private int id;
     private String adresse,description,image;
-            private Date date_publication;
+            private String date_publication;
  public Categorie categorie_id ;    
  
     
@@ -26,7 +26,7 @@ public class Annonces {
         this.description = description;
     }*/
 
-    public Annonces(int id, String adresse, String description, String image, Date date_publication, Categorie categorie_id) {
+    public Annonces(int id, String adresse, String description, String image, String date_publication, Categorie categorie_id) {
         this.id = id;
         this.adresse = adresse;
         this.description = description;
@@ -35,7 +35,7 @@ public class Annonces {
         this.categorie_id = categorie_id;
     }
 
-    public Annonces(String adresse, String description, String image, Date date_publication, Categorie categorie_id) {
+    public Annonces(String adresse, String description, String image, String date_publication, Categorie categorie_id) {
         this.adresse = adresse;
         this.description = description;
         this.image = image;
@@ -100,11 +100,11 @@ public class Annonces {
         this.nb_etoiles = nb_etoiles;
     }*/
 
-    public Date getDate_publication() {
+    public String getDate_publication() {
         return date_publication;
     }
 
-    public void setDate_publication(Date date_publication) {
+    public void setDate_publication(String date_publication) {
         this.date_publication = date_publication;
     }
 

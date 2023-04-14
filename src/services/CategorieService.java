@@ -124,7 +124,7 @@ public class CategorieService implements INCategorie<Categorie>  {
     public boolean update(Categorie p) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         try {
-            String req = "UPDATE categorie_rec SET nom=? WHERE id=?";
+            String req = "UPDATE categorie SET nom=? WHERE id=?";
             Connection pst = DataBase.getInstance().getConnection();
             PreparedStatement pre;
             pre = pst.prepareStatement(req);

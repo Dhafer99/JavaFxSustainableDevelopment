@@ -1,5 +1,6 @@
 package gui;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import entities.Annonces;
 import entities.Categorie;
 import java.awt.image.BufferedImage;
@@ -8,7 +9,9 @@ import java.io.IOException;
 import services.AnnonceService;
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
@@ -69,15 +72,18 @@ public class AjoutAnnonceController implements Initializable {
             CategorieService cdao = new CategorieService(); // instance service categorie 
             asso = cdao.getOneByName(nom); //
             java.sql.Date date_publication = java.sql.Date.valueOf(picker_date.getValue());
+           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = formatter.format(date_publication);
             String description = tf_description.getText();
             String adresse = tf_adresse.getText();
             //String lien = imageadd.get;
 
-            Annonces p = new Annonces(adresse, description, lien, date_publication, asso);
+            Annonces p = new Annonces(adresse, description, lien, formattedDate, asso);
 
             AnnonceService promotiondao = new AnnonceService();
             promotiondao.insert(p);
         }
+        
     }
 
     private boolean ValidateEmptyForm(TextField description, TextField adresse, DatePicker d) {

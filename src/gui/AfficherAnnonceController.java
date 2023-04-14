@@ -5,6 +5,7 @@ import entities.Annonces;
 import services.AnnonceService;
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -130,6 +131,7 @@ public class AfficherAnnonceController implements Initializable {
      tf_description.setText(""+rec.getDescription());   
      tf_adresse.setText(""+rec.getAdresse());   
      //image
+     tab_annonce.refresh();
     }
 
     @FXML
@@ -138,7 +140,10 @@ public class AfficherAnnonceController implements Initializable {
              Annonces p = new Annonces();
              p=tab_annonce.getSelectionModel().getSelectedItem();
             p.setId(id);
-            p.setDate_publication( java.sql.Date.valueOf(picker_date.getValue()));
+            java.sql.Date date_publication = java.sql.Date.valueOf(picker_date.getValue());
+           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = formatter.format(date_publication);
+            p.setDate_publication( formattedDate);
             p.setDescription(tf_description.getText());
             p.setAdresse(tf_adresse.getText());
             //p.setImage_event(lien);

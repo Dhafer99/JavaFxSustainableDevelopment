@@ -89,11 +89,11 @@ public class AnnonceService implements Iservice<Annonces> {
             rs = st.executeQuery(req);
             while (rs.next()) {
                 Annonces p = new Annonces();
-                p.setId(rs.getInt(1));
+               // p.setId(rs.getInt(1));
 
                 p.setDescription(rs.getString("description"));
                 p.setAdresse(rs.getString("adresse"));
-                p.setDate_publication(rs.getDate("date_publication"));
+                p.setDate_publication(rs.getString("date_publication"));
 
                 list.add(p);
             }
@@ -117,7 +117,7 @@ public class AnnonceService implements Iservice<Annonces> {
 
             o.setAdresse(rs.getString("Adresse"));
             o.setDescription(rs.getString("Description"));
-            o.setDate_publication(rs.getDate("date_publication"));
+            o.setDate_publication(rs.getString("date_publication"));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,7 +131,7 @@ public class AnnonceService implements Iservice<Annonces> {
 
         try {
           
-            String req = "UPDATE annonce SET description=?,date_publication=?,adresse=? WHERE id=?";
+            String req = "UPDATE annonces SET description=?,date_publication=?,adresse=? WHERE id=?";
             Connection pst = DataBase.getInstance().getConnection();
             PreparedStatement pre;
             pre = pst.prepareStatement(req);
@@ -139,7 +139,7 @@ public class AnnonceService implements Iservice<Annonces> {
             
             pre.setString(1, o.getDescription());
             pre.setString(2, o.getAdresse());
-             pre.setDate(3, new java.sql.Date(o.getDate_publication().getTime()));
+             pre.setString(3, o.getDate_publication());
             //pre.setString(5, p.getImage_event());
 
             pre.setInt(4, o.getId());
