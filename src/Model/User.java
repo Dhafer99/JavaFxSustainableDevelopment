@@ -58,12 +58,26 @@ public class User {
         this.image = image;
     }
 
-    public User(String email, String numTelephone, String type, int score, int nb_etoile) {
+    public User(String email, String numTelephone, String type, int score, int nb_etoile,String nom,String prenom,String image) {
         this.email = email;
         this.numTelephone = numTelephone;
         this.type = type;
         this.score = score;
         this.nb_etoile = nb_etoile;
+        this.nom=nom;
+        this.prenom = prenom ;
+        this.image=image ;
+    }
+    public User(String email, String numTelephone, String type, int score, int nb_etoile,String nom,String prenom,String image,Boolean blocked) {
+        this.email = email;
+        this.numTelephone = numTelephone;
+        this.type = type;
+        this.score = score;
+        this.nb_etoile = nb_etoile;
+        this.nom=nom;
+        this.prenom = prenom ;
+        this.image=image ;
+        this.blocked=blocked ;
     }
 
     public User() {

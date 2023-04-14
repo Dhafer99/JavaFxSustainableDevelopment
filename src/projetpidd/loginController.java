@@ -49,7 +49,12 @@ public class loginController {
    
     
     public void userLogin(ActionEvent event) throws IOException, SQLException{
+        try {
         checkLogin();
+        }catch(Exception e )
+        {
+            errorLabel.setText("Verifier vos cordonnés !");
+        }
     }
      public void userSignUp(ActionEvent event) throws IOException{
         checkSignUp();
@@ -66,11 +71,24 @@ public class loginController {
              projetpidd.ProjetPiDD.user=user ;
             m.changeScene("LoggedIn.fxml");
             
+            
+            
+        }
+        
+        
+        if(user.getRoles().equals("ROLE_USER"))
+        {
+            m.changeScene("UserProfile.fxml");
+        }
+        if(user.getRoles().equals("ROLE_ADMIN"))
+        {
+            m.changeScene("LoggedIn.fxml");
         }
         if(user.getBlocked() == true)
         {
             m.changeScene("UserBlocked.fxml");
         }
+        
     }
     private void checkSignUp() throws IOException{
         

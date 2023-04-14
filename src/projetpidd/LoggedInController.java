@@ -41,6 +41,12 @@ import javafx.util.Callback;
 import javax.imageio.ImageIO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 /**
  * FXML Controller class
  *
@@ -69,6 +75,9 @@ public class LoggedInController implements Initializable {
     private TableColumn<User, String> nom;
     @FXML
     private TableColumn<User, String> prenom;
+  
+   @FXML
+   private ImageView profilePic;
    
     @FXML
     private Label lnom;
@@ -86,7 +95,9 @@ public class LoggedInController implements Initializable {
     private Label ltype;
     @FXML
     private TextField tsearch;
-
+    @FXML
+    private TableColumn<User, Boolean> blocked;
+    
     
     
     /**
@@ -98,15 +109,52 @@ public class LoggedInController implements Initializable {
           addButtonToTable();
           showUsers();
           
+          User user = projetpidd.ProjetPiDD.user;
+          final String imageURI4 = new File(user.getImage()).toURI().toString();
+          Image image = new Image(user.getImage());
+        profilePic.setImage(image);
+          System.out.println("CURRENT USER IMAGE"+user.getImage());
+          addDeleteButtonToTable();
+          
+          ///recherche
+          //recherche
+           
+       
       }
       
      public void showUsers(){
         ObservableList<User> list = ServiceUser.getInstance().getUserList();
         email.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+        
         type.setCellValueFactory(new PropertyValueFactory<User,String>("type"));
+         num_telephone.setCellValueFactory(new PropertyValueFactory<User,String>("numTelephone"));
+         nom.setCellValueFactory(new PropertyValueFactory<User,String>("nom"));
+         prenom.setCellValueFactory(new PropertyValueFactory<User,String>("prenom"));
         score.setCellValueFactory(new PropertyValueFactory<User,Integer>("score"));
         nombre_etoile.setCellValueFactory(new PropertyValueFactory<User,Integer>("nb_etoile"));
+        blocked.setCellValueFactory(new PropertyValueFactory<User,Boolean>("blocked"));
+       
+
+
         table.setItems(list);
+         FilteredList<User> filter = new FilteredList<>(list, b->true);
+        tsearch.textProperty().addListener((observable, oldValue, newValue )-> {
+
+        filter.setPredicate(event -> {
+            if(newValue.isEmpty() || newValue==null ) {
+                return true;
+            }
+            String lowerCaseFilter = newValue.toLowerCase();
+            if(event.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                return true;
+            } else 
+            return false;
+        });
+        });
+        SortedList<User> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(table.comparatorProperty());
+        
+        table.setItems(sort);
      }
      
     
@@ -129,7 +177,6 @@ public class LoggedInController implements Initializable {
          m.changeScene("ChatBot.fxml");
         
     }
-    @FXML
     private void toGPT()throws IOException {
         ProjetPiDD m = new ProjetPiDD() ;
          m.changeScene("ChatGPT.fxml");
@@ -142,7 +189,8 @@ public class LoggedInController implements Initializable {
             @Override
             public TableCell<User, Void> call(final TableColumn<User, Void> param) {
                 final TableCell<User, Void> cell = new TableCell<User, Void>() {
-
+                    
+                    
                     private final Button btn = new Button("Block");
 
                     {
@@ -152,7 +200,11 @@ public class LoggedInController implements Initializable {
                             System.out.println("selectedData: " + email);
                            try {
                                 ServiceUser.getInstance().BlockUser(email);
+                                ProjetPiDD m = new ProjetPiDD ();
+                                m.changeScene("LoggedIn.fxml");
                             } catch (SQLException ex) {
+                                Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
                                 Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         });
@@ -177,10 +229,56 @@ public class LoggedInController implements Initializable {
         table.getColumns().add(BlockBtn);
 
     }
-    @FXML
+    private void addDeleteButtonToTable() {
+        TableColumn<User, Void> BlockBtn = new TableColumn("Delete Account");
+
+        Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = new Callback<TableColumn<User, Void>, TableCell<User, Void>>() {
+            @Override
+            public TableCell<User, Void> call(final TableColumn<User, Void> param) {
+                final TableCell<User, Void> cell = new TableCell<User, Void>() {
+
+                    private final Button btn = new Button("Delete Account");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            TableColumn<User, String> firstColumn = (TableColumn<User, String>) getTableView().getColumns().get(0);
+                            String email = firstColumn.getCellData(getIndex());
+                            System.out.println("selectedData: " + email);
+                           try {
+                                ServiceUser.getInstance().DeleteUser(email);
+                                ProjetPiDD m = new ProjetPiDD ();
+                                m.changeScene("LoggedIn.fxml");
+                            } catch (SQLException ex) {
+                                Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
+                                Logger.getLogger(LoggedInController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        BlockBtn.setCellFactory(cellFactory);
+
+        table.getColumns().add(BlockBtn);
+
+    }
     void searchUser(){
        String searchText = tsearch.getText();
-    String sql = "SELECT email,nom, prenom, type, score, num_telephone, nb_etoile FROM user WHERE nom = ? OR email = ?";
+    String sql = "SELECT email, nom, prenom, type, score, num_telephone, nb_etoile FROM user WHERE nom LIKE ? OR email LIKE ?";
+
     Connection cn = null;
     PreparedStatement st = null;
     ResultSet rs = null;

@@ -45,8 +45,8 @@ public class ServiceUser {
              User users ;
              while(rs.next())
              {
-                 users=new User( rs.getString("email"),  rs.getString("num_telephone"),  rs.getString("type"),  rs.getInt("score"),  rs.getInt("nb_etoile"));
-                 System.out.println(rs.getString("email"));
+                 users=new User( rs.getString("email"),  rs.getString("num_telephone"),  rs.getString("type"),  rs.getInt("score"),  rs.getInt("nb_etoile"),rs.getString("nom"),rs.getString("prenom"),rs.getString("image"),rs.getBoolean("blocked"));
+                 System.out.println(users.getNumTelephone());
                  UserList.add(users);
              }
          }catch(Exception ex )
@@ -114,6 +114,17 @@ public class ServiceUser {
         pre.executeUpdate();
         
     }
+    
+    public void DeleteUser(String email) throws SQLException{
+        String req = "DELETE FROM user "    
+                    + " where email=?";
+        
+        System.out.println(req);
+        PreparedStatement pre = cn.prepareStatement(req);
+        pre.setString(1, email);
+        pre.executeUpdate();
+        
+    }
       public User searchUserByEmail(String pseudo, String password) throws SQLException {
         User user = null;
       String req="SELECT (password) FROM user where (nom=? OR email=?)";
@@ -156,6 +167,43 @@ public class ServiceUser {
         
         return user;
     }
+      
+      public boolean searchUserByEmail(String email) throws SQLException {
+        String req = "SELECT * FROM user WHERE email=?";
+        PreparedStatement st = cn.prepareStatement(req);
+        st.setString(1, email.toLowerCase());
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            System.out.println("User found");
+            return true;
+        }
+        System.out.println("User not found");
+        return false;
+    }
+      public boolean checkBlocked(String email) throws SQLException {
+        String req = "SELECT blocked FROM user WHERE email=?";
+        PreparedStatement st = cn.prepareStatement(req);
+        st.setString(1, email.toLowerCase());
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            
+            return true;
+        }
+        
+        return false;
+    }
+       public void unBlockUser(String email) throws SQLException {
+          String req = "UPDATE user SET "
+                  + "blocked = ?"        
+                    + " where email=?";
+        
+        System.out.println(req);
+        PreparedStatement pre = cn.prepareStatement(req);
+        pre.setInt(1, 0);
+        pre.setString(2, email);
+        pre.executeUpdate();
+    }
+      
 
     
 }
