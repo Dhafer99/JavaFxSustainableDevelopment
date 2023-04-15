@@ -122,6 +122,8 @@ private final ObservableList<Don> eventList = FXCollections.observableArrayList(
     private AnchorPane chartbtn;
     @FXML
     private Button FrontBtn;
+    @FXML
+    private Button categoryBtn;
    
     public int getId() {
         return id;
@@ -385,5 +387,13 @@ private void Front (ActionEvent event) throws IOException{
         Parent root = loader.load();
         FrontBtn.getScene().setRoot(root);
 }
+
+    @FXML
+    private void Category(ActionEvent event) throws IOException {
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
+        SampleController aec = loader.getController();
+        Parent root = loader.load();
+        categoryBtn.getScene().setRoot(root);  
+    }
     
 }

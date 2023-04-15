@@ -23,6 +23,7 @@ public class Don {
     private String Image;
     private String email;
     private int Numero;
+    private int category_d_id;
 private static Stage stg ;
 
     public Don() {
@@ -52,6 +53,30 @@ private static Stage stg ;
     public Don(String NameD, int quantite) {
         this.NameD = NameD;
         this.quantite = quantite;
+    }
+
+    public int getCategory_d_id() {
+        return category_d_id;
+    }
+
+    public void setCategory_d_id(int category_d_id) {
+        this.category_d_id = category_d_id;
+    }
+
+    public Don(int category_d_id) {
+        this.category_d_id = category_d_id;
+    }
+
+    public Don(int id, String NameD, int quantite, String description, String localisation, String Image, String email, int Numero, int category_d_id) {
+        this.id = id;
+        this.NameD = NameD;
+        this.quantite = quantite;
+        this.description = description;
+        this.localisation = localisation;
+        this.Image = Image;
+        this.email = email;
+        this.Numero = Numero;
+        this.category_d_id = category_d_id;
     }
 
     
@@ -122,7 +147,7 @@ private static Stage stg ;
 
     @Override
     public String toString() {
-        return "Don{" + "id=" + id + ", NameD=" + NameD + ", quantite=" + quantite + ", description=" + description + ", localisation=" + localisation + ", Image=" + Image + ", email=" + email + ", Numero=" + Numero + '}';
+        return "Don{" + "id=" + id + ", NameD=" + NameD + ", quantite=" + quantite + ", description=" + description + ", localisation=" + localisation + ", Image=" + Image + ", email=" + email + ", Numero=" + Numero + ",category_d_id="+category_d_id+ '}';
     }
     public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));

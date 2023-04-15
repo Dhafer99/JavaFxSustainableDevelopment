@@ -15,3 +15,7 @@
 .shadow{
     -fx-effect: dropshadow(three-pass-box,rgba(0,8,0,0.2),10,0,8,10);
 }
+.bottom2{
+    -fx-background-color: #222222;
+    -fx-background-radius: 50;
+}

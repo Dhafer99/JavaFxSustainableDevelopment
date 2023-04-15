@@ -26,7 +26,7 @@ public class ServiceDon implements IService<Don> {
 Connection cnx = db_connect.getInstance().getCnx();
     @Override
     public void ajouter(Don t) {
- String qry ="INSERT INTO `don`(`name_d`, `quantite`, `description`, `localisation`, `image`,`email`,`numero`) VALUES ('"+t.getNameD()+"','"+t.getQuantite()+"','"+t.getDescription()+"','"+t.getLocalisation()+"', '"+t.getImage()+"','"+t.getEmail()+"','"+t.getNumero()+"')";
+ String qry ="INSERT INTO `don`(`name_d`, `quantite`, `description`, `localisation`, `category_d_id`, `image`,`email`,`numero`) VALUES ('"+t.getNameD()+"','"+t.getQuantite()+"','"+t.getDescription()+"','"+t.getLocalisation()+"','"+t.getCategory_d_id()+"', '"+t.getImage()+"','"+t.getEmail()+"','"+t.getNumero()+"')";
         try {
             Statement stm = cnx.createStatement();
        
@@ -49,6 +49,8 @@ Connection cnx = db_connect.getInstance().getCnx();
             p.setQuantite(rs.getInt("quantite"));
             p.setDescription(rs.getString("description"));
              p.setLocalisation(rs.getString("localisation"));
+                                       p.setCategory_d_id(rs.getInt("category_d_id"));
+
              p.setImage(rs.getString("image"));
              p.setEmail(rs.getString("email"));
              p.setNumero(rs.getInt("numero"));

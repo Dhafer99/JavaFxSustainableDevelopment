@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="656.0" styleClass="dark-background" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="don.CategoryController">
+   <children>
+      <VBox layoutX="41.0" layoutY="45.0" prefHeight="26.0" prefWidth="102.0" spacing="26.5">
+         <children>
+            <Label prefHeight="18.0" prefWidth="38.0" text="Name" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="143.0" layoutY="45.0" prefHeight="34.0" prefWidth="282.0" spacing="20.0">
+         <children>
+            <TextField fx:id="tfname" styleClass="bottom" stylesheets="@style.css" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvdon" layoutX="439.0" layoutY="137.0" onMouseClicked="#handleMouseAction" prefHeight="215.0" prefWidth="192.0" stylesheets="@style.css">
+         <columns>
+            <TableColumn fx:id="tvname" prefWidth="183.20001220703125" text="Name" />
+         </columns>
+      </TableView>
+      <Button layoutX="72.0" layoutY="163.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Insert">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_add_16px_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="179.0" layoutY="163.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Update">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_update_16px_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="283.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#deleteEvent" prefHeight="26.0" prefWidth="89.0" styleClass="bottom" text="Delete">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_cancel_16px_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="filtertext" layoutX="439.0" layoutY="92.0" prefHeight="26.0" prefWidth="192.0" promptText="Search" />
+      <Button fx:id="Menubtn" layoutX="183.0" layoutY="268.0" mnemonicParsing="false" onAction="#Menu" prefHeight="26.0" prefWidth="82.0" styleClass="bottom" stylesheets="@style.css" text="Return" />
+   </children>
+</AnchorPane>
