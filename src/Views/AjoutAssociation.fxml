@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="542.0" prefWidth="771.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Controllers.AjoutAssociationController">
+   <children>
+      <TextField fx:id="tfnom" layoutX="238.0" layoutY="59.0" prefHeight="26.0" prefWidth="165.0" promptText="Nom:" style="-fx-background-color: transparent; -fx-border-color: #12477A; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfnumero" layoutX="238.0" layoutY="96.0" prefHeight="26.0" prefWidth="165.0" promptText="Numero:" style="-fx-background-color: transparent; -fx-border-color: #12477A; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfmail" layoutX="238.0" layoutY="138.0" prefHeight="26.0" prefWidth="165.0" promptText="Mail:" style="-fx-background-color: transparent; -fx-border-color: #12477A; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfadresse" layoutX="238.0" layoutY="182.0" prefHeight="26.0" prefWidth="166.0" promptText="Adresse:" style="-fx-background-color: transparent; -fx-border-color: #12477A; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfcode_postal" layoutX="238.0" layoutY="234.0" prefHeight="26.0" prefWidth="166.0" promptText="Code_postal:" style="-fx-background-color: transparent; -fx-border-color: #12477A; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfville" layoutX="237.0" layoutY="286.0" prefHeight="26.0" prefWidth="166.0" promptText="Ville:" style="-fx-background-color: transparent; -fx-border-color: #12477A; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="combo" layoutX="233.0" layoutY="370.0" prefWidth="150.0" style="-fx-border-color: #12477A; -fx-background-color: transparent; -fx-border-radius: 50px;" />
+      <Label layoutX="252.0" layoutY="332.0" prefHeight="18.0" prefWidth="113.0" text="categorie">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="39.0" fitWidth="52.0" layoutX="238.0" layoutY="430.0" onMouseClicked="#Ajout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../PIDEVjava/src/image/man_50px.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="295.0" layoutY="428.0" onMouseClicked="#Ajout" prefHeight="39.0" prefWidth="246.0" style="-fx-background-color: transparent;" text="Ajouter une nouvelle Association">
+         <font>
+            <Font name="Cambria" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

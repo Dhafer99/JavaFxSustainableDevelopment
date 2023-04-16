@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="782.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Controllers.AfficherReclamationController">
+   <children>
+      <TableView fx:id="tab_reclamation" layoutX="18.0" layoutY="29.0" onMouseClicked="#handle" prefHeight="263.0" prefWidth="747.0">
+         <columns>
+            <TableColumn fx:id="col_datereclamation" prefWidth="122.0" text="Date_reclamation" />
+            <TableColumn fx:id="col_etat" minWidth="7.0" prefWidth="105.0" text="Etat" />
+            <TableColumn fx:id="col_motifdereclamation" minWidth="7.0" prefWidth="151.0" text="Motif_de_reclamation" />
+            <TableColumn fx:id="col_numtelephone" minWidth="7.0" prefWidth="125.0" text="Num_telephone" />
+            <TableColumn fx:id="col_email" minWidth="7.0" prefWidth="126.0" text="Email" />
+            <TableColumn fx:id="col_categ" minWidth="7.0" prefWidth="125.0" text="categorie_rec" />
+         </columns>
+      </TableView>
+      <Button layoutX="654.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#supp" text="Supprimer" />
+      <Button layoutX="654.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#modif" text="Modifier " />
+      <Label layoutX="74.0" layoutY="304.0" prefHeight="17.0" prefWidth="98.0" text="Date_Reclamation" textFill="#171717" />
+      <Label layoutX="75.0" layoutY="355.0" prefHeight="17.0" prefWidth="74.0" text="Etat" />
+      <Label layoutX="75.0" layoutY="397.0" text="Motif_de_reclamation" />
+      <Label layoutX="68.0" layoutY="440.0" text="Num_Telephone" />
+      <Label layoutX="74.0" layoutY="486.0" text="Email" />
+      <TextField fx:id="tf_etat" layoutX="316.0" layoutY="351.0" />
+      <TextField fx:id="tf_motifdereclamation" layoutX="316.0" layoutY="393.0" />
+      <TextField fx:id="tf_numtelephone" layoutX="316.0" layoutY="436.0" />
+      <TextField fx:id="tf_email" layoutX="316.0" layoutY="485.0" />
+      <DatePicker fx:id="picker_date" layoutX="316.0" layoutY="300.0" />
+      <TextField fx:id="Search" layoutX="316.0" layoutY="530.0" />
+   </children>
+</AnchorPane>

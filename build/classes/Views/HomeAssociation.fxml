@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeAssociation">
+   <top>
+      <HBox prefHeight="63.0" prefWidth="1095.0" spacing="20.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="63.0" prefWidth="128.0" />
+            <Label layoutX="252.0" layoutY="10.0" onMouseClicked="#ajout" prefHeight="63.0" prefWidth="110.0" text="Ajouter Association" />
+            <Label layoutX="362.0" layoutY="10.0" onMouseClicked="#edit" prefHeight="63.0" prefWidth="136.0" text="Editer Association" />
+            <Label layoutX="670.0" layoutY="15.0" onMouseClicked="#categorie" prefHeight="63.0" prefWidth="136.0" text="Gestion" />
+         </children>
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane fx:id="root1" onMouseClicked="#gestion" prefHeight="514.0" prefWidth="941.0" style="-fx-background-color: #cfcfcf;" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

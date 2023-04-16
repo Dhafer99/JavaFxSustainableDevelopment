@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1500.0" prefWidth="1500.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashbord.UIController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="74.0" prefHeight="1210.0" prefWidth="240.0" styleClass="sidebar">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="122.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" onMouseClicked="#association" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/meeting_32px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label onMouseClicked="#association" prefHeight="18.0" prefWidth="79.0" text="Association" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="154.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" onMouseClicked="#Reclamation" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/online_support_30px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label onMouseClicked="#Reclamation" text="Reclamation" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="185.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" onMouseClicked="#Don" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/donation_24px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label onMouseClicked="#Don" text="Don" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="215.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" onMouseClicked="#Annonces" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/notification_30px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label onMouseClicked="#Annonces" prefHeight="18.0" prefWidth="63.0" text="Annonces" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="246.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" onMouseClicked="#event" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/event_64px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label onMouseClicked="#event" prefHeight="18.0" prefWidth="54.0" text="Event" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="277.0" onMouseClicked="#user" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/user_80px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="USER" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="307.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_sync_settings_24px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Backups" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="44.0" fitWidth="51.0" layoutX="38.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_james_bond_32px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="98.0" layoutY="26.0" text="Généraux  Dashbord" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="root" layoutX="239.0" layoutY="90.0" prefHeight="1195.0" prefWidth="1262.0" />
+   </children>
+</AnchorPane>

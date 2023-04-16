@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditAssociationController">
+   <children>
+      <TextField fx:id="tfnom" layoutX="38.0" layoutY="410.0" prefHeight="26.0" prefWidth="165.0" promptText="nom" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfnumero" layoutX="38.0" layoutY="450.0" prefHeight="26.0" prefWidth="165.0" promptText="numero" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfmail" layoutX="38.0" layoutY="490.0" prefHeight="26.0" prefWidth="165.0" promptText="mail" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfadresse" layoutX="290.0" layoutY="410.0" prefHeight="26.0" prefWidth="165.0" promptText="adresse" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfcode_postal" layoutX="289.0" layoutY="450.0" prefHeight="26.0" prefWidth="166.0" promptText="code_postal" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TextField fx:id="tfville" layoutX="290.0" layoutY="490.0" prefHeight="26.0" prefWidth="166.0" promptText="ville" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" />
+      <TableView fx:id="tabAssociation" layoutX="17.0" layoutY="189.0" onMouseClicked="#handle" prefHeight="190.0" prefWidth="685.0">
+         <columns>
+            <TableColumn fx:id="colnom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="colnumero" prefWidth="91.9999771118164" text="numero" />
+            <TableColumn fx:id="colmail" prefWidth="90.4000244140625" text="mail" />
+            <TableColumn fx:id="coladresse" prefWidth="109.5999755859375" text="adresse" />
+            <TableColumn fx:id="colcode_postal" prefWidth="141.60000610351562" text="code_postal" />
+            <TableColumn fx:id="colville" prefWidth="173.60003662109375" text="ville" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="544.0" layoutY="490.0" onMouseClicked="#supprimer1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/trash_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="544.0" layoutY="447.0" onMouseClicked="#Update1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/update_left_rotation_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="33.0" layoutX="544.0" layoutY="410.0" onMouseClicked="#Ajout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/man_50px.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="root" layoutX="10.0" layoutY="10.0" prefHeight="555.0" prefWidth="700.0" visible="false" />
+      <TextField fx:id="search" layoutX="224.0" layoutY="128.0" opacity="0.5" prefHeight="30.0" prefWidth="222.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
+   </children>
+</AnchorPane>

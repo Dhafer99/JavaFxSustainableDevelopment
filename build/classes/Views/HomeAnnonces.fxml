@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="739.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeAnnoncesController">
+   <children>
+      <HBox prefHeight="60.0" prefWidth="1121.0" spacing="15.0">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="85.0" onMouseClicked="#ajout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/add_administrator_80px.png" />
+               </image>
+            </ImageView>
+            <Label onMouseClicked="#ajout" prefHeight="66.0" prefWidth="121.0" text="AjoutAnnonce" />
+            <ImageView fitHeight="62.0" fitWidth="85.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#afficher" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/book_and_pencil_50px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="72.0" layoutY="10.0" onMouseClicked="#afficher" prefHeight="66.0" prefWidth="121.0" text="AfficherAnnonce" />
+            <ImageView fitHeight="62.0" fitWidth="85.0" layoutX="193.0" layoutY="10.0" onMouseClicked="#categorie" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/menu_50px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="255.0" layoutY="10.0" onMouseClicked="#categorie" prefHeight="66.0" prefWidth="121.0" text="categorie" />
+         </children>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </HBox>
+      <AnchorPane layoutY="65.0" prefHeight="674.0" prefWidth="1121.0" style="-fx-background-color: #cfcfcf;">
+         <children>
+            <AnchorPane fx:id="root1" layoutY="2.0" prefHeight="674.0" prefWidth="1121.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
