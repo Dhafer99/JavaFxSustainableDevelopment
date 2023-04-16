@@ -82,11 +82,11 @@
                         <Image url="@../img/icons8_event_accepted_64px_1.png" />
                      </image>
                   </ImageView>
-                  <Label contentDisplay="RIGHT" prefHeight="22.0" prefWidth="89.0" text="Evenement" textFill="#0cd11a">
+                  <Button fx:id="BackBT" mnemonicParsing="false" onAction="#GoToBack" styleClass="dark-background" stylesheets="@style.css" text="Evenement" textFill="#0cd11a">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
-                  </Label>
+                  </Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="126.0" prefWidth="135.0">
@@ -132,11 +132,6 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="BackBT" alignment="CENTER" mnemonicParsing="false" onAction="#GoToBack" prefHeight="33.0" prefWidth="81.0" styleClass="bottom" stylesheets="@style.css" text="Back" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
          </children>
       </HBox>
    </top>
@@ -163,7 +158,7 @@
                      <children>
                       
                      </children></Pane>
-                  <Button fx:id="FilterBt" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" styleClass="bottom" stylesheets="@style.css" text="Filter" textFill="WHITE">
+                  <Button fx:id="FilterBt" alignment="CENTER" mnemonicParsing="false" onAction="#filter" prefHeight="37.0" prefWidth="103.0" styleClass="bottom" stylesheets="@style.css" text="Filter" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

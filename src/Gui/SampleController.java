@@ -28,6 +28,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import java.time.LocalDate;
+
 /**
  * FXML Controller class
  *
@@ -78,24 +80,24 @@ EvenementService s= new EvenementService();
     }    
     
     
-   /* @FXML
+   @FXML
     private void filter(ActionEvent event) throws SQLException, IOException {
         List<Evenement> personnes = s.afficher();
 
 // sort the list by quantity in descending order
-Collections.sort(personnes, new Comparator<Don>() {
+Collections.sort(personnes, new Comparator<Evenement>() {
     @Override
     public int compare(Evenement d1, Evenement d2) {
-        return Date.compare(d2.getDate_debut(), d1.getDate_debut());
+        return Integer.compare(d2.getNb_participants(), d1.getNb_participants());
     }
 });
 
-NbDon.setText(String.valueOf(personnes.size())+" Don Disponible");
+NbEvents.setText(String.valueOf(personnes.size())+" Don Disponible");
 
 // display the sorted Don objects in the CardView
 int column = 0;
 int row = 1;
-for (Don d : personnes) {
+for (Evenement d : personnes) {
     FXMLLoader fxmlLoader = new FXMLLoader();
     fxmlLoader.setLocation(getClass().getResource("CardView.fxml"));
     Pane pane = fxmlLoader.load();
@@ -111,7 +113,7 @@ for (Don d : personnes) {
     GridPane.setMargin(pane,new Insets(20,20,20,20));
 }
 
-    }*/
+    }
     
     @FXML
     private void GoToBack(ActionEvent event) throws IOException {

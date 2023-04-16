@@ -39,6 +39,9 @@ public class CardViewController implements Initializable {
   @FXML
     private Label  
 ShowCategory;
+  
+  Evenement d = new Evenement();
+private Evenement Evenement;
     /**
      * Initializes the controller class.
      */
@@ -71,6 +74,11 @@ if (rs.next()) {
 }
    
    
+    }
+    
+      public void receiveObject(Evenement d) {
+        this.d=d;
+        Evenement=d;
     }
     
 }

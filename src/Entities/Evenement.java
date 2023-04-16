@@ -6,6 +6,7 @@
 package Entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import javafx.scene.control.DatePicker;
 
 /**
@@ -21,6 +22,8 @@ public class Evenement {
         private Date Date_fin;
         private int nb_participants;
         private int categoryId;
+      
+
 
     public Evenement() {
     }

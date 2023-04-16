@@ -110,13 +110,6 @@
          </children>
       </HBox>
       <Button fx:id="qrcode" contentDisplay="CENTER" layoutX="561.0" layoutY="495.0" mnemonicParsing="false" onAction="#qrcode" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #454B1B;" text="Generer QrCode" textAlignment="CENTER" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/add.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
@@ -130,13 +123,6 @@
             <Font name="Times New Roman" size="14.0" />
          </font></Label>
       <Button fx:id="FrontBT" contentDisplay="CENTER" layoutX="853.0" layoutY="718.0" mnemonicParsing="false" onAction="#GoToFront" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #454B1B;" text="Front" textAlignment="CENTER" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/add.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>

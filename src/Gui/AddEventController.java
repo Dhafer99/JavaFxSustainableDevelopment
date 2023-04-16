@@ -50,6 +50,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
@@ -97,6 +98,8 @@ public class AddEventController implements Initializable {
     @FXML
     private Button EventAddCancel;
       private int uid=4;
+      private int id;
+      private Evenement d;
       
         Connection cnx = MyDB.getInstance().getCnx();
       @Override
@@ -155,6 +158,25 @@ cbEventAdd.setConverter(new StringConverter<CategorieEvent>() {
         
         
     }  
+    
+    public void receiveObject(Evenement d) {
+          int category =cbEventAdd.getSelectionModel().getSelectedItem().getId();
+        this.d=d;
+        id=d.getId();
+        
+        
+            EvenementService se = new EvenementService();
+            
+           Evenement p = new Evenement();
+            p.setNom_event(tfEventAddNom.getText());
+            p.setLocalisation(tfEventAddLieu.getText());
+            p.setImage_event(lien);
+         p.setDate_debut( java.sql.Date.valueOf(dpEventAddDateDeb.getValue()));
+                 p.setDate_fin( java.sql.Date.valueOf(dpEventAddDateFin.getValue()));
+                 p.setCategoryId(category);
+        
+   eventAddImg.setImage(new Image("file:src\\uploads\\"+d.getImage_event()+".png"));
+    }
       
     @FXML
     

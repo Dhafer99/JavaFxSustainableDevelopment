@@ -4,13 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/gestionevent/GestionEvent.java</file>
-            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/SampleController.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AffichageCategE.fxml</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AddEventController.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/CardViewController.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Service/CategorieEventService.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Service/EvenementService.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Entities/Evenement.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/sample.fxml</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AffichageCategEController.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/SampleController.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/affichageEvent.fxml</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/CardView.fxml</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/Chart.fxml</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Entities/CategorieEvent.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/ChartController.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AffichageEventController.java</file>
-            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/sample.fxml</file>
         </group>
     </open-files>
 </project-private>

@@ -17,12 +17,14 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -69,6 +71,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import com.itextpdf.text.Font;
 
 /**
  * FXML Controller class
@@ -410,48 +414,73 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
                         b.setOnAction((event) -> {
                             System.out.println("gggg");
                             // Get the selected Activite object from the TableView
-                            Evenement selectedActivite = (Evenement) getTableView().getItems().get(getIndex());
+                            Evenement selectedEvenement = (Evenement) getTableView().getItems().get(getIndex());
                             // Create a new Document
                             Document document = new Document();
 
                             try {
-                                // Create a PdfWriter to write the Document to a file or output stream
-                                PdfWriter.getInstance(document, new FileOutputStream("Event.pdf"));
-                            } catch (FileNotFoundException ex) {
-                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (DocumentException ex) {
-                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                                 PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Event.pdf"));
+} catch (FileNotFoundException ex) {
+    Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+} catch (DocumentException ex) {
+    Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+}
 
 // Open the Document
                             document.open();
+                            Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
+Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+Font bodyFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+
 
                             try {
-                                float[] columnWidths = {1, 2}; // the widths of the columns in the table
-                                PdfPTable table = new PdfPTable(columnWidths);
-                                table.setWidthPercentage(100); // set the width of the table to 100% of the page
-                                table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER); // center the text in the table cells
+                                 // Generate the QR code image
+                            String eventData = selectedEvenement.toString();
+                            Image qrCodeImage = generateQRCode(eventData);
 
-// Add the table headers
+                            // Convert the QR code image to a com.itextpdf.text.Image object
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+ImageIO.write(SwingFXUtils.fromFXImage(qrCodeImage, null), "png", baos);
+com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(baos.toByteArray());   
+pdfImage.setAlignment(com.itextpdf.text.Element.ALIGN_RIGHT);
+Paragraph title = new Paragraph(selectedEvenement.getNom_event(), titleFont);
+title.setAlignment(Element.ALIGN_CENTER);
+document.add(title);
+                            // Add the com.itextpdf.text.Image object to the PDF document
+                            
                                
+Paragraph date_deb = new Paragraph(selectedEvenement.getDate_debut().toString(), bodyFont);
+Paragraph adresse = new Paragraph(selectedEvenement.getLocalisation().toString(), bodyFont);
 
-// Add the Activite details to the table
-                                table.addCell(new PdfPCell(new Phrase("Nom:", new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase(selectedActivite.getNom_event(), new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase("Date Debut:", new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase(selectedActivite.getDate_debut().toString(), new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase("Date Fin:", new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase(selectedActivite.getDate_debut().toString(), new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase("Adresse:", new Font(Font.FontFamily.HELVETICA, 10))));
-                                table.addCell(new PdfPCell(new Phrase(selectedActivite.getLocalisation().toString(), new Font(Font.FontFamily.HELVETICA, 10))));
-
-
+date_deb.setAlignment(Element.ALIGN_LEFT);
+adresse.setAlignment(Element.ALIGN_LEFT);
 // Add the table to the Document
-                                document.add(table);
+
+
+// Créer un nouveau paragraphe avec le texte souhaité et la police personnalisée
+Paragraph p = new Paragraph("Soyez le bienvenue le");
+
+// Ajouter le paragraphe au document
+document.add(p);
+document.add(date_deb);
+Paragraph a = new Paragraph("L'adresse: ");
+document.add(a);
+document.add(adresse);
+Paragraph q = new Paragraph("Scannez pour plus d'informations: ");
+pdfImage.scaleAbsolute(100f, 100f);
+document.add(pdfImage);
+
+a.setAlignment(Element.ALIGN_LEFT);
+q.setAlignment(Element.ALIGN_LEFT);
+
+// Close the Document
+
 
                             
                                
                             } catch (DocumentException ex) {
+                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (IOException ex) {
                                 Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
