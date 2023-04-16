@@ -7,7 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import entities.Annonces;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import services.AnnonceService;
 
 public class CardviewController implements Initializable {
 
@@ -21,6 +28,11 @@ public class CardviewController implements Initializable {
     @FXML
     private ImageView image;
     private Annonces annonce ; 
+    
+    AnnonceService AS = new AnnonceService();
+    @FXML
+    private Button supprimer;
+    Annonces d = new Annonces();
    
 
     /**
@@ -37,7 +49,29 @@ public class CardviewController implements Initializable {
         //System.out.println(annonce.getImage());
                 image.setImage(new Image(annonce.getImage()));
                System.out.println("file:src/uploads/"+annonce.getImage()+".png");
+               
 
+    }
+
+    
+    
+    public void receiveObject(Annonces d) {
+        this.d=d;
+        annonce=d;
+    }
+    
+    
+    
+
+    @FXML
+    private void supp(ActionEvent event) throws IOException {
+        System.out.println(annonce.getId());
+              AS.delete(annonce);
+              
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        SampleController aec = loader.getController();
+        Parent root = loader.load();
+        supprimer.getScene().setRoot(root);
     }
     
 }

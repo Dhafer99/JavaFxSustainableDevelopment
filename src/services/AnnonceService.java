@@ -89,7 +89,7 @@ public class AnnonceService implements Iservice<Annonces> {
             rs = st.executeQuery(req);
             while (rs.next()) {
                 Annonces p = new Annonces();
-               // p.setId(rs.getInt(1));
+                p.setId(rs.getInt("id"));
 
                 p.setDescription(rs.getString("description"));
                 p.setAdresse(rs.getString("adresse"));
@@ -108,7 +108,7 @@ public class AnnonceService implements Iservice<Annonces> {
     @Override
     public Annonces displayById(int id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String req = "select * from annonce where id =" + id;
+        String req = "select * from annonces where id =" + id;
         Annonces o = new Annonces();
         try {
             rs = st.executeQuery(req);
