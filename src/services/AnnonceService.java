@@ -94,7 +94,8 @@ public class AnnonceService implements Iservice<Annonces> {
                 p.setDescription(rs.getString("description"));
                 p.setAdresse(rs.getString("adresse"));
                 p.setDate_publication(rs.getString("date_publication"));
-
+                p.setImage(rs.getString("image"));
+               
                 list.add(p);
             }
         } catch (SQLException ex) {

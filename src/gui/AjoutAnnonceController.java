@@ -22,8 +22,11 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -49,7 +52,9 @@ public class AjoutAnnonceController implements Initializable {
     private CategorieListData categeListdata = new CategorieListData();
     private File file;
     private String lien = "";
-
+    @FXML
+    private Button frontBTN;
+private String imagep ;
     /**
      * Initializes the controller class.
      */
@@ -63,6 +68,10 @@ public class AjoutAnnonceController implements Initializable {
         }
         combo.setItems(observableList);
     }
+    
+    
+    
+    
 
     @FXML
     private void ajouter(MouseEvent event) {
@@ -76,9 +85,9 @@ public class AjoutAnnonceController implements Initializable {
         String formattedDate = formatter.format(date_publication);
             String description = tf_description.getText();
             String adresse = tf_adresse.getText();
-            //String lien = imageadd.get;
+           // String lien = imageadd.get;
 
-            Annonces p = new Annonces(adresse, description, lien, formattedDate, asso);
+            Annonces p = new Annonces(adresse, description, imagep, formattedDate, asso);
 
             AnnonceService promotiondao = new AnnonceService();
             promotiondao.insert(p);
@@ -115,22 +124,20 @@ public class AjoutAnnonceController implements Initializable {
          }
      }
     
-
-    @FXML
-
+@FXML
     private void UploadImageActionPerformed(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
 
         //Set extension filter
         FileChooser.ExtensionFilter extFilterJPG
-                = new FileChooser.ExtensionFilter("JPG files (.JPG)", ".JPG");
+                = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
         FileChooser.ExtensionFilter extFilterjpg
-                = new FileChooser.ExtensionFilter("jpg files (.jpg)", ".jpg");
+                = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
         FileChooser.ExtensionFilter extFilterPNG
-                = new FileChooser.ExtensionFilter("PNG files (.PNG)", ".PNG");
+                = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
         FileChooser.ExtensionFilter extFilterpng
-                = new FileChooser.ExtensionFilter("png files (.png)", ".png");
+                = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
         fileChooser.getExtensionFilters()
                 .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
         //Show open file dialog
@@ -150,6 +157,7 @@ public class AjoutAnnonceController implements Initializable {
             try {
                 // save image to PNG file
                 this.lien = UUID.randomUUID().toString();
+                imagep = file.toURI().toURL().toString();
                 File f = new File("src\\uploads\\" + this.lien + ".png");
                 System.out.println(f.toURI().toString());
                 ImageIO.write(image, "PNG", f);
@@ -161,5 +169,16 @@ public class AjoutAnnonceController implements Initializable {
             Logger.getLogger("ss");
         }
     }
+
+    @FXML
+    private void front(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        SampleController aec = loader.getController();
+        Parent root = loader.load();
+        frontBTN.getScene().setRoot(root);
+        
+    }
+
+   
 
 }
