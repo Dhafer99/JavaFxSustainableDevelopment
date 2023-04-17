@@ -44,7 +44,7 @@ AnnonceService s= new AnnonceService();
             fxmlLoader.setLocation(getClass().getResource("cardview.fxml"));
                
                     Pane pane = fxmlLoader.load();
-               // System.out.println("++++++++++++++++"+d.getImage());
+                System.out.println("++++++++++++++++"+d.getCategorie());
                 System.out.println(d.getId());
                 CardviewController cardViewController = fxmlLoader.getController();
                 cardViewController.setData(d);

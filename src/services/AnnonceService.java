@@ -20,6 +20,8 @@ import java.sql.ResultSet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import MyBD.DataBase;
+import entities.Categorie;
+import java.util.Map;
 
 /**
  *
@@ -95,7 +97,10 @@ public class AnnonceService implements Iservice<Annonces> {
                 p.setAdresse(rs.getString("adresse"));
                 p.setDate_publication(rs.getString("date_publication"));
                 p.setImage(rs.getString("image"));
-               
+             
+                p.setCategorie(getCatById(rs.getInt("categorie_id")));
+               // System.out.println("HIHIHIHHAHAHAHAHA"+getCatById(rs.getInt("categorie_id")));
+                
                 list.add(p);
             }
         } catch (SQLException ex) {
@@ -104,7 +109,24 @@ public class AnnonceService implements Iservice<Annonces> {
         return list;
 
     }
+    
+ public Categorie getCatById(int id) throws SQLException {
+    String req = "SELECT * FROM categorie WHERE id = ?";
+    PreparedStatement pstmt = DataBase.getInstance().getConnection().prepareStatement(req);
+    pstmt.setInt(1, id);
+    ResultSet rs = pstmt.executeQuery();
 
+    if (rs.next()) {
+        Categorie categorie = new Categorie();
+        categorie.setNom(rs.getString("nom"));
+        categorie.setId(rs.getInt("id"));
+        return categorie;
+    } else {
+        return null; // or throw an exception, depending on requirements
+    }
+}
+
+ 
     @Override
     public Annonces displayById(int id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -114,7 +136,7 @@ public class AnnonceService implements Iservice<Annonces> {
             rs = st.executeQuery(req);
 
             rs.next();
-            o.setId(rs.getInt(1));
+            o.setId(rs.getInt("id"));
 
             o.setAdresse(rs.getString("Adresse"));
             o.setDescription(rs.getString("Description"));
@@ -132,18 +154,20 @@ public class AnnonceService implements Iservice<Annonces> {
 
         try {
           
-            String req = "UPDATE annonces SET description=?,date_publication=?,adresse=? WHERE id=?";
+            String req = "UPDATE annonces SET description=?,date_publication=?,adresse=? ,image =? WHERE id=?";
             Connection pst = DataBase.getInstance().getConnection();
             PreparedStatement pre;
             pre = pst.prepareStatement(req);
 
             
             pre.setString(1, o.getDescription());
-            pre.setString(2, o.getAdresse());
-             pre.setString(3, o.getDate_publication());
+            pre.setString(2,o.getDate_publication() );
+             pre.setString(3,o.getAdresse() );
             //pre.setString(5, p.getImage_event());
 
-            pre.setInt(4, o.getId());
+         
+             pre.setString(4, o.getImage());
+                pre.setInt(5, o.getId());
 
             pre.executeUpdate();
             System.out.println("Annonce modifiée !");

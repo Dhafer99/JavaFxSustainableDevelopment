@@ -63,7 +63,10 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supp" text="Supprimer" />
+                  <Label />
+                  <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supp" styleClass="bottom" stylesheets="@style.css" text="Supprimer" />
+                  <Label />
+                  <Button fx:id="ToUpdate" mnemonicParsing="false" onAction="#ToUpdate" styleClass="bottom" stylesheets="@style.css" text="Modifier" />
                </children>
             </VBox>
          </children>

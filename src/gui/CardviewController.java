@@ -33,6 +33,8 @@ public class CardviewController implements Initializable {
     @FXML
     private Button supprimer;
     Annonces d = new Annonces();
+    @FXML
+    private Button ToUpdate;
    
 
     /**
@@ -48,6 +50,7 @@ public class CardviewController implements Initializable {
         date_publication.setText(annonce.getDate_publication());
         //System.out.println(annonce.getImage());
                 image.setImage(new Image(annonce.getImage()));
+                
                System.out.println("file:src/uploads/"+annonce.getImage()+".png");
                
 
@@ -72,6 +75,15 @@ public class CardviewController implements Initializable {
         SampleController aec = loader.getController();
         Parent root = loader.load();
         supprimer.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void ToUpdate(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("updateAnnonce.fxml"));
+ Parent root = loader.load();
+        ToUpdate.getScene().setRoot(root);
+    updateAnnonceController controller = loader.getController();
+    controller.receiveObject(d);
     }
     
 }
