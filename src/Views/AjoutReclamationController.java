@@ -62,7 +62,8 @@ public class AjoutReclamationController implements Initializable {
     private CategorieListdata CategorieListdata = new CategorieListdata();
     @FXML
     private AnchorPane addimage;
-    private ImageView Addimage;
+    @FXML
+    private ImageView image;
 
     /**
      * Initializes the controller class.
@@ -106,7 +107,7 @@ public class AjoutReclamationController implements Initializable {
         String motif_de_reclamation = tf_motifdereclamation.getText();
         String num_telephone = tf_numtelephone.getText();
         String email = tf_email.getText();
-        String image = "hello";
+        String image = lien;
          if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
        JOptionPane.showMessageDialog(null, "Symbole or caracter is missing  !");
          } if (!num_telephone.matches("\\d{8}")) {
@@ -119,41 +120,42 @@ public class AjoutReclamationController implements Initializable {
         
     }
     }
+        @FXML
     private void UploadImageActionPerformed(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
 
         //Set extension filter
         FileChooser.ExtensionFilter extFilterJPG
-                = new FileChooser.ExtensionFilter("JPG files (.JPG)", ".JPG");
+                = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
         FileChooser.ExtensionFilter extFilterjpg
-                = new FileChooser.ExtensionFilter("jpg files (.jpg)", ".jpg");
+                = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
         FileChooser.ExtensionFilter extFilterPNG
-                = new FileChooser.ExtensionFilter("PNG files (.PNG)", ".PNG");
+                = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
         FileChooser.ExtensionFilter extFilterpng
-                = new FileChooser.ExtensionFilter("png files (.png)", ".png");
+                = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
         fileChooser.getExtensionFilters()
                 .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
         //Show open file dialog
         file = fileChooser.showOpenDialog(null);
 
         try {
-            BufferedImage image = ImageIO.read(file);
-            WritableImage imagee = SwingFXUtils.toFXImage(image, null);
-            Addimage.setImage(imagee);
-            Addimage.setFitWidth(200);
-            Addimage.setFitHeight(200);
-            Addimage.scaleXProperty();
-            Addimage.scaleYProperty();
-            Addimage.setSmooth(true);
-            Addimage.setCache(true);                           
+            BufferedImage imager = ImageIO.read(file);
+            WritableImage imagee = SwingFXUtils.toFXImage(imager, null);
+            image.setImage(imagee);
+            image.setFitWidth(200);
+            image.setFitHeight(200);
+            image.scaleXProperty();
+            image.scaleYProperty();
+            image.setSmooth(true);
+            image.setCache(true);                           
 
         try {
             // save image to PNG file
             this.lien=UUID.randomUUID().toString();
             File f=new File("src\\uploads\\" + this.lien + ".png");
             System.out.println(f.toURI().toString());
-            ImageIO.write(image, "PNG",f);
+            ImageIO.write(imager, "PNG",f);
                        
         
 

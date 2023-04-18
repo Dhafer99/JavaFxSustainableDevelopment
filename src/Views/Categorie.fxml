@@ -6,17 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="882.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Views.CategorieController">
+<AnchorPane id="AnchorPane" onMouseClicked="#Ajout" prefHeight="519.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.CategorieController">
    <children>
       <TableView fx:id="tabcateg" layoutX="25.0" layoutY="43.0" onMouseClicked="#handle" prefHeight="191.0" prefWidth="779.0">
         <columns>
           <TableColumn fx:id="colnom" prefWidth="633.0" text="Nom" />
         </columns>
       </TableView>
-      <TextField fx:id="tf_nom" layoutX="161.0" layoutY="327.0" />
-      <Button layoutX="161.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#Ajout" text="Ajouter" />
-      <Button layoutX="336.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#UpdateCat" text="Modifier" />
-      <Button layoutX="509.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#Supp" text="Supprimer " />
+      <TextField fx:id="tf_nom" layoutX="25.0" layoutY="274.0" promptText="Entrer le nom ...." />
+      <Button layoutX="147.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#Ajout" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-border-color: #979797; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-scale-x: 1.05; -fx-scale-y: 1.05; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-transition: all 0.5s ease;" text="Ajouter " textAlignment="RIGHT" textFill="#ede2e2" textOverrun="CLIP" underline="true" />
+      <Button layoutX="325.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#UpdateCat" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-border-color: #979797; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-scale-x: 1.05; -fx-scale-y: 1.05; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-transition: all 0.5s ease;" text="Modifier " textAlignment="RIGHT" textFill="#ede2e2" textOverrun="CLIP" underline="true" />
+      <Button layoutX="501.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#Supp" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-border-color: #979797; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-scale-x: 1.05; -fx-scale-y: 1.05; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-transition: all 0.5s ease;" text="Supprimer" textAlignment="RIGHT" textFill="#ede2e2" textOverrun="CLIP" underline="true" />
    </children>
 </AnchorPane>

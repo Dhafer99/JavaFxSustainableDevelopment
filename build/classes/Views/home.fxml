@@ -1,54 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.HomeController">
    <top>
       <HBox prefHeight="63.0" prefWidth="1095.0" spacing="20.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="61.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/menu_50px.png" />
-               </image>
-            </ImageView>
-            <Label prefHeight="63.0" prefWidth="128.0" />
             <ImageView fitHeight="58.0" fitWidth="53.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/home_50px.png" />
                </image>
             </ImageView>
-            <Label prefHeight="63.0" prefWidth="57.0" text="Home" />
+            <Button fx:id="btnfront" mnemonicParsing="false" onAction="#Front" prefHeight="56.0" prefWidth="104.0" style="-fx-background-color: #ffff;" text="Front" textFill="#1e7927" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
             <ImageView fitHeight="58.0" fitWidth="53.0" layoutX="199.0" layoutY="10.0" onMouseClicked="#ajouter" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/add_administrator_80px.png" />
                </image>
             </ImageView>
-            <Label layoutX="252.0" layoutY="10.0" prefHeight="63.0" prefWidth="110.0" text="Ajouter reclamation" />
+            <Label layoutX="252.0" layoutY="10.0" prefHeight="61.0" prefWidth="141.0" text="Ajouter reclamation" textFill="#1e7927" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
             <ImageView fitHeight="58.0" fitWidth="53.0" layoutX="309.0" layoutY="10.0" onMouseClicked="#afficher" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/book_and_pencil_50px.png" />
                </image>
             </ImageView>
-            <Label layoutX="362.0" layoutY="10.0" prefHeight="63.0" prefWidth="136.0" text="Afficher les reclamations" />
+            <Label layoutX="362.0" layoutY="10.0" prefHeight="61.0" prefWidth="172.0" text="Afficher les reclamations" textFill="#1e7927" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
             <ImageView fitHeight="58.0" fitWidth="53.0" layoutX="597.0" layoutY="15.0" onMouseClicked="#gestion" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/list_26px.png" />
                </image>
             </ImageView>
-            <Label layoutX="670.0" layoutY="15.0" onMouseClicked="#gestion" prefHeight="63.0" prefWidth="136.0" text="Gestion" />
+            <Label layoutX="670.0" layoutY="15.0" onMouseClicked="#gestion" prefHeight="61.0" prefWidth="179.0" text="Liste des categories " textFill="#1e7927" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
          </children>
          <padding>
             <Insets left="5.0" top="5.0" />
          </padding>
       </HBox>
    </top>
-   <center>
+   <left>
       <AnchorPane fx:id="root" onMouseClicked="#gestion" prefHeight="568.0" prefWidth="1095.0" style="-fx-background-color: #cfcfcf;" BorderPane.alignment="CENTER" />
-   </center>
+   </left>
 </BorderPane>

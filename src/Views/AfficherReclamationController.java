@@ -7,6 +7,7 @@ package Views;
 
 import Entite.Reclamation;
 import ServicesReclamations.ReclamationService;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.List;
@@ -15,8 +16,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -62,6 +67,8 @@ public class AfficherReclamationController implements Initializable {
     @FXML
     private TextField Search;
     ReclamationService ps = new ReclamationService();
+    @FXML
+    private Button chartbtn;
     public int getId() {
         return id;
     }
@@ -175,6 +182,14 @@ public class AfficherReclamationController implements Initializable {
      
       // nom, numero, mail,  adresse,  CodePostal,  ville
               
+    }
+
+    @FXML
+    private void Chart(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChartR.fxml"));
+        ChartRController aec = loader.getController();
+        Parent root = loader.load();
+        chartbtn.getScene().setRoot(root);
     }
     
 }

@@ -17,12 +17,14 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utiles.MyCnx;
-
+import Entite.Categorie_Rec;
 /**
  *
  * @author ghofrane
  */
 public class ReclamationService implements InterReclamation <Reclamation> {
+    Categorie_Rec categorie = new Categorie_Rec();
+
     private static ReclamationService instance;
     private Statement st;
     private ResultSet rs;
@@ -78,17 +80,26 @@ public class ReclamationService implements InterReclamation <Reclamation> {
             rs=st.executeQuery(req);
             while(rs.next()){
                 Reclamation p = new Reclamation();
-                p.setId(rs.getInt(1));
+              //  p.categorie_rec_id = categorie;
+
+                p.setId(rs.getInt("id"));
               //  p.setPourcentage(rs.getFloat("pourcentage"));
                // p.setStart_date(rs.getDate("start_date"));
                // p.setEnd_date(rs.getDate("end_date"));
-              //  p.setCategorie(rs.getObject(req, Categorie));
+               // p.setCategorie_rec(rs.getClass(categorie));
               p.setData_reclamation(rs.getDate("data_reclamation"));
               p.setEtat(rs.getString("etat"));
+                                                                   
               p.setMotif_de_reclamation(rs.getString("motif_de_reclamation"));
+              
               p.setNum_telephone(rs.getInt("num_telephone"));
               p.setEmail(rs.getString("email"));
-              
+              p.setImage(rs.getString("image"));
+             //int RecId = rs.getInt("categorie_rec_id");
+                  p.setCategorie_rec(getCatById(rs.getInt("categorie_rec_id")));
+                  System.out.println("GOFIIIII"+getCatById(6));
+             // p.setCategorie_rec(categorie);
+
                 list.add(p);
             }          
         } catch (SQLException ex) {
@@ -97,7 +108,24 @@ public class ReclamationService implements InterReclamation <Reclamation> {
         return list;
     }
 
-    @Override
+    
+    public Categorie_Rec getCatById(int id) throws SQLException {
+    Categorie_Rec p = new Categorie_Rec();
+    String req = "SELECT * FROM categorie_rec WHERE id = ?";
+    Connection cnx = MyCnx.getInstance().getCnx();
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setInt(1, id);
+    ResultSet rs = ps.executeQuery();
+    if (rs.next()) {
+        p = new Categorie_Rec(rs.getInt("id"),rs.getString("nom"));
+       
+    }
+    return p;
+}
+
+            
+            
+            @Override
     public Reclamation displayById(int id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String req="select * from reclamation where id ="+id;
@@ -157,7 +185,7 @@ public class ReclamationService implements InterReclamation <Reclamation> {
             pre.setDate(1, new java.sql.Date(p.getData_reclamation().getTime()));
             pre.setString(2, p.getEtat());
             pre.setString(3, p.getMotif_de_reclamation());
-            //pre.setString(5, p.getImage_event());
+            pre.setString(5, p.getImage());
             pre.setInt(4, p.getNum_telephone());
             pre.setString(5, p.getEmail());
              pre.setInt(6, p.getId());

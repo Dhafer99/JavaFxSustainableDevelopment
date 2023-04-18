@@ -5,13 +5,16 @@
  */
 package Views;
 
+import don.SampleController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -25,6 +28,8 @@ public class HomeController implements Initializable {
     @FXML
     private AnchorPane root;
 private Parent fxml;
+    @FXML
+    private Button btnfront;
     /**
      * Initializes the controller class.
      */
@@ -66,6 +71,14 @@ private Parent fxml;
            root.getChildren().setAll(fxml);
         } catch (IOException ex) {
         }
+    }
+
+    @FXML
+    private void Front(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample.fxml"));
+        SampleController aec = loader.getController();
+        Parent root2 = loader.load();
+        btnfront.getScene().setRoot(root2);
     }
     
 }

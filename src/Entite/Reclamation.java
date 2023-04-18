@@ -119,7 +119,7 @@ public class Reclamation {
     }
 
     public void setCategorie_rec(Categorie_Rec categorie_rec) {
-        this.categorie_rec_id = categorie_rec_id;
+        this.categorie_rec_id = categorie_rec;
     }
 
     @Override
