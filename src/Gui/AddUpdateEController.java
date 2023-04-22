@@ -38,7 +38,12 @@ import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import Service.CategorieEventService;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
@@ -63,10 +68,7 @@ public class AddUpdateEController implements Initializable {
     private DatePicker tfdateFin;
     @FXML
     private TextField tflocalisation;
-    @FXML
-    private Label datedeb;
-    @FXML
-    private Label dateF;
+   
     @FXML
     private Button BackBT;
    
@@ -307,8 +309,21 @@ public void receiveObject(Evenement d) {
         this.d=d;
         id=d.getId();
         tfname.setText(d.getNom_event()+"");
-        datedeb.setText(String.valueOf(d.getDate_debut()));
-        dateF.setText(String.valueOf(d.getDate_fin()));
+         Date date = d.getDate_debut();
+SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // replace with your date format
+String dateString = formatter.format(date);
+Instant instant = Instant.parse(dateString + "T00:00:00Z");
+LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+tfdateDeb.setValue(localDate);
+ Date dateF = d.getDate_fin();
+SimpleDateFormat formatterF = new SimpleDateFormat("yyyy-MM-dd"); // replace with your date format
+String dateFString = formatter.format(dateF);
+Instant instantF = Instant.parse(dateFString + "T00:00:00Z");
+LocalDate localDateF = instantF.atZone(ZoneId.systemDefault()).toLocalDate();
+tfdateFin.setValue(localDateF);
+
+      //  datedeb.setText(String.valueOf(d.getDate_debut()));
+       // dateF.setText(String.valueOf(d.getDate_fin()));
         tflocalisation.setText(d.getLocalisation());
        
    eventAddImg.setImage(new Image("file:src\\uploads\\"+d.getImage_event()+".png"));

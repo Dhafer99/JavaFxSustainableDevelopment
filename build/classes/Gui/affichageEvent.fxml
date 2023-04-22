@@ -123,7 +123,7 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="participer" contentDisplay="CENTER" layoutX="649.0" layoutY="453.0" mnemonicParsing="false" onAction="#participerEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="participer" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="participer" contentDisplay="CENTER" layoutX="649.0" layoutY="453.0" mnemonicParsing="false" onAction="#test" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="participer" textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

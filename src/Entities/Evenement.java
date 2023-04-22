@@ -26,7 +26,7 @@ public class Evenement {
         private int nb_participants;
         private int categoryId;
         
-       private ObservableSet<User> users = FXCollections.observableSet();
+    private ObservableSet<User> users = FXCollections.observableSet();
 
     public ObservableSet<User> getUsers() {
         return users;
@@ -42,6 +42,7 @@ public class Evenement {
 }
 
     public Evenement() {
+        
     }
 
         

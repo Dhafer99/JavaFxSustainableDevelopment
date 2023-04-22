@@ -158,7 +158,7 @@
                   </VBox>
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="Text" layoutX="27.0" layoutY="25.0" />
+                        <TextField fx:id="Text" layoutX="561.0" layoutY="25.0" />
                      </children></Pane>
                   <Button fx:id="FilterBt" alignment="CENTER" mnemonicParsing="false" onAction="#filter" prefHeight="37.0" prefWidth="103.0" styleClass="bottom" stylesheets="@style.css" text="Filter" textFill="WHITE">
                      <font>

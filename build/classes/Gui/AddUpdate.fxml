@@ -27,12 +27,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="datedeb" text="Date Debut" textFill="WHITE">
+            <Label text="Date Debut" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="dateF" text="Date Fin" textFill="WHITE">
+            <Label text="Date Fin" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

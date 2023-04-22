@@ -99,17 +99,9 @@ public class AffichageEventController implements Initializable {
     @FXML
     private TableColumn<Evenement, String> LieuTv;
     @FXML
-    private TableColumn<Evenement, Date> DateDebTv;
-    @FXML
-    private TableColumn<Evenement, Date> DateFinTv;
-    @FXML
-    private TableColumn<Evenement, Integer> DateTv;
-    @FXML
     private TableColumn<Evenement, Button> pdf;
      @FXML
     private Button participer;
-    @FXML
-    private Label welcomeLb;
         @FXML
 
     private Label eventShowNom;
@@ -119,8 +111,6 @@ public class AffichageEventController implements Initializable {
     private ImageView eventShowImg;
      @FXML
     private Button btnEventAdd;
-      @FXML
-    private Button btnEventDelete;
       @FXML
     private TextField eventSearch;
       @FXML
@@ -143,8 +133,6 @@ public class AffichageEventController implements Initializable {
     private TableColumn<Evenement, Button> delete;
     @FXML
     private Button modifier;
-    @FXML
-    private Button btnSearch;
     @FXML
     private Button CategBT;
     
@@ -223,7 +211,8 @@ public class AffichageEventController implements Initializable {
     }
     return -1; // Retourne -1 si aucun utilisateur n'a participé
 }
-        
+          /*
+        @FXML
           public void participer(User user , Evenement e) {
               user.setId(1);
     
@@ -231,8 +220,9 @@ public class AffichageEventController implements Initializable {
    e.participer();
     System.out.println("L'utilisateur avec l'ID " + idUtilisateurParticipant + " a participé à l'événement " + e.getNom_event());
     // Autres actions à exécuter lors de la participation de l'utilisateur à l'événement
-}
-    
+}*/
+          
+          
         @FXML
     private void GoToCategories(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AffichageCategE.fxml"));
@@ -240,6 +230,7 @@ public class AffichageEventController implements Initializable {
         Parent root = loader.load();
         CategBT.getScene().setRoot(root);
         
+
         
     }
     
@@ -281,13 +272,14 @@ public class AffichageEventController implements Initializable {
         eec.init(e);  
         
     }
+    /*
     @FXML
        public void participerEvent() {
-       
-       
+    
 participer.setOnAction(event -> {
+     System.out.println("tss");
      Evenement e = EventsTv.getSelectionModel().getSelectedItem();
-         System.out.println("tss");
+        
 
     User user = new User();
     user.setId(1);
@@ -295,6 +287,7 @@ participer.setOnAction(event -> {
 });
 
     }
+    */
  
  
      public void deleteEvent() {
@@ -595,6 +588,42 @@ com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(image, nu
     return pdfImage ;
 
 }
+
+    @FXML
+    private void test(ActionEvent event) throws SQLException {
+        
+       
+              Connection cnx = MyDB.getInstance().getCnx();
+PreparedStatement ps = cnx.prepareStatement("SELECT name FROM user WHERE id = 2");
+
+ResultSet rs = ps.executeQuery();
+if(rs.next()){
+    String nom = rs.getString(1);
+         Evenement e = EventsTv.getSelectionModel().getSelectedItem();
+          
+             
+             String nb ="UPDATE evenement set  nb_participants= ? where id = ? ";
+ PreparedStatement pst = cnx.prepareStatement(nb);
+            pst.setInt(1, e.getNb_participants()+1);
+            pst.setInt(2, e.getId());
+ pst.executeUpdate();
+ 
+String query = "INSERT INTO evenement_user (evenement_id, user_id) VALUES (?, ?)";
+PreparedStatement statement = cnx.prepareStatement(query);
+statement.setInt(1, e.getId());
+statement.setInt(2, 2);
+int rowsInserted = statement.executeUpdate();  
+
+
+
+System.out.println("bla bla " + nom);
+             
+    
+}
+
+ 
+        
+    }
 
     
 }

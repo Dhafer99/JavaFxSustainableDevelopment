@@ -96,6 +96,15 @@
                         </Button>
                      </children>
                   </VBox>
+                  <Button fx:id="participer" mnemonicParsing="false" onAction="#test" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Participer">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons8_cancel_16px_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </VBox>
          </children>

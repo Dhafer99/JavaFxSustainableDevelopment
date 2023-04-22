@@ -13,12 +13,17 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import Entities.Evenement;
+import Entities.Participation;
+import Entities.User;
 import Service.EvenementService;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,6 +54,8 @@ ShowCategory;
     private Button BtnUpdate;
    @FXML
     private Button DeleteBtn;
+  @FXML
+    private Button participer;
   
   Evenement d = new Evenement();
   EvenementService ps = new EvenementService();
@@ -61,7 +68,8 @@ private Evenement Evenement;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+              //  participer.setVisible(true);
+
     }  
     public void setData(Evenement event) throws SQLException{
      EventName.setText(event.getNom_event());
@@ -117,4 +125,66 @@ if (rs.next()) {
         
     }
     
+    
+     @FXML
+    private void test(ActionEvent event) throws SQLException {
+        
+       User user = new User();
+       Evenement e = new Evenement();
+              Connection cnx = MyDB.getInstance().getCnx();
+PreparedStatement ps = cnx.prepareStatement("SELECT name FROM user WHERE id = 1");
+
+ResultSet rs = ps.executeQuery();
+if(rs.next()){
+    String nom = rs.getString(1);
+        // Evenement e = EventsTv.getSelectionModel().getSelectedItem();
+          
+             
+             String nb ="UPDATE evenement set  nb_participants= ? where id = ? ";
+ PreparedStatement pst = cnx.prepareStatement(nb);
+            pst.setInt(1, d.getNb_participants()+1);
+            pst.setInt(2, d.getId());
+ pst.executeUpdate();
+ System.out.println("bla bla " + nom);
 }
+ 
+String query = "INSERT INTO evenement_user (evenement_id, user_id) VALUES (?, ?)";
+PreparedStatement statement = cnx.prepareStatement(query);
+statement.setInt(1, d.getId());
+statement.setInt(2, 1);
+int rowsInserted = statement.executeUpdate();  
+
+
+
+HashMap<Integer,Integer> Events = new HashMap<>();
+
+PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `evenement_user` ");
+
+ResultSet rs1 = ps1.executeQuery();
+if(rs1.next()){
+    Participation p = new Participation();
+   
+     
+     Events.put(rs1.getInt("evenement_id"),rs1.getInt("user_id"));
+     
+   
+
+}
+ if(Events.containsKey(d.getId()) || Events.containsValue(1))
+    {
+        participer.setVisible(false);
+        
+    }
+    System.out.println(Events);
+
+
+             
+    
+}
+
+ 
+        
+    }
+    
+    
+
