@@ -7,7 +7,10 @@ package Entities;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
 import javafx.scene.control.DatePicker;
+
 
 /**
  *
@@ -22,8 +25,21 @@ public class Evenement {
         private Date Date_fin;
         private int nb_participants;
         private int categoryId;
-      
+        
+       private ObservableSet<User> users = FXCollections.observableSet();
 
+    public ObservableSet<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ObservableSet<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user) {
+    users.add(user);
+    user.getEvenements().add(this);
+}
 
     public Evenement() {
     }
@@ -170,6 +186,11 @@ public class Evenement {
     public void setNb_participants(int nb_participants) {
         this.nb_participants = nb_participants;
     }
+    
+     public void participer() {
+        nb_participants++;
+    }
+     
 
     @Override
     public String toString() {

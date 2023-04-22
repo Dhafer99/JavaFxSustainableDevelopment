@@ -13,10 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import Entities.Evenement;
+import Service.EvenementService;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import utils.MyDB;
 /**
@@ -39,9 +45,17 @@ public class CardViewController implements Initializable {
   @FXML
     private Label  
 ShowCategory;
+  @FXML
+    private Button BtnUpdate;
+   @FXML
+    private Button DeleteBtn;
   
   Evenement d = new Evenement();
+  EvenementService ps = new EvenementService();
+  
 private Evenement Evenement;
+
+
     /**
      * Initializes the controller class.
      */
@@ -79,6 +93,28 @@ if (rs.next()) {
       public void receiveObject(Evenement d) {
         this.d=d;
         Evenement=d;
+          System.out.println(d);
+    }
+       @FXML
+    private void ToUpdate(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddUpdate.fxml"));
+ Parent root = loader.load();
+        BtnUpdate.getScene().setRoot(root);
+    AddUpdateEController controller = loader.getController();
+    controller.receiveObject(d);
+   
+    }
+    @FXML
+    private void delete(ActionEvent event) throws SQLException, IOException {
+        System.out.println(Evenement);
+        ps.supprimer(Evenement);
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        SampleController aec = loader.getController();
+        Parent root = loader.load();
+        DeleteBtn.getScene().setRoot(root);
+        
+        
+        
     }
     
 }

@@ -10,25 +10,33 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
-import Service.CategorieEventService;
+import Service.EvenementService;
 import java.util.List;
 import Entities.Evenement;
-import Service.EvenementService;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import java.time.LocalDate;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -45,11 +53,48 @@ EvenementService s= new EvenementService();
     
     @FXML
     private Button BackBT;
+    @FXML
+    private TextField Text;
+    @FXML
+    private Button FilterBt;
+    
+        private ObservableList<Evenement> originalDonList;
+private ObservableList<Evenement> filteredDonList;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+           try {
+        // Get the list of Don objects
+        originalDonList = FXCollections.observableArrayList(s.afficher());
+        filteredDonList = FXCollections.observableArrayList(originalDonList);
+
+        // Set the number of Don objects label
+        NbEvents.setText(originalDonList.size() + " Don Disponible");
+
+        // Populate the GridPane with the card views
+        updateUI(filteredDonList);
+
+        // Register an event listener on the search field
+        Text.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                filterDonList(newValue);
+            } catch (SQLException ex) {
+                Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+    }catch (SQLException ex) {
+        Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+        
+        
+        
+        
+        
         try {
             List<Evenement> personnes = s.afficher();
             NbEvents.setText(String.valueOf(personnes.size()));
@@ -114,6 +159,44 @@ for (Evenement d : personnes) {
 }
 
     }
+    
+    
+     private void filterDonList(String query) throws SQLException {
+    filteredDonList.clear();
+    for (Evenement d : originalDonList) {
+        if (d.getNom_event().toLowerCase().contains(query.toLowerCase())) {
+            filteredDonList.add(d);
+        }
+    }
+    // Update the UI with the filtered list
+    updateUI(filteredDonList);
+}
+
+private void updateUI(ObservableList<Evenement> donList) throws SQLException {
+    citiesGrid.getChildren().clear();
+    int column = 0;
+    int row = 1;
+    for (Evenement d : donList) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("CardView.fxml"));
+
+        try {
+            Pane pane = fxmlLoader.load();
+            CardViewController cardViewController = fxmlLoader.getController();
+            cardViewController.setData(d);
+
+            if (column == 4) {
+                column = 0;
+                ++row;
+            }
+            citiesGrid.add(pane, column++, row);
+            GridPane.setMargin(pane, new Insets(20, 20, 20, 20));
+
+        } catch (IOException ex) {
+            Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
     
     @FXML
     private void GoToBack(ActionEvent event) throws IOException {

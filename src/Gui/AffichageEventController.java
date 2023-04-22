@@ -6,42 +6,31 @@
 package Gui;
 
 import Entities.Evenement;
+import Entities.User;
 import Service.EvenementService;
 import Gui.EditEventController;
 import Gui.AddEventController;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Desktop;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import static java.util.Collections.list;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -64,15 +53,37 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javax.swing.JOptionPane;
+
 import utils.MyDB;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
+
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfContentByte;
+import java.awt.Desktop;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static org.apache.commons.io.IOUtils.writer;
+
+
+
 
 /**
  * FXML Controller class
@@ -95,6 +106,8 @@ public class AffichageEventController implements Initializable {
     private TableColumn<Evenement, Integer> DateTv;
     @FXML
     private TableColumn<Evenement, Button> pdf;
+     @FXML
+    private Button participer;
     @FXML
     private Label welcomeLb;
         @FXML
@@ -122,6 +135,10 @@ public class AffichageEventController implements Initializable {
 
     // instance database Service 
     EvenementService ps = new EvenementService();
+    
+    Evenement evenement = new Evenement();
+    int idUtilisateurParticipant = getIdUtilisateurParticipant(evenement);
+    
     @FXML
     private TableColumn<Evenement, Button> delete;
     @FXML
@@ -182,6 +199,14 @@ public class AffichageEventController implements Initializable {
             //this.delete();
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (WriterException ex) {
+            Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
         }
         //modifier.setVisible(false);
         modifier.setDisable(true);
@@ -190,7 +215,23 @@ public class AffichageEventController implements Initializable {
         
 
     }    
+          public int getIdUtilisateurParticipant(Evenement evenement) {
+    for (User user : evenement.getUsers()) {
+        if (evenement.getUsers().contains(user)) {
+            return user.getId();
+        }
+    }
+    return -1; // Retourne -1 si aucun utilisateur n'a participé
+}
         
+          public void participer(User user , Evenement e) {
+              user.setId(1);
+    
+    e.getUsers().add(user);
+   e.participer();
+    System.out.println("L'utilisateur avec l'ID " + idUtilisateurParticipant + " a participé à l'événement " + e.getNom_event());
+    // Autres actions à exécuter lors de la participation de l'utilisateur à l'événement
+}
     
         @FXML
     private void GoToCategories(ActionEvent event) throws IOException {
@@ -240,6 +281,20 @@ public class AffichageEventController implements Initializable {
         eec.init(e);  
         
     }
+    @FXML
+       public void participerEvent() {
+       
+       
+participer.setOnAction(event -> {
+     Evenement e = EventsTv.getSelectionModel().getSelectedItem();
+         System.out.println("tss");
+
+    User user = new User();
+    user.setId(1);
+    participer(user,e);
+});
+
+    }
  
  
      public void deleteEvent() {
@@ -279,6 +334,8 @@ public class AffichageEventController implements Initializable {
         });
 
     }
+     
+   
      
      public void updateTable() throws SQLException {
     ObservableList<Evenement> list = FXCollections.observableArrayList(ps.afficher());
@@ -367,7 +424,7 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
         String dataString = stringBuilder.toString().trim();
 
         // Generate the QR code image
-        Image qrCodeImage = generateQRCode(dataString);
+        Image qrCodeImage = generateQRCode(dataString, 100, 100);
 
         // Display the QR code image
         ImageView imageView = new ImageView(qrCodeImage);
@@ -379,7 +436,7 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
 
     }
 
-    private Image generateQRCode(String data) {
+    private Image generateQRCode(String data, int par, int par1) {
         try {
             // Create a QR code writer
             QRCodeWriter writer = new QRCodeWriter();
@@ -401,7 +458,7 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
 
 
    
-     public void pdf() {
+     public void pdf() throws FileNotFoundException, DocumentException, WriterException, IOException {
         pdf.setCellFactory((param) -> {
             return new TableCell() {
                 @Override
@@ -418,62 +475,69 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
                             // Create a new Document
                             Document document = new Document();
 
-                            try {
-                                 PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Event.pdf"));
-} catch (FileNotFoundException ex) {
-    Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-} catch (DocumentException ex) {
-    Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-}
+                        
 
 // Open the Document
                             document.open();
-                            Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
-Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
-Font bodyFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+                        // Set the font styles
+    Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, BaseColor.BLACK);
+    Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLACK);
+    Font bodyFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
+ PdfWriter writer = null;
+                            try {
+                                writer = PdfWriter.getInstance(document, new FileOutputStream("Event.pdf"));
+                            } catch (FileNotFoundException ex) {
+                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (DocumentException ex) {
+                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 
                             try {
-                                 // Generate the QR code image
-                            String eventData = selectedEvenement.toString();
-                            Image qrCodeImage = generateQRCode(eventData);
+                                  document.setPageSize(PageSize.A6);
+    document.setMargins(10, 10, 10, 10);
 
-                            // Convert the QR code image to a com.itextpdf.text.Image object
-ByteArrayOutputStream baos = new ByteArrayOutputStream();
-ImageIO.write(SwingFXUtils.fromFXImage(qrCodeImage, null), "png", baos);
-com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(baos.toByteArray());   
-pdfImage.setAlignment(com.itextpdf.text.Element.ALIGN_RIGHT);
-Paragraph title = new Paragraph(selectedEvenement.getNom_event(), titleFont);
-title.setAlignment(Element.ALIGN_CENTER);
-document.add(title);
-                            // Add the com.itextpdf.text.Image object to the PDF document
-                            
-                               
-Paragraph date_deb = new Paragraph(selectedEvenement.getDate_debut().toString(), bodyFont);
-Paragraph adresse = new Paragraph(selectedEvenement.getLocalisation().toString(), bodyFont);
+    // Add a header to the document
+    Paragraph header = new Paragraph("TICKET D'ÉVÉNEMENT", titleFont);
+    header.setAlignment(Element.ALIGN_CENTER);
+    document.add(header);
 
-date_deb.setAlignment(Element.ALIGN_LEFT);
-adresse.setAlignment(Element.ALIGN_LEFT);
-// Add the table to the Document
+    // Add the event name and date to the document
+    Paragraph eventName = new Paragraph(selectedEvenement.getNom_event(), subtitleFont);
+    eventName.setAlignment(Element.ALIGN_CENTER);
+    document.add(eventName);
 
+    Paragraph eventDate = new Paragraph(selectedEvenement.getDate_debut().toString(), bodyFont);
+    eventDate.setAlignment(Element.ALIGN_CENTER);
+    document.add(eventDate);
 
-// Créer un nouveau paragraphe avec le texte souhaité et la police personnalisée
-Paragraph p = new Paragraph("Soyez le bienvenue le");
+    // Add the event location to the document
+    Paragraph eventLocationTitle = new Paragraph("Lieu de l'événement:", subtitleFont);
+    eventLocationTitle.setAlignment(Element.ALIGN_LEFT);
+    document.add(eventLocationTitle);
 
-// Ajouter le paragraphe au document
-document.add(p);
-document.add(date_deb);
-Paragraph a = new Paragraph("L'adresse: ");
-document.add(a);
-document.add(adresse);
-Paragraph q = new Paragraph("Scannez pour plus d'informations: ");
-pdfImage.scaleAbsolute(100f, 100f);
-document.add(pdfImage);
+    Paragraph eventLocation = new Paragraph(selectedEvenement.getLocalisation().toString(), bodyFont);
+    eventLocation.setAlignment(Element.ALIGN_LEFT);
+    document.add(eventLocation);
 
-a.setAlignment(Element.ALIGN_LEFT);
-q.setAlignment(Element.ALIGN_LEFT);
+    // Add the QR code to the document
+        com.itextpdf.text.Image qrCodeImage = generateQRCodeImage(selectedEvenement.toString(), 100, 100);
+    
+    document.add(qrCodeImage);
+    
 
-// Close the Document
+    // Add a footer to the document
+    Paragraph footer = new Paragraph("Merci d'avoir participé à cet événement.", bodyFont);
+    footer.setAlignment(Element.ALIGN_CENTER);
+    footer.setSpacingBefore(20f);
+    document.add(footer);
+
+    // Set the background color of the document
+    PdfContentByte canvas = writer.getDirectContent();
+    Rectangle rect = new Rectangle(document.getPageSize());
+    rect.setBackgroundColor(new BaseColor(214, 214, 214));
+    canvas.rectangle(rect);
+
 
 
                             
@@ -481,6 +545,8 @@ q.setAlignment(Element.ALIGN_LEFT);
                             } catch (DocumentException ex) {
                                 Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (IOException ex) {
+                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (WriterException ex) {
                                 Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
@@ -504,7 +570,31 @@ q.setAlignment(Element.ALIGN_LEFT);
 
         });
 
+       
+     
+       
+       
+       
+       
+       
+       
+       
+       
     }
+     public com.itextpdf.text.Image generateQRCodeImage(String data, int width, int height) throws WriterException, IOException, BadElementException {
+    QRCodeWriter writer = new QRCodeWriter();
+    BitMatrix bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, width, height);
+
+    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    for (int x = 0; x < width; x++) {
+        for (int y = 0; y < height; y++) {
+            image.setRGB(x, y, (int) (bitMatrix.get(x, y) ? Color.BLACK.getBrightness(): Color.WHITE.getBrightness()));
+        }
+    }
+com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(image, null) ;
+    return pdfImage ;
+
+}
 
     
 }

@@ -15,12 +15,13 @@
 
 <AnchorPane id="AnchorPane" onMouseClicked="#showSelectedEvent" prefHeight="791.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AffichageEventController">
    <children>
-      <TableView fx:id="EventsTv" layoutX="29.0" layoutY="150.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="557.0" prefWidth="371.0" style="-fx-background-color: 120;" AnchorPane.rightAnchor="844.0" AnchorPane.topAnchor="150.0">
+      <TableView fx:id="EventsTv" layoutX="29.0" layoutY="150.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="558.0" prefWidth="451.0" style="-fx-background-color: 120;" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="150.0">
         <columns>
           <TableColumn fx:id="nomTv" prefWidth="95.0" text="Nom" />
             <TableColumn fx:id="LieuTv" prefWidth="89.0" text="Lieu" />
-              <TableColumn fx:id="pdf" prefWidth="88.0" text="pdf" />
-             <TableColumn fx:id="delete" prefWidth="93.60003662109375" />
+              <TableColumn fx:id="pdf" prefWidth="88.0" text="Ticket" />
+             <TableColumn fx:id="delete" prefWidth="88.00006103515625" />
+        
             
            
         </columns>
@@ -59,7 +60,7 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="modifier" contentDisplay="CENTER" layoutX="764.0" layoutY="495.0" mnemonicParsing="false" onAction="#GoToEditEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="modifier" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="modifier" contentDisplay="CENTER" layoutX="798.0" layoutY="453.0" mnemonicParsing="false" onAction="#GoToEditEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="modifier" textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -109,11 +110,6 @@
            
          </children>
       </HBox>
-      <Button fx:id="qrcode" contentDisplay="CENTER" layoutX="561.0" layoutY="495.0" mnemonicParsing="false" onAction="#qrcode" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #454B1B;" text="Generer QrCode" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Times New Roman" size="14.0" />
-         </font>
-      </Button>
       <Label layoutX="596.0" layoutY="162.0" text="Date Debut">
          <font>
             <Font name="Times New Roman" size="14.0" />
@@ -123,6 +119,18 @@
             <Font name="Times New Roman" size="14.0" />
          </font></Label>
       <Button fx:id="FrontBT" contentDisplay="CENTER" layoutX="853.0" layoutY="718.0" mnemonicParsing="false" onAction="#GoToFront" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #454B1B;" text="Front" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="participer" contentDisplay="CENTER" layoutX="649.0" layoutY="453.0" mnemonicParsing="false" onAction="#participerEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="participer" textAlignment="CENTER" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
