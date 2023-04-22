@@ -77,9 +77,12 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.ByteArrayOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import static org.apache.commons.io.IOUtils.writer;
 
 
@@ -417,7 +420,7 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
         String dataString = stringBuilder.toString().trim();
 
         // Generate the QR code image
-        Image qrCodeImage = generateQRCode(dataString, 100, 100);
+        Image qrCodeImage = generateQRCode(dataString);
 
         // Display the QR code image
         ImageView imageView = new ImageView(qrCodeImage);
@@ -429,7 +432,7 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
 
     }
 
-    private Image generateQRCode(String data, int par, int par1) {
+    private Image generateQRCode(String data) {
         try {
             // Create a QR code writer
             QRCodeWriter writer = new QRCodeWriter();
@@ -467,7 +470,13 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
                             Evenement selectedEvenement = (Evenement) getTableView().getItems().get(getIndex());
                             // Create a new Document
                             Document document = new Document();
-
+ try {
+                              PdfWriter  writer = PdfWriter.getInstance(document, new FileOutputStream("Event.pdf"));
+                            } catch (FileNotFoundException ex) {
+                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (DocumentException ex) {
+                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         
 
 // Open the Document
@@ -477,23 +486,32 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
     Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLACK);
     Font bodyFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
- PdfWriter writer = null;
-                            try {
-                                writer = PdfWriter.getInstance(document, new FileOutputStream("Event.pdf"));
-                            } catch (FileNotFoundException ex) {
-                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (DocumentException ex) {
-                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
 
-                            try {
-                                  document.setPageSize(PageSize.A6);
-    document.setMargins(10, 10, 10, 10);
+                           
+try{
+                            
+                                  document.setPageSize(PageSize.A4);
+    document.setMargins(20, 20, 20, 20);
+    // Create a new Rectangle object
+Rectangle border = new Rectangle(document.getPageSize());
 
+// Set the border color and width
+border.setBorder(Rectangle.BOX);
+border.setBorderWidth(3);
+border.setBorderColor(BaseColor.GREEN);
+
+// Add the border to the document
+document.add(border);
+String imagePath = "C:\\Users\\sarah\\OneDrive\\Documents\\Pidev\\GestionEvent\\src\\Gui\\logoequipe.png";
+com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance(imagePath);
+logo.setAlignment(Element.ALIGN_LEFT);
+logo.scaleAbsolute(80f, 80f);
+document.add(logo);
     // Add a header to the document
     Paragraph header = new Paragraph("TICKET D'ÉVÉNEMENT", titleFont);
     header.setAlignment(Element.ALIGN_CENTER);
     document.add(header);
+    
 
     // Add the event name and date to the document
     Paragraph eventName = new Paragraph(selectedEvenement.getNom_event(), subtitleFont);
@@ -503,7 +521,8 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
     Paragraph eventDate = new Paragraph(selectedEvenement.getDate_debut().toString(), bodyFont);
     eventDate.setAlignment(Element.ALIGN_CENTER);
     document.add(eventDate);
-
+Paragraph es = new Paragraph("    ");
+document.add(es);
     // Add the event location to the document
     Paragraph eventLocationTitle = new Paragraph("Lieu de l'événement:", subtitleFont);
     eventLocationTitle.setAlignment(Element.ALIGN_LEFT);
@@ -512,11 +531,20 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
     Paragraph eventLocation = new Paragraph(selectedEvenement.getLocalisation().toString(), bodyFont);
     eventLocation.setAlignment(Element.ALIGN_LEFT);
     document.add(eventLocation);
-
+    Paragraph scan = new Paragraph("Scannez pour plus d'informations ! ");
     // Add the QR code to the document
-        com.itextpdf.text.Image qrCodeImage = generateQRCodeImage(selectedEvenement.toString(), 100, 100);
-    
-    document.add(qrCodeImage);
+ // Generate the QR code image
+                            String eventData = selectedEvenement.toString();
+                            Image qrCodeImage = generateQRCode(eventData);
+
+                            // Convert the QR code image to a com.itextpdf.text.Image object
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+ImageIO.write(SwingFXUtils.fromFXImage(qrCodeImage, null), "png", baos);
+com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(baos.toByteArray());  
+pdfImage.setAlignment(com.itextpdf.text.Element.ALIGN_LEFT);
+pdfImage.scaleAbsolute(100f, 100f);
+document.add(scan);
+    document.add(pdfImage);
     
 
     // Add a footer to the document
@@ -524,12 +552,21 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
     footer.setAlignment(Element.ALIGN_CENTER);
     footer.setSpacingBefore(20f);
     document.add(footer);
+String imagePath1 = "C:\\Users\\sarah\\OneDrive\\Documents\\Pidev\\GestionEvent\\src\\Gui\\Signature.png";
+com.itextpdf.text.Image sig = com.itextpdf.text.Image.getInstance(imagePath1);
+sig.setAlignment(Element.ALIGN_RIGHT);
+sig.scaleAbsolute(60f, 60f);
+document.add(sig);
+ Paragraph id = new Paragraph("ID ticket: " +selectedEvenement.getId());
+    id.setAlignment(Element.ALIGN_LEFT);
+    id.setSpacingBefore(10f);
+    document.add(id);
 
     // Set the background color of the document
-    PdfContentByte canvas = writer.getDirectContent();
+/*   PdfContentByte canvas = writer.getDirectContent();
     Rectangle rect = new Rectangle(document.getPageSize());
     rect.setBackgroundColor(new BaseColor(214, 214, 214));
-    canvas.rectangle(rect);
+    canvas.rectangle(rect);*/
 
 
 
@@ -538,8 +575,6 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
                             } catch (DocumentException ex) {
                                 Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (IOException ex) {
-                                Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (WriterException ex) {
                                 Logger.getLogger(AffichageEventController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
@@ -581,7 +616,7 @@ Evenement data = EventsTv.getSelectionModel().getSelectedItem();
     BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
-            image.setRGB(x, y, (int) (bitMatrix.get(x, y) ? Color.BLACK.getBrightness(): Color.WHITE.getBrightness()));
+            image.setRGB(x, y, (int) (bitMatrix.get(x, y) ? Color.BLACK.getRed(): Color.WHITE.getRed()));
         }
     }
 com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(image, null) ;

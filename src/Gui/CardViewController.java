@@ -178,8 +178,6 @@ if(rs1.next()){
     System.out.println(Events);
 
 
-             
-    
 }
 
  

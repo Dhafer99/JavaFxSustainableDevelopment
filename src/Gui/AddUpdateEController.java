@@ -301,9 +301,7 @@ eventAddImg.setImage(null);
                     Message message = Message.creator(new PhoneNumber("+21629228940"),
         new PhoneNumber("+15673717088"), 
         "a New Don has been added").create();
-
-
-           
+     
     }
 public void receiveObject(Evenement d) {
         this.d=d;
@@ -328,13 +326,7 @@ tfdateFin.setValue(localDateF);
        
    eventAddImg.setImage(new Image("file:src\\uploads\\"+d.getImage_event()+".png"));
    
-   
-   
-    
-   
-   
-   
-   
+ 
     }
     @FXML
     private void ModifierEvent(ActionEvent event) {
