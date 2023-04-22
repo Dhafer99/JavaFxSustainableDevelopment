@@ -187,17 +187,19 @@
                   <Insets left="30.0" right="30.0" />
                </opaqueInsets>
             </HBox>
-            <ScrollPane fx:id="Change" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="Change" pannable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background: #222222; -fx-border-color: #ffffff" VBox.vgrow="ALWAYS">
                <content>
-                  <GridPane fx:id="citiesGrid" styleClass="dark-background" stylesheets="@style.css">
+                  <GridPane fx:id="citiesGrid" prefHeight="0.0" prefWidth="0.0" styleClass="dark-background" stylesheets="@style.css">
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
                </content>
                <styleClass>
-                  <String fx:value="dark-background" />
-                  <String fx:value="dark-background" />
+                  <String fx:value="decrement-button" />
+                  <String fx:value="increment-button" />
+                  <String fx:value="shadow" />
+                  <String fx:value="corner" />
                </styleClass>
             </ScrollPane>
          </children>

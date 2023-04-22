@@ -74,7 +74,9 @@ private Don don;
         Email.setText(don.getEmail());
         Numero.setText(Integer.toString(don.getNumero()));
    img.setImage(new Image("file:src\\uploads\\"+don.getImage()+".png"));
-   if (don.getCategory_d_id()== 0) {
+
+        
+        if (don.getCategory_d_id()== 0) {
     categ.setText("Catégorie non définie");
     System.out.println("err");
     return;

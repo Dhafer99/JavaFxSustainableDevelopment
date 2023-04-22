@@ -180,7 +180,8 @@ private void updateUI(ObservableList<Don> donList) throws SQLException {
             Pane pane = fxmlLoader.load();
             CardViewController cardViewController = fxmlLoader.getController();
             cardViewController.setData(d);
-
+CardViewController controller = fxmlLoader.getController();
+            controller.receiveObject(d);
             if (column == 4) {
                 column = 0;
                 ++row;

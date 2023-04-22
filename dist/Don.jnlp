@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Don.jar" size="32576763" download="eager" />
+    <jar href="Don.jar" size="37970509" download="eager" />
     <jar href="lib\charm-down-core-3.8.6.jar" size="10396" download="eager" />
     <jar href="lib\charm-down-core-ios-3.8.6.jar" size="2710" download="eager" />
     <jar href="lib\charm-down-plugin-storage-3.8.6.jar" size="1752" download="eager" />

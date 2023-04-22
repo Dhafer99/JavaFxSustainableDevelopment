@@ -42,6 +42,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -795,6 +796,7 @@ private File file;
  "3asba"
 		}; // Add your list of bad words
 private Stage primaryStage; 
+
     /**
      * Initializes the controller class.
      */
@@ -951,6 +953,7 @@ eventAddImg.setImage(null);
                     Message message = Message.creator(new PhoneNumber("+21629228940"),
         new PhoneNumber("+15673717088"), 
         "a New Don has been added").create();
+                    
 }
           
 
