@@ -65,7 +65,6 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label />
                   <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supp" styleClass="bottom" stylesheets="@style.css" text="Supprimer" />
                   <Label />
                   <Button fx:id="ToUpdate" mnemonicParsing="false" onAction="#ToUpdate" styleClass="bottom" stylesheets="@style.css" text="Modifier" />
@@ -76,6 +75,8 @@
                   </Rating>
                   <Label />
                   <Button fx:id="submit" mnemonicParsing="false" onAction="#submit" text="Valider" />
+                  <Button mnemonicParsing="false" onAction="#post" text="Facebook" />
+                  <Label />
                </children>
             </VBox>
          </children>

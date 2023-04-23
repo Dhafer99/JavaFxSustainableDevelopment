@@ -1,5 +1,8 @@
 package gui;
 
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.types.FacebookType;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -8,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import entities.Annonces;
 import java.io.IOException;
+
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +20,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+
 import org.controlsfx.control.Rating;
 import services.AnnonceService;
+
+
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Parameter;
+import com.restfb.Version;
+import com.restfb.types.FacebookType;
 
 
 public class CardviewController implements Initializable {
@@ -43,6 +56,9 @@ public class CardviewController implements Initializable {
     private Rating rating ; 
     @FXML
     private Button submit;
+    
+    @FXML 
+    private Button post ; 
    
     /**
      * Initializes the controller class.
@@ -103,5 +119,14 @@ public class CardviewController implements Initializable {
         
         
     }
-    
+
+    @FXML
+    private void post(ActionEvent event) throws MalformedURLException, IOException {
+        Version apiVersion = Version.VERSION_16_0;
+        
+String accessToken = "EAADiVf1eruMBAJRv3sYkFJqiGjv7udWV5xsihToAMc12vICTz2pdPXW3yDhku1036bSQBOv1T6QnZB9iw4ZAeX9mgf9jfcVO0IFPl1n7usBpwrccwEdNgsAOZBw5ZBzye8dM511JoZC3fwl2zA4HgH7aJ4axZAMLZCcph2QDtb8PkSo5rElImqM4f5KpiK8TI54vtI3vpwIlgCiywN8YWeM";
+ FacebookClient fbclient = new DefaultFacebookClient(accessToken,apiVersion);
+FacebookType response = fbclient.publish("me/feed",FacebookType.class,Parameter.with("message","text"));
+        System.out.println("fb.com/"+response.getId());
+    }   
 }
