@@ -17,7 +17,32 @@ public class Association {
  private String adresse;
  private int CodePostal;
  private String ville;   
+ String image ;
 
+    public Association(int id, String nom, int numero, String mail, String adresse, int CodePostal, String ville, String image, categorieA categorie) {
+        this.id = id;
+        this.nom = nom;
+        this.numero = numero;
+        this.mail = mail;
+        this.adresse = adresse;
+        this.CodePostal = CodePostal;
+        this.ville = ville;
+        this.image = image;
+        this.categorie = categorie;
+    }
+
+    public Association(String nom, int numero, String mail, String adresse, int CodePostal, String ville, String image, categorieA categorie) {
+        this.nom = nom;
+        this.numero = numero;
+        this.mail = mail;
+        this.adresse = adresse;
+        this.CodePostal = CodePostal;
+        this.ville = ville;
+        this.image = image;
+        this.categorie = categorie;
+    }
+ 
+ 
     public Association(int id, String nom, int numero, String mail, String adresse, int CodePostal, String ville, categorieA categorie) {
         this.id = id;
         this.nom = nom;
@@ -126,6 +151,14 @@ public class Association {
 
     public void setCategorie(categorieA categorie) {
         this.categorie = categorie;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

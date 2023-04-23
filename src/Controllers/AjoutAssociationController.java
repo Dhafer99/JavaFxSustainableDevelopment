@@ -20,9 +20,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.function.UnaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.PauseTransition;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,6 +44,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 import javax.imageio.ImageIO;
 /**
  * FXML Controller class
@@ -64,12 +67,16 @@ public class AjoutAssociationController implements Initializable {
     private TextField tfville;
 private File file; 
     private String lien="";
+     public String imagePath="";
     public static final String ACCOUNT_SID = "AC7baee01e459dc347a9e9f0a9b8f744c5";
   public static final String AUTH_TOKEN = "89da9ac629f6cf7374346a905c91de41";
   
   private categeListdata categeListdata = new categeListdata();
     @FXML
     private ChoiceBox<String> combo;
+    @FXML
+    private ImageView eventAddImg;
+   
     /**
      * Initializes the controller class.
      */
@@ -122,7 +129,7 @@ for (categorieA categoriePromotion : categoriePromotions) {
     observableList.add(categoriePromotion.toString()); 
 }
 combo.setItems(observableList);
-
+// end
     } 
     /*
     private void contole(Association t ){
@@ -152,51 +159,7 @@ combo.setItems(observableList);
    
     @FXML
     private void Ajout(MouseEvent event) { 
-        /*
-   categorieA asso=new categorieA(1,"khalil"); // instance
-           String nom_categ = (String) combo.getValue(); // te5ou ell valeur mill combo box 
-        categorieService cdao=new categorieService(); // instance service categorie 
-       // asso= cdao.getOneByName(nom_categ); // 
-    String nom=tfnom.getText();
-    String numero=tfnumero.getText();
-    String mail=tfmail.getText();
-    String adresse=tfadresse.getText();
-    String code_postal=tfcode_postal.getText();
-    String ville=tfville.getText();
-  
-    
-  
-    
-   // public Promotion(int id, Date start_date, Date end_date, float pourcentage, Categorie categorie, Produit prodtuit)
-    //Association p=new Association(24,nom,Integer.parseInt(numero),mail,adresse,Integer.parseInt(code_postal),ville,asso);
-   AssociationService promotiondao=new AssociationService();
-   Association p=new Association();
-   p.setAdresse(adresse);
-   p.setCodePostal(Integer.parseInt(code_postal));
-   p.setMail(mail);
-   p.setNom(nom);
-   p.setNumero(Integer.parseInt(numero));
-   p.setVille(ville);
-   p.setCategorie(asso);
-    promotiondao.insert(p);
-    System.out.println(p.getId());
-    System.out.println(p.getAdresse());
-    System.out.println(p.getCodePostal());
-    System.out.println(p.getMail());
-    
-    JOptionPane.showMessageDialog(null, "ajouter un event   !");
-            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-                    Message message = Message.creator(new PhoneNumber("+21698773438"),
-        new PhoneNumber("++12764098996"), 
-        "une nouvelle association est ajouter  ").create();
-                    
-                    
-    promotiondao.insert(p);
-    System.out.println(p.getId());
-    System.out.println(p.getAdresse());
-    System.out.println(p.getCodePostal());
-    System.out.println(p.getMail());
-*/
+      
    if(ValidateEmptyForm(tfnom,tfmail)){
         
         
@@ -212,24 +175,94 @@ categorieA asso; // instance
     String adresse=tfadresse.getText();
     String code_postal=tfcode_postal.getText();
     String ville=tfville.getText();
-   
+    String image =lien;   
+   // String image=pic.
     
     
     
    // public Promotion(int id, Date start_date, Date end_date, float pourcentage, Categorie categorie, Produit prodtuit)
-    Association p=new Association(nom,Integer.parseInt(numero),mail,adresse,Integer.parseInt(code_postal),ville,asso);
+    Association p=new Association(nom,Integer.parseInt(numero),mail,adresse,Integer.parseInt(code_postal),image,ville,asso);
     AssociationService promotiondao=new AssociationService();
     
-    
+   // raja3ha fill validation 
+   
+   /*
     JOptionPane.showMessageDialog(null, "ajouter un event   !");
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                     Message message = Message.creator(new PhoneNumber("+21698773438"),
         new PhoneNumber("+12764098996"), 
         "une nouvelle association est ajouter  ").create();
+       */             
                     
-                    
-    promotiondao.insert(p);        
+    promotiondao.insert(p);   
+    String message1 = "une nouvelle association est ajouter.";
+       promotiondao.notifyUser(message1);
+
     }
+  
+
+    }
+
+    @FXML
+    private void UploadImageActionPerformed(ActionEvent event) {
+        
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilterJPG
+                = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterjpg
+                = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
+        FileChooser.ExtensionFilter extFilterPNG
+                = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
+        FileChooser.ExtensionFilter extFilterpng
+                = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
+        fileChooser.getExtensionFilters()
+                .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
+        //Show open file dialog
+        file = fileChooser.showOpenDialog(null);
+
+        try {
+            BufferedImage image = ImageIO.read(file);
+            WritableImage imagee = SwingFXUtils.toFXImage(image, null);
+            eventAddImg.setImage(imagee);
+            // PauseTransition pause = new PauseTransition(Duration.seconds(8));
+        
+        // set the action to be performed when the pause is finished
+       /*     pause.setOnFinished(Event -> {
+            // your code to be executed after 5 seconds
+eventAddImg.setImage(null);
+        System.out.println("8 seconds have passed");
+        });
+        */
+        // start the pause
+       // pause.play();
+        
+        // your code to be executed immediately
+        System.out.println("Waiting for 8 seconds...");
+    
+            eventAddImg.setFitWidth(200);
+            eventAddImg.setFitHeight(200);
+            eventAddImg.scaleXProperty();
+            eventAddImg.scaleYProperty();
+            eventAddImg.setSmooth(true);
+            eventAddImg.setCache(true);                           
+
+        try {
+            // save image to PNG file
+            this.lien=UUID.randomUUID().toString();
+            File f=new File("src\\uploads\\" + this.lien + ".png");
+            System.out.println(f.toURI().toString());
+            ImageIO.write(image, "PNG",f);
+                       
+        } catch (IOException ex) {
+            Logger.getLogger(AjoutAssociationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        } catch (IOException ex) {
+            Logger.getLogger("ss");
+        
+        
     }
     
 }
+    }

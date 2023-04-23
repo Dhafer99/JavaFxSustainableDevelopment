@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import static Controllers.AjoutAssociationController.ACCOUNT_SID;
@@ -13,7 +8,12 @@ import Utils.MyCnx;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,7 +26,16 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterAttributes;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,6 +43,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,6 +92,8 @@ private listdata Ls = new listdata();
     private AnchorPane root;
     
     AssociationService ps = new AssociationService();
+    @FXML
+    private Button nf;
     /**
      * Initializes the controller class.
      */
@@ -225,7 +237,68 @@ private listdata Ls = new listdata();
         
         
     }
+
+    @FXML
+    private void Excel(MouseEvent event) throws IOException {
+           Writer writer = null;
+                AssociationService sv = new AssociationService();
+                ObservableList<Association> list = (ObservableList<Association>) sv.displayAll();
+         try {
+            //badel path fichier excel
+            //C:\Users\Fares CHAKROUN\Desktop\PIDEVjava
+            File file = new File("C:\\Users\\Fares CHAKROUN\\Desktop\\PIDEVjava\\Association.csv");
+            writer = new BufferedWriter(new FileWriter(file));
+            
+            for (Association ev : list) {
+
+                String text = ev.getNom()+" | " +ev.getNumero()+ " | " + ev.getMail()+ " | "+ev.getCodePostal()+" | "+ev.getVille()+ "\n";
+                System.out.println(text);
+                writer.write(text);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        finally {
+            writer.flush();
+             writer.close();
+             Alert alert= new Alert(Alert.AlertType.INFORMATION);
+             alert.setTitle("excel");
+        alert.setHeaderText(null);
+        alert.setContentText("!!!excel exported!!!");
+        alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void PDF(MouseEvent event) {
+    }
+
+    @FXML
+    private void Imprimer(MouseEvent event) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+         printNode(tabAssociation);
+    }
+public static void printNode(final Node node) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+        PrinterAttributes attr = printer.getPrinterAttributes();
+        PrinterJob job = PrinterJob.createPrinterJob();
+        double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
+        double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
+        Scale scale = new Scale(scaleX, scaleY);
+        node.getTransforms().add(scale);
+        
+        if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
+            boolean success = job.printPage(pageLayout, node);
+            if (success) {
+                job.endJob();
+                
+            }
+        }
+        node.getTransforms().remove(scale);
+        
+    }
+    @FXML
+    private void notif(MouseEvent event) {
+    }
       
         }
-
-

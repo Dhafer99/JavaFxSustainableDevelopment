@@ -51,6 +51,33 @@ AssociationService s= new AssociationService();
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      /*  try {
+            List<Association> personnes = s.displayAll();
+       //    System.out.println(personnes+"******");
+            NbDon.setText(String.valueOf(personnes.size()));
+            int column=0;
+            int row = 1;
+            for (Association d :personnes ){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/Views/CardView.fxml"));
+               
+               
+                CardViewController cardViewController = fxmlLoader.getController();
+                cardViewController.setData(d);
+                Pane pane = fxmlLoader.load();
+
+                if(column == 3){
+                column = 0;
+                ++row;
+                }
+                citiesGrid.add(pane, column++, row);
+                GridPane.setMargin(pane,new Insets(20,20,20,20));
+            }
+       
+        } catch (IOException ex) {
+            Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+*/
         try {
             List<Association> personnes = s.displayAll();
             NbDon.setText(String.valueOf(personnes.size()));
@@ -76,6 +103,7 @@ AssociationService s= new AssociationService();
             Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+      
     }    
 
  
@@ -87,6 +115,10 @@ AssociationService s= new AssociationService();
         Parent root = loader.load();
         btnass.getScene().setRoot(root);
 
+    }
+
+    @FXML
+    private void back(MouseEvent event) {
     }
 
  

@@ -12,6 +12,7 @@ import Utils.MyCnx;
 import Views.listdata;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -29,8 +30,6 @@ public class AfficherAssociationController implements Initializable {
 
     @FXML
     private TableView<Association> tabAssociation;
-    @FXML
-    private TableColumn<Association, Integer> colid;
     @FXML
     private TableColumn<Association, String> colnom;
     @FXML
@@ -95,6 +94,15 @@ public class AfficherAssociationController implements Initializable {
         delete();
    tabAssociation.getItems().removeAll(tabAssociation.getSelectionModel().getSelectedItem());
    System.out.println(tabAssociation); 
+        
+    }
+
+    @FXML
+    private void excel(ActionEvent event) {
+       // importXLToDB = new Button("Import XL TO DB");
+        
+        
+        
         
     }
 

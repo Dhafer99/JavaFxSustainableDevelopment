@@ -114,5 +114,15 @@ public class UIController implements Initializable {
         Parent root2 = loader.load();
         FrontBtn.getScene().setRoot(root2);
     }
+
+    @FXML
+    private void web(MouseEvent event) throws IOException {
+          try {
+           fxml = FXMLLoader.load(getClass().getResource("/Views/web.fxml"));
+           root.getChildren().removeAll();
+           root.getChildren().setAll(fxml);
+        } catch (IOException ex) {
+        }   
+    }
     
 }

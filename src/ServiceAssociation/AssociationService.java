@@ -7,6 +7,10 @@ package ServiceAssociation;
 
 import Models.Association;
 import Utils.MyCnx;
+import java.awt.AWTException;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import static java.awt.event.PaintEvent.UPDATE;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +23,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import static jdk.nashorn.internal.runtime.Debug.id;
 import static jdk.nashorn.internal.runtime.PropertyDescriptor.SET;
 
@@ -51,7 +56,7 @@ public class AssociationService implements InAssociation<Association> {
     public void insert(Association o) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     // INSERT INTO `association`(`id`, `categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`) VALUES 
-    String req = "INSERT INTO association(`id`,`categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`) VALUES  ('" + o.getId()+ "', '" + o.getCategorie().getId()  + "', '" + o.getNom() + "', '" + o.getNumero() + "', '" + o.getMail() + "', '" + o.getAdresse() + "', '" + o.getCodePostal() +"', '" + o.getVille() + "')";
+    String req = "INSERT INTO association(`id`,`categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`) VALUES  ('" + o.getId()+ "', '" + o.getCategorie().getId()  + "', '" + o.getNom() + "', '" + o.getNumero() + "', '" + o.getMail() + "', '" + o.getAdresse() + "', '" + o.getCodePostal() +"', '" + o.getVille() + o.getImage()+ "')";
          
          try {
             st.executeUpdate(req);
@@ -107,7 +112,7 @@ public class AssociationService implements InAssociation<Association> {
               p.setAdresse(rs.getString("adresse"));
               p.setCodePostal(rs.getInt("code_postal"));
               p.setVille(rs.getString("ville"));
-              
+               p.setVille(rs.getString("image"));
                 list.add(p);
             }          
         } catch (SQLException ex) {
@@ -135,7 +140,7 @@ public class AssociationService implements InAssociation<Association> {
               p.setAdresse(rs.getString("adresse"));
               p.setCodePostal(rs.getInt("CodePostal"));
               p.setVille(rs.getString("ville"));
-                
+                 p.setVille(rs.getString("image"));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(AssociationService.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,7 +164,7 @@ public class AssociationService implements InAssociation<Association> {
                 + "adresse = ?,"
                 + "code_postal = ?,"
                 + "ville = ?"
-               
+                 + "image = ?"
                 +" where mail=?";
 
         PreparedStatement pre;
@@ -173,6 +178,7 @@ public class AssociationService implements InAssociation<Association> {
         pre.setInt(5, p.getCodePostal());
         pre.setString(6, p.getVille());
         pre.setString(7, p.getMail());
+        pre.setString(8, p.getImage());
         pre.executeUpdate();
         return true ;
         } catch (SQLException ex) {
@@ -190,6 +196,29 @@ public class AssociationService implements InAssociation<Association> {
        
        
    }
+      
+      public void notifyUser(String message) {
+        if (SystemTray.isSupported()) {
+            try {
+                // Initialiser SystemTray
+                SystemTray tray = SystemTray.getSystemTray();
+
+                // Créer une icône pour la notification
+                java.awt.Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
+                TrayIcon trayIcon = new TrayIcon(image, "Notification");
+
+                // Ajouter l'icône au SystemTray
+                tray.add(trayIcon);
+
+                // Afficher la notification
+                trayIcon.displayMessage("Notification", message, TrayIcon.MessageType.INFO);
+            } catch (AWTException e) {
+                System.err.println("Erreur lors de l'initialisation du SystemTray: " + e);
+            }
+        } else {
+            System.out.println("SystemTray n'est pas pris en charge");
+        }
+    }
     
 }
     
