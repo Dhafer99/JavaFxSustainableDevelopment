@@ -53,7 +53,9 @@ private Don don;
     @FXML
     private Label categ;
      HashMap<String, String> categoryUnits = new HashMap<>();
-
+    @FXML
+    private Button ClaimBtn;
+private String aa;
     /**
      * Initializes the controller class.
      */
@@ -120,10 +122,21 @@ img.setFitHeight(250);
     private void delete(ActionEvent event) throws SQLException, IOException {
  
         ps.supprimer(don);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         DeleteBtn.getScene().setRoot(root);
     }
-     
+     @FXML
+private void claim(ActionEvent event) throws SQLException, IOException {
+    int originalQuantity = don.getQuantite();
+    int newQuantity = (int) (originalQuantity * 0.9); // decrease quantity by 10%
+    don.setQuantite(newQuantity);
+    ps.modifier(don);
+    if (newQuantity <= 0) {
+        delete(event);
+    } else {
+        Quantite.setText(Integer.toString(newQuantity));
+    }
+}
 }

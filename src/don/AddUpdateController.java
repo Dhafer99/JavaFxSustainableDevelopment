@@ -945,7 +945,7 @@ eventAddImg.setImage(null);
                  p.setCategory_d_id(category);
                    se.ajouter(p);
                    JOptionPane.showMessageDialog(null, "Don ajouté !");
-                      FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+                      FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         Insert.getScene().setRoot(root);
@@ -997,7 +997,7 @@ public void receiveObject(Don d) {
             se.modifier(p);
 
             JOptionPane.showMessageDialog(null, "Don modifié !");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
             SampleController aec = loader.getController();
             Parent root = loader.load();
             updateB.getScene().setRoot(root);

@@ -30,6 +30,10 @@ public void start(Stage stage) throws Exception {
         root = FXMLLoader.load(getClass().getResource("Operation.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMinWidth(1920);
+        stage.setMinHeight(1000);
+        stage.setMaxWidth(1920);
+        stage.setMaxHeight(1000);
         stage.show();
     } catch (IOException e) {
         System.err.println("Error loading FXML file: " + e.getMessage());

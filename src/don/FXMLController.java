@@ -124,6 +124,10 @@ private final ObservableList<Don> eventList = FXCollections.observableArrayList(
     private Button FrontBtn;
     @FXML
     private Button categoryBtn;
+    @FXML
+    private Button test;
+    @FXML
+    private PieChart pieChart;
    
     public int getId() {
         return id;
@@ -374,10 +378,27 @@ p.setId(id);
     }
     @FXML
 private void Chart (ActionEvent event) throws   IOException {
-  FXMLLoader loader = new FXMLLoader(getClass().getResource("Chart.fxml"));
-        ChartController aec = loader.getController();
-        Parent root = loader.load();
-        chartbtn.getScene().setRoot(root);
+ try {
+            ServiceDon se = new ServiceDon();
+            
+            List<Entities.Don> donations = se.getAllDonations();
+            
+            int totalQuantity = donations.stream().mapToInt(Entities.Don::getQuantite).sum();
+            
+            for (Entities.Don don : donations) {
+                String name = don.getNameD();
+                int quantity = don.getQuantite();
+                double percentage = ((double) quantity / totalQuantity) * 100;
+                
+                String label = String.format("%s (%d, %.2f%%)", name, quantity, percentage);
+                PieChart.Data data = new PieChart.Data(label, quantity / (double) percentage);
+                pieChart.getData().add(data);
+                pieChart.setStyle("-fx-label-text-fill: #FFFFFF;");
+                pieChart.setLabelLineLength(10);
+               
+            }   } catch (SQLException ex) {
+            Logger.getLogger(ChartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
 }
     @FXML
@@ -394,6 +415,14 @@ private void Front (ActionEvent event) throws IOException{
         SampleController aec = loader.getController();
         Parent root = loader.load();
         categoryBtn.getScene().setRoot(root);  
+    }
+
+    @FXML
+    private void test(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+SampleController aec = loader.getController();
+Parent root = loader.load();
+test.getScene().setRoot(root);
     }
     
 }

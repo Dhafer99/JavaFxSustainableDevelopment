@@ -166,9 +166,9 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="126.0" prefWidth="154.0">
                <children>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/icons8_complaint_80px.png" />
+                        <Image url="@../img/icons8_complaint_50px.png" />
                      </image>
                   </ImageView>
                   <Label contentDisplay="RIGHT" prefHeight="22.0" prefWidth="96.0" text="Reclamation" textFill="#0cd11a">
