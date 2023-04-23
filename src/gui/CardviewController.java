@@ -8,13 +8,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import entities.Annonces;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.Rating;
 import services.AnnonceService;
+
 
 public class CardviewController implements Initializable {
 
@@ -35,8 +38,12 @@ public class CardviewController implements Initializable {
     Annonces d = new Annonces();
     @FXML
     private Button ToUpdate;
+    
+    @FXML
+    private Rating rating ; 
+    @FXML
+    private Button submit;
    
-
     /**
      * Initializes the controller class.
      */
@@ -63,7 +70,7 @@ public class CardviewController implements Initializable {
         annonce=d;
     }
     
-    
+   
     
 
     @FXML
@@ -84,6 +91,17 @@ public class CardviewController implements Initializable {
         ToUpdate.getScene().setRoot(root);
     updateAnnonceController controller = loader.getController();
     controller.receiveObject(d);
+    }
+
+    @FXML
+    private void submit(ActionEvent event) throws SQLException {
+        d.setNombre_etoiles((int) rating.getRating());
+        System.out.println("Rating given by user :" + rating.getRating());
+        AnnonceService sv = new AnnonceService();
+        sv.rating(d);
+        
+        
+        
     }
     
 }

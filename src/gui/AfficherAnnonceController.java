@@ -94,6 +94,7 @@ public class AfficherAnnonceController implements Initializable {
        
        // image
       
+      
     }   
     
     public void affiche(){

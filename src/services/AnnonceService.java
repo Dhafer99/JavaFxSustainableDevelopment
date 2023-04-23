@@ -176,12 +176,30 @@ public class AnnonceService implements Iservice<Annonces> {
             System.err.println(ex.getMessage());
         }
         return false;
-        
-        
-        
-        
-        
+           
 
     }
+    
+    
+     @Override
+    public boolean rating(Annonces o) throws SQLException {
+        String req = "UPDATE annonces SET nombre_etoiles=? WHERE id=?";
+          Connection pst = DataBase.getInstance().getConnection();
+            PreparedStatement pre;
+            pre = pst.prepareStatement(req);
+
+            
+            pre.setInt(1, o.getNombre_etoiles());
+            pre.setInt(2,o.getId() );
+            
+        
+
+            pre.executeUpdate();
+            System.out.println("Annonce modifiée !");
+
+
+        return false;
+    }
+    
 
 }

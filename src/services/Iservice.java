@@ -5,6 +5,8 @@
  */
 package services;
 
+import entities.Annonces;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ public interface Iservice <a>{
     public void delete(a o);
     public List<a> displayAll();
     public a displayById(int id);
+    public boolean rating(Annonces o) throws SQLException ;
     
     public boolean update(a os);
 }

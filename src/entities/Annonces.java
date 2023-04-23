@@ -15,6 +15,7 @@ public class Annonces {
      private int id;
     private String adresse,description,image;
             private String date_publication;
+            private int nombre_etoiles; 
  public Categorie categorie_id ;    
  
     
@@ -34,6 +35,17 @@ public class Annonces {
         this.date_publication = date_publication;
         this.categorie_id = categorie_id;
     }
+
+    public int getNombre_etoiles() {
+        return nombre_etoiles;
+    }
+
+    public void setNombre_etoiles(int nombre_etoiles) {
+        this.nombre_etoiles = nombre_etoiles;
+    }
+    
+    
+    
 
     public Annonces(String adresse, String description, String image, String date_publication, Categorie categorie_id) {
         this.adresse = adresse;

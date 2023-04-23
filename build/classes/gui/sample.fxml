@@ -147,7 +147,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="NbDon" prefHeight="50.0" prefWidth="143.0" text="25 Don" textFill="#676767">
+                        <Label fx:id="NbAnnonces" prefHeight="50.0" prefWidth="143.0" text="25 Annonces" textFill="#676767">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -155,7 +155,7 @@
                      </children>
                   </VBox>
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" styleClass="bottom" stylesheets="@style.css" text="Filter" textFill="WHITE">
+                  <Button fx:id="filter" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" styleClass="bottom" stylesheets="@style.css" text="Filter" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -165,7 +165,7 @@
                   <Insets left="30.0" right="30.0" />
                </opaqueInsets>
             </HBox>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="dark-background" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="NbDon" prefHeight="200.0" prefWidth="200.0" styleClass="dark-background" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                <content>
                   <GridPane fx:id="citiesGrid" styleClass="dark-background" stylesheets="@style.css">
                     <rowConstraints>
