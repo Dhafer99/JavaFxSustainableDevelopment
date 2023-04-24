@@ -134,7 +134,7 @@ if (rs.next()) {
         }
 
         // Display a notification
-        trayIcon.displayMessage("Notification", "Reclamation Deleted in "+rec.getCategorie_rec().getNom()+" categorie", TrayIcon.MessageType.INFO);
+        trayIcon.displayMessage("Notification", "Reclamation supprimée dans la categorie "+rec.getCategorie_rec().getNom(), TrayIcon.MessageType.INFO);
     
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample.fxml"));
         SampleController aec = loader.getController();
