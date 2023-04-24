@@ -117,15 +117,19 @@ if(rs1.next()){
      Events.put(rs1.getInt("evenement_id"),rs1.getInt("user_id"));
  
 }
- if(Events.containsKey(d.getId()) && Events.containsValue(1))
+
+/*for(Events.Entry<Integer, Integer>) entry : Events.entrySet()
+        {
+            System.out.println(entry.getKey());
+        }*/
+
+if(Events.containsKey(d.getId()) && Events.containsValue(1))
     {
         participer.setVisible(false);
         pdf.setVisible(true);
         
     }
  
- 
-    //System.out.println(Events);
 
               
      } catch (SQLException ex) {
@@ -331,12 +335,12 @@ if(rs.next()){
            
 
             // Get the PdfContentByte instance
-            imageE.scaleAbsolute(80f, 80f);
+            imageE.scaleAbsolute(100f, 100f);
 imageE.setAlignment(Element.ALIGN_CENTER);
             // Add the background image to the canvas
             
 
-            String bgImagePath = "C:\\Users\\sarah\\OneDrive\\Documents\\Pidev\\GestionEvent\\src\\Gui\\bg.jpg";
+            String bgImagePath = "C:\\Users\\sarah\\OneDrive\\Documents\\Pidev\\GestionEvent\\src\\Gui\\bg.png";
 com.itextpdf.text.Image bgImage = com.itextpdf.text.Image.getInstance(bgImagePath);
 
 // Get the PdfContentByte instance
@@ -351,7 +355,7 @@ canvas.addImage(bgImage);
             
           
 
-            // Add the logo to the document
+          // Add the logo to the document
             String logoImagePath = "C:\\Users\\sarah\\OneDrive\\Documents\\Pidev\\GestionEvent\\src\\Gui\\logoequipe.png";
             com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance(logoImagePath);
             logo.setAlignment(Element.ALIGN_LEFT);
@@ -378,13 +382,11 @@ document.add(es);
     user.setAlignment(Element.ALIGN_LEFT);
     document.add(user);
     // Add the event location to the document
-    Paragraph eventLocationTitle = new Paragraph("Lieu de l'événement:", subtitleFont);
+    Paragraph eventLocationTitle = new Paragraph("Lieu de l'événement: " +d.getLocalisation(), subtitleFont);
     eventLocationTitle.setAlignment(Element.ALIGN_LEFT);
     document.add(eventLocationTitle);
 
-    Paragraph eventLocation = new Paragraph(d.getLocalisation().toString(), bodyFont);
-    eventLocation.setAlignment(Element.ALIGN_LEFT);
-    document.add(eventLocation);
+    
     document.add(imageE);
     Paragraph scan = new Paragraph("Scannez pour plus d'informations ! ");
     // Add the QR code to the document

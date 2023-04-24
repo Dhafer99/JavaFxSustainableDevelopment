@@ -83,7 +83,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import static org.apache.commons.io.IOUtils.writer;
+
 
 
 
@@ -252,10 +252,10 @@ public class AffichageEventController implements Initializable {
     
     @FXML
     private void GoToFront(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         
         Parent root = loader.load();
-        SampleController c = loader.getController();
+        Controller c = loader.getController();
         FrontBT.getScene().setRoot(root);
           
     }
