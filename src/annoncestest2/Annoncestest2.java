@@ -31,8 +31,9 @@ public class Annoncestest2 extends Application {
         primaryStage.setTitle("Hello World");
         
 //      Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/sample2.fxml"));
-   Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/AfficherAnnonce.fxml"));
+  // Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/AfficherAnnonce.fxml"));
      // Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/categorie.fxml"));
+      Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/AjoutUser.fxml"));
      
      
         Scene scene = new Scene(parentPage);

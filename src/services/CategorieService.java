@@ -118,6 +118,7 @@ public class CategorieService implements INCategorie<Categorie>  {
     return p; 
     }
 
+    
    
 
     @Override
@@ -162,5 +163,7 @@ public class CategorieService implements INCategorie<Categorie>  {
     }
     return categorie;
     }
+    
+    
    
 }

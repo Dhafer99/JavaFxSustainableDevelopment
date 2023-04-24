@@ -31,6 +31,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -38,8 +39,14 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import services.CategorieService;
+import services.UserService;
 
 public class Controller implements Initializable {
+    
+   UserService userS= new UserService();
+   CategorieService cat= new CategorieService();
+
     private GridPane citiesGrid;
 AnnonceService s= new AnnonceService();
     private Label NbDon;
@@ -74,8 +81,16 @@ private ObservableList<Annonces> filteredDonList;
      */
    @Override
 public void initialize(URL url, ResourceBundle rb) {
+ originalDonList = FXCollections.observableArrayList(s.displayAll());
 
+
+
+
+    
     try {
+        
+     //recherche   
+        
         try {
             // Get the list of Don objects
             originalDonList = FXCollections.observableArrayList(s.displayAll());
@@ -101,6 +116,8 @@ public void initialize(URL url, ResourceBundle rb) {
         } catch (SQLException ex) {
             Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //trier première ligne
         List<Annonces> personnes = s.displayAll();
         
         // sort the list by position in list in descending order
@@ -132,9 +149,45 @@ public void initialize(URL url, ResourceBundle rb) {
             
             count++;
         }
-    }   catch (IOException ex) {
+    }  
+    catch (IOException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
+    
+    
+    
+    
+        //--------------------------------------------------------------------------------------------------------------------------------------
+
+    try {
+    List<Annonces> filteredAnnoncesList = new ArrayList<>();
+
+    List<String> userInterests = userS.getUserInterests("ppp");
+       
+    for (Annonces annonce : originalDonList) { //récuperer la liste des annonces
+        
+         for (int i = 0; i < userInterests.size(); i++) { //chaque annonce on va comparer sa catégorie avec les catégories userInterests
+         
+             String element = userInterests.get(i);  
+  
+             if (element.equals(annonce.getCategorie().getNom()))
+
+    filteredAnnoncesList.add(annonce);
+        
+    }}
+ 
+    updateUII(filteredAnnoncesList);
+} catch (SQLException ex) {
+    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+} catch (IOException ex) {
+    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+}
+
+    
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    
+    
 }
 
 private void filterDonList(String query) throws SQLException {
@@ -230,5 +283,27 @@ Collections.sort(personnes, new Comparator<Annonces>() {
         Back.getScene().setRoot(root);
     }
 
-    
+    @FXML
+public void updateUII(List<Annonces> annonces) throws IOException {
+    favoriteContainer.getChildren().clear();
+
+    for (Annonces annonce : annonces) {
+         FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+            Pane pane = fxmlLoader.load();
+            SongController CardviewController = fxmlLoader.getController();
+            CardviewController.setData(annonce);
+            SongController controller = fxmlLoader.getController();
+            controller.receiveObject(annonce);
+            favoriteContainer.getChildren().add(pane);
+        
+        
+       
+        
+    }
+}
+
+
+
+
 }

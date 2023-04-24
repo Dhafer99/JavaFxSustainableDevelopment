@@ -111,7 +111,7 @@ private Annonces don;
     private void post(ActionEvent event) throws MalformedURLException, IOException {
         Version apiVersion = Version.VERSION_16_0;
         
-String accessToken = "EAADiVf1eruMBAJqmrMm8dZCQhsWKBm0kcRr1X1QBAwYSuQYTDC3PW3UyQPFSGoMK9wBRrdRWOcW0ovUl5ZC79vl58RS9M7DBlb1ghMKvk1WDRnNBDn3jiNLY39iEOHInUGFWSZBBpwhIMLMrY59onkXkhOzZCgL9ZAPeQXSXyjpxNptK1cjImuQnsaXIXI0nSgSIxgjxXC3uPQLMFqN1l";
+String accessToken = "EAADiVf1eruMBAHFXDAO77s5nSGovczjA473BWQyqziF05bPZCsZCqRSQQq6OStc8dfKMmubFHLZBZAeQiz7HH4BpFg7PDeZBGiv9xtGKhRkDnzOaETbmQZAYHdtTFJDhadeGZCMnTL59r7WxsgA8ZAqIFbsn652c2344LheZCm7WkAlwjqLcuZCbUY3UmjeQiTwnAQ8tDnj7sJTfHYO7IgxPMJ";
  FacebookClient fbclient = new DefaultFacebookClient(accessToken,apiVersion);
 FacebookType response = fbclient.publish("me/feed",FacebookType.class,Parameter.with("message","text"));
         System.out.println("fb.com/"+response.getId());

@@ -756,17 +756,7 @@ private String imagep ;
  "splooge",
  "suka",
  "vittu",
- "wichser",
- "yed",
- "zaboura",
- "zebi",
- "nami",
- "asba",
- "ynain",
- "yna3in",
- "zok",
- "3os",
- "3asba"
+
 		}; 
     @FXML
     private Button AddBtn;
