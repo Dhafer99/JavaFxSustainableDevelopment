@@ -18,5 +18,6 @@
       <Button layoutX="150.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#Ajout" text="Ajouter" />
       <Button layoutX="258.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#UpdateCat" text="Modifier" />
       <Button layoutX="371.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#Supp" text="Supprimer" />
+      <Button fx:id="annonceList" layoutX="476.0" layoutY="277.0" mnemonicParsing="false" onAction="#goToList" onMouseClicked="#Supp" text="List Annonce" />
    </children>
 </AnchorPane>

@@ -768,6 +768,8 @@ private String imagep ;
  "3os",
  "3asba"
 		}; 
+    @FXML
+    private Button AddBtn;
 
 
 
@@ -811,7 +813,7 @@ private String imagep ;
     
 
     @FXML
-    private void ajouter(MouseEvent event) {
+    private void ajouter(MouseEvent event) throws IOException {
         if (ValidateEmptyForm(tf_description, tf_adresse, picker_date)&&(ValidateDateDeb(picker_date))) {
             Categorie asso; // instance
             String nom = (String) combo.getValue(); // tekhou ell valeur mill combo box 
@@ -828,6 +830,11 @@ private String imagep ;
 
             AnnonceService promotiondao = new AnnonceService();
             promotiondao.insert(p);
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+        
+        Parent root = loader.load();
+        Controller c = loader.getController();
+        AddBtn.getScene().setRoot(root);
         }
         
     }
@@ -909,7 +916,7 @@ private String imagep ;
 
     @FXML
     private void front(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         frontBTN.getScene().setRoot(root);

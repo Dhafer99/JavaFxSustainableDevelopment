@@ -2,6 +2,7 @@
 package gui;
 
 import entities.Annonces;
+import java.io.IOException;
 import services.AnnonceService;
 import java.net.URL;
 import java.sql.Date;
@@ -12,13 +13,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 
@@ -49,6 +55,14 @@ public class AfficherAnnonceController implements Initializable {
     private int id;
     AnnonceService ps = new AnnonceService();
     private Listdata Ls = new Listdata();
+    @FXML
+    private TableColumn<?, ?> col_email;
+    @FXML
+    private ImageView image;
+    @FXML
+    private Button BtFront;
+    @FXML
+    private Button categorie;
     
 
     public int getId() {
@@ -136,7 +150,7 @@ public class AfficherAnnonceController implements Initializable {
     }
 
     @FXML
-    private void modif(MouseEvent event) {
+    private void modif(MouseEvent event) throws IOException {
         AnnonceService se = new AnnonceService();
              Annonces p = new Annonces();
              p=tab_annonce.getSelectionModel().getSelectedItem();
@@ -163,11 +177,31 @@ public class AfficherAnnonceController implements Initializable {
 
             JOptionPane.showMessageDialog(null, "Annonce modifiée !");
             
-            tab_annonce.refresh();
+            affiche();
+           
 
      
       
               
+    }
+
+    @FXML
+    private void goToFront(ActionEvent event) throws IOException {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+        
+        Parent root = loader.load();
+        Controller c = loader.getController();
+        BtFront.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gotoCateg(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("categorie.fxml"));
+        
+        Parent root = loader.load();
+        CategorieController c = loader.getController();
+        categorie.getScene().setRoot(root);
     }
     
 }

@@ -15,7 +15,7 @@
       <Label layoutX="58.0" layoutY="196.0" prefHeight="18.0" prefWidth="94.0" text="Adresse" />
       <TextField fx:id="tf_description" layoutX="314.0" layoutY="126.0" />
       <TextField fx:id="tf_adresse" layoutX="314.0" layoutY="192.0" />
-      <Button layoutX="58.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#ajouter" text="Ajouter" />
+      <Button fx:id="AddBtn" layoutX="58.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#ajouter" text="Ajouter" />
       <DatePicker fx:id="picker_date" layoutX="308.0" layoutY="70.0" />
       <ImageView fx:id="imageadd" fitHeight="150.0" fitWidth="200.0" layoutX="289.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox fx:id="combo" layoutX="313.0" layoutY="445.0" prefWidth="150.0" />

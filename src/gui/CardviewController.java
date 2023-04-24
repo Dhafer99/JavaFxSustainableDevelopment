@@ -94,7 +94,7 @@ public class CardviewController implements Initializable {
         System.out.println(annonce.getId());
               AS.delete(annonce);
               
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         supprimer.getScene().setRoot(root);

@@ -6,10 +6,15 @@
 package gui;
 
 import entities.Categorie;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -35,6 +40,8 @@ public class CategorieController implements Initializable {
     private CategorieListData Ls = new CategorieListData();
 
     private int id;
+    @FXML
+    private Button annonceList;
 
     public int getId() {
         return id;
@@ -118,6 +125,16 @@ public class CategorieController implements Initializable {
     CategorieService pdao =new CategorieService();
     pdao.delete(tabcateg.getSelectionModel().getSelectedItem().getId());
     System.out.println(tabcateg.getSelectionModel().getSelectedItem().getId());
+    }
+
+    @FXML
+    private void goToList(ActionEvent event) throws IOException {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherAnnonce.fxml"));
+        
+        Parent root = loader.load();
+        AfficherAnnonceController c = loader.getController();
+        annonceList.getScene().setRoot(root);
     }
 
 }

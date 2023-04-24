@@ -916,11 +916,11 @@ private File file;
             se.update(p);
 
            // JOptionPane.showMessageDialog(null, "Annonce modifiée !");
-          //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/sample.fxml"));
+          //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/sample2.fxml"));
            // SampleController aec = loader.getController();
               // updateB.getScene().setRoot(root);
               Stage primaryStage= new Stage () ;
-             Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/sample.fxml"));
+             Parent parentPage = FXMLLoader.load(getClass().getResource("/gui/sample2.fxml"));
         
             Scene scene = new Scene(parentPage);
         primaryStage.setScene(scene);
@@ -952,7 +952,12 @@ private File file;
     
 
     @FXML
-    private void front(ActionEvent event) {
+    private void front(ActionEvent event) throws IOException {
+        
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+ Parent root = loader.load();
+        frontBTN.getScene().setRoot(root);
+    Controller controller = loader.getController();
     }
 
    
