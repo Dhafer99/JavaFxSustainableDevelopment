@@ -182,7 +182,7 @@ if (rs.next()) {
     private void delete(ActionEvent event) throws SQLException, IOException {
         System.out.println(Evenement);
         ps.supprimer(Evenement);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         DeleteBtn.getScene().setRoot(root);

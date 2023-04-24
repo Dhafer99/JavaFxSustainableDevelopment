@@ -3,6 +3,8 @@ package Gui;
 import Entities.Evenement;
 import Entities.Participation;
 import Entities.User;
+import static Gui.AddEventController.ACCOUNT_SID;
+import static Gui.AddEventController.AUTH_TOKEN;
 //import Service.AddressToLatLng;
 //import static Service.AddressToLatLng.getLatLongFromAddress;
 import Service.EvenementService;
@@ -56,11 +58,23 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import utils.MyDB;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import java.util.Map;
+import java.util.Optional;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 
 
 /**
  */
-public class SongController {
+public class SongController implements Initializable {
+     public static final String ACCOUNT_SID = "ACf491e8b69c540e8680a9ce7e54a18d94";
+    public static final String AUTH_TOKEN = "31c2b47957386a90396c6636d3c6676a";
+    
    @FXML
     private ImageView img;
     @FXML
@@ -83,13 +97,16 @@ ShowCategory;
    @FXML
     private Button pdf;
     EvenementService ps = new EvenementService();
-    @FXML
-    private Label categ;
      Evenement d = new Evenement();
 private Evenement Evenement;
  private String nom1 ;
  
  
+ 
+    /**
+     * Initializes the controller class.
+     */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
           pdf.setVisible(false); 
     //participer.setVisible(true);
@@ -135,6 +152,7 @@ if(Events.containsKey(d.getId()) && Events.containsValue(1))
         Date_deb.setText(String.valueOf(event.getDate_debut()));
         Date_fin.setText(String.valueOf(event.getDate_fin()));
    img.setImage(new Image("file:src\\uploads\\"+event.getImage_event()+".png"));
+  
    if (event.getCategoryId() == 0) {
     ShowCategory.setText("Catégorie non définie");
     System.out.println("err");
@@ -170,12 +188,21 @@ if (rs.next()) {
     }
 @FXML
     private void delete(ActionEvent event) throws SQLException, IOException {
-    System.out.println(Evenement);
+    
+    
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation de suppression");
+    alert.setHeaderText(null);
+    alert.setContentText("Êtes-vous sûr de vouloir supprimer cet événement ?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
         ps.supprimer(Evenement);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         Controller aec = loader.getController();
         Parent root = loader.load();
         DeleteBtn.getScene().setRoot(root);
+    } 
     }
   
 
@@ -189,7 +216,7 @@ PreparedStatement ps = cnx.prepareStatement("SELECT name FROM user WHERE id = 1"
 
 ResultSet rs = ps.executeQuery();
 if(rs.next()){
-    String nom = rs.getString(1);
+     nom1 = rs.getString(1);
         // Evenement e = EventsTv.getSelectionModel().getSelectedItem();
           
              
@@ -198,7 +225,7 @@ if(rs.next()){
             pst.setInt(1, d.getNb_participants()+1);
             pst.setInt(2, d.getId());
  pst.executeUpdate();
- System.out.println("bla bla " + nom);
+ System.out.println("bla bla " + nom1);
 }
  
 String query = "INSERT INTO evenement_user (evenement_id, user_id) VALUES (?, ?)";
@@ -223,15 +250,29 @@ if(rs1.next()){
    
 
 }
- if(Events.containsKey(d.getId()) || Events.containsValue(1))
+ 
+    if(Events.containsKey(d.getId()) && Events.containsValue(1))
     {
         participer.setVisible(false);
-       pdf.setVisible(true);
+        pdf.setVisible(true);
+        
+        
+         Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Impression de ticket");
+        alert.setHeaderText(null);
+        alert.setContentText("Vous pouvez maintenant imprimer votre ticket !");
+        alert.showAndWait();
+        
     }
     System.out.println(Events);
 
+  Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                    Message message = Message.creator(new PhoneNumber("+21626318708"),
+        new PhoneNumber("+15856394545"), 
+        nom1 +" a participé à l'evnement " + d.getNom_event()).create();
+                    
 
-}
+ }
     
     
       public void qrcode() throws SQLException {

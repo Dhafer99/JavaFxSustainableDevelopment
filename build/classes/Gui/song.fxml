@@ -10,27 +10,27 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="463.0" style="-fx-background-radius: 10px; -fx-border-color: white;" styleClass="primary_color" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.SongController">
    <children>
       <ImageView fx:id="img" fitHeight="213.0" fitWidth="236.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="EventName" layoutX="271.0" layoutY="14.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
+      <Label fx:id="EventName" layoutX="271.0" layoutY="20.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="Adresse" layoutX="271.0" layoutY="49.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
+      <Label fx:id="Adresse" layoutX="271.0" layoutY="55.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="Date_deb" layoutX="271.0" layoutY="84.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
+      <Label fx:id="Date_deb" layoutX="271.0" layoutY="90.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="Date_fin" layoutX="271.0" layoutY="119.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
+      <Label fx:id="Date_fin" layoutX="271.0" layoutY="125.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="ShowCategory" layoutX="271.0" layoutY="154.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
+      <Label fx:id="ShowCategory" layoutX="271.0" layoutY="160.0" prefHeight="35.0" prefWidth="185.0" text="Label" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
@@ -62,11 +62,11 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="pdf" layoutX="351.0" layoutY="217.0" mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Imprimer">
+      <Button fx:id="pdf" layoutX="344.0" layoutY="217.0" mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Imrpimer">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/icons8_map_marker_80px.png" />
+                  <Image url="@../img/icons8_grab_24px.png" />
                </image>
             </ImageView>
          </graphic>

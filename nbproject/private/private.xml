@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/song.fxml</file>
-            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/SongController.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AnimationController.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/SongController.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/song.fxml</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/Controller.java</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AddEventController.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/SampleController.java</file>
-            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/sample2.fxml</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/CardViewController.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/affichageEvent.fxml</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/sample2.fxml</file>
+            <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AddUpdateEController.java</file>
             <file>file:/C:/Users/sarah/OneDrive/Documents/Pidev/GestionEvent/src/Gui/AffichageEventController.java</file>
         </group>
     </open-files>

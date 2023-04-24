@@ -292,8 +292,8 @@ eventAddImg.setImage(null);
                  
                  
                    se.ajouter(p);
-                   JOptionPane.showMessageDialog(null, "Don ajouté !");
-                      FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+                   JOptionPane.showMessageDialog(null, "Event ajouté !");
+                      FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         Insert.getScene().setRoot(root);
@@ -345,8 +345,8 @@ tfdateFin.setValue(localDateF);
 //            
             se.modifier(p);
 
-            JOptionPane.showMessageDialog(null, "Don modifié !");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+            JOptionPane.showMessageDialog(null, "Event modifié !");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
             SampleController aec = loader.getController();
             Parent root = loader.load();
             updateB.getScene().setRoot(root);
@@ -356,7 +356,7 @@ tfdateFin.setValue(localDateF);
     }
  @FXML
     private void GoToBack(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         AffichageEventController aec = loader.getController();
         Parent root = loader.load();
         BackBT.getScene().setRoot(root);

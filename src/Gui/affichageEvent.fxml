@@ -13,12 +13,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onMouseClicked="#showSelectedEvent" prefHeight="791.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AffichageEventController">
+<AnchorPane id="AnchorPane" onMouseClicked="#showSelectedEvent" prefHeight="911.0" prefWidth="1605.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AffichageEventController">
    <children>
-      <TableView fx:id="EventsTv" layoutX="29.0" layoutY="150.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="558.0" prefWidth="451.0" style="-fx-background-color: 120;" AnchorPane.rightAnchor="764.0" AnchorPane.topAnchor="150.0">
+      <TableView fx:id="EventsTv" layoutX="182.0" layoutY="162.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="558.0" prefWidth="451.0" style="-fx-background-color: 120;" AnchorPane.rightAnchor="1013.0" AnchorPane.topAnchor="162.0">
         <columns>
           <TableColumn fx:id="nomTv" prefWidth="95.0" text="Nom" />
             <TableColumn fx:id="LieuTv" prefWidth="89.0" text="Lieu" />
+            <TableColumn fx:id="nbTv" prefWidth="89.0" text="nombre participants" />
               <TableColumn fx:id="pdf" prefWidth="88.0" text="Ticket" />
              <TableColumn fx:id="delete" prefWidth="88.00006103515625" />
         
@@ -27,8 +28,8 @@
         </columns>
       </TableView>
    
-      <ImageView fx:id="eventShowImg" fitHeight="208.0" fitWidth="215.0" layoutX="597.0" layoutY="231.0" />
-       <Label fx:id="eventShowNom" alignment="CENTER" layoutX="580.0" layoutY="125.0" prefHeight="20.0" prefWidth="248.0" text="Nom">
+      <ImageView fx:id="eventShowImg" fitHeight="208.0" fitWidth="215.0" layoutX="800.0" layoutY="258.0" />
+       <Label fx:id="eventShowNom" alignment="CENTER" layoutX="783.0" layoutY="152.0" prefHeight="20.0" prefWidth="248.0" text="Nom">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
@@ -43,12 +44,12 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="eventShowCategory" alignment="CENTER" layoutX="853.0" layoutY="125.0" prefHeight="20.0" prefWidth="67.0" style="-fx-background-color: #2b2a2a; -fx-background-radius: 5;" text="Category" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="eventShowCategory" alignment="CENTER" layoutX="1056.0" layoutY="152.0" prefHeight="20.0" prefWidth="67.0" style="-fx-background-color: #2b2a2a; -fx-background-radius: 5;" text="Category" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="12.0" />
          </font></Label>
       
-      <Button fx:id="btnEventAdd" contentDisplay="CENTER" layoutX="55.0" layoutY="96.0" mnemonicParsing="false" onAction="#GoToAddEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="Ajouter" textFill="#f5f2f2" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="btnEventAdd" contentDisplay="CENTER" layoutX="259.0" layoutY="111.0" mnemonicParsing="false" onAction="#GoToAddEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="Ajouter" textFill="#f5f2f2" textOverrun="CENTER_ELLIPSIS">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -60,7 +61,7 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="modifier" contentDisplay="CENTER" layoutX="798.0" layoutY="453.0" mnemonicParsing="false" onAction="#GoToEditEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="modifier" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="modifier" contentDisplay="CENTER" layoutX="941.0" layoutY="514.0" mnemonicParsing="false" onAction="#GoToEditEvent" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="modifier" textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -72,7 +73,7 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="eventSearch" layoutX="182.0" layoutY="98.0" promptText="Rechercher...">
+      <TextField fx:id="eventSearch" layoutX="428.0" layoutY="113.0" promptText="Rechercher...">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
@@ -80,7 +81,7 @@
    
      
      
-      <HBox prefHeight="88.0" prefWidth="1297.0" style="-fx-background-color: #393d3f;">
+      <HBox prefHeight="88.0" prefWidth="1646.0" style="-fx-background-color: #393d3f;">
          <children>
             <ImageView fitHeight="80.0" fitWidth="97.0" pickOnBounds="true" rotate="1.3" smooth="false">
                <image>
@@ -110,20 +111,20 @@
            
          </children>
       </HBox>
-      <Label layoutX="596.0" layoutY="162.0" text="Date Debut">
+      <Label layoutX="799.0" layoutY="189.0" text="Date Debut">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font></Label>
-      <Label layoutX="779.0" layoutY="162.0" text="Date fin">
+      <Label layoutX="982.0" layoutY="189.0" text="Date fin">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font></Label>
-      <Button fx:id="FrontBT" contentDisplay="CENTER" layoutX="853.0" layoutY="718.0" mnemonicParsing="false" onAction="#GoToFront" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #454B1B;" text="Front" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="FrontBT" contentDisplay="CENTER" layoutX="1090.0" layoutY="718.0" mnemonicParsing="false" onAction="#GoToFront" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #454B1B;" text="Front" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="participer" contentDisplay="CENTER" layoutX="649.0" layoutY="453.0" mnemonicParsing="false" onAction="#test" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="participer" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="participer" contentDisplay="CENTER" layoutX="792.0" layoutY="514.0" mnemonicParsing="false" onAction="#test" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="participer" textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

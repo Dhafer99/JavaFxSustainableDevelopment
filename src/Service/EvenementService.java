@@ -53,6 +53,7 @@ public class EvenementService implements IServiceEvent<Evenement> {
              e.setDate_fin(rs.getDate("date_fin"));
              e.setImage_event(rs.getString("image_event"));
            e.setCategoryId(rs.getInt("categorie_id"));
+            e.setNb_participants(rs.getInt("nb_participants"));
             e.setId(rs.getInt("id"));
             Events.add(e);
             

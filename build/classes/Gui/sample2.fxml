@@ -74,11 +74,7 @@
                               <Image url="@../img/icons8_event_accepted_32px.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="123.0" text="Evenement" textFill="#a1a1a1">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
+                        <Button fx:id="Back" mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="120.0" styleClass="upgrade-button" stylesheets="@style.css" text="Evenements" textFill="WHITE" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="192.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
@@ -120,7 +116,7 @@
                               <Image url="@../img/icons8_add_32px.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="label" onMouseClicked="#handleLabelClick" prefHeight="40.0" prefWidth="133.0" text="Add New Don" textFill="WHITE">
+                        <Label fx:id="label" onMouseClicked="#handleLabelClick" prefHeight="40.0" prefWidth="133.0" text="Add New Event" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -170,7 +166,7 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="upgrade-button" stylesheets="@style.css" text="UPGRADE" textFill="WHITE" />
+                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#AddNew" prefHeight="25.0" prefWidth="120.0" styleClass="upgrade-button" stylesheets="@style.css" text="Ajouter Event" textFill="WHITE" />
                   <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" spacing="10.0">
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">

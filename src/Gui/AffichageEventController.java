@@ -102,6 +102,8 @@ public class AffichageEventController implements Initializable {
     @FXML
     private TableColumn<Evenement, String> LieuTv;
     @FXML
+    private TableColumn<Evenement, Integer> nbTv;
+    @FXML
     private TableColumn<Evenement, Button> pdf;
      @FXML
     private Button participer;
@@ -157,6 +159,7 @@ public class AffichageEventController implements Initializable {
             
           nomTv.setCellValueFactory(new PropertyValueFactory("nom_event"));
             LieuTv.setCellValueFactory(new PropertyValueFactory("localisation"));
+            nbTv.setCellValueFactory(new PropertyValueFactory("nb_participants"));
             //DateDebTv.setCellValueFactory(new PropertyValueFactory("date_debut"));
              //DateFinTv.setCellValueFactory(new PropertyValueFactory("date_fin"));
              this.deleteEvent();

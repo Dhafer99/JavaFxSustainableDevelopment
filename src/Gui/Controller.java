@@ -44,6 +44,7 @@ public class Controller implements Initializable {
 EvenementService s= new EvenementService();
     private Label NbDon;
     private Parent fxml;
+    @FXML
     private Button addBtn;
     private TextField Text;
     private Button Menubtn;
@@ -63,6 +64,10 @@ private ObservableList<Evenement> filteredDonList;
     private MediaView mediaV;
     @FXML
     private Pane pane;
+    @FXML
+    private Button addbtn;
+    @FXML
+    private Button Back;
    /* private File file ;
     private Media media;
     private MediaPlayer mediaPlayer;*/
@@ -174,13 +179,23 @@ private void updateUI(ObservableList<Evenement> donList) throws SQLException, IO
         favoriteContainer.getChildren().add(pane); 
     }
 }
-
+@FXML
 private void AddNew(ActionEvent event) throws IOException{
 
          FXMLLoader loader = new FXMLLoader(getClass().getResource("AddUpdate.fxml"));
     AddUpdateEController aec = loader.getController();
         Parent root = loader.load();
         addBtn.getScene().setRoot(root);
+  
+}
+
+@FXML
+private void Back(ActionEvent event) throws IOException{
+
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("affichageEvent.fxml"));
+    AffichageEventController aec = loader.getController();
+        Parent root = loader.load();
+        Back.getScene().setRoot(root);
   
 }
 @FXML
@@ -219,6 +234,7 @@ Collections.sort(personnes, new Comparator<Evenement>() {
         Parent root = loader.load();
         Menubtn.getScene().setRoot(root);
     }
+
 
     @FXML
     private void handleLabelClick(MouseEvent event) throws IOException {
