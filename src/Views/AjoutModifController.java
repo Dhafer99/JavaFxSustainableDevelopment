@@ -8,7 +8,7 @@ import Entite.Reclamation;
 import Entite.Categorie_Rec;
 import ServicesReclamations.CategorieRecService;
 import ServicesReclamations.ReclamationService;
-import don.SampleController;
+import Views.SampleController;
 import java.awt.AWTException;
 import java.awt.SystemTray;
 import java.awt.Toolkit;
@@ -132,7 +132,7 @@ private boolean ValidateEmptyForm(  TextField motif_de_reclamation, TextField em
         Categorie_Rec Catrec; // instance
         Categorie_Rec nom =  combo.getValue(); // te5ou ell valeur mill combo box 
         CategorieRecService cdao = new CategorieRecService(); // instance service categorie 
-        Catrec = cdao.getOneByName(nom.toString()); //
+        Catrec = cdao.getOneByName(nom.toString()); 
         java.sql.Date data_reclamation = java.sql.Date.valueOf(tfDate.getValue());
         String etat = "En Cours";
         String motif_de_reclamation = tfdescription.getText();

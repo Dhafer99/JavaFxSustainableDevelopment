@@ -5,7 +5,7 @@
  */
 package Views;
 
-import don.SampleController;
+import Views.SampleController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -75,8 +75,8 @@ private Parent fxml;
 
     @FXML
     private void Front(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample.fxml"));
-        SampleController aec = loader.getController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample2.fxml"));
+        Controller aec = loader.getController();
         Parent root2 = loader.load();
         btnfront.getScene().setRoot(root2);
     }
