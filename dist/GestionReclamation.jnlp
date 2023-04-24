@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="GestionReclamation.jar" size="10964640" download="eager" />
+    <jar href="GestionReclamation.jar" size="14410090" download="eager" />
     <jar href="lib\adapter-rxjava2-2.9.0.jar" size="14396" download="eager" />
     <jar href="lib\api-0.12.0.jar" size="82790" download="eager" />
     <jar href="lib\api-0.2.0.jar" size="16553" download="eager" />

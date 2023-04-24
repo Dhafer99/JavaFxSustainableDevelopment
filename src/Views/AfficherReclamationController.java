@@ -174,7 +174,7 @@ public class AfficherReclamationController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Reclamation failed !");
             }
 
-            JOptionPane.showMessageDialog(null, "Reclamation modifié !");
+            JOptionPane.showMessageDialog(null, "Reclamation modifiée !");
             
             //tab_reclamation.refresh();
             show();

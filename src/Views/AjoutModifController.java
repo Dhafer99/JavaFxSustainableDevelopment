@@ -148,7 +148,7 @@ private boolean ValidateEmptyForm(  TextField motif_de_reclamation, TextField em
         Reclamation p = new Reclamation(data_reclamation, etat, motif_de_reclamation, image, Integer.parseInt(num_telephone), email,Catrec);
         ReclamationService promotiondao = new ReclamationService();
         promotiondao.insert(p);
-         JOptionPane.showMessageDialog(null, "Reclamation ajouté !");
+         JOptionPane.showMessageDialog(null, "Reclamation ajoutée !");
          if (!SystemTray.isSupported()) {
             System.out.println("SystemTray is not supported");
             return;
@@ -173,7 +173,7 @@ private boolean ValidateEmptyForm(  TextField motif_de_reclamation, TextField em
         }
 
         // Display a notification
-        trayIcon.displayMessage("Notification", "Reclamation Added in "+p.getCategorie_rec().getNom()+" categorie", TrayIcon.MessageType.INFO);
+        trayIcon.displayMessage("Notification", "Reclamation ajoutée dans la categorie "+p.getCategorie_rec().getNom(), TrayIcon.MessageType.INFO);
     }
                       FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         SampleController aec = loader.getController();
@@ -272,7 +272,7 @@ tfDate.setValue(localDate);
             
             se.update(p);
 
-            JOptionPane.showMessageDialog(null, "Reclamation modifié !");
+            JOptionPane.showMessageDialog(null, "Reclamation modifiée !");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
             SampleController aec = loader.getController();
             Parent root = loader.load();
