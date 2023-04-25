@@ -30,6 +30,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import MyBD.DataBase;
+import com.restfb.BinaryAttachment;
+import java.io.File;
+import java.io.FileInputStream;
 import org.controlsfx.control.Rating;
 
 /**
@@ -111,9 +114,15 @@ private Annonces don;
     private void post(ActionEvent event) throws MalformedURLException, IOException {
         Version apiVersion = Version.VERSION_16_0;
         
-String accessToken = "EAADiVf1eruMBAHFXDAO77s5nSGovczjA473BWQyqziF05bPZCsZCqRSQQq6OStc8dfKMmubFHLZBZAeQiz7HH4BpFg7PDeZBGiv9xtGKhRkDnzOaETbmQZAYHdtTFJDhadeGZCMnTL59r7WxsgA8ZAqIFbsn652c2344LheZCm7WkAlwjqLcuZCbUY3UmjeQiTwnAQ8tDnj7sJTfHYO7IgxPMJ";
+String accessToken = "EAADiVf1eruMBAJNrB3ZBXRP2ISWcDtqAXyC2BZBk8qxUixIwuJjaaoayxnaMXzW1nGc3FUTLseNTZAha9dfC3xYZBPPq1a95sgUk0TF8cJ9sj4Do9qW16gKTpY6stMI07Hww9tUVOl910KC1vym9A268QZBBxidDc1cKsmWKOq22FmgpbfhVZBYMk5HSHQZAg8KRVQUsNRhb2AYVKPawRMq";
  FacebookClient fbclient = new DefaultFacebookClient(accessToken,apiVersion);
-FacebookType response = fbclient.publish("me/feed",FacebookType.class,Parameter.with("message","text"));
+//FacebookType response = fbclient.publish("me/feed",FacebookType.class,Parameter.with("message","text"));
+String imagePath = d.getImage().substring("file:\\".length());
+File image2 = new File(imagePath);
+FacebookType response = fbclient.publish("me/photos", FacebookType.class,
+        BinaryAttachment.with("intel", new FileInputStream(image2)),
+        Parameter.with("message", d.getDescription()));
+
         System.out.println("fb.com/"+response.getId());
     } 
     
