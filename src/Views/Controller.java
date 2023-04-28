@@ -84,7 +84,7 @@ mediaPlayer.play();*/
             // Get the list of Don objects
             originalDonList = FXCollections.observableArrayList(s.displayAll());
             filteredDonList = FXCollections.observableArrayList(originalDonList);
-                    nb.setText(originalDonList.size() + " Reclamations Available");
+                    nb.setText(originalDonList.size() + " Reclamations Disponibles");
 
             try {
                 // Populate the GridPane with the card views
