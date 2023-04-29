@@ -229,36 +229,23 @@ private void AddNew(ActionEvent event) throws IOException{
         Parent root = loader.load();
         addBtn.getScene().setRoot(root);
   
-}/*
+}
+
+
 @FXML
     private void filter(ActionEvent event) throws SQLException, IOException {
-        List<Annonces> personnes = s.displayAll();
+     List<Annonces> dons = s.displayAll();
 
-// sort the list by quantity in descending order
-Collections.sort(personnes, new Comparator<Annonces>() {
+// Sort the list by date in descending order
+Collections.sort(dons, new Comparator<Annonces>() {
     @Override
     public int compare(Annonces d1, Annonces d2) {
-        return Integer.compare(d2.getQuantite(), d1.getQuantite());
+        return d2.getDate_publication().compareTo(d1.getDate_publication());
     }
 });
 
-//NbDon.setText(String.valueOf(personnes.size())+" Don Disponible");
 
-// display the sorted Don objects in the CardView
- favoriteContainer.getChildren().clear();
-  
-    for (Annonces d : personnes) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("song.fxml"));
-    
-        Pane pane = fxmlLoader.load();
-        SongController cardViewController = fxmlLoader.getController();
-        CardviewController.setData(d);
-        SongController controller = fxmlLoader.getController();
-        controller.receiveObject(d);
-        favoriteContainer.getChildren().add(pane); 
     }
-    }*/
 
     private void Menu(ActionEvent event) throws IOException {
           FXMLLoader loader = new FXMLLoader(getClass().getResource("Operation.fxml"));

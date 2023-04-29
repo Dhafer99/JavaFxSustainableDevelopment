@@ -54,6 +54,7 @@ private Annonces don;
     @FXML
     private Button DeleteBtn;
     AnnonceService ps = new AnnonceService();
+    public static Boolean test = false;
     
   
     @FXML
