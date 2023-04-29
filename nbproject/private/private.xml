@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/client/chatwindow/Listener.java</file>
-            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/projetpidd/loginController.java</file>
-            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/projetpidd/ProjetPiDD.java</file>
-            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/projetpidd/mailingController.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/bubble/BubbledLabel.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/MessageType.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/Model/User.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/client/chatwindow/CellRenderer.java</file>
             <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/client/chatwindow/ChatController.java</file>
             <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/client/login/LoginController.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/client/chatwindow/Listener.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/Status.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/projetpidd/loginController.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/bubble/BubbleSpec.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/projetpidd/ProjetPiDD.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/projetpidd/mailingController.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/bubble/Bubble.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/User.java</file>
+            <file>file:/C:/Users/Souid/Desktop/javafxapp/ProjetPiDD/src/com/messages/Message.java</file>
         </group>
     </open-files>
 </project-private>
