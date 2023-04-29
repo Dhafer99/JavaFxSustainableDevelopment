@@ -5,11 +5,14 @@
  */
 package Model;
 
+import com.messages.Status;
+import java.io.Serializable;
+
 /**
  *
  * @author Souid
  */
-public class User {
+public class User implements Serializable {
     int id ;
     String email;
     String roles ;
@@ -23,6 +26,7 @@ public class User {
     String prenom ;
     String image ;
     Boolean blocked ;
+    Status status;
 
     public Boolean getBlocked() {
         return blocked;
@@ -176,6 +180,13 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+     public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
     
 }

@@ -46,5 +46,6 @@
       <Button layoutX="67.0" layoutY="249.0" mnemonicParsing="false" onAction="#editUser" prefHeight="25.0" prefWidth="128.0" text="Mettre a jour" />
       <Button layoutX="300.0" layoutY="249.0" mnemonicParsing="false" onAction="#addImage" prefHeight="40.0" prefWidth="251.0" text="Changer l'image de profil" />
       <Label fx:id="errImage" layoutX="350.0" layoutY="336.0" prefHeight="20.0" prefWidth="202.0" />
+      <Button layoutX="771.0" layoutY="392.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
    </children>
 </AnchorPane>

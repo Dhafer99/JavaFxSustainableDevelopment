@@ -273,7 +273,6 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
                     User user = new User(email.getText(), passwordField.getText(), num_telephone.getText(), ComboType.getValue(), nom.getText(), prenom.getText(),imagePath);
                     ServiceUser.getInstance().addUser(user);
                     ProjetPiDD m = new ProjetPiDD();
-                    
                     m.changeScene("AccountCreated.fxml");
                             // initialize the password and confirm password fields
             

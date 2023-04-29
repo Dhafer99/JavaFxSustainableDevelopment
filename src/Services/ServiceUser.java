@@ -203,7 +203,31 @@ public class ServiceUser {
         pre.setString(2, email);
         pre.executeUpdate();
     }
-      
+       public void changePassword(String email,String password) throws SQLException
+       {
+           
+           String req = "UPDATE user SET "
+                  + "password = ?"        
+                    + " where email=?";
+           PreparedStatement pre = cn.prepareStatement(req);
+            pre.setString(1,password);
+            pre.setString(2, email);
+             pre.executeUpdate();
+           
+       }
+      public String getUserName(String email) throws SQLException
+       {
+           
+           String req = "SELECT * FROM user WHERE email=?";
+           PreparedStatement pre = cn.prepareStatement(req);
+            pre.setString(1,email);
+          
+             ResultSet rs = pre.executeQuery();
+             if(rs.next()){
+                return rs.getString("nom");
+             }
+           return null ;
+       }
 
     
 }

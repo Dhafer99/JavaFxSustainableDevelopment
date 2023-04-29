@@ -7,11 +7,13 @@
     -fx-text-fill: #00dc00; /* Green label text color */
     -fx-font-size: 18px; /* Increase label font size */
     -fx-font-weight: bold; /* Bold label text */
+	-fx-font-family: Fantasy;
 }
 
 .text {
     -fx-text-fill: #00FF00; /* Green text color */
     -fx-font-size: 14px; /* Increase text font size */
+	-fx-font-family: Fantasy;
 }
 
 .button {

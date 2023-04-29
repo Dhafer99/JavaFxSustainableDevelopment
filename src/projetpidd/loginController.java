@@ -7,7 +7,7 @@ package projetpidd;
 
 import Model.User;
 import Services.ServiceUser;
-import com.sun.javaws.Main;
+//import com.sun.javaws.Main;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -22,13 +22,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
  *
  * @author Souid
  */
-public class loginController {
+public class loginController implements Initializable {
+
+    @FXML
+    private Label welcomelabel;
+    @FXML
+    private AnchorPane root;
     
     
     public loginController(){
@@ -48,14 +56,17 @@ public class loginController {
     
    
     
+    @FXML
     public void userLogin(ActionEvent event) throws IOException, SQLException{
         try {
         checkLogin();
         }catch(Exception e )
         {
-            errorLabel.setText("Verifier vos cordonnés !");
+         //   errorLabel.setText("Verifier vos cordonnÃ©s !");
+            e.printStackTrace();
         }
     }
+    @FXML
      public void userSignUp(ActionEvent event) throws IOException{
         checkSignUp();
     }
@@ -64,10 +75,11 @@ public class loginController {
         ProjetPiDD m = new ProjetPiDD();
        
         User user = ServiceUser.getInstance().searchUserByEmail(usernameField.getText(),passwordField.getText());
-        System.out.println("+++++++++++++++++"+user.getBlocked());
+      
         
         if(user != null){
 //            errorLabel.setText("success");
+    System.out.println("+++++++++++++++++"+user.getRoles());
              projetpidd.ProjetPiDD.user=user ;
             m.changeScene("LoggedIn.fxml");
             
@@ -95,6 +107,26 @@ public class loginController {
             ProjetPiDD m = new ProjetPiDD();
              m.changeScene("SignUp.fxml");
            
+    }
+
+    @FXML
+    private void ForgotPasswordRedirect(MouseEvent event) throws IOException {
+        ProjetPiDD m = new ProjetPiDD();
+             m.changeScene("mailing.fxml");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+      //  welcomelabel.getStyleClass().add("label-primary");
+      //  root.getChildren().add(welcomelabel);
+      welcomelabel.setStyle("--fx-font-style : Arial");
+    }
+
+    @FXML
+    private void chat(ActionEvent event) throws IOException {
+        ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/views/LoginView.fxml");
     }
     
     

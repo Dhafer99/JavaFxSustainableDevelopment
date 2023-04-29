@@ -10,8 +10,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" styleClass="dark-background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.loginController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="800.0" prefWidth="1200.0" styleClass="dark-background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.loginController">
    <children>
       <AnchorPane prefHeight="417.0" prefWidth="237.0" styleClass="dark-background" stylesheets="@../css/style.css">
          <children>
@@ -55,11 +56,13 @@
             <Font name="Arial Nova Light" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="469.0" layoutY="114.0" prefHeight="24.0" prefWidth="248.0" text="Welcome Earth Hero !">
+      <Label fx:id="welcomelabel" layoutX="469.0" layoutY="114.0" prefHeight="24.0" prefWidth="248.0" text="Welcome Earth Hero !">
          <font>
             <Font name="Cambria" size="20.0" />
          </font>
       </Label>
       <Label fx:id="errorLabel" layoutX="441.0" layoutY="191.0" prefHeight="18.0" prefWidth="230.0" />
+      <Text fill="#e18e8e" layoutX="645.0" layoutY="379.0" onMouseClicked="#ForgotPasswordRedirect" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de Passe oublié ?" wrappingWidth="186.00000143051147" />
+      <Button layoutX="441.0" layoutY="573.0" mnemonicParsing="false" onAction="#chat" text="chat" />
    </children>
 </AnchorPane>
