@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Annoncestest2.jar" size="43700903" download="eager" />
+    <jar href="Annoncestest2.jar" size="43954639" download="eager" />
     <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\rating-java-0.1.1.jar" size="36411" download="eager" />

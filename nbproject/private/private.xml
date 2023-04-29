@@ -3,33 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/services/INCategorie.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/SongController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/categorie.fxml</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/HomeController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/CategorieListData.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/cardview.fxml</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/annoncestest2/Annoncestest2.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/updateAnnonceController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/MyBD/DataBase.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/services/CategorieService.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/Controller.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/AjoutAnnonceController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/services/AnnonceService.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/AjoutUser.fxml</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/entities/Annonces.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/entities/user.java</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/AfficherAnnonceController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/entities/Categorie.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/song.fxml</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/AjoutUserController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/CardviewController.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/annoncestest2/Annoncestest2.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/SongController.java</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/AjoutAnnonceController.java</file>
             <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/CategorieController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/AfficherAnnonce.fxml</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/services/UserService.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/SampleController.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/services/Iservice.java</file>
-            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/sample2.fxml</file>
+            <file>file:/C:/Users/Asus/Documents/NetBeansProjects/Annoncestest2/src/gui/Details.fxml</file>
         </group>
     </open-files>
 </project-private>

@@ -29,6 +29,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -43,8 +44,7 @@ public class AjoutAnnonceController implements Initializable {
     private TextField tf_description;
     @FXML
     private TextField tf_adresse;
-    @FXML
-    private DatePicker picker_date;
+    
     @FXML
     private ImageView imageadd;
     @FXML
@@ -760,6 +760,8 @@ private String imagep ;
 		}; 
     @FXML
     private Button AddBtn;
+    @FXML
+    private Label datelabel;
 
 
 
@@ -770,6 +772,8 @@ private String imagep ;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
+        datelabel.setText(LocalDate.now().toString());
         List<Categorie> categoriePromotions = categeListdata.getPersons();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         for (Categorie categoriePromotion : categoriePromotions) {
@@ -804,12 +808,14 @@ private String imagep ;
 
     @FXML
     private void ajouter(MouseEvent event) throws IOException {
-        if (ValidateEmptyForm(tf_description, tf_adresse, picker_date)&&(ValidateDateDeb(picker_date))) {
+        if (ValidateEmptyForm(tf_description, tf_adresse)) {
             Categorie asso; // instance
             String nom = (String) combo.getValue(); // tekhou ell valeur mill combo box 
-            CategorieService cdao = new CategorieService(); // instance service categorie 
+            CategorieService cdao = new CategorieService(); 
+           // LocalDate currentDate = LocalDate.now();// instance service categorie 
+            
             asso = cdao.getOneByName(nom); //
-            java.sql.Date date_publication = java.sql.Date.valueOf(picker_date.getValue());
+            java.sql.Date date_publication = java.sql.Date.valueOf( LocalDate.now());
            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = formatter.format(date_publication);
             String description = tf_description.getText();
@@ -829,9 +835,8 @@ private String imagep ;
         
     }
 
-    private boolean ValidateEmptyForm(TextField description, TextField adresse, DatePicker d) {
-        if (description.getText().equals("") || adresse.getText().equals("")
-                || d.getValue() == null) {
+    private boolean ValidateEmptyForm(TextField description, TextField adresse) {
+        if (description.getText().equals("") || adresse.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);

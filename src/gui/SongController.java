@@ -54,10 +54,10 @@ private Annonces don;
     @FXML
     private Button DeleteBtn;
     AnnonceService ps = new AnnonceService();
+    
+  
     @FXML
-    private Button ClaimBtn;
-     @FXML
-    private Rating rating ; 
+    private Button Details;
     
 
       public void setData(Annonces annonce){
@@ -80,10 +80,7 @@ private Annonces don;
     controller.receiveObject(d);
    
     }
-     public void receiveObject(Annonces d) {
-        this.d=d;
-        don=d;
-    }
+
 @FXML
     private void delete(ActionEvent event) throws SQLException, IOException {
     System.out.println(don);
@@ -94,21 +91,12 @@ private Annonces don;
         DeleteBtn.getScene().setRoot(root);
     }
 
-    @FXML
-    private void claim(ActionEvent event) {
-    }
     
     
-      @FXML
-    private void submit(ActionEvent event) throws SQLException {
-        d.setNombre_etoiles((int) rating.getRating());
-        System.out.println("Rating given by user :" + rating.getRating());
-        AnnonceService sv = new AnnonceService();
-        sv.rating(d);
-        
-        
-        
-    }
+   public void receiveObject(Annonces d) {
+        this.d=d;
+        don=d;
+    } 
 
     @FXML
     private void post(ActionEvent event) throws MalformedURLException, IOException {
@@ -126,5 +114,13 @@ FacebookType response = fbclient.publish("me/photos", FacebookType.class,
         System.out.println("fb.com/"+response.getId());
     } 
     
-    
+    @FXML
+    private void Details(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Details.fxml"));
+ Parent root = loader.load();
+        Details.getScene().setRoot(root);
+    updateAnnonceController controller = loader.getController();
+    controller.receiveObject(d);
+   
+    }
 }

@@ -163,7 +163,7 @@ public void initialize(URL url, ResourceBundle rb) {
     try {
     List<Annonces> filteredAnnoncesList = new ArrayList<>();
 
-    List<String> userInterests = userS.getUserInterests("ppp");
+    List<String> userInterests = userS.getUserInterests("jouhayna");
        
     for (Annonces annonce : originalDonList) { //récuperer la liste des annonces
         
