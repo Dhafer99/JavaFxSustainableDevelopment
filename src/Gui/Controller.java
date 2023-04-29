@@ -153,6 +153,8 @@ private void filterDonList(String query) throws SQLException {
     for (Evenement d : originalDonList) {
         if (d.getNom_event().toLowerCase().contains(query.toLowerCase())) {
             filteredDonList.add(d);
+        } else if (d.getLocalisation().toLowerCase().contains(query.toLowerCase())) {
+            filteredDonList.add(d);
         }
     }
     try {

@@ -38,7 +38,10 @@ import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import Service.CategorieEventService;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -52,6 +55,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import utils.MyDB;
 /**
  * FXML Controller class
  *
@@ -77,6 +81,7 @@ public class AddUpdateEController implements Initializable {
 EvenementService ps = new EvenementService();
 private Evenement d;
 private int id ;
+private int newEventId;
 private File file; 
     private String lien="";
         public static final String ACCOUNT_SID = "AC904d482ced22b4c1943dfa6f347bc92b";
@@ -164,7 +169,7 @@ private Stage primaryStage;
     public void setId(int id) {
         this.id = id;
     }
- /*  public String filterBadWords(String text) {
+  public String filterBadWords(String text) {
         for (String badWord : badWords) {
             if (text.toLowerCase().contains(badWord)) {
                 String stars = "";
@@ -181,7 +186,7 @@ private Stage primaryStage;
             String filteredText = filterBadWords(newValue);
             textField.setText(filteredText);
         });
-    }*/
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -272,8 +277,13 @@ eventAddImg.setImage(null);
         }
     }
     @FXML
-    private void AjouterDon(ActionEvent Don) throws IOException {
-     
+    private void AjouterDon(ActionEvent Don) throws IOException, SQLException {
+                   Connection cnx = MyDB.getInstance().getCnx();
+
+         
+
+        
+        
         int category =combo.getSelectionModel().getSelectedItem().getId();
             EvenementService se = new EvenementService();
             
@@ -292,16 +302,33 @@ eventAddImg.setImage(null);
                  
                  
                    se.ajouter(p);
+                  String query = "SELECT LAST_INSERT_ID()";
+PreparedStatement statement = cnx.prepareStatement(query);
+ResultSet resultSet = statement.executeQuery();
+if (resultSet.next()) {
+     newEventId = resultSet.getInt(1);
+    System.out.println("The ID of the newly added event is: " + newEventId);
+} else {
+    System.out.println("Failed to retrieve the ID of the newly added event.");
+}
+        System.out.println(newEventId);
+                   String query1 = "INSERT INTO user_evenement (user_id, evenement_id) VALUES (?, ?)";
+PreparedStatement statement1 = cnx.prepareStatement(query1);
+statement1.setInt(1, 2);
+statement1.setInt(2 , newEventId);
+
+int rowsInserted = statement1.executeUpdate(); 
+
                    JOptionPane.showMessageDialog(null, "Event ajouté !");
-                      FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+                      FXMLLoader loader = new FXMLLoader(getClass().getResource("DonF.fxml"));
         SampleController aec = loader.getController();
         Parent root = loader.load();
         Insert.getScene().setRoot(root);
-         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+      /*   Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                     Message message = Message.creator(new PhoneNumber("+21629228940"),
         new PhoneNumber("+15673717088"), 
         "a New Don has been added").create();
-     
+     */
     }
 public void receiveObject(Evenement d) {
         this.d=d;

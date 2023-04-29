@@ -21,7 +21,7 @@ public class GestionEvent extends Application {
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         this.stage.setTitle("Genereux");
-        Parent root = FXMLLoader.load(getClass().getResource("/Gui/sample2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Front.fxml"));
         
         Scene scene = new Scene(root);
         

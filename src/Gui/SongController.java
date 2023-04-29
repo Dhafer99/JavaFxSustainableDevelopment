@@ -33,8 +33,7 @@ import java.io.FileOutputStream;
 //import Entities.Evenement.AddUpdateEController;
 //import Entities.Evenement.SampleController;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,7 +60,6 @@ import utils.MyDB;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import java.util.Map;
 import java.util.Optional;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -77,29 +75,36 @@ public class SongController implements Initializable {
     
    @FXML
     private ImageView img;
-    @FXML
+   @FXML
     private Label EventName;
-    @FXML
+   @FXML
     private Label Adresse;
-    @FXML
+   @FXML
     private Label Date_deb;
-    @FXML
+   @FXML
     private Label Date_fin;
-  @FXML
+   @FXML
     private Label  
+           
 ShowCategory;
   @FXML
     private Button BtnUpdate;
-   @FXML
+    @FXML
     private Button DeleteBtn;
-  @FXML
+    @FXML
     private Button participer;
-   @FXML
+    @FXML
+    private Button annuler;
+    @FXML
     private Button pdf;
     EvenementService ps = new EvenementService();
      Evenement d = new Evenement();
 private Evenement Evenement;
+   // public static Boolean test = false;
+
+private Evenement ev;
  private String nom1 ;
+    
  
  
  
@@ -111,38 +116,37 @@ private Evenement Evenement;
           pdf.setVisible(false); 
     //participer.setVisible(true);
         
-               try {
-               Connection cnx = MyDB.getInstance().getCnx();
-              HashMap<Integer,Integer> Events = new HashMap<>();
+       /*        try {
+              Connection cnx = MyDB.getInstance().getCnx();
+HashMap<Integer, Integer> Events = new HashMap<>();
 
-PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `evenement_user` ");
-
+PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `user_evenement` ");
 ResultSet rs1 = ps1.executeQuery();
-if(rs1.next()){
-    Participation p = new Participation();
-   
-     Events.put(rs1.getInt("evenement_id"),rs1.getInt("user_id"));
- 
+
+while (rs1.next()) {
+    int eventId = rs1.getInt("evenement_id");
+    int userId = rs1.getInt("user_id");
+    Events.put(eventId, userId);
 }
 
-/*for(Events.Entry<Integer, Integer>) entry : Events.entrySet()
-        {
-            System.out.println(entry.getKey());
-        }*/
 
-if(Events.containsKey(d.getId()) && Events.containsValue(1))
-    {
-        participer.setVisible(false);
-        pdf.setVisible(true);
-        
-    }
+if (Events.containsKey(d.getId()) && Events.containsValue(2)) {
+    BtnUpdate.setVisible(true);
+    DeleteBtn.setVisible(true);
+} else {
+    BtnUpdate.setVisible(false);
+    DeleteBtn.setVisible(false);
+}
+
+
+
  
 
               
      } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }          
-
+*/
     }  
  
 
@@ -186,7 +190,7 @@ if (rs.next()) {
         this.d=d;
         Evenement=d;
     }
-@FXML
+    @FXML
     private void delete(ActionEvent event) throws SQLException, IOException {
     
     
@@ -197,7 +201,9 @@ if (rs.next()) {
 
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
-        ps.supprimer(Evenement);
+        System.out.println(Evenement);
+    //test = true;
+        ps.supprimer(Evenement);  
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
         Controller aec = loader.getController();
         Parent root = loader.load();
@@ -205,8 +211,8 @@ if (rs.next()) {
     } 
     }
   
-
-    @FXML
+  
+@FXML
     private void test(ActionEvent event) throws SQLException {
         
        User user = new User();
@@ -263,16 +269,87 @@ if(rs1.next()){
         alert.setContentText("Vous pouvez maintenant imprimer votre ticket !");
         alert.showAndWait();
         
+        
+        
     }
     System.out.println(Events);
 
-  Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+ /* Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                     Message message = Message.creator(new PhoneNumber("+21626318708"),
         new PhoneNumber("+15856394545"), 
-        nom1 +" a participé à l'evnement " + d.getNom_event()).create();
+        nom1 +" a participé à l'evnement " + d.getNom_event()).create();*/
                     
 
  }
+    
+    @FXML
+    private void test2(ActionEvent event) throws SQLException {
+        
+       User user = new User();
+       Evenement e = new Evenement();
+              Connection cnx = MyDB.getInstance().getCnx();
+PreparedStatement ps = cnx.prepareStatement("SELECT name FROM user WHERE id = 1");
+
+ResultSet rs = ps.executeQuery();
+if(rs.next()){
+     nom1 = rs.getString(1);
+        // Evenement e = EventsTv.getSelectionModel().getSelectedItem();
+          
+             
+             String nb ="UPDATE evenement set  nb_participants= ? where id = ? ";
+ PreparedStatement pst = cnx.prepareStatement(nb);
+            pst.setInt(1, d.getNb_participants()-1);
+            pst.setInt(2, d.getId());
+ pst.executeUpdate();
+ System.out.println("bla bla " + nom1);
+}
+ 
+String query = "DELETE FROM evenement_user where evenement_id = ?";
+PreparedStatement statement = cnx.prepareStatement(query);
+statement.setInt(1, d.getId());
+
+int rowsInserted = statement.executeUpdate();  
+
+
+
+
+HashMap<Integer,Integer> Events = new HashMap<>();
+
+PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `evenement_user` ");
+
+ResultSet rs1 = ps1.executeQuery();
+if(rs1.next()){
+    Participation p = new Participation();
+   
+     
+     Events.put(rs1.getInt("evenement_id"),rs1.getInt("user_id"));
+
+}
+ 
+  
+        participer.setVisible(true);
+        annuler.setVisible(false);
+        pdf.setVisible(false);
+        
+        
+         /*Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Impression de ticket");
+        alert.setHeaderText(null);
+        alert.setContentText("Vous pouvez maintenant imprimer votre ticket !");
+        alert.showAndWait();
+        */
+        
+        
+    }
+   // System.out.println(Events);
+
+  /*Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                    Message message = Message.creator(new PhoneNumber("+21626318708"),
+        new PhoneNumber("+15856394545"), 
+        nom1 +" a annuler la participation de l'evnement " + d.getNom_event()).create();*/
+                    
+
+ 
     
     
       public void qrcode() throws SQLException {
@@ -323,7 +400,6 @@ if(rs1.next()){
             return null;
         }
     }
-
 
 @FXML
 public void pdf() throws FileNotFoundException, DocumentException, WriterException, IOException, SQLException {
@@ -441,6 +517,9 @@ String imagePath1 = "C:\\Users\\sarah\\OneDrive\\Documents\\Pidev\\GestionEvent\
 com.itextpdf.text.Image sig = com.itextpdf.text.Image.getInstance(imagePath1);
 sig.setAlignment(Element.ALIGN_RIGHT);
 sig.scaleAbsolute(60f, 60f);
+document.add(es);
+//document.add(es);
+
 document.add(sig);
  Paragraph id = new Paragraph("Numero Ticket: " +d.getId());
     id.setAlignment(Element.ALIGN_LEFT);
@@ -484,6 +563,14 @@ document.add(sig);
                         
                       
                     }
+
+    @FXML
+    private void claim(ActionEvent event) {
+    }
+
+    @FXML
+    private void map(ActionEvent event) {
+    }
 
    
 }
