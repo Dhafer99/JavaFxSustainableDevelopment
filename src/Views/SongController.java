@@ -13,20 +13,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import utiles.MyCnx;
 
 /**
  */
 public class SongController {
- 
+ private WebView webView;
+    private WebEngine webEngine;
 Reclamation d = new Reclamation();
 private Reclamation don;
     @FXML
@@ -37,10 +47,6 @@ private Reclamation don;
     @FXML
     private Label categ;
      HashMap<String, String> categoryUnits = new HashMap<>();
-    @FXML
-    private Button ClaimBtn;
-    @FXML
-    private Button MapBtn;
     @FXML
     private ImageView img;
     @FXML
@@ -53,7 +59,9 @@ private Reclamation don;
     private Label numero;
     @FXML
     private Label email;
-
+    @FXML
+    private Button Sol;
+//private Stage primaryStage;
      public void setData(Reclamation don) throws SQLException{
         /*categoryUnits.put("Appareil","Obj");
         categoryUnits.put("Argent", "D");
@@ -115,5 +123,66 @@ else{System.out.println("Can't");}
         Parent root = loader.load();
         DeleteBtn.getScene().setRoot(root);
     }   
+
+   @FXML
+private void Solution(ActionEvent event) {
+    Stage primaryStage = new Stage();
+    VBox root = new VBox();
+    root.setSpacing(10);
+    root.setPadding(new Insets(10, 10, 10, 10));
+
+    // Get the question to search for
+    String question = don.getMotif_de_reclamation();
+    System.out.println(question);
+
+    // Create a new WebView and WebEngine
+    WebView webView = new WebView();
+    WebEngine webEngine = webView.getEngine();
+
+    // Load the URL into the web engine
+    if (!question.isEmpty()) {
+        String url = "https://www.google.com/search?q=" + question;
+        System.out.println("Loading URL: " + url);
+        webEngine.load(url);
+    }
+
+    webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+        if (newState == Worker.State.SUCCEEDED) {
+            String title = webEngine.getTitle();
+            if (!title.startsWith("https://www.google.com/search")) {
+                displayAnswer(title);
+            }
+        }
+    });
+
+    root.getChildren().addAll(webView);
+
+    Scene scene = new Scene(root, 800, 600);
+    primaryStage.setScene(scene);
+    primaryStage.setTitle(don.getCategorie_rec().getNom());
+    primaryStage.show();
+}
+
+
+    private void displayAnswer(String answer) {
+        Stage stage = new Stage();
+
+        VBox root = new VBox();
+        root.setSpacing(10);
+        root.setPadding(new Insets(10, 10, 10, 10));
+
+        Label answerLabel = new Label("Answer:");
+        TextArea answerText = new TextArea(answer);
+        answerText.setEditable(false);
+        answerText.setPrefRowCount(5);
+        answerText.setWrapText(true);
+
+        root.getChildren().addAll(answerLabel, answerText);
+
+        Scene scene = new Scene(root, 400, 200);
+        stage.setScene(scene);
+        stage.setTitle("Solution");
+        stage.show();
+    }
 }
 

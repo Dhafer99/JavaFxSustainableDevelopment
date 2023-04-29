@@ -185,33 +185,32 @@ private void AddNew(ActionEvent event) throws IOException{
 }
 @FXML
     private void filter(ActionEvent event) throws SQLException, IOException {
-      /*  List<Reclamation> personnes = s.displayAll();
+     List<Reclamation> dons = s.displayAll();
 
-// sort the list by quantity in descending order
-Collections.sort(personnes, new Comparator<Reclamation>() {
+// Sort the list by date in descending order
+Collections.sort(dons, new Comparator<Reclamation>() {
     @Override
     public int compare(Reclamation d1, Reclamation d2) {
-        return Object.
+        return d2.getData_reclamation().compareTo(d1.getData_reclamation());
     }
 });
 
-//NbDon.setText(String.valueOf(personnes.size())+" Don Disponible");
+// Clear the container before adding new cards
+favoriteContainer.getChildren().clear();
 
-// display the sorted Don objects in the CardView
- favoriteContainer.getChildren().clear();
-  
-    for (Don d : personnes) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("song.fxml"));
-    
-        Pane pane = fxmlLoader.load();
-        SongController cardViewController = fxmlLoader.getController();
-        cardViewController.setData(d);
-        SongController controller = fxmlLoader.getController();
-        controller.receiveObject(d);
-        favoriteContainer.getChildren().add(pane); 
-    }
-*/
+// Display the sorted Don objects in the CardView
+for (Reclamation d : dons) {
+    FXMLLoader fxmlLoader = new FXMLLoader();
+    fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+
+    Pane pane = fxmlLoader.load();
+    SongController cardViewController = fxmlLoader.getController();
+    cardViewController.setData(d);
+    SongController controller = fxmlLoader.getController();
+    controller.receiveObject(d);
+    favoriteContainer.getChildren().add(pane);
+}
+
     }
 
     private void Menu(ActionEvent event) throws IOException {
