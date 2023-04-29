@@ -30,14 +30,7 @@ public class AddressToLatLng {
         throw new RuntimeException("Error response code: " + responseCode);
     }
 }
-     public static void main(String[] args) throws IOException {
-    String address = "tunis";
-    JsonObject response = getLatLongFromAddress(address);
-    double lat = response.get("lat").getAsDouble();
-    double lon = response.get("lon").getAsDouble();
-    System.out.println("Latitude: " + lat);
-    System.out.println("Longitude: " + lon);
-}
+    
 
 }
 

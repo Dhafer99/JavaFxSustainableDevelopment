@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="833.0" prefWidth="1300.0" styleClass="dark-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="don.AddUpdateController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1920.0" styleClass="dark-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="don.AddUpdateController">
    <children>
-      <VBox layoutX="38.0" layoutY="165.0" prefHeight="294.0" prefWidth="102.0" spacing="26.5">
+      <VBox layoutX="660.0" layoutY="187.0" prefHeight="294.0" prefWidth="102.0" spacing="26.5">
          <children>
             <Label prefHeight="18.0" prefWidth="38.0" text="Name" textFill="WHITE">
                <font>
@@ -48,7 +48,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox fx:id="vbox" layoutX="140.0" layoutY="165.0" prefHeight="275.0" prefWidth="282.0" spacing="20.0">
+      <VBox fx:id="vbox" layoutX="762.0" layoutY="187.0" prefHeight="275.0" prefWidth="282.0" spacing="20.0">
          <children>
             <TextField fx:id="tfname" />
             <TextField fx:id="tfquantite" />
@@ -58,7 +58,7 @@
             <TextField fx:id="tfnumero" layoutX="10.0" layoutY="112.0" />
          </children>
       </VBox>
-      <Button fx:id="Insert" layoutX="528.0" layoutY="203.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Insert">
+      <Button fx:id="Insert" layoutX="1150.0" layoutY="225.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Insert">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -67,7 +67,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="ImageAddChoose" layoutX="831.0" layoutY="203.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="26.0" prefWidth="116.0" styleClass="bottom" stylesheets="@style.css" text="Add Image">
+      <Button fx:id="ImageAddChoose" layoutX="845.0" layoutY="495.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="26.0" prefWidth="116.0" styleClass="bottom" stylesheets="@style.css" text="Add Image">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -76,8 +76,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fx:id="eventAddImg" fitHeight="265.0" fitWidth="282.0" layoutX="748.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox layoutX="10.0" layoutY="10.0" prefHeight="126.0" prefWidth="1235.0" styleClass="border-bottom" stylesheets="@style.css">
+      <ImageView fx:id="eventAddImg" fitHeight="265.0" fitWidth="282.0" layoutX="769.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="126.0" prefWidth="1910.0" styleClass="border-bottom" stylesheets="@style.css">
          <children>
             <HBox alignment="CENTER" prefHeight="126.0" prefWidth="99.0">
                <children>
@@ -93,7 +93,7 @@
                   </Label>
                </children>
             </HBox>
-            <Pane prefHeight="126.0" prefWidth="79.0" />
+            <Pane prefHeight="124.0" prefWidth="350.0" />
             <HBox alignment="CENTER" prefHeight="126.0" prefWidth="135.0">
                <children>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -178,7 +178,7 @@
                   </Label>
                </children>
             </HBox>
-            <Pane prefHeight="126.0" prefWidth="79.0" />
+            <Pane prefHeight="126.0" prefWidth="350.0" />
             <HBox alignment="CENTER" prefHeight="124.0" prefWidth="137.0">
                <children>
                   <ImageView fitHeight="60.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
@@ -195,7 +195,7 @@
             </HBox>
          </children>
       </HBox>
-      <Button fx:id="updateB" layoutX="528.0" layoutY="312.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Update">
+      <Button fx:id="updateB" layoutX="1150.0" layoutY="334.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Update">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -204,6 +204,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <ComboBox fx:id="combo" layoutX="498.0" layoutY="404.0" prefWidth="150.0" styleClass="bottom" stylesheets="@style.css" />
+      <ComboBox fx:id="combo" layoutX="1120.0" layoutY="426.0" prefWidth="150.0" styleClass="bottom" stylesheets="@style.css" />
    </children>
 </AnchorPane>

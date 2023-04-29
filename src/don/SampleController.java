@@ -169,7 +169,7 @@ private ObservableList<Don> filteredDonList;
 }
 
 private void updateUI(ObservableList<Don> donList) throws SQLException {
-    citiesGrid.getChildren().clear();
+    /*citiesGrid.getChildren().clear();
     int column = 0;
     int row = 1;
     for (Don d : donList) {
@@ -245,7 +245,7 @@ for (Don d : personnes) {
     AddUpdateController aec = loader.getController();
         Parent root = loader.load();
         Menubtn.getScene().setRoot(root);
-    }
+    }*/
    
-   
+}  
 }

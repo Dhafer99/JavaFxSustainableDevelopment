@@ -36,7 +36,7 @@ public class Mapa extends MapView {
 					
 					map.setOptions(mapOptions);
 					map.setCenter(new LatLng(lat, log));
-					map.setZoom(15);
+					map.setZoom(10);
                                         Marker mark = new Marker(map);
                                         mark.setPosition(map.getCenter());
 

@@ -69,11 +69,15 @@ import javafx.collections.transformation.SortedList;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import java.io.BufferedReader;
+import java.net.InetAddress;
+import java.net.URLConnection;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import org.json.JSONObject;
 public class FXMLController implements Initializable {
 
     @FXML
@@ -128,6 +132,8 @@ private final ObservableList<Don> eventList = FXCollections.observableArrayList(
     private Button test;
     @FXML
     private PieChart pieChart;
+    @FXML
+    private Button adress;
    
     public int getId() {
         return id;
@@ -423,6 +429,14 @@ private void Front (ActionEvent event) throws IOException{
 SampleController aec = loader.getController();
 Parent root = loader.load();
 test.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void Adress(ActionEvent event) throws IOException{
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+FrontController aec = loader.getController();
+Parent root = loader.load();
+adress.getScene().setRoot(root);
     }
     
 }

@@ -12,28 +12,39 @@ import com.restfb.Version;
 import com.restfb.types.FacebookType;
 import don.AddUpdateController;
 import don.SampleController;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
+import org.json.JSONObject;
 import utils.db_connect;
 
 /**
  */
-public class SongController {
+public class SongController  {
     @FXML
     private ImageView img;
     @FXML
@@ -58,8 +69,13 @@ private Don don;
     private Button ClaimBtn;
     @FXML
     private Button MapBtn;
-
+    public static Boolean test = false;
+private static String ms ;
+double toleranceMin = 0.00005;
+double toleranceMax = 1.2;
+ 
      public void setData(Don don) throws SQLException{
+  
         categoryUnits.put("Appareil","Obj");
         categoryUnits.put("Argent", "D");
         categoryUnits.put("Nourriture", "Kg");
@@ -88,6 +104,7 @@ ResultSet rs = ps.executeQuery();
 if (rs.next()) {
     String nomCategorie = rs.getString(1);
             String measurementUnit = categoryUnits.get(nomCategorie);
+            ms = measurementUnit;
 if (measurementUnit != null) {
     categ.setText(nomCategorie);
  Quantite.setText(Integer.toString(don.getQuantite())+" "+measurementUnit);
@@ -114,11 +131,8 @@ else{System.out.println("Can't");}
 @FXML
     private void delete(ActionEvent event) throws SQLException, IOException {
     System.out.println(don);
-        ps.supprimer(don);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
-        Controller aec = loader.getController();
-        Parent root = loader.load();
-        DeleteBtn.getScene().setRoot(root);
+    test = true;
+        ps.supprimer(don);   
     }
     @FXML
 private void claim(ActionEvent event) throws SQLException, IOException {
@@ -128,8 +142,15 @@ private void claim(ActionEvent event) throws SQLException, IOException {
     ps.modifier(don);
     if (newQuantity <= 0) {
         delete(event);
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+        FrontController aec = loader.getController();
+        Parent root = loader.load();
+        ClaimBtn.getScene().setRoot(root);
     } else {
-        Quantite.setText(Integer.toString(newQuantity));
+        Quantite.setText(Integer.toString(newQuantity)+" "+ms);
+        ClaimBtn.setOnAction(t -> {
+    Quantite.setText(Integer.toString(newQuantity)+" "+ms);
+});
     }
 }
 
@@ -141,9 +162,33 @@ private void claim(ActionEvent event) throws SQLException, IOException {
     double lon = response.get("lon").getAsDouble();
     System.out.println("Latitude: " + lat);
     System.out.println("Longitude: " + lon);
-    Mapa temp = new Mapa("first Map",lat,lon);
+    Mapa temp = new Mapa(""+d.getNameD(),lat,lon);
     }
+public void setLocation() throws IOException{
 
-   
+    // Obtain public IP address
+            URL url = new URL("http://ip-api.com/json/");
+            URLConnection connection = url.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            double latitude = jsonResponse.getDouble("lat");
+            double longitude = jsonResponse.getDouble("lon");
+            System.out.println("Latitude: " + latitude);
+            System.out.println("Longitude: " + longitude);
+       
+ JsonObject res = getLatLongFromAddress(don.getLocalisation());
+    double lat = res.get("lat").getAsDouble();
+    double lon = res.get("lon").getAsDouble();
+    if (Math.abs(latitude -lat ) >= toleranceMin && Math.abs( latitude- lat) <= toleranceMax ) {
+while(toleranceMin==0.00005){   }
+}        
+}
+    
 }
 

@@ -108,6 +108,7 @@
       <Button fx:id="categoryBtn" layoutX="484.0" layoutY="577.0" mnemonicParsing="false" onAction="#Category" prefHeight="30.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Category" />
       <Button fx:id="test" layoutX="584.0" layoutY="577.0" mnemonicParsing="false" onAction="#test" prefHeight="30.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="test" />
       <PieChart fx:id="pieChart" layoutX="1329.0" layoutY="61.0" />
+      <Button fx:id="adress" layoutX="705.0" layoutY="577.0" mnemonicParsing="false" onAction="#Adress" prefHeight="30.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="My Adress" />
 
    </children>
 </AnchorPane>
