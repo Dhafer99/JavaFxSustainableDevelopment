@@ -37,6 +37,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -45,8 +46,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import javax.imageio.ImageIO;
@@ -82,7 +85,9 @@ public class AjoutModifController implements Initializable {
     private DatePicker tfDate;
 Reclamation d = new Reclamation();
 private int id;
-
+private Parent fxml;
+    @FXML
+    private Button retour;
     public int getId() {
         return id;
     }
@@ -111,9 +116,10 @@ private int id;
                 }
             });   
     }    
-private boolean ValidateEmptyForm(  TextField motif_de_reclamation, TextField email,TextField num_telephone, DatePicker data_reclamation){
+private boolean ValidateEmptyForm(  TextField motif_de_reclamation, TextField email,TextField num_telephone
+){
          if ( motif_de_reclamation.getText().equals("") || 
-                 email.getText().equals("") || num_telephone.getText().equals("")||data_reclamation.getValue()==null  ) {
+                 email.getText().equals("") || num_telephone.getText().equals("") ) {
              Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Erreur");
              alert.setHeaderText(null);
@@ -127,13 +133,16 @@ private boolean ValidateEmptyForm(  TextField motif_de_reclamation, TextField em
      }
     @FXML
     private void AjouterDon(ActionEvent event) throws IOException, AWTException {
-        if(ValidateEmptyForm(tfdescription,tfemail,tfnumero,tfDate)){
+        if(ValidateEmptyForm(tfdescription,tfemail,tfnumero)){
 
         Categorie_Rec Catrec; // instance
         Categorie_Rec nom =  combo.getValue(); // te5ou ell valeur mill combo box 
         CategorieRecService cdao = new CategorieRecService(); // instance service categorie 
         Catrec = cdao.getOneByName(nom.toString()); 
-        java.sql.Date data_reclamation = java.sql.Date.valueOf(tfDate.getValue());
+        LocalDate currentdate = LocalDate.now();
+        java.sql.Date data_reclamation = java.sql.Date.valueOf(currentdate);
+        System.out.println(currentdate);
+        //java.sql.Date data_reclamation = java.sql.Date.valueOf(tfDate.getValue());
         String etat = "En Cours";
         String motif_de_reclamation = tfdescription.getText();
         String num_telephone = tfnumero.getText();
@@ -281,5 +290,16 @@ tfDate.setValue(localDate);
             Logger.getLogger(AjoutModifController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+ Parent root = loader.load();
+        retour.getScene().setRoot(root);
+    FrontController controller = loader.getController();
+    }
+
+    
     
 }

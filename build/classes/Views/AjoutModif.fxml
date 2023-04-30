@@ -47,7 +47,7 @@
             <TextField fx:id="tfnumero" layoutX="10.0" layoutY="112.0" />
          </children>
       </VBox>
-      <Button fx:id="Insert" layoutX="528.0" layoutY="203.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Insert">
+     <Button fx:id="Insert" layoutX="560.0" layoutY="207.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #009200;" styleClass="bottom" stylesheets="@style.css" text="Insert">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="ImageAddChoose" layoutX="831.0" layoutY="203.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="26.0" prefWidth="116.0" styleClass="bottom" stylesheets="@style.css" text="Add Image">
+       <Button fx:id="ImageAddChoose" layoutX="887.0" layoutY="181.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #009200;" styleClass="bottom" stylesheets="@style.css" text="Add Image">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,7 +65,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fx:id="eventAddImg" fitHeight="265.0" fitWidth="282.0" layoutX="748.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eventAddImg" fitHeight="265.0" fitWidth="282.0" layoutX="815.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true" />
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="126.0" prefWidth="1235.0" styleClass="border-bottom" stylesheets="@style.css">
          <children>
             <HBox alignment="CENTER" prefHeight="126.0" prefWidth="99.0">
@@ -184,7 +184,7 @@
             </HBox>
          </children>
       </HBox>
-      <Button fx:id="updateB" layoutX="528.0" layoutY="312.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" styleClass="bottom" stylesheets="@style.css" text="Update">
+      <Button fx:id="updateB" layoutX="560.0" layoutY="299.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #009200;" styleClass="bottom" stylesheets="@style.css" text="Update">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -193,6 +193,15 @@
             </ImageView>
          </graphic>
       </Button>
-      <ComboBox fx:id="combo" layoutX="498.0" layoutY="404.0" prefWidth="150.0" styleClass="bottom" stylesheets="@style.css" />
+      <ComboBox fx:id="combo" layoutX="530.0" layoutY="383.0" prefWidth="150.0" style="-fx-background-color: #009200;" styleClass="bottom" stylesheets="@style.css" />
+      <Button fx:id="retour" layoutX="78.0" layoutY="606.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #009200;" styleClass="bottom" stylesheets="@style.css" text="Retour">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8_add_16px_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

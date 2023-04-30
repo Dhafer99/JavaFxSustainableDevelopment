@@ -75,7 +75,7 @@ private Parent fxml;
 
     @FXML
     private void Front(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/sample2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Front.fxml"));
         Controller aec = loader.getController();
         Parent root2 = loader.load();
         btnfront.getScene().setRoot(root2);

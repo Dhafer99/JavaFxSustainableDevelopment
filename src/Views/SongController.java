@@ -60,7 +60,8 @@ private Reclamation don;
     @FXML
     private Label email;
     @FXML
-    private Button Sol;
+    private Button sol ;
+  
 //private Stage primaryStage;
      public void setData(Reclamation don) throws SQLException{
         /*categoryUnits.put("Appareil","Obj");
@@ -118,13 +119,12 @@ else{System.out.println("Can't");}
     private void delete(ActionEvent event) throws SQLException, IOException {
     System.out.println(don);
         ps.delete(don.getId());
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
         Controller aec = loader.getController();
         Parent root = loader.load();
         DeleteBtn.getScene().setRoot(root);
     }   
-
-   @FXML
+@FXML
 private void Solution(ActionEvent event) {
     Stage primaryStage = new Stage();
     VBox root = new VBox();
@@ -184,5 +184,7 @@ private void Solution(ActionEvent event) {
         stage.setTitle("Solution");
         stage.show();
     }
+
+  
 }
 

@@ -7,13 +7,15 @@
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/sample.fxml</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/AjoutModif.fxml</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/CategorieListdata.java</file>
+            <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/FrontController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/SongController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/Categorie.fxml</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/ServicesReclamations/InterReclamation.java</file>
+            <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/DonF.fxml</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/sample2.fxml</file>
-            <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/style.css</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Entite/Reclamation.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/AjoutModifController.java</file>
+            <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/DonFController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/HomeController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/ChartRController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/AjoutReclamation.fxml</file>
@@ -21,6 +23,7 @@
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/ServicesReclamations/CategorieRecService.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/SampleController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/ChartR.fxml</file>
+            <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/Front.fxml</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/gestionreclamation/GestionReclamation.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/Views/CardViewController.java</file>
             <file>file:/C:/Users/ghofr/Desktop/Java/GestionReclamation/src/ServicesReclamations/ReclamationService.java</file>

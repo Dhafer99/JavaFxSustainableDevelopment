@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
@@ -96,13 +97,16 @@ public class AjoutReclamationController implements Initializable {
 @FXML
         private void ajouter(MouseEvent event) {
         
-        if(ValidateEmptyForm(tf_etat,tf_motifdereclamation,tf_numtelephone,tf_email,picker_date)){
+        if(ValidateEmptyForm(tf_etat,tf_motifdereclamation,tf_numtelephone,tf_email)){
 
         Categorie_Rec Catrec; // instance
         String nom = (String) combo.getValue(); // te5ou ell valeur mill combo box 
         CategorieRecService cdao = new CategorieRecService(); // instance service categorie 
         Catrec = cdao.getOneByName(nom); //
-        java.sql.Date data_reclamation = java.sql.Date.valueOf(picker_date.getValue());
+        LocalDate currentdate = LocalDate.now();
+        java.sql.Date data_reclamation = java.sql.Date.valueOf(currentdate);
+        System.out.println(currentdate);
+        //java.sql.Date data_reclamation = java.sql.Date.valueOf(picker_date.getValue());
         String etat = tf_etat.getText();
         String motif_de_reclamation = tf_motifdereclamation.getText();
         String num_telephone = tf_numtelephone.getText();
@@ -171,9 +175,9 @@ public class AjoutReclamationController implements Initializable {
         }
     }
     
-    private boolean ValidateEmptyForm(TextField etat , TextField motif_de_reclamation, TextField email,TextField num_telephone, DatePicker data_reclamation){
+    private boolean ValidateEmptyForm(TextField etat , TextField motif_de_reclamation, TextField email,TextField num_telephone){
          if (etat.getText().equals("")  || motif_de_reclamation.getText().equals("") || 
-                 email.getText().equals("") || num_telephone.getText().equals("")||data_reclamation.getValue()==null  ) {
+                 email.getText().equals("") || num_telephone.getText().equals("")  ) {
              Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Erreur");
              alert.setHeaderText(null);
