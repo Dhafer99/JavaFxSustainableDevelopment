@@ -25,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -48,6 +49,8 @@ private ObservableList<Entities.Evenement> filteredDonList;
     EvenementService s= new EvenementService();
     @FXML
     private Button addBtn;
+    @FXML
+    private Button filter2;
     /**
      * Initializes the controller class.
      */
@@ -180,6 +183,37 @@ Collections.sort(personnes, new Comparator<Entities.Evenement>() {
         favoriteContainer.getChildren().add(pane); 
     }
     }
+    
+    
+    @FXML
+    private void filter2(ActionEvent event) throws SQLException, IOException {
+        List<Entities.Evenement> personnes = s.afficher();
+
+// Sort the list by date in descending order
+Collections.sort(personnes, new Comparator<Entities.Evenement>() {
+    @Override
+    public int compare(Entities.Evenement d1, Entities.Evenement d2) {
+        return d2.getDate_debut().compareTo(d1.getDate_fin());
+    }
+});
+
+// Clear the container before adding new cards
+favoriteContainer.getChildren().clear();
+
+// Display the sorted Don objects in the CardView
+for (Entities.Evenement d : personnes) {
+    FXMLLoader fxmlLoader = new FXMLLoader();
+    fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+
+    Pane pane = fxmlLoader.load();
+    SongController cardViewController = fxmlLoader.getController();
+    cardViewController.setData(d);
+    SongController controller = fxmlLoader.getController();
+    controller.receiveObject(d);
+    favoriteContainer.getChildren().add(pane);
+}
+
+    }
     @FXML
     private void AddNew(ActionEvent event) throws IOException{
 
@@ -189,5 +223,9 @@ Collections.sort(personnes, new Comparator<Entities.Evenement>() {
         addBtn.getScene().setRoot(root);
   
 }
+
+    @FXML
+    private void AddNew(MouseEvent event) {
+    }
     
 }

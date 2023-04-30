@@ -67,7 +67,7 @@
             <String fx:value="upgrade-button" />
          </styleClass>
       </Button>
-      <Button fx:id="participer" layoutX="247.0" layoutY="230.0" mnemonicParsing="false" onAction="#test" prefHeight="26.0" prefWidth="90.0" stylesheets="@style.css" text="participer">
+      <Button fx:id="participer" layoutX="235.0" layoutY="230.0" mnemonicParsing="false" onAction="#test" prefHeight="27.0" prefWidth="108.0" stylesheets="@style.css" text="participer">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -85,6 +85,19 @@
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8_map_marker_80px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="buttonF" />
+            <String fx:value="upgrade-button" />
+         </styleClass>
+      </Button>
+      <Button fx:id="annuler" layoutX="235.0" layoutY="230.0" mnemonicParsing="false" onAction="#test2" prefHeight="27.0" prefWidth="108.0" stylesheets="@style.css" text="annuler">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons8_grab_24px.png" />
                </image>
             </ImageView>
          </graphic>

@@ -40,7 +40,23 @@
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#filter" prefHeight="62.0" prefWidth="106.0" stylesheets="@style.css" text="Filter">
+                  <Button mnemonicParsing="false" onAction="#filter" prefHeight="60.0" prefWidth="177.0" stylesheets="@style.css" text="Participants">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8_filter_40px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="upgrade-button" />
+                        <String fx:value="buttonF" />
+                     </styleClass>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#filter2" prefHeight="60.0" prefWidth="130.0" stylesheets="@style.css" text="Date">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>

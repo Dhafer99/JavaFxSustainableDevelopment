@@ -61,10 +61,12 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import java.util.Optional;
+import javafx.animation.PauseTransition;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.util.Duration;
 
 
 /**
@@ -114,6 +116,8 @@ private Evenement ev;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           pdf.setVisible(false); 
+                    annuler.setVisible(false); 
+
     //participer.setVisible(true);
         
        /*        try {
@@ -260,15 +264,44 @@ if(rs1.next()){
     if(Events.containsKey(d.getId()) && Events.containsValue(1))
     {
         participer.setVisible(false);
+         PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        
+        // set the action to be performed when the pause is finished
+        pause.setOnFinished(Event -> {
+            // your code to be executed after 5 seconds
+
         pdf.setVisible(true);
         
         
-         Alert alert = new Alert(AlertType.INFORMATION);
+        
+        System.out.println("3 seconds have passed");
+        });
+         
+          pause.play();
+          Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Impression de ticket");
         alert.setHeaderText(null);
         alert.setContentText("Vous pouvez maintenant imprimer votre ticket !");
         alert.showAndWait();
         
+        PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
+        
+        // set the action to be performed when the pause is finished
+        pause1.setOnFinished(Event -> {
+            // your code to be executed after 5 seconds
+annuler.setVisible(true);
+       
+        
+        
+        
+        System.out.println("3 seconds have passed");
+        });
+           pause1.play();
+             Alert alert1 = new Alert(AlertType.INFORMATION);
+        alert1.setTitle("Annulation");
+        alert1.setHeaderText(null);
+        alert1.setContentText("Vous pouvez annuler votre participation a tout moment");
+        alert1.showAndWait();
         
         
     }
@@ -440,7 +473,7 @@ if(rs.next()){
 
             // Get the PdfContentByte instance
             imageE.scaleAbsolute(100f, 100f);
-imageE.setAlignment(Element.ALIGN_CENTER);
+imageE.setAlignment(Element.ALIGN_LEFT);
             // Add the background image to the canvas
             
 
