@@ -41,8 +41,10 @@ import Service.ServiceCategory;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -796,7 +798,7 @@ private File file;
  "3asba"
 		}; // Add your list of bad words
 private Stage primaryStage; 
-
+private Parent fxml;
     /**
      * Initializes the controller class.
      */
@@ -945,10 +947,22 @@ eventAddImg.setImage(null);
                  p.setCategory_d_id(category);
                    se.ajouter(p);
                    JOptionPane.showMessageDialog(null, "Don ajouté !");
-                      FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
-        SampleController aec = loader.getController();
-        Parent root = loader.load();
-        Insert.getScene().setRoot(root);
+FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+Parent root = loader.load();
+
+AnchorPane myVBox = (AnchorPane) root.lookup("#route");
+
+FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
+Node myAnchorPane = includedLoader.load();
+
+myVBox.getChildren().add(myAnchorPane);
+
+FrontController frontController = loader.getController();
+DonFController donFController = includedLoader.getController();
+
+donFController.setFrontController(frontController);
+
+Insert.getScene().setRoot(root);
          Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                     Message message = Message.creator(new PhoneNumber("+21629228940"),
         new PhoneNumber("+15673717088"), 
@@ -997,10 +1011,22 @@ public void receiveObject(Don d) {
             se.modifier(p);
 
             JOptionPane.showMessageDialog(null, "Don modifié !");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
-            SampleController aec = loader.getController();
-            Parent root = loader.load();
-            updateB.getScene().setRoot(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+Parent root = loader.load();
+
+AnchorPane myVBox = (AnchorPane) root.lookup("#route");
+
+FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
+Node myAnchorPane = includedLoader.load();
+
+myVBox.getChildren().add(myAnchorPane);
+
+FrontController frontController = loader.getController();
+DonFController donFController = includedLoader.getController();
+
+donFController.setFrontController(frontController);
+
+updateB.getScene().setRoot(root);
         } catch (IOException ex) {
             Logger.getLogger(AddUpdateController.class.getName()).log(Level.SEVERE, null, ex);
         }

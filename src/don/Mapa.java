@@ -20,33 +20,32 @@ import com.teamdev.jxmaps.*;
 public class Mapa extends MapView {
     private Map map;
 
-    public Mapa(String nName, double lat,double log){
-  JFrame frame = new JFrame(nName);  
+   public Mapa(String nName, double lat, double log) {
+    JFrame frame = new JFrame(nName);  
     setOnMapReadyHandler(new MapReadyHandler() {
-			@Override
-			public void onMapReady(MapStatus status) {
-				// Check if the map is loaded correctly
-				if (status == MapStatus.MAP_STATUS_OK) {
-					// Getting the associated map object
-					map = getMap();
-					MapOptions mapOptions = new MapOptions();
-					MapTypeControlOptions controlOptions = new MapTypeControlOptions();
-					controlOptions.setPosition(ControlPosition.BOTTOM_LEFT);
-					mapOptions.setMapTypeControlOptions(controlOptions);
-					
-					map.setOptions(mapOptions);
-					map.setCenter(new LatLng(lat, log));
-					map.setZoom(10);
-                                        Marker mark = new Marker(map);
-                                        mark.setPosition(map.getCenter());
-
-				}
-			}
-		});
+        @Override
+        public void onMapReady(MapStatus status) {
+            // Check if the map is loaded correctly
+            if (status == MapStatus.MAP_STATUS_OK) {
+                // Getting the associated map object
+                map = getMap();
+                MapOptions mapOptions = new MapOptions();
+                MapTypeControlOptions controlOptions = new MapTypeControlOptions();
+                controlOptions.setPosition(ControlPosition.BOTTOM_LEFT);
+                mapOptions.setMapTypeControlOptions(controlOptions);
+                map.setOptions(mapOptions);
+                map.setCenter(new LatLng(lat, log));
+                map.setZoom(12);
+                // Add marker after the map finishes loading
+                Marker mark = new Marker(map);
+                mark.setPosition(map.getCenter());
+            }
+        }
+    });
     frame.add(this, BorderLayout.CENTER);
-		frame.setSize(700, 500);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-    
-    }
+    frame.setSize(700, 500);
+    frame.setLocationRelativeTo(null);
+    frame.setVisible(true);
+}
+
 }

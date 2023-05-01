@@ -12,6 +12,8 @@ import com.restfb.Version;
 import com.restfb.types.FacebookType;
 import don.AddUpdateController;
 import don.SampleController;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,7 +41,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import javax.swing.JFrame;
 import org.json.JSONObject;
+import org.openstreetmap.gui.jmapviewer.Coordinate;
+import org.openstreetmap.gui.jmapviewer.JMapViewer;
+import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+import com.graphhopper.GHRequest;
+import com.graphhopper.GHResponse;
+import com.graphhopper.GraphHopper;
+import com.graphhopper.routing.util.EncodingManager;
+import com.graphhopper.util.Parameters.Routing;
+import com.graphhopper.util.shapes.GHPoint;
+import static don.Don.loadFXML;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import utils.db_connect;
 
 /**
@@ -132,7 +147,24 @@ else{System.out.println("Can't");}
     private void delete(ActionEvent event) throws SQLException, IOException {
     System.out.println(don);
     test = true;
-        ps.supprimer(don);   
+        ps.supprimer(don); 
+ FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+Parent root = loader.load();
+
+AnchorPane myVBox = (AnchorPane) root.lookup("#route");
+
+FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
+Node myAnchorPane = includedLoader.load();
+
+myVBox.getChildren().add(myAnchorPane);
+
+FrontController frontController = loader.getController();
+DonFController donFController = includedLoader.getController();
+
+donFController.setFrontController(frontController);
+
+DeleteBtn.getScene().setRoot(root);
+
     }
     @FXML
 private void claim(ActionEvent event) throws SQLException, IOException {
@@ -156,13 +188,36 @@ private void claim(ActionEvent event) throws SQLException, IOException {
 
     @FXML
     private void map(ActionEvent event) throws IOException {
-         System.out.println(""+AddressToLatLng.getLatLongFromAddress(don.getLocalisation()));
+        System.out.println(""+AddressToLatLng.getLatLongFromAddress(don.getLocalisation()));
+         JsonObject response = getLatLongFromAddress(don.getLocalisation());
+    double lat = response.get("lat").getAsDouble();
+    double lon = response.get("lon").getAsDouble();
+        JMapViewer mapViewer = new JMapViewer();
+
+        // Set the default zoom level and center point of the map
+        mapViewer.setDisplayPosition(new Coordinate(lat, lon), 11);
+
+        // Add a marker to the map
+        MapMarkerDot marker = new MapMarkerDot(new Coordinate(lat, lon));
+        mapViewer.addMapMarker(marker);
+mapViewer.zoomIn();
+
+
+        
+
+        // Create a new JFrame to display the map
+        JFrame frame = new JFrame("JMapViewer Example");
+        frame.setLayout(new BorderLayout());
+        frame.add(mapViewer, BorderLayout.CENTER);
+        frame.setSize(new Dimension(1000, 800));
+        frame.setVisible(true);
+       /*  System.out.println(""+AddressToLatLng.getLatLongFromAddress(don.getLocalisation()));
          JsonObject response = getLatLongFromAddress(don.getLocalisation());
     double lat = response.get("lat").getAsDouble();
     double lon = response.get("lon").getAsDouble();
     System.out.println("Latitude: " + lat);
     System.out.println("Longitude: " + lon);
-    Mapa temp = new Mapa(""+d.getNameD(),lat,lon);
+    Mapa temp = new Mapa(""+d.getNameD(),lat,lon);*/
     }
 public void setLocation() throws IOException{
 

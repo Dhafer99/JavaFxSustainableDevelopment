@@ -31,7 +31,7 @@ import javafx.util.Duration;
 public class FrontController implements Initializable {
 
     @FXML
-    private AnchorPane route;
+    public AnchorPane route;
     @FXML
     private TextField text;
     @FXML
@@ -41,6 +41,7 @@ public class FrontController implements Initializable {
     @FXML
     private MediaView mediaView3;
 private Parent fxml;
+ private DonFController parentController;
     /**
      * Initializes the controller class.
      */
@@ -124,7 +125,17 @@ timeline.play();
         }
     }*/
 
-    
+    public void changeAnchorPane(String fxmlPath, FrontController originalController) throws IOException {
+  
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+        Parent newRoot = fxmlLoader.load();
+        originalController.route.getChildren().setAll(newRoot);
+   
+}
+    public void setParentController(DonFController parentController) {
+        this.parentController = parentController;
+    }
+
     
     
        

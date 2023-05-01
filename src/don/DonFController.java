@@ -5,9 +5,15 @@
  */
 package don;
 
+import static Service.AddressToLatLng.getLatLongFromAddress;
 import Service.ServiceDon;
+import com.google.gson.JsonObject;
+import static com.restfb.types.whatsapp.platform.SendMessage.Type.location;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,6 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-
+import org.json.JSONObject;
 /**
  * FXML Controller class
  *
@@ -36,11 +43,14 @@ import javafx.scene.layout.Pane;
 public class DonFController implements Initializable {
 
     @FXML
-    public HBox recentlyPlayedContainer;
+    public  HBox recentlyPlayedContainer;
     @FXML
     private Label nb;
     @FXML
-    public HBox favoriteContainer;
+     public HBox favoriteContainer;
+
+
+    private FrontController parentController;
   private ObservableList<Entities.Don> originalDonList;
 private ObservableList<Entities.Don> filteredDonList;
     @FXML
@@ -48,6 +58,8 @@ private ObservableList<Entities.Don> filteredDonList;
     ServiceDon s= new ServiceDon();
     @FXML
     private Button addBtn;
+    Don don = new Don();
+    private Double FILTER_RADIUS=30.0;
     /**
      * Initializes the controller class.
      */
@@ -192,5 +204,103 @@ Collections.sort(personnes, new Comparator<Entities.Don>() {
         addBtn.getScene().setRoot(root);
   
 }
+@FXML
+private void filterLoc(ActionEvent event) throws IOException, SQLException  {
+    // Get the user's location
+    URL url = new URL("http://ip-api.com/json/");
+    URLConnection connection = url.openConnection();
+    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    String inputLine;
+    StringBuilder response = new StringBuilder();
+    while ((inputLine = in.readLine()) != null) {
+        response.append(inputLine);
+    }
+    in.close();
     
+    JSONObject jsonResponse = new JSONObject(response.toString());
+    double userLatitude = jsonResponse.getDouble("lat");
+    double userLongitude = jsonResponse.getDouble("lon");
+  
+    // Filter donations based on the distance from the user's location
+   // Filter donations based on the distance from the user's location
+List<Entities.Don> donations = s.afficher().stream()
+        .filter(d -> {
+            try {
+                JsonObject location = getLatLongFromAddress(d.getLocalisation());
+                double donLatitude = location.get("lat").getAsDouble();
+                double donLongitude = location.get("lon").getAsDouble();
+                double distance = calculateDistance(userLatitude, userLongitude, donLatitude, donLongitude);
+                return distance <= FILTER_RADIUS;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        })
+        .sorted(Comparator.comparingInt(Entities.Don::getQuantite).reversed())
+        .collect(Collectors.toList());
+
+
+    // Update the UI with the filtered donations
+    favoriteContainer.getChildren().clear();
+    for (Entities.Don d : donations) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+
+        Pane pane = fxmlLoader.load();
+        SongController cardViewController = fxmlLoader.getController();
+        cardViewController.setData(d);
+        SongController controller = fxmlLoader.getController();
+        controller.receiveObject(d);
+        favoriteContainer.getChildren().add(pane); 
+    }
+}
+
+public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+    final int R = 6371; // Radius of the earth in km
+    double dLat = deg2rad(lat2 - lat1);  // deg2rad below
+    double dLon = deg2rad(lon2 - lon1);
+    double a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2)
+      ; 
+    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    double d = R * c; // Distance in km
+    return d;
+}
+
+public static double deg2rad(double deg) {
+    return deg * (Math.PI/180);
+}
+public void refreshFavoriteContainer() {
+    try {
+        // Get the list of Don objects
+        originalDonList = FXCollections.observableArrayList(s.afficher());
+        filteredDonList = FXCollections.observableArrayList(originalDonList);
+        nb.setText(originalDonList.size() + " Don Disponible");
+
+        // Clear the favoriteContainer
+        favoriteContainer.getChildren().clear();
+
+        // Populate the favoriteContainer with the updated list of Don objects
+        for (Entities.Don d : filteredDonList) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+            Pane pane = fxmlLoader.load();
+            SongController cardViewController = fxmlLoader.getController();
+            cardViewController.setData(d);
+            SongController controller = fxmlLoader.getController();
+            controller.receiveObject(d);
+            favoriteContainer.getChildren().add(pane);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+ public void setFrontController(FrontController parentController) {
+        this.parentController = parentController;
+    }
+
 }

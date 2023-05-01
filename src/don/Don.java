@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 
 public class Don extends Application {
     private static Stage stg ;
+
     @Override
 public void start(Stage stage) throws Exception {
     try {
@@ -50,5 +52,10 @@ public void start(Stage stage) throws Exception {
     public static void main(String[] args) {
         launch(args);
     }
-    
+  public static AnchorPane loadFXML(String fxmlPath) throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(Don.class.getResource(fxmlPath));
+    AnchorPane root = loader.load();
+    return root;
+}
 }
