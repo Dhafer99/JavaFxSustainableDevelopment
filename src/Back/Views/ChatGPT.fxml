@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ChatGPTController">
+    <TextArea fx:id="chatArea" prefHeight="350.0" prefWidth="600.0" wrapText="true" editable="false" />
+    <HBox>
+        <TextField fx:id="inputField" prefHeight="50.0" prefWidth="500.0" />
+        <Button text="Send" onAction="#handleSendButton" prefHeight="50.0" prefWidth="100.0" />
+    </HBox>
+</VBox>

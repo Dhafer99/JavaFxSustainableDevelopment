@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="842.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.AffichageCategEController">
+   <children>
+      <TableView fx:id="CategorieETv" layoutX="47.0" layoutY="131.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="422.0" prefWidth="330.0" style="-fx-background-color: 120;" styleClass="table-row-cell" stylesheets="@style.css">
+         <columns>
+            <TableColumn fx:id="nomTv" prefWidth="183.0" text="Nom" />
+            <TableColumn fx:id="delete" prefWidth="146.0" text="Action" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnCategEAdd" contentDisplay="CENTER" layoutX="47.0" layoutY="58.0" mnemonicParsing="false" onAction="#GoToAddCategE" prefHeight="20.0" prefWidth="109.0" style="-fx-background-color: #454B1B;" text="Ajouter" textFill="#f5f2f2" textOverrun="CENTER_ELLIPSIS">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../sarra/JavaFxSustainableDevelopment-GestionEvent/images/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Bell MT" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="eventSearch" layoutX="174.0" layoutY="60.0" promptText="Rechercher...">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

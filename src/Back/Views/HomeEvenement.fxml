@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1075.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.HomeEvenementController">
+   <children>
+      <AnchorPane prefHeight="106.0" prefWidth="1075.0" style="-fx-background-color: #00cec4;">
+         <children>
+            <HBox layoutX="84.0" layoutY="17.0" prefHeight="66.0" prefWidth="938.0" spacing="20.0" style="-fx-background-color: transparent;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="67.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/add_administrator_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="252.0" layoutY="10.0" onMouseClicked="#add" prefHeight="62.0" prefWidth="146.0" text="Ajouter un evenement " />
+                  <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="244.0" layoutY="15.0" onMouseClicked="#affichage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/book_and_pencil_50px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="362.0" layoutY="10.0" onMouseClicked="#affichage" prefHeight="63.0" prefWidth="136.0" text="Afficher les evenements" />
+                  <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="444.0" layoutY="15.0" onMouseClicked="#ajoutCateg" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_add_32px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="670.0" layoutY="15.0" onMouseClicked="#ajoutCateg" prefHeight="62.0" prefWidth="164.0" text="Ajout categorie d'evenment" />
+                  <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="478.0" layoutY="15.0" onMouseClicked="#afficheCateg" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_bar_chart_24px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="742.0" layoutY="15.0" onMouseClicked="#afficheCateg" prefHeight="63.0" prefWidth="136.0" text="Afficher les categorie">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root" layoutY="107.0" prefHeight="673.0" prefWidth="1075.0">
+         <children>
+            <ImageView fitHeight="417.0" fitWidth="511.0" layoutX="231.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/3765669.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

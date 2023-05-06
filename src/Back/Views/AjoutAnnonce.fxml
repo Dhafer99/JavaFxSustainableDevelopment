@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="654.0" prefWidth="853.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.AjoutAnnonceController">
+   <children>
+      <Label layoutX="68.0" layoutY="84.0" prefHeight="18.0" prefWidth="134.0" text="Date_Publication" />
+      <Label layoutX="68.0" layoutY="140.0" prefHeight="18.0" prefWidth="107.0" text="Description" />
+      <Label layoutX="68.0" layoutY="206.0" prefHeight="18.0" prefWidth="94.0" text="Adresse" />
+      <TextField fx:id="tf_description" layoutX="324.0" layoutY="136.0" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TextField fx:id="tf_adresse" layoutX="324.0" layoutY="202.0" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <Button layoutX="68.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#ajouter" style="-fx-background-color: #454B1B;" text="Ajouter" textFill="WHITE" />
+      <ImageView fx:id="imageadd" fitHeight="150.0" fitWidth="200.0" layoutX="299.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="combo" layoutX="322.0" layoutY="477.0" prefWidth="150.0" style="-fx-background-color: gray;" styleClass="combo-box-popup" stylesheets="@style.css" />
+      <Label layoutX="63.0" layoutY="481.0" prefHeight="18.0" prefWidth="120.0" text="Catégorie " />
+      <Label fx:id="datelabel" layoutX="319.0" layoutY="84.0" prefHeight="18.0" prefWidth="157.0" />
+      <ImageView fx:id="imageadd" fitHeight="150.0" fitWidth="200.0" layoutX="299.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="70.0" layoutY="333.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" style="-fx-background-color: #454B1B;" text="ajout image " textFill="WHITE" />
+   </children>
+</AnchorPane>

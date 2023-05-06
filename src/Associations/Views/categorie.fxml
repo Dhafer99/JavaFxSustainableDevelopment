@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="806.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Associations.Controllers.CategorieController">
+   <children>
+      <TableView fx:id="tabcategorie" layoutX="14.0" layoutY="56.0" onMouseClicked="#handle" prefHeight="184.0" prefWidth="431.0">
+         <columns>
+            <TableColumn fx:id="colnom" prefWidth="428.800030708313" text="Nom" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfnom" layoutX="105.0" layoutY="299.0" />
+      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="299.0" layoutY="338.0" onMouseClicked="#supp" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/trash_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="299.0" layoutY="295.0" onMouseClicked="#modif" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/update_left_rotation_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="33.0" layoutX="299.0" layoutY="258.0" onMouseClicked="#ajout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_add_user_group_man_man_50px_1.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="254.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#trie" text="trie" />
+   </children>
+</AnchorPane>

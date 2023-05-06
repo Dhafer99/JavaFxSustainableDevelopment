@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="782.0" prefWidth="1074.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.EditAssociationController">
+   <children>
+      <TextField fx:id="tfnom" layoutX="24.0" layoutY="330.0" prefHeight="26.0" prefWidth="165.0" promptText="nom" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TextField fx:id="tfnumero" layoutX="24.0" layoutY="370.0" prefHeight="26.0" prefWidth="165.0" promptText="numero" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TextField fx:id="tfmail" layoutX="24.0" layoutY="410.0" prefHeight="26.0" prefWidth="165.0" promptText="mail" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TextField fx:id="tfadresse" layoutX="220.0" layoutY="330.0" prefHeight="26.0" prefWidth="165.0" promptText="adresse" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TextField fx:id="tfcode_postal" layoutX="219.0" layoutY="370.0" prefHeight="26.0" prefWidth="166.0" promptText="code_postal" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TextField fx:id="tfville" layoutX="220.0" layoutY="410.0" prefHeight="26.0" prefWidth="166.0" promptText="ville" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css" />
+      <TableView fx:id="tabAssociation" layoutX="18.0" layoutY="112.0" onMouseClicked="#handle" prefHeight="190.0" prefWidth="685.0" styleClass="table-row-cell" stylesheets="@style.css">
+         <columns>
+            <TableColumn fx:id="colnom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="colnumero" prefWidth="91.9999771118164" text="numero" />
+            <TableColumn fx:id="colmail" prefWidth="90.4000244140625" text="mail" />
+            <TableColumn fx:id="coladresse" prefWidth="109.5999755859375" text="adresse" />
+            <TableColumn fx:id="colcode_postal" prefWidth="141.60000610351562" text="code_postal" />
+            <TableColumn fx:id="colville" prefWidth="173.60003662109375" text="ville" />
+         </columns>
+      </TableView>
+      <TextField fx:id="filtertext" layoutX="215.0" layoutY="37.0" opacity="0.5" prefHeight="30.0" prefWidth="222.0" promptText="Search" style="-fx-background-color: gray;" styleClass="search-container" stylesheets="@style.css">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
+      <ImageView fx:id="eventAddImg" fitHeight="182.0" fitWidth="177.0" layoutX="546.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="ImageAddChoose" layoutX="596.0" layoutY="330.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="Add Image" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../aziz/JavaFxSustainableDevelopment-GestionDon/src/don/icons8_edit_image_16px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="28.0" layoutY="538.0" mnemonicParsing="false" onAction="#Ajouterassociation" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="Insert" textFill="WHITE" />
+      <Button layoutX="143.0" layoutY="538.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="Update" textFill="WHITE" />
+      <Button layoutX="245.0" layoutY="538.0" mnemonicParsing="false" onMouseClicked="#deleteEvent" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="Delete" textFill="WHITE" />
+      <Button layoutX="340.0" layoutY="538.0" mnemonicParsing="false" onAction="#Empty" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="Empty" textFill="WHITE" />
+      <ComboBox fx:id="combo" layoutX="31.0" layoutY="454.0" prefWidth="150.0" style="-fx-background-color: gray;" styleClass="combo-box-popup" stylesheets="@style.css" />
+      <Button layoutX="143.0" layoutY="589.0" mnemonicParsing="false" onAction="#importexcel" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="importexcel" textFill="WHITE" />
+      <Button layoutX="24.0" layoutY="589.0" mnemonicParsing="false" onAction="#Exportexcel" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #454B1B;" styleClass="bottom" stylesheets="@style.css" text="Exportexcel" textFill="WHITE" />
+   </children>
+</AnchorPane>

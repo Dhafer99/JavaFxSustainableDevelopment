@@ -1,0 +1,177 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Donneur.Entities;
+
+import Model.User;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+
+/**
+ *
+ * @author 21629
+ */
+public class Don {
+    private int id;
+    private String NameD;
+    private int quantite;
+    private String description;
+    private String localisation;
+    private String Image;
+    private String email;
+    private int Numero;
+    private int category_d_id;
+    private String Givername ;
+
+    public String getGivername() {
+        return Givername;
+    }
+
+    public void setGivername(String Givername) {
+        this.Givername = Givername;
+    }
+private static Stage stg ;
+
+ 
+
+    public Don() {
+    }
+//Donation(rs.getInt("quantite"), rs.getString("name_d"), new User(rs.getInt("user_id"), rs.getString("nom"), rs.getString("user_type")));
+     public Don(String NameD, String description ,String localisation ,String Givername) {
+      
+        this.NameD = NameD;
+       this.description=description ;
+       
+        this.localisation = localisation;
+        this.Givername=Givername ;
+    }
+     
+    public Don(int id, String NameD, int quantite, String description, String localisation, String Image, String email, int Numero) {
+        this.id = id;
+        this.NameD = NameD;
+        this.quantite = quantite;
+        this.description = description;
+        this.localisation = localisation;
+        this.Image = Image;
+        this.email = email;
+        this.Numero = Numero;
+    }
+
+    public Don(String NameD, int quantite, String description, String localisation, String Image, String email, int Numero) {
+        this.NameD = NameD;
+        this.quantite = quantite;
+        this.description = description;
+        this.localisation = localisation;
+        this.Image = Image;
+        this.email = email;
+        this.Numero = Numero;
+    }
+
+    public Don(String NameD, int quantite) {
+        this.NameD = NameD;
+        this.quantite = quantite;
+    }
+
+    public int getCategory_d_id() {
+        return category_d_id;
+    }
+
+    public void setCategory_d_id(int category_d_id) {
+        this.category_d_id = category_d_id;
+    }
+
+    public Don(int category_d_id) {
+        this.category_d_id = category_d_id;
+    }
+
+    public Don(int id, String NameD, int quantite, String description, String localisation, String Image, String email, int Numero, int category_d_id) {
+        this.id = id;
+        this.NameD = NameD;
+        this.quantite = quantite;
+        this.description = description;
+        this.localisation = localisation;
+        this.Image = Image;
+        this.email = email;
+        this.Numero = Numero;
+        this.category_d_id = category_d_id;
+    }
+
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNameD() {
+        return NameD;
+    }
+
+    public void setNameD(String NameD) {
+        this.NameD = NameD;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public void setLocalisation(String localisation) {
+        this.localisation = localisation;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String Image) {
+        this.Image = Image;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getNumero() {
+        return Numero;
+    }
+
+    public void setNumero(int Numero) {
+        this.Numero = Numero;
+    }
+
+    @Override
+    public String toString() {
+        return "Don{" + "id=" + id + ", NameD=" + NameD + ", quantite=" + quantite + ", description=" + description + ", localisation=" + localisation + ", Image=" + Image + ", email=" + email + ", Numero=" + Numero + ",category_d_id="+category_d_id+ '}';
+    }
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stg.getScene().setRoot(pane);
+    }
+}

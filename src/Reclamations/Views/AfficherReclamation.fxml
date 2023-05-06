@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reclamations.Views.AfficherReclamationController">
+   <children>
+      <TableView fx:id="tab_reclamation" layoutX="23.0" layoutY="30.0" onMouseClicked="#handle" prefHeight="263.0" prefWidth="747.0">
+        <columns>
+          <TableColumn fx:id="col_datereclamation" prefWidth="122.0" text="Date_reclamation" />
+          <TableColumn fx:id="col_etat" minWidth="7.0" prefWidth="105.0" text="Etat" />
+            <TableColumn fx:id="col_motifdereclamation" minWidth="7.0" prefWidth="151.0" text="Motif_de_reclamation" />
+            <TableColumn fx:id="col_numtelephone" minWidth="7.0" prefWidth="125.0" text="Num_telephone" />
+            <TableColumn fx:id="col_email" minWidth="7.0" prefWidth="126.0" text="Email" />
+            <TableColumn fx:id="col_categ" minWidth="7.0" prefWidth="125.0" text="categorie_rec" />
+        </columns>
+      </TableView>
+      <Label layoutX="38.0" layoutY="319.0" prefHeight="26.0" prefWidth="149.0" text="Date_Reclamation" textFill="#1e7927" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="39.0" layoutY="370.0" prefHeight="17.0" prefWidth="74.0" text="Etat" textFill="#1e7927" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="39.0" layoutY="412.0" prefHeight="26.0" prefWidth="174.0" text="Motif_de_reclamation" textFill="#1e7927" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="38.0" layoutY="455.0" text="Num_Telephone" textFill="#1e7927" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="38.0" layoutY="501.0" prefHeight="26.0" prefWidth="58.0" text="Email" textFill="#1e7927" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <TextField fx:id="tf_etat" layoutX="280.0" layoutY="366.0" />
+      <TextField fx:id="tf_motifdereclamation" layoutX="280.0" layoutY="408.0" />
+      <TextField fx:id="tf_numtelephone" layoutX="280.0" layoutY="451.0" />
+      <TextField fx:id="tf_email" layoutX="280.0" layoutY="500.0" />
+      <DatePicker fx:id="picker_date" layoutX="280.0" layoutY="315.0" />
+      <TextField fx:id="Search" layoutX="516.0" layoutY="315.0" prefHeight="25.0" prefWidth="174.0" promptText="Entrer votre recherche ..." />
+      <Button layoutX="551.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#supp" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-border-color: #979797; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-scale-x: 1.05; -fx-scale-y: 1.05; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-transition: all 0.5s ease;" text="Supprimer" textAlignment="RIGHT" textFill="#ede2e2" textOverrun="CLIP" underline="true" />
+      <Button layoutX="551.0" layoutY="388.0" mnemonicParsing="false" onMouseClicked="#modif" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-border-color: #979797; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-scale-x: 1.05; -fx-scale-y: 1.05; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-transition: all 0.5s ease;" text="Modifier " textAlignment="RIGHT" textFill="#ede2e2" textOverrun="CLIP" underline="true" />
+      <Button fx:id="chartbtn" layoutX="551.0" layoutY="488.0" mnemonicParsing="false" onAction="#Chart" onMouseClicked="#modif" prefHeight="17.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-border-color: #979797; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-scale-x: 1.05; -fx-scale-y: 1.05; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-transition: all 0.5s ease;" text="Chart" textAlignment="RIGHT" textFill="#ede2e2" textOverrun="CLIP" underline="true" />
+   </children>
+</AnchorPane>

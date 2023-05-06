@@ -1,0 +1,56 @@
+Language model created by QuickLM on Sun Apr 16 02:56:09 EDT 2023
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 5 sentences and 9 words
+
+\data\
+ngram 1=9
+ngram 2=12
+ngram 3=12
+
+\1-grams:
+-0.9445 </s> -0.3010
+-0.9445 <s> -0.2486
+-1.6435 ADMIN -0.2808
+-1.6435 CLOSE -0.2808
+-1.3424 GOOGLE -0.2486
+-1.3424 INTERFACE -0.2486
+-1.0414 OPEN -0.2486
+-1.6435 USER -0.2808
+-1.6435 VALORANT -0.2486
+
+\2-grams:
+-1.0000 <s> CLOSE 0.0000
+-0.3979 <s> OPEN 0.0000
+-0.3010 ADMIN INTERFACE 0.0000
+-0.3010 CLOSE GOOGLE 0.0000
+-0.3010 GOOGLE </s> -0.3010
+-0.3010 INTERFACE </s> -0.3010
+-0.9031 OPEN ADMIN 0.0000
+-0.9031 OPEN GOOGLE 0.0000
+-0.9031 OPEN USER 0.0000
+-0.9031 OPEN VALORANT 0.0000
+-0.3010 USER INTERFACE 0.0000
+-0.3010 VALORANT </s> -0.3010
+
+\3-grams:
+-0.3010 <s> CLOSE GOOGLE
+-0.9031 <s> OPEN ADMIN
+-0.9031 <s> OPEN GOOGLE
+-0.9031 <s> OPEN USER
+-0.9031 <s> OPEN VALORANT
+-0.3010 ADMIN INTERFACE </s>
+-0.3010 CLOSE GOOGLE </s>
+-0.3010 OPEN ADMIN INTERFACE
+-0.3010 OPEN GOOGLE </s>
+-0.3010 OPEN USER INTERFACE
+-0.3010 OPEN VALORANT </s>
+-0.3010 USER INTERFACE </s>
+
+\end\

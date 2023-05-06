@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="942.0" prefWidth="1524.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="don.DonFController">
+   <children>
+      <ImageView fitHeight="2000.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/1508.jpg" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER_LEFT" layoutX="2.0" prefHeight="98.0" prefWidth="1640.0" spacing="20.0" styleClass="hbox" stylesheets="@style.css">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_forward.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="215.0" styleClass="search-container" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/ic_search.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="text" prefHeight="31.0" prefWidth="173.0" promptText="Search" style="-fx-background-color: transparent;" />
+               </children>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="157.0" styleClass="upgrade-button" stylesheets="@style.css" text="Profile" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="pdp" fitHeight="74.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/fotor_2023-4-25_8_51_1.png" />
+                     </image>
+                  </ImageView>
+                  
+               </children>
+            </HBox>
+            <Pane layoutX="366.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+      <ScrollPane layoutX="-2.0" layoutY="110.0" prefHeight="891.0" prefWidth="1777.0" stylesheets="@style.css">
+         <content>
+            <VBox prefHeight="741.0" prefWidth="1666.0" spacing="10.0" style="-fx-background-color: transparent;">
+               <children>
+                  <Label text="Recently Added" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="290.0" prefViewportWidth="10.0" prefWidth="1566.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+                     <content>
+                        <HBox fx:id="recentlyPlayedContainer" prefHeight="286.0" prefWidth="1609.0" spacing="40.0" style="-fx-background-color: transparent;" styleClass="scroll-pane" stylesheets="@style.css" />
+                     </content>
+                  </ScrollPane>
+                  <Label fx:id="nb">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#filter" prefHeight="62.0" prefWidth="106.0" stylesheets="@style.css" text="Filter">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8_filter_40px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="upgrade-button" />
+                              <String fx:value="buttonF" />
+                           </styleClass>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#filterLoc" prefHeight="62.0" prefWidth="106.0" stylesheets="@style.css" text="Filter">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8_filter_40px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="upgrade-button" />
+                              <String fx:value="buttonF" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="addBtn" mnemonicParsing="false" onAction="#AddNew" prefHeight="62.0" prefWidth="106.0" stylesheets="@style.css">
+                           <styleClass>
+                              <String fx:value="upgrade-button" />
+                              <String fx:value="buttonF" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="34.0" onDragDetected="#AddNew" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8_Plus_32px_2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="332.0" prefWidth="1626.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+                     <content>
+                        <HBox fx:id="favoriteContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label prefHeight="30.0" prefWidth="174.0" text="Les autres Dons" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="290.0" prefViewportWidth="10.0" prefWidth="1566.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+                     <content>
+                        <HBox fx:id="newContainer" prefHeight="286.0" prefWidth="1609.0" spacing="40.0" style="-fx-background-color: transparent;" styleClass="scroll-pane" stylesheets="@style.css" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="780.0" prefWidth="1075.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.HomeDonController">
+   <children>
+      <AnchorPane prefHeight="106.0" prefWidth="1075.0" style="-fx-background-color: #00cec4;">
+         <children>
+            <HBox layoutX="166.0" layoutY="20.0" prefHeight="66.0" prefWidth="470.0" spacing="20.0" style="-fx-background-color: transparent;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="67.0" onMouseClicked="#don" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/add_administrator_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="252.0" layoutY="10.0" onMouseClicked="#don" prefHeight="62.0" prefWidth="146.0" text="Ajouter une Association" />
+                  <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="444.0" layoutY="15.0" onMouseClicked="#categ" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_bar_chart_24px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="670.0" layoutY="15.0" onMouseClicked="#categ" prefHeight="63.0" prefWidth="136.0" text="Liste des categories" />
+               </children>
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root" layoutX="-2.0" layoutY="106.0" prefHeight="668.0" prefWidth="1075.0">
+         <children>
+            <ImageView fitHeight="408.0" fitWidth="470.0" layoutX="208.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/4877806.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

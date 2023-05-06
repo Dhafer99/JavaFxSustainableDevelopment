@@ -1,0 +1,138 @@
+.dark-background{
+    -fx-background-color: #222222;
+}
+.border-bottom{
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #676767;
+}
+.bottom{
+    -fx-background-color:  transparent;
+    -fx-background-radius: 50;
+}
+.gardient{
+    -fx-background-color: linear-gradient(to top,#676767,transparent);
+}
+.shadow{
+    -fx-effect: dropshadow(three-pass-box,rgba(0,8,0,0.2),10,0,8,10);
+}
+.bottom2{
+    -fx-background-color: transparent;
+    -fx-background-radius: 50;
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5em;
+}
+.primary_color{
+    -fx-background-color: white ;
+}
+
+.secondary-color{
+    -fx-background-color: #121212;
+}
+
+.selected{
+    -fx-border-color: #1ED760;
+    -fx-border-width: 0 0 0 5
+}
+
+.top-border{
+    -fx-border-color: #A1A1A1;
+    -fx-border-width: 1 0 0 0;
+}
+
+.search-container{
+    -fx-background-color: #fff;
+    -fx-background-radius: 100;
+}
+
+.upgrade-button{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-color: #1b1e23;
+    -fx-border-radius: 50;
+}
+
+.scroll-pane > .viewport{
+    -fx-background-color: transparent ;
+}
+.buttonFront:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+.buttonFront {
+    -fx-background-color: transparent;
+}
+.list-cell:selected:filled:hover {
+    -fx-view-order: -1;
+    -fx-effect: dropshadow(gaussian, #67676D, 12, 0.05, 0.0, 2);
+}
+.vbox {
+    -fx-background-color:  #1b1e23;
+    -fx-border-radius: 30px; /* sets the border radius to create rounded corners */
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 5); /* adds a shadow effect */
+}
+
+.vbox:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 20, 0, 0, 10); /* adds a larger shadow effect on hover */
+}
+.hbox {
+    -fx-background-color:  transparent;
+    -fx-border-radius: 10px; /* sets the border radius to create rounded corners */
+    -fx-border-width: 1px;
+    -fx-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 5); /* adds a shadow effect */
+}
+
+.hbox:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 20, 0, 0, 10); /* adds a larger shadow effect on hover */
+}
+.white-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 10px; /* sets the background radius to create rounded corners */
+    -fx-border-width: 1px;
+    -fx-border-color: gray;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 5); /* adds a shadow effect */
+    -fx-opacity: 1; /* sets the opacity to 1 by default */
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+.buttonF:hover {
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 2, 2);
+}

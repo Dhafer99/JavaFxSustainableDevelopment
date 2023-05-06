@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1075.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.HomeReclamation">
+   <children>
+      <AnchorPane layoutX="-2.0" layoutY="-2.0" prefHeight="102.0" prefWidth="1075.0" style="-fx-background-color: #00cec4;" />
+      <HBox layoutX="20.0" layoutY="20.0" prefHeight="66.0" prefWidth="1021.0" spacing="20.0" style="-fx-background-color: transparent;">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="67.0" onMouseClicked="#ajouter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/add_administrator_80px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="252.0" layoutY="10.0" onMouseClicked="#ajouter" prefHeight="62.0" prefWidth="146.0" text="Ajouter une reclamation" />
+            <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="244.0" layoutY="15.0" onMouseClicked="#afficher" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/book_and_pencil_50px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="362.0" layoutY="10.0" onMouseClicked="#afficher" prefHeight="63.0" prefWidth="136.0" text="Afficher les reclamations" />
+            <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="444.0" layoutY="15.0" onMouseClicked="#gestion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_bar_chart_24px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="670.0" layoutY="15.0" onMouseClicked="#gestion" prefHeight="63.0" prefWidth="136.0" text="Liste des categories" />
+            <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="478.0" layoutY="15.0" onMouseClicked="#chart" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_chart_30px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="742.0" layoutY="15.0" onMouseClicked="#chart" prefHeight="63.0" prefWidth="136.0" text="Chart ">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <AnchorPane fx:id="root" layoutX="-1.0" layoutY="101.0" prefHeight="678.0" prefWidth="1075.0">
+         <children>
+            <ImageView fitHeight="505.0" fitWidth="518.0" layoutX="275.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/20945085.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

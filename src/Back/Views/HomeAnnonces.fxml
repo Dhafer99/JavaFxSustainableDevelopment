@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="780.0" prefWidth="1075.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Back.Controllers.HomeAnnoncesController">
+   <children>
+      <AnchorPane prefHeight="106.0" prefWidth="1075.0" style="-fx-background-color: #00cec4;">
+         <children>
+            <HBox layoutX="167.0" layoutY="19.0" prefHeight="67.0" prefWidth="686.0" spacing="15.0">
+               <children>
+                  <ImageView fitHeight="62.0" fitWidth="85.0" onMouseClicked="#ajout" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/add_administrator_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label onMouseClicked="#ajout" prefHeight="66.0" prefWidth="121.0" text="AjoutAnnonce" />
+                  <ImageView fitHeight="62.0" fitWidth="85.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#afficher" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/book_and_pencil_50px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="72.0" layoutY="10.0" onMouseClicked="#afficher" prefHeight="63.0" prefWidth="122.0" text="AfficherAnnonce" />
+                  <ImageView fitHeight="62.0" fitWidth="85.0" layoutX="193.0" layoutY="10.0" onMouseClicked="#categorie" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_bar_chart_24px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="255.0" layoutY="10.0" onMouseClicked="#categorie" prefHeight="66.0" prefWidth="121.0" text="categorie" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root" layoutY="106.0" prefHeight="674.0" prefWidth="1075.0">
+         <children>
+            <ImageView fitHeight="441.0" fitWidth="582.0" layoutX="262.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/sl_120320_38530_07.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
