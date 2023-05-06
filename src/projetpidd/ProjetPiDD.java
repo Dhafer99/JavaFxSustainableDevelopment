@@ -32,8 +32,13 @@ public class ProjetPiDD extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Genereux");
         Scene scene = new Scene(root);
+        stg.setMinWidth(1500);
+        stg.setMinHeight(1000);
+        stg.setMaxWidth(1500);
+        stg.setMaxHeight(1000);
          scene.getStylesheets().add(getClass().getResource("/css/bootstrap3.css").toExternalForm());
         primaryStage.setScene(scene);
+        primaryStage.setFullScreen(false);
         primaryStage.show();
     }
  public void changeScene(String fxml) throws IOException {

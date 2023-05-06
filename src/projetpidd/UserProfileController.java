@@ -23,9 +23,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
@@ -34,18 +36,6 @@ import javafx.scene.image.ImageView;
  */
 public class UserProfileController implements Initializable {
 
-    @FXML
-    private Label noml;
-    @FXML
-    private Label prenoml;
-    @FXML
-    private Label emaill;
-    @FXML
-    private Label scorel;
-    @FXML
-    private Label etoilel;
-    @FXML
-    private Label typel;
     @FXML
     private ImageView imageuser;
     @FXML
@@ -61,8 +51,19 @@ public class UserProfileController implements Initializable {
     private TableColumn<Don, String> Description;
     @FXML
     private TableColumn<Don, String> quantiteC;
-    @FXML
     private Label donRecu;
+    @FXML
+    private TextField n1;
+    @FXML
+    private TextField n2;
+    @FXML
+    private TextField n3;
+    @FXML
+    private TextField n4;
+    @FXML
+    private TextField n5;
+    @FXML
+    private TextField n6;
 
     /**
      * Initializes the controller class.
@@ -71,23 +72,40 @@ public class UserProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
+imageuser.setFitWidth(200); // set the width of the image view
+imageuser.setFitHeight(200); // set the height of the image view
+
+// create a circle clip with a radius equal to half the width or height of the image view, whichever is smaller
+Circle clip = new Circle();
+clip.setCenterX(imageuser.getFitWidth() / 2);
+clip.setCenterY(imageuser.getFitHeight() / 2);
+clip.setRadius(Math.min(imageuser.getFitWidth(), imageuser.getFitHeight()) / 2);
+
+imageuser.setClip(clip); // apply the clip to the image view
+
         User user = ProjetPiDD.user ;
                 if (projetpidd.ProjetPiDD.user.getType().equals("Donneur"))
                 {
                     tableDon.setVisible(false);
-                    donRecu.setVisible(false);
+                 //donRecu.setVisible(false);
                 }
                 else
                 {
                     tableDon.setVisible(true);
-                    donRecu.setVisible(true);
+                    //donRecu.setVisible(true);
                 }
-        noml.setText(user.getNom());
+                n1.setText(user.getNom());
+                n2.setText(user.getPrenom());
+                n3.setText(user.getEmail());
+                n4.setText(Integer.toString(user.getScore()));
+                n5.setText(Integer.toString(user.getNb_etoile()));
+                n6.setText(user.getType());
+       /* noml.setText(user.getNom());
         prenoml.setText(user.getPrenom());
         emaill.setText(user.getEmail());
         scorel.setText(Integer.toString(user.getScore()));
         etoilel.setText(Integer.toString(user.getNb_etoile()));
-        typel.setText(user.getType());
+        typel.setText(user.getType());*/
         Image image = new Image(user.getImage());
         imageuser.setImage(image);
         try {

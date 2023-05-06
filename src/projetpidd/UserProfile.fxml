@@ -1,70 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: transparent;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.UserProfileController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: transparent;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.UserProfileController">
    <children>
-      <ImageView fitHeight="825.0" fitWidth="1208.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" style="-fx-font-size: 18; -fx-text-fill: white;">
+      <ImageView fitHeight="1077.0" fitWidth="1820.0" layoutX="-12.0" pickOnBounds="true" preserveRatio="true" style="-fx-font-size: 18; -fx-text-fill: white;">
          <image>
-            <Image url="@../img/1508.jpg" />
+            <Image url="@../img/342845264_953980059133165_1509292663450972843_n.png" />
          </image>
+         <effect>
+            <Glow />
+         </effect>
       </ImageView>
-      <ImageView fx:id="imageuser" fitHeight="175.0" fitWidth="231.0" layoutX="902.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: black;" />
-      <Label fx:id="noml" layoutX="278.0" layoutY="84.0" style="-fx-font-size: 18; -fx-text-fill: white;" text="Label" />
-      <Label fx:id="prenoml" layoutX="280.0" layoutY="126.0" style="-fx-font-size: 18; -fx-text-fill: white;" text="Label" />
-      <Label fx:id="emaill" layoutX="280.0" layoutY="166.0" style="-fx-font-size: 18; -fx-text-fill: white;" text="Label" />
-      <Label fx:id="scorel" layoutX="280.0" layoutY="205.0" style="-fx-font-size: 18; -fx-text-fill: white;" text="Label" />
-      <Label fx:id="etoilel" layoutX="280.0" layoutY="250.0" style="-fx-font-size: 18; -fx-text-fill: white;" text="Label" />
-      <Label fx:id="typel" layoutX="282.0" layoutY="294.0" style="-fx-font-size: 18; -fx-text-fill: white;" text="Label" />
-      <Label layoutX="130.0" layoutY="79.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Nom :" />
-      <Label layoutX="132.0" layoutY="127.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Prenom :" />
-      <Label layoutX="132.0" layoutY="167.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Email :" />
-      <Label layoutX="132.0" layoutY="206.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Score :" />
-      <Label layoutX="132.0" layoutY="251.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Etoile :" />
-      <Label layoutX="132.0" layoutY="295.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Type :" />
-      <Button layoutX="994.0" layoutY="699.0" mnemonicParsing="false" onAction="#Retour" prefHeight="83.0" prefWidth="156.0" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="logout">
+      <ImageView fx:id="imageuser" fitHeight="175.0" fitWidth="231.0" layoutX="1189.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: black;" />
+      <Button layoutX="1539.0" layoutY="864.0" mnemonicParsing="false" onAction="#Retour" prefHeight="110.0" prefWidth="254.0" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="logout">
+         <styleClass>
+            <String fx:value="upgrade-button" />
+            <String fx:value="buttonF" />
+         </styleClass>
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button layoutX="1200.0" layoutY="261.0" mnemonicParsing="false" onAction="#toUpdate" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Modifier Votre Profile">
          <styleClass>
             <String fx:value="upgrade-button" />
             <String fx:value="buttonF" />
          </styleClass></Button>
-      <Button layoutX="887.0" layoutY="359.0" mnemonicParsing="false" onAction="#toUpdate" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Modifier Votre Profile">
+      <Button layoutX="1539.0" layoutY="19.0" mnemonicParsing="false" onAction="#ToDonInterface" prefHeight="110.0" prefWidth="254.0" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Home">
          <styleClass>
             <String fx:value="upgrade-button" />
             <String fx:value="buttonF" />
-         </styleClass></Button>
-      <Button layoutX="939.0" layoutY="551.0" mnemonicParsing="false" onAction="#ToDonInterface" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Donner des dons !">
-         <styleClass>
-            <String fx:value="upgrade-button" />
-            <String fx:value="buttonF" />
-         </styleClass></Button>
-      <Label fx:id="donRecu" layoutX="52.0" layoutY="363.0" prefHeight="35.0" prefWidth="156.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Don Recu" />
-      <TableView fx:id="tableDon" layoutX="42.0" layoutY="416.0" prefHeight="354.0" prefWidth="517.0">
+         </styleClass>
+         <padding>
+            <Insets bottom="30.0" top="30.0" />
+         </padding></Button>
+      <TableView fx:id="tableDon" layoutX="14.0" layoutY="324.0" prefHeight="354.0" prefWidth="698.0" style="-fx-background-color: trasnparent; -fx-border-color: white;">
         <columns>
-          <TableColumn fx:id="nomDonC" prefWidth="87.0" text="Nom Don" />
-          <TableColumn fx:id="Description" prefWidth="97.0" text="Description" />
-            <TableColumn fx:id="localisationC" prefWidth="117.0" text="localisation" />
-            <TableColumn fx:id="giverNameColumn" prefWidth="123.0" text="Nom Donneur" />
-            <TableColumn fx:id="quantiteC" prefWidth="75.0" text="quantite" />
+          <TableColumn fx:id="nomDonC" prefWidth="102.39999008178711" text="Nom Don" />
+          <TableColumn fx:id="Description" prefWidth="189.59999084472656" text="Description" />
+            <TableColumn fx:id="localisationC" prefWidth="177.60003662109375" text="localisation" />
+            <TableColumn fx:id="giverNameColumn" prefWidth="141.5999755859375" text="Nom Donneur" />
+            <TableColumn fx:id="quantiteC" prefWidth="88.0" text="quantite" />
         </columns>
       </TableView>
-      <Button layoutX="739.0" layoutY="658.0" mnemonicParsing="false" onAction="#Chat" prefHeight="83.0" prefWidth="156.0" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Chat">
+      <Button layoutX="1073.0" layoutY="416.0" mnemonicParsing="false" onAction="#Chat" prefHeight="34.0" prefWidth="173.0" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Chat">
          <styleClass>
             <String fx:value="upgrade-button" />
             <String fx:value="buttonF" />
          </styleClass>
       </Button>
-      <Button layoutX="951.0" layoutY="606.0" mnemonicParsing="false" onAction="#ToAssistance" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Bot Assistance">
+      <Button layoutX="750.0" layoutY="416.0" mnemonicParsing="false" onAction="#ToAssistance" prefHeight="34.0" prefWidth="173.0" style="-fx-border-color: black;" stylesheets="@../don/style.css" text="Bot Assistance">
          <styleClass>
             <String fx:value="upgrade-button" />
             <String fx:value="buttonF" />
          </styleClass>
       </Button>
+      <VBox layoutX="122.0" layoutY="34.0" prefHeight="289.0" prefWidth="231.0" spacing="20.0">
+         <children>
+            <TextField fx:id="n1" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: transparent;" styleClass="search-container" stylesheets="@../don/style.css" />
+            <TextField fx:id="n2" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: transparent;" styleClass="search-container" stylesheets="@../don/style.css" />
+            <TextField fx:id="n3" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: transparent;" styleClass="search-container" stylesheets="@../don/style.css" />
+         </children>
+      </VBox>
+      <VBox layoutX="477.0" layoutY="34.0" prefHeight="289.0" prefWidth="231.0" spacing="20.0">
+         <children>
+            <TextField fx:id="n4" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: transparent;" styleClass="search-container" stylesheets="@../don/style.css" />
+            <TextField fx:id="n5" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: transparent;" styleClass="search-container" stylesheets="@../don/style.css" />
+            <TextField fx:id="n6" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: transparent;" styleClass="search-container" stylesheets="@../don/style.css" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="50.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_name_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="50.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_family_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="50.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_Email_26px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="406.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_scorecard_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="406.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_star_24px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="406.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icons8_type_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="56.0" fitWidth="77.0" layoutX="1578.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/ic_home.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

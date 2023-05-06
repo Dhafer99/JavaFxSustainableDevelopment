@@ -11,14 +11,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1209.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.loginController">
-   <children>
-      <AnchorPane id="AnchorPane" fx:id="AnchorRoot" prefHeight="808.0" prefWidth="1234.0">
+<VBox fx:id="vbox" prefHeight="720.0" prefWidth="1334.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetpidd.loginController">
+    <children>
+<StackPane fx:id="parentContainer">
+      <AnchorPane id="AnchorPane" fx:id="AnchorRoot" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
          <children>
-            <ImageView fitHeight="1000.0" fitWidth="1265.0" layoutX="-20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="test" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                <image>
                   <Image url="@../img/rm222batch5-kul-21.jpg" />
                </image>
@@ -85,5 +87,7 @@
             </Label>
          </children>
       </AnchorPane>
-   </children>
+   
 </StackPane>
+   </children>
+</VBox>

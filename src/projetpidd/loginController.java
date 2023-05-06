@@ -37,9 +37,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -58,6 +61,10 @@ public class loginController implements Initializable {
     private StackPane parentContainer;
     @FXML
     private AnchorPane AnchorRoot;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private ImageView test;
     
    
     
@@ -159,11 +166,11 @@ public class loginController implements Initializable {
       //  root.getChildren().add(welcomelabel);
       welcomelabel.setStyle("--fx-font-style : Arial");
      
-      
+      vbox.setVgrow(test, Priority.ALWAYS);
+
     
     }
 
-    @FXML
     private void chat(ActionEvent event) throws IOException {
         ProjetPiDD m = new ProjetPiDD();
         m.changeScene("/views/LoginView.fxml");

@@ -1,2 +1,0 @@
-# JavaFxSustainableDevelopment
-Sustainable development App
