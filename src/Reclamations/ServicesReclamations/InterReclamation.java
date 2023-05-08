@@ -12,7 +12,7 @@ import java.util.List;
  * @author ghofrane
  */
 public interface InterReclamation <A> { 
-    public void insert(A o);
+    public void insert(A o,int UserId);
     public void delete(int id);
     public List<A> displayAll();
     public A displayById(int id);

@@ -13,7 +13,7 @@ import java.util.List;
  * @author Fares CHAKROUN
  */
 public interface InServiceAssociation<T> {
-   public void ajouter(T t);
+   public void ajouter(T t,int userid);
     public List<T> afficher() throws SQLException;
     public void modifier (T t)throws SQLException;
     public boolean supprimer(T t)throws SQLException; 

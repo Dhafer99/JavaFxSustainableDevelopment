@@ -155,15 +155,11 @@ private boolean ValidateEmptyForm(  TextField motif_de_reclamation
         String num_telephone =projetpidd.ProjetPiDD.user.getNumTelephone();
         String email = projetpidd.ProjetPiDD.user.getEmail();
         String image = lien;
-         if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
-       JOptionPane.showMessageDialog(null, "Symbole or caracter is missing  !");
-         } if (!num_telephone.matches("\\d{8}")) {
-   JOptionPane.showMessageDialog(null, "Must contain 8 numbers !");
-         }else {
+       
         // public Promotion(int id, Date start_date, Date end_date, float pourcentage, Categorie categorie, Produit prodtuit)
         Reclamation p = new Reclamation(data_reclamation, etat, motif_de_reclamation, image, Integer.parseInt(num_telephone), email,Catrec);
         ReclamationService promotiondao = new ReclamationService();
-        promotiondao.insert(p);
+        promotiondao.insert(p,projetpidd.ProjetPiDD.user.getId());
          JOptionPane.showMessageDialog(null, "Reclamation ajoutée !");
          if (!SystemTray.isSupported()) {
             System.out.println("SystemTray is not supported");
@@ -190,23 +186,9 @@ private boolean ValidateEmptyForm(  TextField motif_de_reclamation
 
         // Display a notification
         trayIcon.displayMessage("Notification", "Reclamation ajoutée dans la categorie "+p.getCategorie_rec().getNom(), TrayIcon.MessageType.INFO);
-    }
-                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
-Parent root = loader.load();
-
-AnchorPane myVBox = (AnchorPane) root.lookup("#route");
-
-FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
-Node myAnchorPane = includedLoader.load();
-
-myVBox.getChildren().add(myAnchorPane);
-
-FrontController frontController = loader.getController();
-DonFController donFController = includedLoader.getController();
-
-donFController.setFrontController(frontController);
-      
-        Insert.getScene().setRoot(root);
+   
+                ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
          }
         
     
@@ -294,41 +276,27 @@ tfDate.setValue(localDate);
    combo.setValue(d.categorie_rec_id);
     }
     @FXML
-    private void ModifierEvent(ActionEvent event) {
+    private void ModifierEvent(ActionEvent event) throws IOException {
         
-       try {
+ 
             ReclamationService se = new ReclamationService();
             Reclamation p = new Reclamation();
             p.setData_reclamation(java.sql.Date.valueOf(tfDate.getValue()));
             p.setImage(lien);
             p.setEtat("En Cours");
             p.setMotif_de_reclamation(tfdescription.getText());
-            p.setEmail(tfemail.getText());
-            p.setNum_telephone(Integer.valueOf(tfnumero.getText()));
+            p.setEmail(projetpidd.ProjetPiDD.user.getEmail());
+            p.setNum_telephone(Integer.valueOf(projetpidd.ProjetPiDD.user.getNumTelephone()));
             p.setId(id);
             
             
             se.update(p);
 
             JOptionPane.showMessageDialog(null, "Reclamation modifiée !");
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
-Parent root = loader.load();
-
-AnchorPane myVBox = (AnchorPane) root.lookup("#route");
-
-FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
-Node myAnchorPane = includedLoader.load();
-
-myVBox.getChildren().add(myAnchorPane);
-
-FrontController frontController = loader.getController();
-DonFController donFController = includedLoader.getController();
-
-donFController.setFrontController(frontController);
-            updateB.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AjoutModifController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
+             
+       
     }
 
     @FXML

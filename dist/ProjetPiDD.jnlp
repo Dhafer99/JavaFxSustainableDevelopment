@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetPiDD.jar" size="152146973" download="eager" />
+    <jar href="ProjetPiDD.jar" size="162635718" download="eager" />
     <jar href="lib\JFlex.jar" size="169635" download="eager" />
     <jar href="lib\TrayNotification-5393c3a54f.jar" size="42522" download="eager" />
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />

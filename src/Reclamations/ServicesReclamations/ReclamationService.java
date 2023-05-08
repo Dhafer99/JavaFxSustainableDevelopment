@@ -43,9 +43,8 @@ public class ReclamationService implements InterReclamation <Reclamation> {
         return instance;
     }
     @Override
-    public void insert(Reclamation o) {
-         String req = "INSERT INTO `reclamation`(`id`, `data_reclamation`, `etat`, `categorie_rec_id`, `motif_de_reclamation`,`image`, `num_telephone`, `email`) VALUES ('" + o.getId() + "', '" + o.getData_reclamation() + "', '" + o.getEtat() + "', '" + o.getCategorie_rec().getId() + "','" + o.getMotif_de_reclamation() + "','"+ o.getImage() +"', '" + o.getNum_telephone() + "', '" + o.getEmail() + "')";
-         try {
+    public void insert(Reclamation o, int UserId) {
+String req = "INSERT INTO reclamation (user_id, id, data_reclamation, etat, categorie_rec_id, motif_de_reclamation, image, num_telephone, email) VALUES ('" + UserId + "', '" + o.getId() + "', '" + o.getData_reclamation() + "', '" + o.getEtat() + "', '" + o.getCategorie_rec().getId() + "','" + o.getMotif_de_reclamation() + "','" + o.getImage() + "', '" + o.getNum_telephone() + "', '" + o.getEmail() + "')";         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,6 +199,23 @@ public class ReclamationService implements InterReclamation <Reclamation> {
         }  
         return false;
     
+    }
+    
+     public boolean checkUser(int userId,int RecId) throws SQLException {
+        String req = "SELECT * FROM reclamation WHERE user_id=? AND id=?";
+        Connection pst = MyCnx.getInstance().getCnx();
+        PreparedStatement pr =  pst.prepareStatement(req);
+        pr.setInt(1, userId);
+        pr.setInt(2, RecId);
+         System.out.println("aaa"+userId);
+         System.out.println("bbb"+RecId);
+        ResultSet ts = pr.executeQuery();
+        if (ts.next()) {
+           
+           return true ;
+        }
+        
+       return false ;
     }
     
 }

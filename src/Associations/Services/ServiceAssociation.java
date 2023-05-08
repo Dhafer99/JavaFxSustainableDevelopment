@@ -27,12 +27,12 @@ import javax.swing.table.DefaultTableModel;
 public class ServiceAssociation implements InServiceAssociation<Association>{
 Connection cnx = MyCnx.getInstance().getCnx();
     @Override
-    public void ajouter(Association t) {
+    public void ajouter(Association t, int userid) {
       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    //  String qry ="INSERT INTO `don`(`name_d`, `quantite`, `description`, `localisation`, `image`,`email`,`numero`) VALUES ('"+t.getNameD()+"','"+t.getQuantite()+"','"+t.getDescription()+"','"+t.getLocalisation()+"', '"+t.getImage()+"','"+t.getEmail()+"','"+t.getNumero()+"')";
     //String qry = "INSERT INTO `association`(`categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`) VALUES  ('" + t.getCategorie()  + "', '" + t.getNom() + "', '" + t.getNumero() + "', '" + t.getMail() + "', '" + t.getAdresse() + "', '" + t.getCodePostal() +"', '" + t.getVille() +"', '"  + t.getImage()+ "')";
             //String qry = "INSERT INTO association(`id`,`categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`) VALUES  ('" + t.getId()+ "', '" + t.getCategorie()  + "', '" + t.getNom() + "', '" + t.getNumero() + "', '" + t.getMail() + "', '" + t.getAdresse() + "', '" + t.getCodePostal() +"', '" + t.getVille() + t.getImage()+ "')";
-String qry = "INSERT INTO `association`(`categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`) VALUES ('" + t.getCategorie() + "', '" + t.getNom() + "', '" + t.getNumero() + "', '" + t.getMail() + "', '" + t.getAdresse() + "', '" + t.getCodePostal() + "', '" + t.getVille() + "', '" + t.getImage() + "')";
+String qry = "INSERT INTO `association`(`user_id`,`categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`) VALUES ('"+userid+"','" + t.getCategorie() + "', '" + t.getNom() + "', '" + t.getNumero() + "', '" + t.getMail() + "', '" + t.getAdresse() + "', '" + t.getCodePostal() + "', '" + t.getVille() + "', '" + t.getImage() + "')";
 
 //          INSERT INTO `association`(`id`, `categorie_id`, `nom`, `numero`, `mail`, `adresse`, `code_postal`, `ville`, `image`)
 
@@ -176,6 +176,22 @@ public List<Association> ordredbynom() throws SQLException {
         }
         return list;  
        
+    }
+    public boolean checkUser(int userId,int RecId) throws SQLException {
+        String req = "SELECT * FROM association WHERE user_id=? AND id=?";
+        Connection pst = Reclamations.utiles.MyCnx.getInstance().getCnx();
+        PreparedStatement pr =  pst.prepareStatement(req);
+        pr.setInt(1, userId);
+        pr.setInt(2, RecId);
+         System.out.println("aaa"+userId);
+         System.out.println("bbb"+RecId);
+        ResultSet ts = pr.executeQuery();
+        if (ts.next()) {
+           
+           return true ;
+        }
+        
+       return false ;
     }
     
     

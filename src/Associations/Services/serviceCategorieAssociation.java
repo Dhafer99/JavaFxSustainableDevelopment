@@ -30,7 +30,7 @@ public class serviceCategorieAssociation implements InServiceAssociation<categor
 Connection cnx = MyCnx.getInstance().getCnx();
 
     @Override
-    public void ajouter(categorieA t) {
+    public void ajouter(categorieA t,int userid) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     
      String qry ="INSERT INTO `categorie`(`nom`) VALUES ('"+t.getNom()+"')";

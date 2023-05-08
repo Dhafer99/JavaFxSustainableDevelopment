@@ -79,6 +79,7 @@ private Reclamation don;
         numero.setText(Integer.toString(don.getNum_telephone()));
         email.setText(don.getEmail());
    img.setImage(new Image("file:src\\uploads\\"+don.getImage()+".png"));
+                  
 
         
         if (don.getCategorie_rec().getId()== 0) {
@@ -113,31 +114,17 @@ else{System.out.println("Can't");}
     controller.receiveObject(d);
    
     }
-     public void receiveObject(Reclamation d) {
+     public void receiveObject(Reclamation d) throws SQLException {
+       
         this.d=d;
         don=d;
+     
     }
 @FXML
     private void delete(ActionEvent event) throws SQLException, IOException {
     System.out.println(don);
         ps.delete(don.getId());
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
-Parent root = loader.load();
-
-AnchorPane myVBox = (AnchorPane) root.lookup("#route");
-
-FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
-Node myAnchorPane = includedLoader.load();
-
-myVBox.getChildren().add(myAnchorPane);
-
-Evenements.Gui.FrontController frontController = loader.getController();
-Evenements.Gui.DonFController donFController = includedLoader.getController();
-
-donFController.setFrontController(frontController);
-
-
-        DeleteBtn.getScene().setRoot(root);
+             
     }   
 @FXML
 private void Solution(ActionEvent event) {

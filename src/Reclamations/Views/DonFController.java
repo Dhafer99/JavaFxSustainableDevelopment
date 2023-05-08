@@ -62,6 +62,7 @@ private ObservableList<Reclamations.Entite.Reclamation> filteredDonList;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+ 
         left.setOnAction(event -> {
     double scrollAmount = ScrollPane.getWidth() / 2;
     double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
@@ -75,6 +76,7 @@ right.setOnAction(event -> {
     double currentScroll = ScrollPane.getHvalue() * maxScroll;
     ScrollPane.setHvalue(Math.min(1, (currentScroll + scrollAmount) / maxScroll));
 });
+
     try {
         try {
             // Get the list of Don objects
@@ -120,7 +122,7 @@ right.setOnAction(event -> {
             if (count >= 3) {
                 break;
             }
-            
+            if(s.checkUser(projetpidd.ProjetPiDD.user.getId(),d.getId())==true){
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("song.fxml"));
             Pane pane = fxmlLoader.load();
@@ -129,8 +131,9 @@ right.setOnAction(event -> {
             SongController controller = fxmlLoader.getController();
             controller.receiveObject(d);
             recentlyPlayedContainer.getChildren().add(pane);
-            
+            }
             count++;
+            
         }
     } catch (SQLException ex) {
         Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,6 +162,8 @@ private void updateUI(ObservableList<Reclamations.Entite.Reclamation> donList) t
     favoriteContainer.getChildren().clear();
   
     for (Reclamations.Entite.Reclamation d : donList) {
+                           System.out.println("+++++++++++++"+s.checkUser(projetpidd.ProjetPiDD.user.getId(),d.getId()));
+if(s.checkUser(projetpidd.ProjetPiDD.user.getId(),d.getId())==true){
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("song.fxml"));
     
@@ -168,6 +173,7 @@ private void updateUI(ObservableList<Reclamations.Entite.Reclamation> donList) t
         SongController controller = fxmlLoader.getController();
         controller.receiveObject(d);
         favoriteContainer.getChildren().add(pane); 
+}
         
     }
 }
@@ -191,6 +197,7 @@ Collections.sort(personnes, new Comparator<Reclamations.Entite.Reclamation>() {
  favoriteContainer.getChildren().clear();
   
     for (Reclamations.Entite.Reclamation d : personnes) {
+        if(s.checkUser(projetpidd.ProjetPiDD.user.getId(),d.getId())==true){
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("song.fxml"));
     
@@ -200,6 +207,7 @@ Collections.sort(personnes, new Comparator<Reclamations.Entite.Reclamation>() {
         SongController controller = fxmlLoader.getController();
         controller.receiveObject(d);
         favoriteContainer.getChildren().add(pane); 
+        }
     }
     }
     @FXML
@@ -215,8 +223,6 @@ Collections.sort(personnes, new Comparator<Reclamations.Entite.Reclamation>() {
         this.parentController = parentController;
     }
 
-    @FXML
-    private void AddNew(MouseEvent event) {
-    }
+    
     
 }

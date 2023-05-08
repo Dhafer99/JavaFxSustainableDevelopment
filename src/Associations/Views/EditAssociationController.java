@@ -334,7 +334,7 @@ ps.supprimer(Association);
             p.setVille(tfville.getText());
             p.setImage(lien);
           p.setCategorie(categorie);
-            se.ajouter(p);
+            se.ajouter(p,projetpidd.ProjetPiDD.user.getId());
                 JOptionPane.showMessageDialog(null, "Association ajouté !");
                 /*
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);

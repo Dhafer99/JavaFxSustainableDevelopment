@@ -120,7 +120,7 @@ public class AjoutReclamationController implements Initializable {
         // public Promotion(int id, Date start_date, Date end_date, float pourcentage, Categorie categorie, Produit prodtuit)
         Reclamation p = new Reclamation(data_reclamation, etat, motif_de_reclamation, image, Integer.parseInt(num_telephone), email,Catrec);
         ReclamationService promotiondao = new ReclamationService();
-        promotiondao.insert(p);}
+        promotiondao.insert(p,projetpidd.ProjetPiDD.user.getId());}
         
     }
     }

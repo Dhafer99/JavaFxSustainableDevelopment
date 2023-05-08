@@ -47,10 +47,15 @@ private Association don;
      HashMap<String, String> categoryUnits = new HashMap<>();
 
      public void setData(Association don) throws SQLException{
-         
+         if(ps.checkUser(projetpidd.ProjetPiDD.user.getId(),don.getId())==true){
+          BtnUpdate.setVisible(true);
+    
+     DeleteBtn.setVisible(true);}
+         else{
           BtnUpdate.setVisible(false);
     
      DeleteBtn.setVisible(false);
+         }
     
         categoryUnits.put("Appareil","Obj");
         categoryUnits.put("Argent", "D");
