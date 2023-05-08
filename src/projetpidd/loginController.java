@@ -10,6 +10,10 @@ import Annonces.entities.Categorie;
 import Annonces.services.CategorieService;
 import Model.User;
 import Services.ServiceUser;
+import java.awt.AWTException;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 //import com.sun.javaws.Main;
 import java.io.IOException;
 import java.net.URL;
@@ -100,7 +104,7 @@ public class loginController implements Initializable {
         checkSignUp();
     }
      
-    private void checkLogin() throws IOException, SQLException{
+    private void checkLogin() throws IOException, SQLException, AWTException{
         ProjetPiDD m = new ProjetPiDD();
        
         User user = ServiceUser.getInstance().searchUserByEmail(usernameField.getText(),passwordField.getText());
@@ -119,7 +123,7 @@ public class loginController implements Initializable {
         
         if(user.getRoles().equals("ROLE_USER"))
         {
-            m.changeScene("UserProfile.fxml");
+            m.changeScene("/don/Front.fxml");
         }
         if(user.getRoles().equals("ROLE_ADMIN"))
         {
@@ -127,7 +131,25 @@ public class loginController implements Initializable {
         }
         if(user.getBlocked() == true)
         {
-            m.changeScene("UserBlocked.fxml");
+             SystemTray tray = SystemTray.getSystemTray();
+
+        // Create a tray icon
+        TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage("img/icons8_edit_account_50px.png"));
+        trayIcon.setToolTip("Notification ");
+
+        // Add a listener for when the user clicks on the tray icon
+        
+
+        // Add the tray icon to the system tray
+        try {
+            tray.add(trayIcon);
+        } catch (AWTException e) {
+            System.out.println("TrayIcon could not be added");
+            return;
+        }
+
+        // Display a notification
+        trayIcon.displayMessage("Notification", "Votre Compte a été Blocké ! ", TrayIcon.MessageType.INFO);
         }
         
     }

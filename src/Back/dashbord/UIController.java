@@ -47,6 +47,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 /**
@@ -89,6 +90,17 @@ private Parent fxml;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+        imageUser.setFitWidth(50); // set the width of the image view
+imageUser.setFitHeight(50); // set the height of the image view
+
+// create a circle clip with a radius equal to half the width or height of the image view, whichever is smaller
+Circle clip = new Circle();
+clip.setCenterX(imageUser.getFitWidth() / 2);
+clip.setCenterY(imageUser.getFitHeight() / 2);
+clip.setRadius(Math.min(imageUser.getFitWidth(), imageUser.getFitHeight()) / 2);
+
+imageUser.setClip(clip);
      imageUser.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
      nomUser.setText(projetpidd.ProjetPiDD.user.getNom());
         mediaview.setFitWidth(220);

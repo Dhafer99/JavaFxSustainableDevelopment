@@ -80,6 +80,6 @@ public class ChatBotController implements Initializable{
     @FXML
     private void Retour(ActionEvent event) throws IOException {
         ProjetPiDD m = new ProjetPiDD ();
-        m.changeScene("LoggedIn.fxml");
+        m.changeScene("UserProfile.fxml");
     }
 }

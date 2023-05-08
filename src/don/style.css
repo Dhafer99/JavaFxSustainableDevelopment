@@ -233,3 +233,13 @@
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
 }
+.floating-pane {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-translate-y: -50px; /* adjust as needed */
+    -fx-translate-x: 50px; /* adjust as needed */
+    -fx-opacity: 0.9; /* adjust as needed */
+}

@@ -24,7 +24,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -49,11 +51,30 @@ private ObservableList<Reclamations.Entite.Reclamation> filteredDonList;
     @FXML
     private Button addBtn;
     private FrontController parentController;
+    @FXML
+    private Button left;
+    @FXML
+    private Button right;
+    @FXML
+    private ScrollPane ScrollPane;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        left.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.max(0, (currentScroll - scrollAmount) / maxScroll));
+});
+
+right.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.min(1, (currentScroll + scrollAmount) / maxScroll));
+});
     try {
         try {
             // Get the list of Don objects
@@ -192,6 +213,10 @@ Collections.sort(personnes, new Comparator<Reclamations.Entite.Reclamation>() {
 }
     public void setFrontController(FrontController parentController) {
         this.parentController = parentController;
+    }
+
+    @FXML
+    private void AddNew(MouseEvent event) {
     }
     
 }

@@ -57,7 +57,9 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import Evenements.utils.MyDB;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import projetpidd.ProjetPiDD;
 /**
  * FXML Controller class
  *
@@ -75,8 +77,6 @@ public class AddUpdateEController implements Initializable {
     @FXML
     private TextField tflocalisation;
    
-    @FXML
-    private Button BackBT;
    
     @FXML
     private Button ImageAddChoose;
@@ -161,6 +161,10 @@ private File file;
  "3asba"
 		}; // Add your list of bad words
 private Stage primaryStage; 
+    @FXML
+    private TextField text;
+    @FXML
+    private Button updateB1;
     /**
      * Initializes the controller class.
      */
@@ -409,12 +413,9 @@ donFController.setFrontController(frontController);
        }
     }
  @FXML
-    private void GoToBack(ActionEvent event) throws IOException {
-      //  FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
-       // AffichageEventController aec = loader.getController();
-      //  Parent root = loader.load();
-      //  BackBT.getScene().setRoot(root);
-        
+    private void Retour(MouseEvent event) throws IOException {
+       ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml"); 
         
     }
 }

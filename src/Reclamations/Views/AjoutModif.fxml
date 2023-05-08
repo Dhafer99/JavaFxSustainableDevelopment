@@ -14,83 +14,55 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="833.0" prefWidth="1300.0" style="-fx-background-color: transparent;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reclamations.Views.AjoutModifController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: transparent;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reclamations.Views.AjoutModifController">
    <children>
-      <ImageView fitHeight="2000.0" fitWidth="1920.0" layoutX="10.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1108.0" fitWidth="1893.0" layoutX="-36.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/1508.jpg" />
+            <Image url="@../../img/Screenshot%202023-05-08%20112004.png" />
          </image>
       </ImageView>
       <VBox layoutX="38.0" layoutY="165.0" prefHeight="294.0" prefWidth="227.0" spacing="40.0">
          <children>
-            <Label prefHeight="35.0" prefWidth="223.0" text="Date Reclamation" textFill="WHITE">
+            <Label prefHeight="35.0" prefWidth="223.0" style="-fx-text-fill: #12a25d;" text="Date Reclamation" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="216.0" text="Motif Reclamation" textFill="WHITE">
+            <Label prefHeight="35.0" prefWidth="216.0" style="-fx-text-fill: #12a25d;" text="Motif Reclamation" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <VBox fx:id="vbox" layoutX="308.0" layoutY="170.0" prefHeight="378.0" prefWidth="405.0" spacing="50.0">
+      <VBox fx:id="vbox" layoutX="308.0" layoutY="165.0" prefHeight="266.0" prefWidth="406.0" spacing="50.0">
          <children>
             <DatePicker fx:id="tfDate" />
             <TextField fx:id="tfdescription" layoutX="10.0" layoutY="36.0" prefHeight="30.0" prefWidth="282.0" styleClass="search-container" stylesheets="@style.css" />
             <ComboBox fx:id="combo" prefWidth="150.0" styleClass="combo-box-popup" stylesheets="@../../don/style.css" />
          </children>
       </VBox>
-      <Button fx:id="retour" layoutX="62.0" layoutY="832.0" mnemonicParsing="false" onAction="#retour" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: black;" stylesheets="@style.css" text="Retour">
+      <Button fx:id="retour" layoutX="38.0" layoutY="595.0" mnemonicParsing="false" onAction="#retour" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: #12a25d; -fx-background-color: transparent; -fx-text-fill: #12a25d;" stylesheets="@style.css" text="Retour">
          <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8_add_16px_1.png" />
+                  <Image url="@../../img/icons8_return_30px.png" />
                </image>
             </ImageView>
          </graphic>
          <styleClass>
-            <String fx:value="buttonF" />
-            <String fx:value="upgrade-button" />
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
          </styleClass>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="98.0" prefWidth="1920.0" spacing="20.0" styleClass="hbox" stylesheets="@../../don/style.css">
+      <HBox alignment="CENTER_LEFT" layoutX="5.0" prefHeight="98.0" prefWidth="1474.0" spacing="20.0" style="-fx-text-fill: #12a25d;" styleClass="hbox" stylesheets="@../../don/style.css">
          <children>
-            <HBox alignment="CENTER_LEFT">
-               <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../img/ic_back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../img/ic_forward.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="215.0" styleClass="search-container" stylesheets="@../../don/style.css">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/ic_search.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="text" prefHeight="31.0" prefWidth="173.0" promptText="Search" style="-fx-background-color: transparent;" />
-               </children>
-            </HBox>
+            <HBox alignment="CENTER_LEFT" />
             <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="157.0" style="-fx-text-fill: white;" styleClass="upgrade-button" stylesheets="@../../don/style.css" text="Profile" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="157.0" style="-fx-border-color: #12a25d; -fx-background-color: transparent; -fx-text-fill: #12a25d;" styleClass="upgrade-button" stylesheets="@../../don/style.css" text="Profile" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -106,7 +78,7 @@
             </HBox>
          </children>
       </HBox>
-      <Button fx:id="Insert" layoutX="230.0" layoutY="621.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: black;" stylesheets="@style.css" text="Insert">
+      <Button fx:id="Insert" layoutX="210.0" layoutY="480.0" mnemonicParsing="false" onAction="#AjouterDon" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: #12a25d; -fx-background-color: transparent; -fx-text-fill: #12a25d;" stylesheets="@style.css" text="Insert">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -115,11 +87,14 @@
             </ImageView>
          </graphic>
          <styleClass>
-            <String fx:value="buttonF" />
-            <String fx:value="upgrade-button" />
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
          </styleClass>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <Button fx:id="ImageAddChoose" layoutX="887.0" layoutY="187.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: black;" stylesheets="@style.css" text="Add Image">
+      <Button fx:id="ImageAddChoose" layoutX="887.0" layoutY="187.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: #12a25d; -fx-background-color: transparent; -fx-text-fill: #12a25d;" stylesheets="@style.css" text="Add Image">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -128,11 +103,14 @@
             </ImageView>
          </graphic>
          <styleClass>
-            <String fx:value="buttonF" />
-            <String fx:value="upgrade-button" />
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
          </styleClass>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <Button fx:id="updateB" layoutX="496.0" layoutY="621.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: black;" stylesheets="@style.css" text="Update">
+      <Button fx:id="updateB" layoutX="476.0" layoutY="480.0" mnemonicParsing="false" onAction="#ModifierEvent" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: #12a25d; -fx-background-color: transparent; -fx-text-fill: #12a25d;" stylesheets="@style.css" text="Update">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -141,10 +119,13 @@
             </ImageView>
          </graphic>
          <styleClass>
-            <String fx:value="buttonF" />
-            <String fx:value="upgrade-button" />
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
          </styleClass>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <ImageView fx:id="eventAddImg" fitHeight="150.0" fitWidth="200.0" layoutX="897.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eventAddImg" fitHeight="228.0" fitWidth="283.0" layoutX="887.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

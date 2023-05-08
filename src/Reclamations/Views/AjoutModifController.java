@@ -50,12 +50,14 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import projetpidd.ProjetPiDD;
 
 /**
  * FXML Controller class
@@ -232,6 +234,16 @@ donFController.setFrontController(frontController);
             BufferedImage image = ImageIO.read(file);
             WritableImage imagee = SwingFXUtils.toFXImage(image, null);
             eventAddImg.setImage(imagee);
+                 eventAddImg.setFitWidth(400); // set the width of the image view
+eventAddImg.setFitHeight(400); // set the height of the image view
+
+// create a circle clip with a radius equal to half the width or height of the image view, whichever is smaller
+Circle clip = new Circle();
+clip.setCenterX(eventAddImg.getFitWidth() / 2);
+clip.setCenterY(eventAddImg.getFitHeight() / 2);
+clip.setRadius(Math.min(eventAddImg.getFitWidth(), eventAddImg.getFitHeight()) / 2);
+
+eventAddImg.setClip(clip);
              PauseTransition pause = new PauseTransition(Duration.seconds(8));
         
         // set the action to be performed when the pause is finished
@@ -322,10 +334,8 @@ donFController.setFrontController(frontController);
     @FXML
     private void retour(ActionEvent event) throws IOException {
         
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
- Parent root = loader.load();
-        retour.getScene().setRoot(root);
-    FrontController controller = loader.getController();
+        ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
     }
 
     

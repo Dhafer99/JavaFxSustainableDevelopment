@@ -23,6 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import projetpidd.ProjetPiDD;
 
@@ -33,10 +34,15 @@ import projetpidd.ProjetPiDD;
  */
 public class FrontController implements Initializable {
 
-    @FXML
     public  AnchorPane route;
     @FXML
     private ImageView pdp;
+    @FXML
+    public Pane panne1;
+    @FXML
+    public Pane panne2;
+    @FXML
+    public Pane panne3;
 
     public AnchorPane getRoute() {
         return route;
@@ -54,20 +60,27 @@ public class FrontController implements Initializable {
         this.fxml = fxml;
     }
     @FXML
-    private TextField text;
+    public MediaView mediaView1;
     @FXML
-    private MediaView mediaView1;
+    public MediaView mediaView2;
     @FXML
-    private MediaView mediaView2;
-    @FXML
-    private MediaView mediaView3;
+    public MediaView mediaView3;
 public  Parent fxml ;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        pdp.setFitWidth(100); // set the width of the image view
+pdp.setFitHeight(100); // set the height of the image view
+
+// create a circle clip with a radius equal to half the width or height of the image view, whichever is smaller
+Circle clip = new Circle();
+clip.setCenterX(pdp.getFitWidth() / 2);
+clip.setCenterY(pdp.getFitHeight() / 2);
+clip.setRadius(Math.min(pdp.getFitWidth(), pdp.getFitHeight()) / 2);
+
+pdp.setClip(clip);
         
          pdp.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
         
@@ -128,6 +141,12 @@ timeline.play();
 
     @FXML
     private void Don(MouseEvent event) {
+        panne1.setVisible(false);
+        panne2.setVisible(false);
+        panne3.setVisible(false);
+        mediaView1.setVisible(false);
+        mediaView2.setVisible(false);
+        mediaView3.setVisible(false);
         try {
            fxml = FXMLLoader.load(getClass().getResource("DonF.fxml"));
            route.getChildren().removeAll();
@@ -147,6 +166,12 @@ timeline.play();
 
     @FXML
     private void ToEvenements(MouseEvent event) throws IOException {
+        panne1.setVisible(false);
+        panne2.setVisible(false);
+        panne3.setVisible(false);
+        mediaView1.setVisible(false);
+        mediaView2.setVisible(false);
+        mediaView3.setVisible(false);
         try {
            fxml = FXMLLoader.load(getClass().getResource("/Evenements/Gui/DonF.fxml"));
            route.getChildren().removeAll();
@@ -156,7 +181,6 @@ timeline.play();
         }
     }
 
-    @FXML
     private void ToHome(MouseEvent event) throws IOException {
         ProjetPiDD m = new ProjetPiDD();
         m.changeScene("/don/Front.fxml");
@@ -164,6 +188,12 @@ timeline.play();
 
     @FXML
     private void ToReclamation(MouseEvent event) {
+        panne1.setVisible(false);
+        panne2.setVisible(false);
+        panne3.setVisible(false);
+        mediaView1.setVisible(false);
+        mediaView2.setVisible(false);
+        mediaView3.setVisible(false);
          try {
            fxml = FXMLLoader.load(getClass().getResource("/Reclamations/Views/DonF.fxml"));
            route.getChildren().removeAll();
@@ -190,6 +220,12 @@ timeline.play();
 
     @FXML
     private void toAnnonce(MouseEvent event) {
+        panne1.setVisible(false);
+        panne2.setVisible(false);
+        panne3.setVisible(false);
+        mediaView1.setVisible(false);
+        mediaView2.setVisible(false);
+        mediaView3.setVisible(false);
         try {
            fxml = FXMLLoader.load(getClass().getResource("/Annonces/gui/DonF.fxml"));
            route.getChildren().removeAll();
@@ -201,6 +237,12 @@ timeline.play();
 
     @FXML
     private void toAssociation(MouseEvent event) throws IOException {
+        panne1.setVisible(false);
+        panne2.setVisible(false);
+        panne3.setVisible(false);
+        mediaView1.setVisible(false);
+        mediaView2.setVisible(false);
+        mediaView3.setVisible(false);
         try {
            fxml = FXMLLoader.load(getClass().getResource("/Associations/Views/DonF.fxml"));
            route.getChildren().removeAll();
@@ -208,6 +250,12 @@ timeline.play();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void Profile(MouseEvent event) throws IOException {
+        ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/projetpidd/UserProfile.fxml");
     }
     
 

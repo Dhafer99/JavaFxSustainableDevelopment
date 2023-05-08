@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,14 +51,30 @@ private ObservableList<Associations.Models.Association> filteredDonList;
     ServiceAssociation s= new ServiceAssociation();
     private Button addBtn;
     @FXML
-    private ImageView pdp;
+    private Button left;
+    @FXML
+    private Button right;
+    @FXML
+    private ScrollPane ScrollPane;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         pdp.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
+        left.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.max(0, (currentScroll - scrollAmount) / maxScroll));
+});
+
+right.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.min(1, (currentScroll + scrollAmount) / maxScroll));
+});
+//         pdp.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
         
     try {
         try {

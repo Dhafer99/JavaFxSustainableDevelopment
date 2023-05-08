@@ -46,14 +46,17 @@ import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import projetpidd.ProjetPiDD;
 /**
  * FXML Controller class
  *
@@ -805,11 +808,15 @@ private File file;
 		}; // Add your list of bad words
 private Stage primaryStage; 
     @FXML
-    private TextField text;
-    @FXML
     private Pane pane;
     @FXML
     private MediaView mediaView;
+    @FXML
+    private ImageView pdp;
+    @FXML
+    private Button Return;
+    @FXML
+    private Button profile;
 
     /**
      * Initializes the controller class.
@@ -842,7 +849,19 @@ private Stage primaryStage;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String filePath = "C:\\Users\\Souid\\Desktop\\javafxapp\\ProjetPiDD\\src\\img\\t.mp4";
+        pdp.setFitWidth(100); // set the width of the image view
+pdp.setFitHeight(100); // set the height of the image view
+
+// create a circle clip with a radius equal to half the width or height of the image view, whichever is smaller
+Circle clip = new Circle();
+clip.setCenterX(pdp.getFitWidth() / 2);
+clip.setCenterY(pdp.getFitHeight() / 2);
+clip.setRadius(Math.min(pdp.getFitWidth(), pdp.getFitHeight()) / 2);
+
+pdp.setClip(clip);
+        
+         pdp.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
+        /*String filePath = "C:\\Users\\Souid\\Desktop\\javafxapp\\ProjetPiDD\\src\\img\\t.mp4";
 String uriString = "file:///" + filePath.replace("\\", "/");
     Media media = new Media(uriString);
     MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -861,7 +880,7 @@ Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), e -> {
     }), new KeyFrame(totalDuration));
 
 timeline.setCycleCount(Timeline.INDEFINITE);
-timeline.play();
+timeline.play();*/
         try {
             ServiceCategory se = new ServiceCategory();
             List<Category_d> personnes = se.afficher();
@@ -994,6 +1013,14 @@ DonFController donFController = includedLoader.getController();
 donFController.setParentController(frontController);
 
 Insert.getScene().setRoot(root);
+FrontController f = new FrontController();
+f.panne1.setVisible(false);
+f.panne2.setVisible(false);
+f.panne3.setVisible(false);
+f.mediaView1.setVisible(false);
+f.mediaView2.setVisible(false);
+f.mediaView3.setVisible(false);
+
                     //  FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
        // SampleController aec = loader.getController();
      //   Parent root = loader.load();
@@ -1062,6 +1089,12 @@ DonFController donFController = includedLoader.getController();
 donFController.setParentController(frontController);
 
 updateB.getScene().setRoot(root);
+frontController.panne1.setVisible(false);
+frontController.panne2.setVisible(false);
+frontController.panne3.setVisible(false);
+frontController.mediaView1.setVisible(false);
+frontController.mediaView2.setVisible(false);
+frontController.mediaView3.setVisible(false);
           //  FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
 //            SampleController aec = loader.getController();
         //    Parent root = loader.load();
@@ -1069,6 +1102,20 @@ updateB.getScene().setRoot(root);
       //  } catch (IOException ex) {
        //     Logger.getLogger(AddUpdateController.class.getName()).log(Level.SEVERE, null, ex);
        // }
+    }
+
+    @FXML
+    private void Back(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
+         FrontController aec = loader.getController();
+           Parent root = loader.load();
+           updateB.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void profile(MouseEvent event) throws IOException {
+        ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/projetpidd/UserProfile.fxml");
     }
 
 }

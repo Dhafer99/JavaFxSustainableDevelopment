@@ -38,6 +38,7 @@ import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import Annonces.services.CategorieService;
 import javafx.scene.image.Image;
+import projetpidd.ProjetPiDD;
 
 public class AjoutAnnonceController implements Initializable {
 
@@ -764,8 +765,6 @@ private String imagep ;
     @FXML
     private Label datelabel;
     @FXML
-    private TextField text;
-    @FXML
     private ImageView pdp;
 
 
@@ -917,10 +916,8 @@ private String imagep ;
 
     @FXML
     private void front(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
-        SampleController aec = loader.getController();
-        Parent root = loader.load();
-        frontBTN.getScene().setRoot(root);
+         ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
         
     }
 

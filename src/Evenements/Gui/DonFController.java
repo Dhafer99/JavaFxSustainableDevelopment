@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -49,20 +50,37 @@ private ObservableList<Evenements.Entities.Evenement> filteredDonList;
     EvenementService s= new EvenementService();
     @FXML
     private Button addBtn;
-    @FXML
-    private Button filter2;
     private FrontController parentController;
+    @FXML
+    private Button left;
+    @FXML
+    private Button right;
+    @FXML
+    private ScrollPane ScrollPane;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        left.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.max(0, (currentScroll - scrollAmount) / maxScroll));
+});
+
+right.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.min(1, (currentScroll + scrollAmount) / maxScroll));
+});
     try {
         try {
             // Get the list of Don objects
             originalDonList = FXCollections.observableArrayList(s.afficher());
             filteredDonList = FXCollections.observableArrayList(originalDonList);
-                    nb.setText(originalDonList.size() + " Don Disponible");
+                    nb.setText(originalDonList.size() + " Evenement Disponible");
 
             try {
                 // Populate the GridPane with the card views

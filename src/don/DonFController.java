@@ -42,6 +42,7 @@ import javafx.scene.input.MouseEvent;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.google.gson.JsonObject;
+import javafx.scene.control.ScrollPane;
 /*import Entities.Don;
 import Service.AddressToLatLng;
 import static Service.AddressToLatLng.getLatLongFromAddress;
@@ -121,9 +122,14 @@ private ObservableList<Don> filteredDonList;
     @FXML
     private HBox newContainer;
     private FrontController parentController;
-    @FXML
-    private ImageView pdp;
+    //private ImageView pdp;
 private double FILTER_RADIUS=20.0;
+    @FXML
+    private Button left;
+    @FXML
+    private Button right;
+    @FXML
+    private ScrollPane ScrollPane;
     public void setParentController(FrontController parentController) {
         this.parentController = parentController;
     }
@@ -132,8 +138,22 @@ private double FILTER_RADIUS=20.0;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         pdp.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
+ left.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.max(0, (currentScroll - scrollAmount) / maxScroll));
+});
+
+right.setOnAction(event -> {
+    double scrollAmount = ScrollPane.getWidth() / 2;
+    double maxScroll = ScrollPane.getContent().getBoundsInLocal().getWidth() - favoriteContainer.getWidth();
+    double currentScroll = ScrollPane.getHvalue() * maxScroll;
+    ScrollPane.setHvalue(Math.min(1, (currentScroll + scrollAmount) / maxScroll));
+});
+
+
+//         pdp.setImage(new Image(projetpidd.ProjetPiDD.user.getImage()));
     try {
         try {
             // Get the list of Don objects
@@ -315,13 +335,12 @@ Collections.sort(personnes, new Comparator<Don>() {
   
 }
 
-    @FXML
-    private void AddNew(MouseEvent event) {
-    }
+    
 
     @FXML
     private void filterLoc(ActionEvent event) {
     }
+
    
     
 }

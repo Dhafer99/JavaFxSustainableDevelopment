@@ -14,16 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="942.0" prefWidth="1524.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reclamations.Views.DonFController">
+<AnchorPane id="AnchorPane" prefHeight="942.0" prefWidth="1524.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reclamations.Views.DonFController">
    <children>
-      <ImageView fitHeight="2000.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/1508.jpg" />
-         </image>
-      </ImageView>
       <VBox layoutY="113.0" prefHeight="741.0" prefWidth="1666.0" spacing="10.0" style="-fx-background-color: transparent;">
          <children>
-            <Label text="Recently Added">
+            <Label text="Recently Added" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -38,9 +33,9 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="42.0" prefWidth="1664.0" spacing="80.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#filter" prefHeight="59.0" prefWidth="184.0" stylesheets="@style.css" text="Filter Date">
+                  <Button mnemonicParsing="false" onAction="#filter" prefHeight="62.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #12a25d; -fx-border-color: #12a25d;" stylesheets="@style.css" text="Filter Date">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,26 +47,66 @@
                         <Font size="18.0" />
                      </font>
                      <styleClass>
-                        <String fx:value="upgrade-button" />
-                        <String fx:value="buttonF" />
+                        <String fx:value="vbox" />
+                        <String fx:value="buttonFront" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#AddNew" prefHeight="62.0" prefWidth="106.0" stylesheets="@style.css">
+                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#AddNew" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: #12a25d;" stylesheets="@style.css">
                      <styleClass>
-                        <String fx:value="upgrade-button" />
-                        <String fx:value="buttonF" />
+                        <String fx:value="vbox" />
+                        <String fx:value="buttonFront" />
                      </styleClass>
                      <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="34.0" onDragDetected="#AddNew" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="32.0" onDragDetected="#AddNew" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/icons8_Plus_32px_2.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="215.0" styleClass="search-container" stylesheets="@../../don/style.css">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/ic_search.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="text" prefHeight="31.0" prefWidth="173.0" promptText="Search" style="-fx-background-color: transparent;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="19.0" prefWidth="128.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="left" mnemonicParsing="false" prefHeight="38.0" prefWidth="55.0" style="-fx-background-color: transparent;" stylesheets="@../../don/style.css">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/ic_back.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="vbox" />
+                              <String fx:value="buttonFront" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="right" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: transparent;" stylesheets="@../../don/style.css">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/ic_forward.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="vbox" />
+                              <String fx:value="buttonFront" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
-            <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="332.0" prefWidth="1626.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+            <ScrollPane fx:id="ScrollPane" fitToWidth="true" minViewportHeight="270.0" prefHeight="332.0" prefWidth="1626.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
                <content>
                   <HBox fx:id="favoriteContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />
                </content>
@@ -81,60 +116,12 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </VBox>
-      <HBox alignment="CENTER_LEFT" layoutX="2.0" prefHeight="98.0" prefWidth="1640.0" spacing="20.0" styleClass="hbox" stylesheets="@style.css">
+      <HBox alignment="CENTER_LEFT" prefHeight="98.0" prefWidth="1794.0" spacing="20.0" styleClass="hbox" stylesheets="@../../don/style.css">
          <children>
-            <HBox alignment="CENTER_LEFT">
-               <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/ic_back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/ic_forward.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="215.0" styleClass="search-container" stylesheets="@style.css">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/ic_search.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="text" prefHeight="31.0" prefWidth="173.0" promptText="Search" style="-fx-background-color: transparent;" />
-               </children>
-            </HBox>
+            <HBox alignment="CENTER_LEFT" />
             <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="157.0" styleClass="upgrade-button" stylesheets="@style.css" text="Profile" textFill="#1b1e23">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" spacing="10.0">
-               <children>
-                  <ImageView fitHeight="74.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/fotor_2023-4-25_8_51_1.png" />
-                     </image>
-                  </ImageView>
-                  <Label prefHeight="27.0" prefWidth="171.0" text="Aziz" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" spacing="10.0" />
+            <Pane layoutX="366.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
    </children>
