@@ -250,8 +250,8 @@ eventAddImg.setImage(null);
 
        
             // save image to PNG file
-            this.lien=UUID.randomUUID().toString();
-            File f=new File("src\\uploads\\" + this.lien + ".png");
+            this.lien = UUID.randomUUID().toString() + ".png"; // or ".jpg" if you prefer
+File f = new File("C:\\xampp\\htdocs\\public\\" + this.lien);
             System.out.println(f.toURI().toString());
             ImageIO.write(image, "PNG",f);
                        
@@ -272,7 +272,7 @@ tfDate.setValue(localDate);
         tfdescription.setText(d.getMotif_de_reclamation());
         tfemail.setText(d.getEmail());
         tfnumero.setText(Integer.toString(d.getNum_telephone()));
-   eventAddImg.setImage(new Image("file:src\\uploads\\"+d.getImage()+".png"));
+   eventAddImg.setImage(new Image("file:http://localhost/public/"+d.getImage()));
    combo.setValue(d.categorie_rec_id);
     }
     @FXML

@@ -383,8 +383,8 @@ if (rs.next()) {
             
         //    eventShowCategory.setVisible(true);
             
-            System.out.println("file:src/uploads/"+e.getImage_event()+".png");
-            eventShowImg.setImage(new Image("file:src/uploads/"+e.getImage_event()+".png"));
+            System.out.println("file:http://localhost/public/"+e.getImage_event());
+            eventShowImg.setImage(new Image("file:http://localhost/public/"+e.getImage_event()));
              //modifier.setVisible(true);
         modifier.setDisable(false);
            // if(e.getUserId() == uid)

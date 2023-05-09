@@ -157,7 +157,7 @@ public class AjoutReclamationController implements Initializable {
         try {
             // save image to PNG file
             this.lien=UUID.randomUUID().toString();
-            File f=new File("src\\uploads\\" + this.lien + ".png");
+            File f=new File("http://localhost/public/" + this.lien );
             System.out.println(f.toURI().toString());
             ImageIO.write(imager, "PNG",f);
                        

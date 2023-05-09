@@ -175,7 +175,7 @@ cbEventAdd.setConverter(new StringConverter<CategorieEvent>() {
                  p.setDate_fin( java.sql.Date.valueOf(dpEventAddDateFin.getValue()));
                  p.setCategoryId(category);
         
-   eventAddImg.setImage(new Image("file:src\\uploads\\"+d.getImage_event()+".png"));
+   eventAddImg.setImage(new Image("file:http://localhost/public/"+d.getImage_event()));
     }
       
     @FXML
@@ -212,7 +212,7 @@ cbEventAdd.setConverter(new StringConverter<CategorieEvent>() {
         try {
             // save image to PNG file
             this.lien=UUID.randomUUID().toString();
-            File f=new File("src\\uploads\\" + this.lien + ".png");
+            File f=new File("http://localhost/public/" + this.lien );
             System.out.println(f.toURI().toString());
             ImageIO.write(image, "PNG",f);
                        

@@ -69,9 +69,9 @@ private Annonces don;
         adresse.setText(annonce.getAdresse());
         date_publication.setText(annonce.getDate_publication());
         //System.out.println(annonce.getImage());
-               image.setImage(new Image("file:src\\uploads\\"+annonce.getImage()+".png"));
+               image.setImage(new Image(annonce.getImage()));
                 
-               System.out.println("file:src/uploads/"+annonce.getImage()+".png");
+              // System.out.println("file:http://localhost/public/"+annonce.getImage());
                 
 
     }

@@ -68,7 +68,7 @@ private Association don;
         Quantite.setText(Integer.toString(don.getCodePostal()));
         Email.setText(don.getMail());
         Numero.setText(Integer.toString(don.getNumero()));
-   img.setImage(new Image("file:src\\uploads\\"+don.getImage()+".png"));
+   img.setImage(new Image("file:http://localhost/public/"+don.getImage()));
 
         
         if (don.getCategorie()== 0) {

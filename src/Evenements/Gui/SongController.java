@@ -169,7 +169,7 @@ if (Events.containsKey(d.getId()) && Events.containsValue(2)) {
         Adresse.setText(event.getLocalisation());
         Date_deb.setText(String.valueOf(event.getDate_debut()));
         Date_fin.setText(String.valueOf(event.getDate_fin()));
-   img.setImage(new Image("file:src\\uploads\\"+event.getImage_event()+".png"));
+   img.setImage(new Image("file:C:\\xampp\\htdocs\\public\\"+event.getImage_event()));
   
    if (event.getCategoryId() == 0) {
     ShowCategory.setText("Catégorie non définie");
@@ -491,7 +491,7 @@ if(rs.next()){
             Font bodyFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
 
             // Load the background image
-            String imageEP = "file:src/uploads/" + d.getImage_event() + ".png";
+            String imageEP = "file:C:\\xampp\\htdocs\\public" + d.getImage_event();
             com.itextpdf.text.Image imageE = com.itextpdf.text.Image.getInstance(imageEP);
 
             // Set the absolute position of the background image

@@ -69,7 +69,7 @@ public class CardViewController implements Initializable {
      Motif.setText(reclamation.getMotif_de_reclamation());
         Email.setText(reclamation.getEmail());
         Numero.setText(Integer.toString(reclamation.getNum_telephone()));
-        img.setImage(new Image("file:src\\uploads\\"+reclamation.getImage()+".png"));
+        img.setImage(new Image("file:http://localhost/public/"+reclamation.getImage()));
         System.out.println(reclamation.getCategorie_rec());
          if (reclamation.getCategorie_rec().getId()== 0) {
     categ.setText("Catégorie non définie");

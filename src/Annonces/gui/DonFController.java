@@ -131,7 +131,7 @@ right.setOnAction(event -> {
             if (count >= 3) {
                 break;
             }
-            
+            System.out.println("IMMAGE ANNONCE"+d.getImage());
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("song.fxml"));
             Pane pane = fxmlLoader.load();

@@ -291,7 +291,7 @@ cbEventEdit.setConverter(new StringConverter<CategorieEvent>() {
         try {
             // save image to PNG file
             this.lien=UUID.randomUUID().toString();
-            File f=new File("src\\uploads\\" + this.lien + ".png");
+            File f=new File("http://localhost/public/" + this.lien );
             System.out.println(f.toURI().toString());
             ImageIO.write(image, "PNG",f);
             
@@ -314,7 +314,7 @@ cbEventEdit.setConverter(new StringConverter<CategorieEvent>() {
        
         tfEventEditLieu.setText(don.getLocalisation());
         
-   eventAddImg1.setImage(new Image("file:src\\uploads\\"+don.getImage_event()+".png"));
+   eventAddImg1.setImage(new Image("file:http://localhost/public/"+don.getImage_event()));
 
     // Add the imageView to your scene or layout
 

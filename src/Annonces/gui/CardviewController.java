@@ -74,7 +74,7 @@ public class CardviewController implements Initializable {
         //System.out.println(annonce.getImage());
                 image.setImage(new Image(annonce.getImage()));
                 
-               System.out.println("file:src/uploads/"+annonce.getImage()+".png");
+               System.out.println("file:http://localhost/public/"+annonce.getImage());
                
 
     }

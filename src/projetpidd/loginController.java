@@ -121,11 +121,11 @@ public class loginController implements Initializable {
         }
         
         
-        if(user.getRoles().equals("ROLE_USER"))
+        if(user.getRoles().equals( "[\"ROLE_USER\"]"))
         {
             m.changeScene("/don/Front.fxml");
         }
-        if(user.getRoles().equals("ROLE_ADMIN"))
+        if(user.getRoles().equals( "[\"ROLE_ADMIN\"]"))
         {
            m.changeScene("/Back/Views/UI.fxml");
         }

@@ -868,7 +868,7 @@ public String filterBadWords(String text) {
                 // save image to PNG file
                 this.lien = UUID.randomUUID().toString();
                 imagep = file.toURI().toURL().toString();
-                File f = new File("src\\uploads\\" + this.lien + ".png");
+                File f = new File("http://localhost/public/" + this.lien );
                 System.out.println(f.toURI().toString());
                 ImageIO.write(image, "PNG", f);
 

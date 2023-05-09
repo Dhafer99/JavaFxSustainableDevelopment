@@ -270,8 +270,8 @@ eventAddImg.setImage(null);
 
         try {
             // save image to PNG file
-            this.lien=UUID.randomUUID().toString();
-            File f=new File("src\\uploads\\" + this.lien + ".png");
+            this.lien = UUID.randomUUID().toString() + ".png"; // or ".jpg" if you prefer
+File f = new File("C:\\xampp\\htdocs\\public\\" + this.lien);
             System.out.println(f.toURI().toString());
             ImageIO.write(image, "PNG",f);
                        
@@ -355,7 +355,7 @@ tfdateFin.setValue(localDateF);
        // dateF.setText(String.valueOf(d.getDate_fin()));
         tflocalisation.setText(d.getLocalisation());
        
-   eventAddImg.setImage(new Image("file:src\\uploads\\"+d.getImage_event()+".png"));
+   eventAddImg.setImage(new Image("file:http://localhost/public/"+d.getImage_event()));
    
  
     }

@@ -253,7 +253,7 @@ eventAddImg.setImage(null);
         try {
             // save image to PNG file
             this.lien=UUID.randomUUID().toString();
-            File f=new File("src\\uploads\\" + this.lien + ".png");
+            File f=new File("http://localhost/public/" + this.lien );
             System.out.println(f.toURI().toString());
             ImageIO.write(image, "PNG",f);
                        
@@ -310,7 +310,7 @@ eventAddImg.setImage(null);
         tflocalisation.setText(don.getLocalisation());
         tfemail.setText(don.getEmail());
         tfnumero.setText(Integer.toString(don.getNumero()));
-   eventAddImg.setImage(new Image("file:src\\uploads\\"+don.getImage()+".png"));
+   eventAddImg.setImage(new Image("file:http://localhost/public/"+don.getImage()));
 
     // Add the imageView to your scene or layout
 

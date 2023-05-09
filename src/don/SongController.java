@@ -112,7 +112,7 @@ double toleranceMax = 1.2;
         Quantite.setText(Integer.toString(don.getQuantite()));
         Email.setText(don.getEmail());
         Numero.setText(Integer.toString(don.getNumero()));
-   img.setImage(new Image("file:src\\uploads\\"+don.getImage()+".png"));
+   img.setImage(new Image("file:C:\\xampp\\htdocs\\public"+don.getImage()));
 
         
         if (don.getCategory_d_id()== 0) {

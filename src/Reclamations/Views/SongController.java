@@ -78,7 +78,7 @@ private Reclamation don;
         motif.setText(don.getMotif_de_reclamation());
         numero.setText(Integer.toString(don.getNum_telephone()));
         email.setText(don.getEmail());
-   img.setImage(new Image("file:src\\uploads\\"+don.getImage()+".png"));
+   img.setImage(new Image("file:C:\\xampp\\htdocs\\public\\"+don.getImage()));
                   
 
         

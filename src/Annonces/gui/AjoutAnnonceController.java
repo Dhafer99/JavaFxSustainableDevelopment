@@ -898,12 +898,13 @@ private String imagep ;
             imageadd.setSmooth(true);
             imageadd.setCache(true);
 
-            try {
+            try { 
                 // save image to PNG file
-                this.lien = UUID.randomUUID().toString();
-                imagep = file.toURI().toURL().toString();
-                File f = new File("src\\uploads\\" + this.lien + ".png");
-                System.out.println(f.toURI().toString());
+                this.lien = UUID.randomUUID().toString() + ".png";
+               // imagep = file.toURI().toURL().toString();
+                File f = new File("C:\\xampp\\htdocs\\public\\" + this.lien);
+                imagep=f.toURI().toString();
+                System.out.println("image annonce :"+imagep);
                 ImageIO.write(image, "PNG", f);
 
             } catch (IOException ex) {
