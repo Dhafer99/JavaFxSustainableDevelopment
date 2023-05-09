@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
@@ -232,7 +234,7 @@ num_telephone.setTextFormatter(numTelephoneFormatter);
     }
 
     @FXML
-    private void addUser(ActionEvent event) throws IOException, SQLException {
+    private void addUser(ActionEvent event) throws IOException, SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
            if(allerror || imagePath=="")
         {
             showAlert("Verifier vos cordonnés !","il y a des champs invalides");

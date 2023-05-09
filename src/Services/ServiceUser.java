@@ -15,7 +15,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.mindrot.jbcrypt.BCrypt;
-
+import org.mindrot.jbcrypt.BCrypt;
+import java.security.SecureRandom;
 /**
  *
  * @author Souid
@@ -57,14 +58,15 @@ public class ServiceUser {
      }
     public void addUser(User user) throws SQLException
     {
-        
+           
          
+            
          
-        String pw_hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        String pw_hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
          String query = "INSERT INTO user (email,roles,password,is_verified,num_telephone,type,score,nb_etoile,nom,prenom,image,blocked,categories) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ";
          PreparedStatement st = cn.prepareStatement(query);
             st.setString(1, user.getEmail());
-            st.setString(2, "ROLE_USER");
+            st.setString(2, "[\"ROLE_USER\"]");
             st.setString(3, pw_hash);
             st.setInt(4,0);//isverified
             st.setString(5, user.getNumTelephone());
