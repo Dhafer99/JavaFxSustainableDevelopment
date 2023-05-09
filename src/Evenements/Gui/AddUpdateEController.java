@@ -326,22 +326,8 @@ statement1.setInt(2 , newEventId);
 int rowsInserted = statement1.executeUpdate(); 
 
                    JOptionPane.showMessageDialog(null, "Event ajouté !");
-                           FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
-Parent root = loader.load();
-
-AnchorPane myVBox = (AnchorPane) root.lookup("#route");
-
-FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
-Node myAnchorPane = includedLoader.load();
-
-myVBox.getChildren().add(myAnchorPane);
-
-FrontController frontController = loader.getController();
-DonFController donFController = includedLoader.getController();
-
-donFController.setFrontController(frontController);
-
-Insert.getScene().setRoot(root);
+                               ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
       /*   Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                     Message message = Message.creator(new PhoneNumber("+21629228940"),
         new PhoneNumber("+15673717088"), 
@@ -375,7 +361,7 @@ tfdateFin.setValue(localDateF);
     }
     @FXML
     private void ModifierEvent(ActionEvent event) {
-        try {
+     
              int category =combo.getSelectionModel().getSelectedItem().getId();
             EvenementService se = new EvenementService();
             Evenement p = new Evenement();
@@ -391,26 +377,8 @@ tfdateFin.setValue(localDateF);
             se.modifier(p);
 
             JOptionPane.showMessageDialog(null, "Event modifié !");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
-Parent root = loader.load();
-
-AnchorPane myVBox = (AnchorPane) root.lookup("#route");
-
-FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
-Node myAnchorPane = includedLoader.load();
-
-myVBox.getChildren().add(myAnchorPane);
-
-FrontController frontController = loader.getController();
-DonFController donFController = includedLoader.getController();
-
-donFController.setFrontController(frontController);
-
-
-           updateB.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AddUpdateEController.class.getName()).log(Level.SEVERE, null, ex);
-       }
+                  
+       
     }
  @FXML
     private void Retour(MouseEvent event) throws IOException {

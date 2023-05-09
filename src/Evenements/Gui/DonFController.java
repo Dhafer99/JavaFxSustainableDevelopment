@@ -243,9 +243,7 @@ for (Evenements.Entities.Evenement d : personnes) {
   
 }
 
-    @FXML
-    private void AddNew(MouseEvent event) {
-    }
+    
     public void setFrontController(FrontController parentController) {
         this.parentController = parentController;
     }

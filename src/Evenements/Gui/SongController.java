@@ -69,6 +69,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import projetpidd.ProjetPiDD;
 
 
 /**
@@ -235,22 +236,8 @@ if (rs.next()) {
         System.out.println(Evenement);
     //test = true;
         ps.supprimer(Evenement);  
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("Front.fxml"));
-Parent root = loader.load();
-
-AnchorPane myVBox = (AnchorPane) root.lookup("#route");
-
-FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("DonF.fxml"));
-Node myAnchorPane = includedLoader.load();
-
-myVBox.getChildren().add(myAnchorPane);
-
-FrontController frontController = loader.getController();
-DonFController donFController = includedLoader.getController();
-
-donFController.setFrontController(frontController);
-
-DeleteBtn.getScene().setRoot(root);
+          ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
     } 
     }
   
@@ -277,7 +264,7 @@ if(rs.next()){
  System.out.println("bla bla " + nom1);
 }
  
-String query = "INSERT INTO evenement_user (evenement_id, user_id) VALUES (?, ?)";
+String query = "INSERT INTO user_evenement (evenement_id, user_id) VALUES (?, ?)";
 PreparedStatement statement = cnx.prepareStatement(query);
 statement.setInt(1, d.getId());
 statement.setInt(2, projetpidd.ProjetPiDD.user.getId());
@@ -287,7 +274,7 @@ int rowsInserted = statement.executeUpdate();
 
 HashMap<Integer,Integer> Events = new HashMap<>();
 
-PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `evenement_user` ");
+PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `user_evenement` ");
 
 ResultSet rs1 = ps1.executeQuery();
 if(rs1.next()){
@@ -376,7 +363,7 @@ if(rs.next()){
  System.out.println("bla bla " + nom1);
 }
  
-String query = "DELETE FROM evenement_user where evenement_id = ?";
+String query = "DELETE FROM user_evenement where evenement_id = ?";
 PreparedStatement statement = cnx.prepareStatement(query);
 statement.setInt(1, d.getId());
 
@@ -387,7 +374,7 @@ int rowsInserted = statement.executeUpdate();
 
 HashMap<Integer,Integer> Events = new HashMap<>();
 
-PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `evenement_user` ");
+PreparedStatement ps1 = cnx.prepareStatement("SELECT * FROM `user_evenement` ");
 
 ResultSet rs1 = ps1.executeQuery();
 if(rs1.next()){

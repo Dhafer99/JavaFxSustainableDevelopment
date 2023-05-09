@@ -949,10 +949,8 @@ private File file;
 
     private void front(ActionEvent event) throws IOException {
         
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("sample2.fxml"));
- Parent root = loader.load();
-        frontBTN.getScene().setRoot(root);
-    Controller controller = loader.getController();
+          ProjetPiDD m = new ProjetPiDD();
+        m.changeScene("/don/Front.fxml");
     }
 
     @FXML

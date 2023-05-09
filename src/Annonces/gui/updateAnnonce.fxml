@@ -10,32 +10,57 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="654.0" prefWidth="853.0" stylesheets="@../css/style%20(1).css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Annonces.gui.updateAnnonceController">
+<AnchorPane id="AnchorPane" prefHeight="654.0" prefWidth="853.0" stylesheets="@../css/style%20(1).css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Annonces.gui.updateAnnonceController">
    <children>
       <ImageView fitHeight="2000.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" style="-fx-text-fill: black;">
          <image>
-            <Image url="@../../img/1508.jpg" />
+            <Image url="@../../img/Screenshot%202023-05-08%20112004.png" />
          </image>
       </ImageView>
-      <Label layoutX="48.0" layoutY="324.0" prefHeight="35.0" prefWidth="200.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Date_Publication" />
-      <Label layoutX="48.0" layoutY="380.0" prefHeight="35.0" prefWidth="150.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Description" />
-      <Label layoutX="48.0" layoutY="446.0" prefHeight="18.0" prefWidth="94.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Adresse" />
+      <Label layoutX="48.0" layoutY="324.0" prefHeight="35.0" prefWidth="200.0" style="-fx-text-fill: #13a25d; -fx-font-size: 24;" text="Date_Publication" textFill="#13a25d" />
+      <Label layoutX="48.0" layoutY="380.0" prefHeight="35.0" prefWidth="150.0" style="-fx-text-fill: #13a25d; -fx-font-size: 24;" text="Description" textFill="#13a25d" />
+      <Label layoutX="48.0" layoutY="446.0" prefHeight="18.0" prefWidth="94.0" style="-fx-text-fill: #13a25d; -fx-font-size: 24;" text="Adresse" textFill="#13a25d" />
       <TextField fx:id="tf_description" layoutX="304.0" layoutY="375.0" prefHeight="31.0" prefWidth="331.0" styleClass="search-container" stylesheets="@../../don/style.css" />
       <TextField fx:id="tf_adresse" layoutX="304.0" layoutY="441.0" prefHeight="31.0" prefWidth="331.0" styleClass="search-container" stylesheets="@../../don/style.css" />
-      <Button fx:id="update" layoutX="487.0" layoutY="888.0" mnemonicParsing="false" onAction="#update" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: black;" stylesheets="@../../don/style.css" text="Mettre a jour">
+      <Button fx:id="update" layoutX="282.0" layoutY="745.0" mnemonicParsing="false" onAction="#update" prefHeight="62.0" prefWidth="187.0" style="-fx-border-color: #13a25d; -fx-background-color: transparent; -fx-text-fill: #13a25d; -fx-font-size: 24;" stylesheets="@../../don/style.css" text="Update">
          <styleClass>
-            <String fx:value="upgrade-button" />
-            <String fx:value="buttonF" />
-         </styleClass></Button>
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
+         </styleClass>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../don/icons8_update_16px_1.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <DatePicker fx:id="picker_date" layoutX="306.0" layoutY="319.0" />
-      <ImageView fx:id="eventAddImg" fitHeight="150.0" fitWidth="200.0" layoutX="893.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eventAddImg" fitHeight="150.0" fitWidth="200.0" layoutX="1098.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox fx:id="combo" layoutX="304.0" layoutY="527.0" prefWidth="150.0" styleClass="combo-box-popup" stylesheets="@../../don/style.css" />
-      <Label layoutX="35.0" layoutY="519.0" prefHeight="18.0" prefWidth="120.0" style="-fx-text-fill: black; -fx-font-size: 24;" text="Catégorie " />
-      <Button layoutX="1104.0" layoutY="370.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="63.0" prefWidth="187.0" style="-fx-border-color: black;" stylesheets="@../../don/style.css" text="Image">
+      <Label layoutX="35.0" layoutY="519.0" prefHeight="18.0" prefWidth="120.0" style="-fx-text-fill: #13a25d; -fx-font-size: 24;" text="Catégorie " textFill="#13a25d" />
+      <Button layoutX="1104.0" layoutY="370.0" mnemonicParsing="false" onAction="#UploadImageActionPerformed" prefHeight="62.0" prefWidth="187.0" style="-fx-border-color: #13a25d; -fx-background-color: transparent; -fx-text-fill: #13a25d; -fx-font-size: 24;" stylesheets="@../../don/style.css" text="Image">
          <styleClass>
-            <String fx:value="upgrade-button" />
-            <String fx:value="buttonF" />
-         </styleClass></Button>
-      <Button layoutX="1142.0" layoutY="512.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
+         </styleClass>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../don/icons8_edit_image_16px.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="48.0" layoutY="964.0" mnemonicParsing="false" onAction="#Retour" prefHeight="62.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #13a25d; -fx-text-fill: #13a25d; -fx-font-size: 24;" stylesheets="@../../don/style.css" text="Retour">
+         <styleClass>
+            <String fx:value="buttonFront" />
+            <String fx:value="vbox" />
+         </styleClass>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/icons8_return_30px.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

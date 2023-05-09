@@ -314,7 +314,5 @@ public void updateUIII(List<Annonces> annonces) throws IOException, SQLException
     }
 }
 
-    @FXML
-    private void AddNew(MouseEvent event) {
-    }
+   
 }

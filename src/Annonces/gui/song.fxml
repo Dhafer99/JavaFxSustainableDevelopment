@@ -35,7 +35,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8_update_16px_1.png" />
+                  <Image url="@../../don/icons8_update_16px_1.png" />
                </image>
             </ImageView>
          </graphic>
@@ -48,7 +48,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8_cancel_16px_1.png" />
+                  <Image url="@../../don/icons8_cancel_16px_1.png" />
                </image>
             </ImageView>
          </graphic>
@@ -57,11 +57,11 @@
             <String fx:value="upgrade-button" />
          </styleClass>
       </Button>
-      <Button layoutX="199.0" layoutY="227.0" mnemonicParsing="false" onAction="#post" prefHeight="35.0" prefWidth="90.0" stylesheets="@style.css" text="Facebook">
+      <Button layoutX="199.0" layoutY="227.0" mnemonicParsing="false" onAction="#post" prefHeight="35.0" prefWidth="102.0" stylesheets="@style.css" text="Facebook">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8_cancel_16px_1.png" />
+                  <Image url="@../../img/icons8_Facebook_40px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -70,11 +70,11 @@
             <String fx:value="upgrade-button" />
          </styleClass>
       </Button>
-      <Button fx:id="Details" layoutX="301.0" layoutY="227.0" mnemonicParsing="false" onAction="#Details" prefHeight="35.0" prefWidth="78.0" stylesheets="@style.css" text="Details">
+      <Button fx:id="Details" layoutX="323.0" layoutY="227.0" mnemonicParsing="false" onAction="#Details" prefHeight="35.0" prefWidth="90.0" stylesheets="@style.css" text="Details">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8_cancel_16px_1.png" />
+                  <Image url="@../../img/icons8_details_40px_1.png" />
                </image>
             </ImageView>
          </graphic>
